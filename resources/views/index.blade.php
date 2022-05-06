@@ -21,15 +21,15 @@
                             <a href="#" class="nav-link">Ajiale School</a>
                         </li>
                         <li class="nav-item me-2">
-                            <a href="./pages/examples/sign-in.html" class="nav-link">Student Login</a>
+                            <a href="{{ route('login') }}" class="nav-link">Student Login</a>
                         </li>
                         <li class="nav-item me-2">
-                            <a href="./pages/examples/sign-up.html" class="nav-link">Student Register</a>
+                            <a href="{{ route('register') }}" class="nav-link">Student Register</a>
                         </li>
                     </ul>
                 </div>
                 <div class="d-flex align-items-center ms-auto">
-                    <a href="./pages/upgrade-to-pro.html" class="btn btn-outline-white d-inline-flex align-items-center me-md-3">
+                    <a href="#" class="btn btn-outline-white d-inline-flex align-items-center me-md-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fingerprint" viewBox="0 0 16 16" style="margin-right: .5rem">
                             <path d="M8.06 6.5a.5.5 0 0 1 .5.5v.776a11.5 11.5 0 0 1-.552 3.519l-1.331 4.14a.5.5 0 0 1-.952-.305l1.33-4.141a10.5 10.5 0 0 0 .504-3.213V7a.5.5 0 0 1 .5-.5Z"/>
                             <path
@@ -73,9 +73,6 @@
                                 </svg>
                                 Contact Us
                             </a>
-                            {{--                            <div class="mb-lg-0 mt-1">--}}
-                            {{--                                <a class="github-button" href="https://github.com/themesberg/volt-bootstrap-5-dashboard" data-color-scheme="no-preference: dark; light: light; dark: light;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star themesberg/volt-bootstrap-5-dashboard on GitHub">Star</a>--}}
-                            {{--                            </div>--}}
                         </div>
                         <div class="d-flex justify-content-center flex-column mb-6 mb-lg-5">
                             <a href="https://themesberg.com" target="_blank">
