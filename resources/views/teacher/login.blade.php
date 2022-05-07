@@ -17,7 +17,7 @@
                     <div class="col-12 d-flex align-items-center justify-content-center">
                         <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
                             <div class="text-center text-md-center mb-4 mt-md-0">
-                                <h1 class="mb-0 h3">Sign in to our platform</h1>
+                                <h1 class="mb-0 h3">Welcome back dear Teacher</h1>
                             </div>
                             <form action="#" class="mt-4">
                                 <!-- Form -->
@@ -29,7 +29,7 @@
                                                     d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path
                                                     d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
                                         </span>
-                                        <input type="email" class="form-control" placeholder="example@company.com" id="email" autofocus required>
+                                        <input type="email" class="form-control" placeholder="teacher@gmail.com" id="email" autofocus>
                                     </div>
                                 </div>
                                 <!-- End of Form -->
