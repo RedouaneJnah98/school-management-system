@@ -29,7 +29,7 @@
                     </ul>
                 </div>
                 <div class="d-flex align-items-center ms-auto">
-                    <a href="{{ route('teacher.login') }}" class="btn btn-outline-white d-inline-flex align-items-center me-md-3">
+                    <a href="{{ route('admin.login') }}" class="btn btn-outline-white d-inline-flex align-items-center me-md-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fingerprint" viewBox="0 0 16 16" style="margin-right: .5rem">
                             <path d="M8.06 6.5a.5.5 0 0 1 .5.5v.776a11.5 11.5 0 0 1-.552 3.519l-1.331 4.14a.5.5 0 0 1-.952-.305l1.33-4.141a10.5 10.5 0 0 0 .504-3.213V7a.5.5 0 0 1 .5-.5Z"/>
                             <path
