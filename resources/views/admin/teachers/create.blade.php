@@ -17,17 +17,14 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item"><a href="#">Volt</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Forms</li>
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Add New Teacher</li>
                 </ol>
             </nav>
-            <div class="d-flex justify-content-between w-100 flex-wrap">
+            <div>
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h4">Forms</h1>
+                    <h1 class="h4">Add Teacher</h1>
                     <p class="mb-0">Dozens of reusable components built to provide buttons, alerts, popovers, and more.</p>
-                </div>
-                <div>
-                    <a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/forms/" class="btn btn-outline-gray"><i class="far fa-question-circle me-1"></i> Forms Docs</a>
                 </div>
             </div>
         </div>
@@ -46,7 +43,7 @@
                                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                     </svg>
                                         </span>
-                                    <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Muhammed">
+                                    <input type="text" class="form-control" name="firstname" id="firstname" placeholder="eg: Muhammed">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-6 mb-4">
@@ -57,18 +54,98 @@
                                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                     </svg>
                                         </span>
-                                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Abdullah">
+                                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="eg: Abdullah">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-6 mb-4">
-                                <label for="lastname">Last Name</label>
+                                <label for="phone">Phone Number</label>
                                 <div class="input-group">
                                     <span class="input-group-text">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone-fill" viewBox="0 0 16 16">
+                                            <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
+                                        </svg>
+                                    </span>
+                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="eg: +212 606 778 958">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 mb-4">
+                                <label for="email">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-check-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 4.697v4.974A4.491 4.491 0 0 0 12.5 8a4.49 4.49 0 0 0-1.965.45l-.338-.207L16 4.697Z"/>
+                                            <path
+                                                d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z"/>
+                                        </svg>
+                                    </span>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="eg: example@gmail.com">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 mb-4">
+                                <label for="password">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                                         <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                                     </svg>
                                         </span>
-                                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Abdullah">
+                                    <input type="password" class="form-control" name="password" id="password">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 mb-4">
+                                <label for="confirm_password">Confirm Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                                         <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                        </svg>
+                                    </span>
+                                    <input type="password" class="form-control" name="confirm_password" id="confirm_password">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 mb-4">
+                                <label for="birthday">Date Of Birth</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                  clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <input data-datepicker="" class="form-control" name="dob" id="birthday" placeholder="dd/mm/yyyy">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 mb-4">
+                                <label for="image_profile">Profile Image</label>
+                                {{--                                <div class="input-group">--}}
+                                {{--                                    <span class="input-group-text">--}}
+                                {{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">--}}
+                                {{--                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>--}}
+                                {{--                                    </svg>--}}
+                                {{--                                        </span>--}}
+                                <input type="file" class="form-control" name="image_profile" id="image_profile">
+                                {{--                                </div>--}}
+                            </div>
+                            <div class="col-lg-6 col-sm-6 mb-4">
+                                <label for="status">Account Status</label>
+                                <select class="form-select" name="status" id="status">
+                                    <option disabled selected>Select which type of account</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="teacher">Teacher</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 mb-4">
+                                <label for="lastname">Profile Bio</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                                        </svg>
+                                    </span>
+                                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="eg: Mechanical Professor...">
                                 </div>
                             </div>
                         </div>
