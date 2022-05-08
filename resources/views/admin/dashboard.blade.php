@@ -1,6 +1,6 @@
 <x-dashboard_layout>
     {{-- sidebar --}}
-    @include('components.teacher._sidebar')
+    @include('components.admin._sidebar')
 
     <main class="content">
         {{-- Navbar --}}
