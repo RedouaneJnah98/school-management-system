@@ -17,17 +17,21 @@ class Teacher extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'firstname',
-        'lastname',
-        'email',
-        'password',
-        'dob',
-        'phone',
-        'status',
-        'last_login_date',
-        'last_login_ip'
-    ];
+//    protected $fillable = [
+//        'firstname',
+//        'lastname',
+//        'email',
+//        'password',
+//        'confirm_password',
+//        'dob',
+//        'phone',
+//        'status',
+//        'last_login_date',
+//        'last_login_ip',
+//        'profile_image',
+//        'profile_bio'
+//    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
