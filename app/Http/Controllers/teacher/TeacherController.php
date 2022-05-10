@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
-    public function index()
+    public function index(Teacher $teacher)
     {
-        //
+        $teachers = $teacher->paginate(20);
+
+        return view('admin.teachers.index', compact('teachers'));
     }
 
     public function create()
