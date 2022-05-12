@@ -105,7 +105,7 @@
                         <td><span class="fw-normal">{{ $teacher->lastname }}</span></td>
                         <td><span class="fw-normal">{{ $teacher->email }}</span></td>
                         <td><span class="fw-bold">{{ $teacher->dob }}</span></td>
-                        <td><span class="fw-bold text-success">{{ ucfirst($teacher->status) }}</span></td>
+                        <td><span class="badge {{ $teacher->status === 'admin' ? 'bg-success' : 'bg-secondary' }}">{{ ucfirst($teacher->status) }}</span></td>
                         <td>
                             <div class="btn-group">
                                 <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
