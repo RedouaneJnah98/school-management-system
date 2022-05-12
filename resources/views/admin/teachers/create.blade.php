@@ -215,21 +215,3 @@
 
     </main>
 </x-dashboard_layout>
-
-@if(\Illuminate\Support\Facades\Session::has('success'))
-    <script>
-        const notyf = new Notyf({
-            duration: 5000,
-            position: {
-                x: 'right',
-                y: 'top',
-            },
-        });
-
-        notyf.open({
-            type: 'success',
-            message: "Success! You've added a new teacher."
-        });
-    </script>
-@endif
-

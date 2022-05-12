@@ -41,7 +41,7 @@ class TeacherController extends Controller
         $insert_data = Teacher::create($attributes);
 
         if ($insert_data) {
-            return redirect()->back()->with('success', "Success! You've added a new Teacher.");
+            return redirect()->route('admin.teachers.index')->with('success', "You've added a new Teacher.");
         } else {
             return redirect()->back()->with('error', 'Error! Something went wrong, try again.');
         }
