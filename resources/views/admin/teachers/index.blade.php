@@ -107,18 +107,25 @@
                         <td><span class="fw-bold">{{ $teacher->dob }}</span></td>
                         <td><span class="badge {{ $teacher->status === 'admin' ? 'bg-success' : 'bg-secondary' }}">{{ ucfirst($teacher->status) }}</span></td>
                         <td>
-                            <div class="btn-group">
-                                <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="icon icon-sm">
-                                            <span class="fas fa-ellipsis-h icon-dark"></span>
-                                        </span>
-                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu py-0">
-                                    <a class="dropdown-item rounded-top" href="#"><span class="fas fa-eye me-2"></span>View Details</a>
-                                    <a class="dropdown-item" href="#"><span class="fas fa-edit me-2"></span>Edit</a>
-                                    <a class="dropdown-item text-danger rounded-bottom" href="#"><span class="fas fa-trash-alt me-2"></span>Remove</a>
-                                </div>
+                            <div class="dropdown">
+                                <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
+                                   data-bs-offset="10,20">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                    </svg>
+                                </a>
+                                <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
+                                    <li>
+                                        <a class="dropdown-item rounded-top" href="#">View Details</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Edit</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item rounded-bottom" href="#">Delete</a>
+                                    </li>
+                                </ul>
                             </div>
                         </td>
                     </tr>
