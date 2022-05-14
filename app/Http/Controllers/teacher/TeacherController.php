@@ -61,9 +61,9 @@ class TeacherController extends Controller
         return view('admin.teachers.show', compact('teacher'));
     }
 
-    public function edit($id)
+    public function edit(Teacher $teacher)
     {
-        //
+        return view('admin.teachers.edit', compact('teacher'));
     }
 
     public function update(Request $request, $id)

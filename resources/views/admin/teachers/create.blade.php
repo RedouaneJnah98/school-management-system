@@ -33,7 +33,6 @@
             <div class="col-12 mb-4">
                 <div class="card border-0 shadow components-section">
                     <div class="card-body">
-                        {{--                        <button class="btn btn-primary" id="notifTopRiht">test</button>--}}
                         <!-- Form -->
                         <form action="{{ route('admin.teachers.store') }}" method="post" enctype="multipart/form-data">
                             @csrf

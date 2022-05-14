@@ -120,7 +120,7 @@
                                         <a class="dropdown-item rounded-top" href="{{ route('admin.teachers.show', $teacher->id) }}">View Details</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="{{ route('admin.teachers.edit', $teacher->id) }}">Edit</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item rounded-bottom" href="#">Delete</a>
