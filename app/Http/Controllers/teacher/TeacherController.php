@@ -56,9 +56,9 @@ class TeacherController extends Controller
         }
     }
 
-    public function show($id)
+    public function show(Teacher $teacher)
     {
-        //
+        return view('admin.teachers.show', compact('teacher'));
     }
 
     public function edit($id)

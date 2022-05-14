@@ -117,7 +117,7 @@
                                 </a>
                                 <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
                                     <li>
-                                        <a class="dropdown-item rounded-top" href="#">View Details</a>
+                                        <a class="dropdown-item rounded-top" href="{{ route('admin.teachers.show', $teacher->id) }}">View Details</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="#">Edit</a>

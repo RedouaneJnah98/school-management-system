@@ -33,7 +33,6 @@ class TeacherFactory extends Factory
             'number' => $this->faker->randomDigit(),
             'city' => $this->faker->city(),
             'zip' => $this->faker->randomNumber(5, true),
-            //image profile
             'profile_image' => $this->faker->imageUrl(50, 50, 'avatar'),
         ];
     }
