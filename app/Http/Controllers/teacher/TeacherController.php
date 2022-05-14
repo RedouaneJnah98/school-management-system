@@ -30,12 +30,21 @@ class TeacherController extends Controller
             'password' => 'required|confirmed|min:6|max:30',
             'password_confirmation' => 'required|min:6|max:30',
             'dob' => 'required|date',
-//            'image_profile' => 'file',
+            'profile_image' => 'required|image',
             'status' => 'required',
-            'profile_bio' => 'required'
+            'profile_bio' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
+            'number' => 'required|numeric',
+            'city' => 'required',
+            'zip' => 'required|numeric'
         ]);
 
         $attributes['dob'] = $request->date('dob');
+        // get the original file name of the image
+        $image_name = $request->file('profile_image')->getClientOriginalName();
+        // store the image in the public/avatars directory
+        $attributes['profile_image'] = $request->file('profile_image')->storeAs('public/avatars', $image_name);
 
         // insert data into DB
         $insert_data = Teacher::create($attributes);

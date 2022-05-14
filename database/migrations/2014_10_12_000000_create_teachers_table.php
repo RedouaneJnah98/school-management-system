@@ -23,10 +23,15 @@ return new class extends Migration {
             $table->date('dob');
             $table->string('phone');
             $table->string('status')->default('teacher');
-            $table->string('profile_image')->nullable();
+            $table->string('profile_image');
             $table->string('profile_bio');
             $table->date('last_login_date')->nullable();
             $table->string('last_login_ip')->nullable();
+            $table->string('gender');
+            $table->string('address');
+            $table->integer('number');
+            $table->string('city');
+            $table->integer('zip');
             $table->rememberToken();
             $table->timestamps();
         });
