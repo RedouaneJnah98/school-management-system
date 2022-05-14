@@ -8,20 +8,15 @@
             },
             types: [
                 {
-                    type: 'warning',
+                    type: 'error',
                     background: 'orange',
-                    icon: {
-                        className: 'material-icons',
-                        tagName: 'i',
-                        color: '#fff'
-                    },
                     dismissible: false
                 }
             ]
         });
 
         notyf.open({
-            type: 'warning',
+            type: 'error',
             message: "{{ session('delete') }}"
         });
     </script>
