@@ -5,6 +5,7 @@ namespace App\Http\Controllers\teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TeacherController extends Controller
 {
@@ -66,9 +67,29 @@ class TeacherController extends Controller
         return view('admin.teachers.edit', compact('teacher'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Teacher $teacher)
     {
-        //
+        $attributes = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'phone' => 'required|numeric',
+            'email' => ['required', 'email', Rule::unique('teachers', 'email')->ignore($teacher->id)],
+            'status' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
+            'number' => 'required|numeric',
+            'city' => 'required',
+            'zip' => 'required|numeric'
+        ]);
+
+        // update
+        $update_credentials = $teacher->update($attributes);
+
+        if ($update_credentials) {
+            return redirect()->route('admin.teachers.index')->with('success', 'Credentials updated successfully');
+        } else {
+            return redirect()->back()->with('error', 'Error! Something went wrong, try again.');
+        }
     }
 
     public function destroy($id)

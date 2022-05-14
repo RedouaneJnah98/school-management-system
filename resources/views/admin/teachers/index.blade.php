@@ -76,68 +76,73 @@
                 </div>
             </div>
         </div>
-        <div class="card card-body border-0 shadow table-wrapper table-responsive">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th class="border-gray-200">ID</th>
-                    <th class="border-gray-200">First Name</th>
-                    <th class="border-gray-200">Last Name</th>
-                    <th class="border-gray-200">Email</th>
-                    <th class="border-gray-200">Date Of Birth</th>
-                    <th class="border-gray-200">Status</th>
-                    <th class="border-gray-200">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Teachers -->
 
-                @foreach($teachers as $teacher)
+        @if(count($teachers) > 0)
+            <div class="card card-body border-0 shadow table-wrapper table-responsive">
+                <table class="table table-hover">
+                    <thead>
                     <tr>
-                        <td>
-                            <a href="#" class="fw-bold">
-                                {{ $teacher->id }}
-                            </a>
-                        </td>
-                        <td>
-                            <span class="fw-normal">{{ $teacher->firstname }}</span>
-                        </td>
-                        <td><span class="fw-normal">{{ $teacher->lastname }}</span></td>
-                        <td><span class="fw-normal">{{ $teacher->email }}</span></td>
-                        <td><span class="fw-bold">{{ $teacher->dob }}</span></td>
-                        <td><span class="badge {{ $teacher->status === 'admin' ? 'bg-success' : 'bg-secondary' }}">{{ ucfirst($teacher->status) }}</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
-                                   data-bs-offset="10,20">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                    </svg>
-                                </a>
-                                <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
-                                    <li>
-                                        <a class="dropdown-item rounded-top" href="{{ route('admin.teachers.show', $teacher->id) }}">View Details</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('admin.teachers.edit', $teacher->id) }}">Edit</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item rounded-bottom" href="#">Delete</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
+                        <th class="border-gray-200">ID</th>
+                        <th class="border-gray-200">First Name</th>
+                        <th class="border-gray-200">Last Name</th>
+                        <th class="border-gray-200">Email</th>
+                        <th class="border-gray-200">Date Of Birth</th>
+                        <th class="border-gray-200">Status</th>
+                        <th class="border-gray-200">Action</th>
                     </tr>
-                @endforeach
+                    </thead>
+                    <tbody>
+                    <!-- Teachers -->
 
-                </tbody>
-            </table>
-            <div class="card-footer px-3 border-0 d-flex flex-column flex-lg-row align-items-center justify-content-between">
-                {{ $teachers->links() }}
-                <div class="fw-normal small mt-4 mt-lg-0">Showing <b>{{ $teachers->firstItem() }}</b> to <b>{{ $teachers->lastItem() }}</b> of <b>{{ $teachers->total() }}</b> entries</div>
+                    @foreach($teachers as $teacher)
+                        <tr>
+                            <td>
+                                <span class="fw-bold">
+                                    {{ $teacher->id }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="fw-normal">{{ $teacher->firstname }}</span>
+                            </td>
+                            <td><span class="fw-normal">{{ $teacher->lastname }}</span></td>
+                            <td><span class="fw-normal">{{ $teacher->email }}</span></td>
+                            <td><span class="fw-bold">{{ $teacher->dob }}</span></td>
+                            <td><span class="badge {{ $teacher->status === 'admin' ? 'bg-success' : 'bg-secondary' }}">{{ ucfirst($teacher->status) }}</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
+                                       data-bs-offset="10,20">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                        </svg>
+                                    </a>
+                                    <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
+                                        <li>
+                                            <a class="dropdown-item rounded-top" href="{{ route('admin.teachers.show', $teacher->id) }}">View Details</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('admin.teachers.edit', $teacher->id) }}">Edit</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item rounded-bottom" href="#">Delete</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+
+                    </tbody>
+                </table>
+                <div class="card-footer px-3 border-0 d-flex flex-column flex-lg-row align-items-center justify-content-between">
+                    {{ $teachers->links() }}
+                    <div class="fw-normal small mt-4 mt-lg-0">Showing <b>{{ $teachers->firstItem() }}</b> to <b>{{ $teachers->lastItem() }}</b> of <b>{{ $teachers->total() }}</b> entries</div>
+                </div>
             </div>
-        </div>
+        @else
+            <div class="alert alert-info text-center mt-5">No data available.</div>
+        @endif
     </main>
 
 </x-dashboard_layout>
