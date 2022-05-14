@@ -92,8 +92,10 @@ class TeacherController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(Teacher $teacher)
     {
-        //
+        $teacher->delete();
+
+        return redirect()->back()->with('delete', 'Record deleted.');
     }
 }
