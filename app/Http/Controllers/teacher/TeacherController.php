@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class TeacherController extends Controller
@@ -19,11 +20,16 @@ class TeacherController extends Controller
 
     public function create()
     {
+        // authorize only admin
+        $this->authorize('add_teacher');
+
         return view('admin.teachers.create');
     }
 
     public function store(Request $request)
     {
+        $this->authorize('add_teacher');
+
         $attributes = $request->validate([
             'firstname' => 'required|string',
             'lastname' => 'required|string',
@@ -47,6 +53,9 @@ class TeacherController extends Controller
         $image_name = $request->file('profile_image')->getClientOriginalName();
         // store the image in the public/avatars directory
         $attributes['profile_image'] = $request->file('profile_image')->storeAs('public/avatars', $image_name);
+        // Hash password
+        $attributes['password'] = Hash::make($attributes['password']);
+        $attributes['password_confirmation'] = Hash::make($attributes['password_confirmation']);
 
         // insert data into DB
         $insert_data = Teacher::create($attributes);
@@ -65,11 +74,15 @@ class TeacherController extends Controller
 
     public function edit(Teacher $teacher)
     {
+        $this->authorize('edit_teacher');
+
         return view('admin.teachers.edit', compact('teacher'));
     }
 
     public function update(Request $request, Teacher $teacher)
     {
+        $this->authorize('edit_teacher');
+
         $attributes = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
@@ -95,6 +108,7 @@ class TeacherController extends Controller
 
     public function destroy(Teacher $teacher)
     {
+        $this->authorize('delete_teacher');
         $teacher->delete();
 
         return redirect()->back()->with('delete', 'Record deleted.');
@@ -117,7 +131,7 @@ class TeacherController extends Controller
 
             return redirect()->route('admin.dashboard');
         } else {
-            return redirect()->back()->with('error', 'Error! Something went wrong, try again.');
+            return redirect()->back()->with('failed', 'Something went wrong, please enter valid credentials.');
         }
     }
 

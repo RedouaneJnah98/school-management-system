@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Teacher;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +26,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Only Admin can add or edit or delete a teacher account
+        Gate::define('add_teacher', fn(Teacher $teacher) => $teacher->status === 'admin');
+        Gate::define('edit_teacher', fn(Teacher $teacher) => $teacher->status === 'admin');
+        Gate::define('delete_teacher', fn(Teacher $teacher) => $teacher->status === 'admin');
     }
 }

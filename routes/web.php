@@ -18,9 +18,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::middleware(['auth:web'])->group(function () {
+        // Route View
         Route::view('dashboard', 'admin.dashboard')->name('dashboard');
+        Route::view('profile', 'admin.profile')->name('profile');
+
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);
+
         // Logout
         Route::post('logout', [TeacherController::class, 'logout'])->name('logout');
     });
