@@ -13,8 +13,10 @@ Route::prefix('student')->name('student.')->group(function () {
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::view('login', 'admin.login')->name('login');
-    Route::view('dashboard', 'admin.dashboard')->name('dashboard');
 
-    // Controller Resource
-    Route::resource('teachers', TeacherController::class);
+    Route::middleware(['auth:web'])->group(function () {
+        Route::view('dashboard', 'admin.dashboard')->name('dashboard');
+        // Controller Resource
+        Route::resource('teachers', TeacherController::class);
+    });
 });

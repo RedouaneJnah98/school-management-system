@@ -1,8 +1,9 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    (global = global || self, global.Notyf = factory());
-}(this, (function () { 'use strict';
+        typeof define === 'function' && define.amd ? define(factory) :
+            (global = global || self, global.Notyf = factory());
+}(this, (function () {
+    'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -19,7 +20,7 @@
     PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
 
-    var __assign = function() {
+    var __assign = function () {
         __assign = Object.assign || function __assign(t) {
             for (var s, i = 1, n = arguments.length; i < n; i++) {
                 s = arguments[i];
@@ -35,6 +36,7 @@
             this.options = options;
             this.listeners = {};
         }
+
         NotyfNotification.prototype.on = function (eventType, cb) {
             var callbacks = this.listeners[eventType] || [];
             this.listeners[eventType] = callbacks.concat([cb]);
@@ -42,7 +44,9 @@
         NotyfNotification.prototype.triggerEvent = function (eventType, event) {
             var _this = this;
             var callbacks = this.listeners[eventType] || [];
-            callbacks.forEach(function (cb) { return cb({ target: _this, event: event }); });
+            callbacks.forEach(function (cb) {
+                return cb({target: _this, event: event});
+            });
         };
         return NotyfNotification;
     }());
@@ -55,6 +59,7 @@
         function NotyfArray() {
             this.notifications = [];
         }
+
         NotyfArray.prototype.push = function (elem) {
             this.notifications.push(elem);
             this.updateFn(elem, NotyfArrayEvent.Add, this.notifications);
@@ -122,9 +127,9 @@
                 center: 'center',
                 bottom: 'flex-end',
             };
-            // Creates the main notifications container
+            // Creates the main notification container
             var docFrag = document.createDocumentFragment();
-            var notyfContainer = this._createHTMLElement({ tagName: 'div', className: 'notyf' });
+            var notyfContainer = this._createHTMLElement({tagName: 'div', className: 'notyf'});
             docFrag.appendChild(notyfContainer);
             document.body.appendChild(docFrag);
             this.container = notyfContainer;
@@ -132,6 +137,7 @@
             this.animationEndEventName = this._getAnimationEndEventName();
             this._createA11yContainer();
         }
+
         NotyfView.prototype.on = function (event, cb) {
             var _a;
             this.events = __assign(__assign({}, this.events), (_a = {}, _a[event] = cb, _a));
@@ -139,8 +145,7 @@
         NotyfView.prototype.update = function (notification, type) {
             if (type === NotyfArrayEvent.Add) {
                 this.addNotification(notification);
-            }
-            else if (type === NotyfArrayEvent.Remove) {
+            } else if (type === NotyfArrayEvent.Remove) {
                 this.removeNotification(notification);
             }
         };
@@ -163,7 +168,7 @@
         };
         NotyfView.prototype.addNotification = function (notification) {
             var node = this._renderNotification(notification);
-            this.notifications.push({ notification: notification, node: node });
+            this.notifications.push({notification: notification, node: node});
             // For a11y purposes, we still want to announce that there's a notification in the screen
             // even if it comes with no message.
             this._announce(notification.options.message || 'Notification');
@@ -212,20 +217,20 @@
             // Adjust container according to position (e.g. top-left, bottom-center, etc)
             this.adjustContainerAlignment(options);
             // Create elements
-            var notificationElem = this._createHTMLElement({ tagName: 'div', className: 'notyf__toast' });
-            var ripple = this._createHTMLElement({ tagName: 'div', className: 'notyf__ripple' });
-            var wrapper = this._createHTMLElement({ tagName: 'div', className: 'notyf__wrapper' });
-            var message = this._createHTMLElement({ tagName: 'div', className: 'notyf__message' });
+            var notificationElem = this._createHTMLElement({tagName: 'div', className: 'notyf__toast'});
+            var ripple = this._createHTMLElement({tagName: 'div', className: 'notyf__ripple'});
+            var wrapper = this._createHTMLElement({tagName: 'div', className: 'notyf__wrapper'});
+            var message = this._createHTMLElement({tagName: 'div', className: 'notyf__message'});
             message.innerHTML = options.message || '';
             var mainColor = options.background || options.backgroundColor;
             // Build the icon and append it to the card
             if (iconOpts) {
-                var iconContainer = this._createHTMLElement({ tagName: 'div', className: 'notyf__icon' });
+                var iconContainer = this._createHTMLElement({tagName: 'div', className: 'notyf__icon'});
                 if (typeof iconOpts === 'string' || iconOpts instanceof String)
                     iconContainer.innerHTML = new String(iconOpts).valueOf();
                 if (typeof iconOpts === 'object') {
                     var _a = iconOpts.tagName, tagName = _a === void 0 ? 'i' : _a, className_1 = iconOpts.className, text = iconOpts.text, _b = iconOpts.color, color = _b === void 0 ? mainColor : _b;
-                    var iconElement = this._createHTMLElement({ tagName: tagName, className: className_1, text: text });
+                    var iconElement = this._createHTMLElement({tagName: tagName, className: className_1, text: text});
                     if (color)
                         iconElement.style.color = color;
                     iconContainer.appendChild(iconElement);
@@ -239,14 +244,13 @@
                 if (options.ripple) {
                     ripple.style.background = mainColor;
                     notificationElem.appendChild(ripple);
-                }
-                else {
+                } else {
                     notificationElem.style.background = mainColor;
                 }
             }
             // Add dismiss button
             if (options.dismissible) {
-                var dismissWrapper = this._createHTMLElement({ tagName: 'div', className: 'notyf__dismiss' });
+                var dismissWrapper = this._createHTMLElement({tagName: 'div', className: 'notyf__dismiss'});
                 var dismissButton = this._createHTMLElement({
                     tagName: 'button',
                     className: 'notyf__dismiss-btn',
@@ -256,11 +260,14 @@
                 notificationElem.classList.add("notyf__toast--dismissible");
                 dismissButton.addEventListener('click', function (event) {
                     var _a, _b;
-                    (_b = (_a = _this.events)[NotyfEvent.Dismiss]) === null || _b === void 0 ? void 0 : _b.call(_a, { target: notification, event: event });
+                    (_b = (_a = _this.events)[NotyfEvent.Dismiss]) === null || _b === void 0 ? void 0 : _b.call(_a, {target: notification, event: event});
                     event.stopPropagation();
                 });
             }
-            notificationElem.addEventListener('click', function (event) { var _a, _b; return (_b = (_a = _this.events)[NotyfEvent.Click]) === null || _b === void 0 ? void 0 : _b.call(_a, { target: notification, event: event }); });
+            notificationElem.addEventListener('click', function (event) {
+                var _a, _b;
+                return (_b = (_a = _this.events)[NotyfEvent.Click]) === null || _b === void 0 ? void 0 : _b.call(_a, {target: notification, event: event});
+            });
             // Adjust margins depending on whether its an upper or lower notification
             var className = this.getYPosition(options) === 'top' ? 'upper' : 'lower';
             notificationElem.classList.add("notyf__toast--" + className);
@@ -280,7 +287,7 @@
          * screen readers
          */
         NotyfView.prototype._createA11yContainer = function () {
-            var a11yContainer = this._createHTMLElement({ tagName: 'div', className: 'notyf-announcer' });
+            var a11yContainer = this._createHTMLElement({tagName: 'div', className: 'notyf-announcer'});
             a11yContainer.setAttribute('aria-atomic', 'true');
             a11yContainer.setAttribute('aria-live', 'polite');
             // Set the a11y container to be visible hidden. Can't use display: none as
@@ -348,7 +355,9 @@
             var types = this.registerTypes(opts);
             this.options = __assign(__assign({}, DEFAULT_OPTIONS), opts);
             this.options.types = types;
-            this.notifications.onUpdate(function (elem, type) { return _this.view.update(elem, type); });
+            this.notifications.onUpdate(function (elem, type) {
+                return _this.view.update(elem, type);
+            });
             this.view.on(NotyfEvent.Dismiss, function (_a) {
                 var target = _a.target, event = _a.event;
                 _this._removeNotification(target);
@@ -361,6 +370,7 @@
                 return target['triggerEvent'](NotyfEvent.Click, event);
             });
         }
+
         Notyf.prototype.error = function (payload) {
             var options = this.normalizeOptions('error', payload);
             return this.open(options);
@@ -407,7 +417,9 @@
             this.notifications.push(notification);
             var duration = notification.options.duration !== undefined ? notification.options.duration : this.options.duration;
             if (duration) {
-                setTimeout(function () { return _this._removeNotification(notification); }, duration);
+                setTimeout(function () {
+                    return _this._removeNotification(notification);
+                }, duration);
             }
         };
         Notyf.prototype._removeNotification = function (notification) {
@@ -417,11 +429,10 @@
             }
         };
         Notyf.prototype.normalizeOptions = function (type, payload) {
-            var options = { type: type };
+            var options = {type: type};
             if (typeof payload === 'string') {
                 options.message = payload;
-            }
-            else if (typeof payload === 'object') {
+            } else if (typeof payload === 'object') {
                 options = __assign(__assign({}, options), payload);
             }
             return options;

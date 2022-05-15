@@ -129,7 +129,6 @@
                                                 @method('DELETE')
                                                 @csrf
 
-                                                {{--                                                <input name="_method" type="hidden" value="DELETE">--}}
                                                 <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>
                                             </form>
                                         </li>
@@ -154,44 +153,9 @@
 </x-dashboard_layout>
 
 {{-- Success Notification --}}
-<x-success_notif/>
+<x-notification.success_notif/>
 {{-- Delete Notification --}}
-<x-delete_notif/>
+<x-notification.delete_notif/>
 
-<script>
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-primary me-3',
-            cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-    });
-
-    $('.delete-btn').click(function (event) {
-        var form = $(this).closest('form');
-        event.preventDefault();
-
-        swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire(
-                    'Deleted!',
-                    'Teacher account has been deleted.',
-                    'success'
-                ).then((willDelete) => {
-                    if (willDelete) {
-                        form.submit();
-                    }
-                })
-
-            }
-        })
-    })
-</script>
+{{-- Delete Confirmation Modale --}}
+<x-modals.delete/>
