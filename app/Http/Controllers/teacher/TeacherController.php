@@ -124,8 +124,10 @@ class TeacherController extends Controller
             'password' => 'required|min:6|max:30'
         ]);
 
+        $remember_me = $request->has('remember_me');
+
         // check the user's credentials if they are valid
-        if (Auth::guard('web')->attempt($credentials)) {
+        if (Auth::guard('web')->attempt($credentials, $remember_me)) {
             // regenerate session ID
             $request->session()->regenerate();
 
