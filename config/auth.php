@@ -17,10 +17,10 @@ return [
         'guard' => 'web',
         'passwords' => 'teachers',
     ],
-    'admin' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Teacher::class,
-    ],
+//    'admin' => [
+//        'driver' => 'eloquent',
+//        'model' => App\Models\Teacher::class,
+//    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -44,10 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'teachers',
         ],
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'teachers',
-        ],
+//        'admin' => [
+//            'driver' => 'session',
+//            'provider' => 'teachers',
+//        ],
     ],
 
     /*

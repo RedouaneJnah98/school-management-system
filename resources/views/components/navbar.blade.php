@@ -168,10 +168,14 @@
                     <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         <div class="media d-flex align-items-center">
+                            {{-- User Avatar --}}
                             <img class="avatar rounded-circle" alt="Image placeholder"
-                                 src="{{ asset('assets/img/team/profile-picture-3.jpg') }}"/>
+                                 src="{{ auth()->user()->profile_image }}"/>
                             <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                <span class="mb-0 font-small fw-bold text-gray-900">Bonnie Green</span>
+                                @php
+                                    $name = auth()->user()->firstname . ' ' . auth()->user()->lastname;
+                                @endphp
+                                <span class="mb-0 font-small fw-bold text-gray-900">{{ $name }}</span>
                             </div>
                         </div>
                     </a>
@@ -213,7 +217,7 @@
                             Support
                         </a>
                         <div role="separator" class="dropdown-divider my-1"></div>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
+                        <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             <svg class="dropdown-icon text-danger me-2" fill="none" stroke="currentColor"
                                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -222,6 +226,7 @@
                             </svg>
                             Logout
                         </a>
+                        <form action="{{ route('admin.logout') }}" method="post" id="logout-form">@csrf</form>
                     </div>
                 </li>
             </ul>

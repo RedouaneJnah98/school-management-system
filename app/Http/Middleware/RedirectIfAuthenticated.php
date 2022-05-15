@@ -27,7 +27,7 @@ class RedirectIfAuthenticated
                     return redirect()->route('admin.dashboard');
                 }
 
-                return redirect()->route('student.login');
+                return redirect()->route('admin.login');
             }
         }
 

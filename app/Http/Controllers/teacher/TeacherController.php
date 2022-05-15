@@ -5,6 +5,7 @@ namespace App\Http\Controllers\teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class TeacherController extends Controller
@@ -97,5 +98,36 @@ class TeacherController extends Controller
         $teacher->delete();
 
         return redirect()->back()->with('delete', 'Record deleted.');
+    }
+
+    /*
+     * Login User Requests
+     */
+    public function check_user(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email|exists:teachers',
+            'password' => 'required|min:6|max:30'
+        ]);
+
+        // check the user's credentials if they are valid
+        if (Auth::guard('web')->attempt($credentials)) {
+            // regenerate session ID
+            $request->session()->regenerate();
+
+            return redirect()->route('admin.dashboard');
+        } else {
+            return redirect()->back()->with('error', 'Error! Something went wrong, try again.');
+        }
+    }
+
+    /*
+     * Logout User
+     */
+    public function logout()
+    {
+        Auth::guard('web')->logout();
+
+        return redirect()->route('admin.login');
     }
 }
