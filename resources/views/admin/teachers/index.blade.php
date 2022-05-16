@@ -2,7 +2,7 @@
     {{-- Sidebar --}}
     @include('components.admin._sidebar')
 
-    <main class="content">
+    <main class="content pb-5">
         {{-- Navbar --}}
         @include('components.navbar')
 
@@ -18,12 +18,12 @@
                                 </svg>
                             </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#">Dahsboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Teachers</li>
                     </ol>
                 </nav>
                 <h2 class="h4">All Ajiale School Teachers</h2>
-                <p class="mb-0">This table contains the best Teachers in the world.</p>
+                <p class="mb-0">This list contains the best Teachers in the world.</p>
             </div>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <a href="{{ route('admin.teachers.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">

@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('password_confirmation');
+            $table->string('profile_image');
             $table->string('phone');
             $table->date('date_of_join');
             $table->date('last_login_date')->nullable();

@@ -17,12 +17,23 @@ class StudentController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.students.create');
     }
 
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'phone' => 'required|numeric',
+            'email' => 'required|email|unique:students,email',
+            'password' => 'required|confirmed|min:6|max:30',
+            'password_confirmation' => 'required|min:6|max:30',
+            'dob' => 'required|date',
+            'date_of_join' => 'required|date',
+            'profile_image' => 'required|image',
+            'gender' => 'required'
+        ]);
     }
 
     public function show($id)
