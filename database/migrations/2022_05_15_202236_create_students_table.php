@@ -26,7 +26,7 @@ return new class extends Migration {
             $table->date('date_of_join');
             $table->date('last_login_date')->nullable();
             $table->ipAddress('last_login_ip')->nullable();
-            $table->date('dob');
+            $table->date('date_of_birth');
             $table->string('gender');
             $table->rememberToken();
             $table->timestamps();

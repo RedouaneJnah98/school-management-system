@@ -151,3 +151,10 @@
         </div>
     </main>
 </x-dashboard_layout>
+
+{{-- Success Notification --}}
+<x-notification.success_notif/>
+{{-- Delete Modal --}}
+<x-modals.delete/>
+{{-- Delete Notification --}}
+<x-notification.delete_notif/>

@@ -37,11 +37,6 @@
                         <form action="{{ route('admin.students.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
-                            @if(session('error'))
-                                <div class="alert alert-danger">
-                                    {{ session('error') }}
-                                </div>
-                            @endif
                             <div class="row mb-4">
                                 <div class="col-lg-6 col-sm-6 mb-4">
                                     <label for="firstname">First Name</label>
@@ -157,9 +152,9 @@
                                                       clip-rule="evenodd"></path>
                                              </svg>
                                         </span>
-                                        <input data-datepicker="" class="form-control @error('dob') is-invalid @enderror" name="dob" id="birthday"
-                                               placeholder="dd/mm/yyyy" value="{{ old('dob') }}">
-                                        @error('dob')
+                                        <input data-datepicker="" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" id="birthday"
+                                               placeholder="dd/mm/yyyy" value="{{ old('date_of_birth') }}">
+                                        @error('date_of_birth')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -207,6 +202,32 @@
                                     </div>
                                     @enderror
                                 </div>
+                                <div class="col-lg-6 col-sm-6 mb-4">
+                                    <label for="parent">Parent</label>
+                                    <select class="form-select @error('parent_id') is-invalid @enderror" name="parent_id" id="parent">
+                                        <option disabled selected>Select Student Parent</option>
+                                        <option value="1">Karim Ahmadi</option>
+                                        <option value="2">Mohammed Abdullah</option>
+                                    </select>
+                                    @error('parent_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                {{--                                <div class="col-lg-6 col-sm-6 mb-4">--}}
+                                {{--                                    <label for="class">Class</label>--}}
+                                {{--                                    <select class="form-select @error('parent_id') is-invalid @enderror" name="parent_id" id="class">--}}
+                                {{--                                        <option disabled selected>Select Student Parent</option>--}}
+                                {{--                                        <option value="1">Karim Ahmadi</option>--}}
+                                {{--                                        <option value="2">Mohammed Abdullah</option>--}}
+                                {{--                                    </select>--}}
+                                {{--                                    @error('parent_id')--}}
+                                {{--                                    <div class="invalid-feedback">--}}
+                                {{--                                        {{ $message }}--}}
+                                {{--                                    </div>--}}
+                                {{--                                    @enderror--}}
+                                {{--                                </div>--}}
                             </div>
 
                             {{-- Submit Button --}}
@@ -220,3 +241,6 @@
 
     </main>
 </x-dashboard_layout>
+
+{{-- Modal --}}
+<x-modals.failed/>

@@ -26,7 +26,7 @@ class StudentFactory extends Factory
             'profile_image' => $this->faker->imageUrl(50, 50, 'avatar'),
             'phone' => $this->faker->phoneNumber(),
             'date_of_join' => $this->faker->dateTimeInInterval(),
-            'dob' => $this->faker->dateTimeBetween('2008-01-01', '2012-12-31')->format('y/m/d'),
+            'date_of_birth' => $this->faker->dateTimeBetween('2008-01-01', '2012-12-31')->format('y/m/d'),
             'gender' => $this->faker->randomElement(['Male', 'Female']),
             'parent_id' => $this->faker->randomNumber(3),
         ];
