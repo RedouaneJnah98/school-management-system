@@ -143,8 +143,15 @@
                 <div class="multi-level collapse" role="list" id="submenu-pages" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/examples/500.html">
-                                <span class="sidebar-text">Add</span>
+                            <a class="nav-link" href="{{ route('admin.parents.index') }}">
+                                <span class="sidebar-text">All Parents</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="flex-column nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.parents.create') }}">
+                                <span class="sidebar-text">Add Parent</span>
                             </a>
                         </li>
                     </ul>
@@ -172,8 +179,15 @@
                 <div class="multi-level collapse" role="list" id="submenu-components" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/components/typography.html">
-                                <span class="sidebar-text">Typography</span>
+                            <a class="nav-link" href="{{ route('admin.students.index') }}">
+                                <span class="sidebar-text">All Students</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="flex-column nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.students.create') }}">
+                                <span class="sidebar-text">Add Student</span>
                             </a>
                         </li>
                     </ul>

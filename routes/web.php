@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\parent\ParentController;
+use App\Http\Controllers\student\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\teacher\TeacherController;
 
@@ -24,6 +26,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);
+        Route::resource('students', StudentController::class);
+        Route::resource('parents', ParentController::class);
 
         // Logout
         Route::post('logout', [TeacherController::class, 'logout'])->name('logout');
