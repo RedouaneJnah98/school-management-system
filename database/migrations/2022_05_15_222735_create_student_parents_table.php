@@ -14,7 +14,6 @@ return new class extends Migration {
     {
         Schema::create('student_parents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parent_id');
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
@@ -24,6 +23,7 @@ return new class extends Migration {
             $table->string('phone_number');
             $table->date('last_login_date')->nullable();
             $table->ipAddress('last_login_ip')->nullable();
+            $table->string('profile_image');
             $table->date('date_of_birth');
             $table->string('gender');
             $table->string('address');
