@@ -10,7 +10,7 @@ return new class extends Migration {
      *
      * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('student_parents', function (Blueprint $table) {
             $table->id();
@@ -40,7 +40,7 @@ return new class extends Migration {
      *
      * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('student_parents');
     }

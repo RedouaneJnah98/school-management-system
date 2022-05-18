@@ -11,8 +11,7 @@ class Student extends Model
 
     protected $guarded = [];
 
-    // relationship
-    public function parent()
+    public function student_parent()
     {
         return $this->belongsTo(StudentParent::class);
     }

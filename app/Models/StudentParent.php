@@ -11,7 +11,6 @@ class StudentParent extends Model
 
     protected $guarded = [];
 
-    // Relationship
     public function students()
     {
         return $this->hasMany(Student::class);

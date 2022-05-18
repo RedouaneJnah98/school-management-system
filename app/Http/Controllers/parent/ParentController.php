@@ -17,7 +17,7 @@ class ParentController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.parents.create');
     }
 
     public function store(Request $request)
@@ -25,22 +25,22 @@ class ParentController extends Controller
         //
     }
 
-    public function show($id)
+    public function show(StudentParent $parent)
+    {
+        return view('admin.parents.show', compact('parent'));
+    }
+
+    public function edit(StudentParent $parent)
+    {
+        return view('admin.parents.show', compact('parent'));
+    }
+
+    public function update(Request $request, StudentParent $parent)
     {
         //
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
+    public function destroy(StudentParent $parent)
     {
         //
     }

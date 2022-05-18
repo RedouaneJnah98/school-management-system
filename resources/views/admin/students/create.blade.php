@@ -206,8 +206,9 @@
                                     <label for="parent">Parent</label>
                                     <select class="form-select @error('parent_id') is-invalid @enderror" name="parent_id" id="parent">
                                         <option disabled selected>Select Student Parent</option>
-                                        <option value="1">Karim Ahmadi</option>
-                                        <option value="2">Mohammed Abdullah</option>
+                                        @foreach($parents as $parent)
+                                            <option value="{{ $parent->id }}">{{ $parent->firstname . ' ' . $parent->lastname }}</option>
+                                        @endforeach
                                     </select>
                                     @error('parent_id')
                                     <div class="invalid-feedback">
