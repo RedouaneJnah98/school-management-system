@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\StudentParent;
+use App\Models\Parents;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,7 +19,7 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'student_parent_id' => StudentParent::factory(),
+            'student_parent_id' => Parents::factory(),
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
             'email' => $this->faker->email(),

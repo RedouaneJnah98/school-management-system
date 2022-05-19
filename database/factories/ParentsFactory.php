@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\StudentParent>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Parents>
  */
-class StudentParentFactory extends Factory
+class ParentsFactory extends Factory
 {
     /**
      * Define the model's default state.
