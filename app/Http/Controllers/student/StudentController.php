@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\student;
 
 use App\Http\Controllers\Controller;
-use App\Models\StudentParent;
+use App\Models\Parents;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +18,7 @@ class StudentController extends Controller
         return view('admin.students.index', compact('students'));
     }
 
-    public function create(StudentParent $parent)
+    public function create(Parents $parent)
     {
         $parents = $parent->all();
 

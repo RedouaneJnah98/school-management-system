@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\parent;
 
 use App\Http\Controllers\Controller;
-use App\Models\StudentParent;
+use App\Models\Parents;
 use Illuminate\Http\Request;
 
 class ParentController extends Controller
 {
-    public function index(StudentParent $parent)
+    public function index(Parents $parent)
     {
         $parents = $parent->paginate(15);
 
@@ -25,22 +25,22 @@ class ParentController extends Controller
         //
     }
 
-    public function show(StudentParent $parent)
+    public function show(Parents $parent)
     {
         return view('admin.parents.show', compact('parent'));
     }
 
-    public function edit(StudentParent $parent)
+    public function edit(Parents $parent)
     {
-        return view('admin.parents.show', compact('parent'));
+        return view('admin.parents.edit', compact('parent'));
     }
 
-    public function update(Request $request, StudentParent $parent)
+    public function update(Request $request, Parents $parent)
     {
         //
     }
 
-    public function destroy(StudentParent $parent)
+    public function destroy(Parents $parent)
     {
         //
     }

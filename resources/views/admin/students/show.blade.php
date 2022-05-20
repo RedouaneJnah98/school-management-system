@@ -169,13 +169,13 @@
                             <div class="col-sm-9 mb-3">
                                 <div class="form-group">
                                     <label for="address">Address</label>
-                                    <input class="form-control" id="address" value="{{ $student->student_parent->address }}" disabled>
+                                    <input class="form-control" id="address" value="{{ $student->parent->address }}" disabled>
                                 </div>
                             </div>
                             <div class="col-sm-3 mb-3">
                                 <div class="form-group">
                                     <label for="number">Number</label>
-                                    <input class="form-control" id="number" value="{{ $student->student_parent->number }}" disabled>
+                                    <input class="form-control" id="number" value="{{ $student->parent->number }}" disabled>
                                 </div>
                             </div>
                         </div>
@@ -183,13 +183,13 @@
                             <div class="col-sm-4 mb-3">
                                 <div class="form-group">
                                     <label for="city">City</label>
-                                    <input class="form-control" id="city" value="{{ $student->student_parent->city }}" disabled>
+                                    <input class="form-control" id="city" value="{{ $student->parent->city }}" disabled>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="zip">ZIP</label>
-                                    <input class="form-control" id="zip" value="{{ $student->student_parent->zip }}" disabled>
+                                    <input class="form-control" id="zip" value="{{ $student->parent->zip }}" disabled>
                                 </div>
                             </div>
                         </div>
@@ -222,11 +222,11 @@
                             <div class="d-flex align-items-center">
                                 <div class="me-3">
                                     <!-- Avatar -->
-                                    <img class="rounded avatar-xl" src="{{ $student->student_parent->profile_image }}" alt="change avatar">
+                                    <img class="rounded avatar-xl" src="{{ $student->parent->profile_image }}" alt="change avatar">
                                 </div>
                                 <div class="file-field">
                                     <div class="d-flex justify-content-xl-center ms-xl-3">
-                                        <div class="fw-normal">{{ $student->student_parent->firstname . ' ' . $student->student_parent->lastname }}</div>
+                                        <div class="fw-normal">{{ $student->parent->firstname . ' ' . $student->parent->lastname }}</div>
                                     </div>
                                 </div>
                             </div>

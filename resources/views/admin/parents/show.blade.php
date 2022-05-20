@@ -219,7 +219,7 @@
                     <div class="col-12">
                         <div class="card card-body border-0 shadow mb-4">
                             <h2 class="h5 mb-4">Children(s)</h2>
-                            @foreach($parent->students as $child)
+                            @foreach($parent->childrens as $child)
                                 <div class="d-flex align-items-center">
                                     <div class="me-3">
                                         <!-- Avatar -->

@@ -9,8 +9,10 @@ class Parents extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function childrens()
     {
-        return $this->hasMany(Student::class);
+        return $this->hasMany(Student::class, 'parent_id');
     }
 }
