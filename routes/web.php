@@ -23,7 +23,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['auth:web'])->group(function () {
         // Profile Controller
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
-        Route::post('update', [ProfileController::class, 'update'])->name('update');
+        Route::put('update', [ProfileController::class, 'update'])->name('update');
         // Route View
         Route::view('dashboard', 'admin.dashboard')->name('dashboard');
 //        Route::view('profile', 'admin.profile')->name('profile');

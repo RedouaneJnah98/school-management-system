@@ -170,7 +170,7 @@
                         <div class="media d-flex align-items-center">
                             {{-- User Avatar --}}
                             <img class="avatar rounded-circle" alt="Image placeholder"
-                                 src="{{ auth()->user()->profile_image }}"/>
+                                 src="{{ asset('storage/avatars/' . auth()->user()->profile_image) }}" style="object-fit: cover;object-position: top"/>
                             <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                                 @php
                                     $name = auth()->user()->firstname . ' ' . auth()->user()->lastname;

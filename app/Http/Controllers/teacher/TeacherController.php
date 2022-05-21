@@ -62,9 +62,9 @@ class TeacherController extends Controller
 
         if ($insert_data) {
             return redirect()->route('admin.teachers.index')->with('success', "You added a new Teacher.");
-        } else {
-            return redirect()->back()->with('error', 'Error! Something went wrong, try again.');
         }
+
+        return redirect()->back()->with('error', 'Error! Something went wrong, try again.');
     }
 
     public function show(Teacher $teacher)
