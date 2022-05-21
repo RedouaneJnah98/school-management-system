@@ -169,6 +169,10 @@
                        aria-expanded="false">
                         <div class="media d-flex align-items-center">
                             {{-- User Avatar --}}
+                            @php
+                                $avatar = auth()->user()->profile_image;
+                            @endphp
+
                             <img class="avatar rounded-circle" alt="Image placeholder"
                                  src="{{ asset('storage/avatars/' . auth()->user()->profile_image) }}" style="object-fit: cover;object-position: top"/>
                             <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">

@@ -26,7 +26,7 @@ class ProfileController extends Controller
             'gender' => 'required',
             'email' => ['required', 'email', Rule::unique('teachers', 'email')->ignore($id)],
             'phone' => 'required|numeric',
-            'profile_image' => 'image',
+            'profile_image' => 'image|mimes:jpg,jpeg,png|max:800',
             'address' => 'required',
             'number' => 'required|numeric',
             'city' => 'required',

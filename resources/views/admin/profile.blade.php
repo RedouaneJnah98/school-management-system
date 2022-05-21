@@ -311,6 +311,7 @@
                         <div class="col-12">
                             <div class="card card-body border-0 shadow mb-4">
                                 <h2 class="h5 mb-4">Select profile photo</h2>
+                                <div id="alert"></div>
                                 <div class="d-flex align-items-center">
                                     <div class="me-3">
                                         <!-- Avatar -->
@@ -324,10 +325,10 @@
                                                           d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
                                                           clip-rule="evenodd"></path>
                                                 </svg>
-                                                <input type="file" name="profile_image">
+                                                <input type="file" id="inpFile" name="profile_image">
                                                 <div class="d-md-block text-left">
                                                     <div class="fw-normal text-dark mb-1">Choose Image</div>
-                                                    <div class="text-gray small">JPG, GIF or PNG. Max size of 800K</div>
+                                                    <div class="text-gray small">JPG, JPEG or PNG. Max size of 800K</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -344,3 +345,11 @@
 
 {{-- Success Modal --}}
 <x-modals.success/>
+
+<script>
+    $(document).ready(function () {
+        $('#inpFile').on('change', function () {
+            $('#alert').html('<div class="alert alert-success">Image uploaded</div>');
+        })
+    })
+</script>
