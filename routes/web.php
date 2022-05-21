@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\parent\ParentController;
 use App\Http\Controllers\student\StudentController;
+use App\Http\Controllers\teacher\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\teacher\TeacherController;
 
@@ -20,9 +21,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::middleware(['auth:web'])->group(function () {
+        // Profile Controller
+        Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+        Route::post('update', [ProfileController::class, 'update'])->name('update');
         // Route View
         Route::view('dashboard', 'admin.dashboard')->name('dashboard');
-        Route::view('profile', 'admin.profile')->name('profile');
+//        Route::view('profile', 'admin.profile')->name('profile');
 
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);

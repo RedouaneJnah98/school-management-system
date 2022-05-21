@@ -2,7 +2,7 @@
     {{-- sidebar --}}
     @include('components.admin._sidebar')
 
-    <main class="content">
+    <main class="content pb-4">
         {{-- Navbar --}}
         @include('components.navbar')
 
@@ -73,38 +73,31 @@
                     </svg>
                 </button>
                 <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
-                            <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                    <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.students.index') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-mortarboard-fill dropdown-icon text-gray-400 me-2" viewBox="0 0 20 20">
+                            <path
+                                d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+                            <path
+                                d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
                         </svg>
-                        Products
+                        Students
                     </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
+                    <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.parents.index') }}">
                         <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
                         </svg>
-                        Customers
+                        Parents
                     </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
-                                  clip-rule="evenodd"></path>
+                    <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.teachers.index') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="#9CA3AF" height="20" width="20" class="me-2">
+                            <path
+                                d="M144 48C144 21.49 165.5 0 192 0C218.5 0 240 21.49 240 48C240 74.51 218.5 96 192 96C165.5 96 144 74.51 144 48zM152 512C134.3 512 120 497.7 120 480V256.9L91.43 304.5C82.33 319.6 62.67 324.5 47.52 315.4C32.37 306.3 27.47 286.7 36.58 271.5L94.85 174.6C112.2 145.7 143.4 128 177.1 128H320V48C320 21.49 341.5 .0003 368 .0003H592C618.5 .0003 640 21.49 640 48V272C640 298.5 618.5 320 592 320H368C341.5 320 320 298.5 320 272V224H384V256H576V64H384V128H400C417.7 128 432 142.3 432 160C432 177.7 417.7 192 400 192H264V480C264 497.7 249.7 512 232 512C214.3 512 200 497.7 200 480V352H184V480C184 497.7 169.7 512 152 512L152 512z"/>
                         </svg>
-                        Orders
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                        Console
+                        Teachers
                     </a>
                     <div role="separator" class="dropdown-divider my-1"></div>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
+                    <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.dashboard') }}">
                         <svg class="dropdown-icon text-gray-800 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
                             <path fill-rule="evenodd"
@@ -125,13 +118,13 @@
                             <div class="col-md-6 mb-3">
                                 <div>
                                     <label for="first_name">First Name</label>
-                                    <input class="form-control" id="first_name" type="text" placeholder="Enter your first name" required>
+                                    <input class="form-control" id="first_name" type="text" value="{{ auth()->user()->firstname }}">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div>
                                     <label for="last_name">Last Name</label>
-                                    <input class="form-control" id="last_name" type="text" placeholder="Also your last name" required>
+                                    <input class="form-control" id="last_name" type="text" value="{{ auth()->user()->lastname }}">
                                 </div>
                             </div>
                         </div>
@@ -140,17 +133,18 @@
                                 <label for="birthday">Birthday</label>
                                 <div class="input-group">
                                         <span class="input-group-text">
-                                            <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd"
-                                                                                                                                                       d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                                                                                                                       clip-rule="evenodd"></path></svg>
+                                            <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                      clip-rule="evenodd"></path></svg>
                                         </span>
-                                    <input data-datepicker="" class="form-control" id="birthday" type="text" placeholder="dd/mm/yyyy" required>
+                                    <input class="form-control" id="birthday" type="date" value="{{ auth()->user()->dob }}">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="gender">Gender</label>
                                 <select class="form-select mb-0" id="gender" aria-label="Gender select example">
-                                    <option selected>Gender</option>
+                                    <option selected>{{ auth()->user()->gender }}</option>
                                     <option value="1">Female</option>
                                     <option value="2">Male</option>
                                 </select>
@@ -160,13 +154,13 @@
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input class="form-control" id="email" type="email" placeholder="name@company.com" required>
+                                    <input class="form-control" id="email" type="email" value="{{ auth()->user()->email }}">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input class="form-control" id="phone" type="number" placeholder="+12-345 678 910" required>
+                                    <input class="form-control" id="phone" type="text" value="{{ auth()->user()->phone }}">
                                 </div>
                             </div>
                         </div>
@@ -175,13 +169,13 @@
                             <div class="col-sm-9 mb-3">
                                 <div class="form-group">
                                     <label for="address">Address</label>
-                                    <input class="form-control" id="address" type="text" placeholder="Enter your home address" required>
+                                    <input class="form-control" id="address" type="text" value="{{ auth()->user()->address }}">
                                 </div>
                             </div>
                             <div class="col-sm-3 mb-3">
                                 <div class="form-group">
                                     <label for="number">Number</label>
-                                    <input class="form-control" id="number" type="number" placeholder="No." required>
+                                    <input class="form-control" id="number" type="number" value="{{ auth()->user()->number }}">
                                 </div>
                             </div>
                         </div>
@@ -189,130 +183,61 @@
                             <div class="col-sm-4 mb-3">
                                 <div class="form-group">
                                     <label for="city">City</label>
-                                    <input class="form-control" id="city" type="text" placeholder="City" required>
+                                    <input class="form-control" id="city" type="text" value="{{ auth()->user()->city }}">
                                 </div>
-                            </div>
-                            <div class="col-sm-4 mb-3">
-                                <label for="state">State</label>
-                                <select class="form-select w-100 mb-0" id="state" name="state" aria-label="State select example">
-                                    <option selected>State</option>
-                                    <option value="AL">Alabama</option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="AZ">Arizona</option>
-                                    <option value="AR">Arkansas</option>
-                                    <option value="CA">California</option>
-                                    <option value="CO">Colorado</option>
-                                    <option value="CT">Connecticut</option>
-                                    <option value="DE">Delaware</option>
-                                    <option value="DC">District Of Columbia</option>
-                                    <option value="FL">Florida</option>
-                                    <option value="GA">Georgia</option>
-                                    <option value="HI">Hawaii</option>
-                                    <option value="ID">Idaho</option>
-                                    <option value="IL">Illinois</option>
-                                    <option value="IN">Indiana</option>
-                                    <option value="IA">Iowa</option>
-                                    <option value="KS">Kansas</option>
-                                    <option value="KY">Kentucky</option>
-                                    <option value="LA">Louisiana</option>
-                                    <option value="ME">Maine</option>
-                                    <option value="MD">Maryland</option>
-                                    <option value="MA">Massachusetts</option>
-                                    <option value="MI">Michigan</option>
-                                    <option value="MN">Minnesota</option>
-                                    <option value="MS">Mississippi</option>
-                                    <option value="MO">Missouri</option>
-                                    <option value="MT">Montana</option>
-                                    <option value="NE">Nebraska</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="NH">New Hampshire</option>
-                                    <option value="NJ">New Jersey</option>
-                                    <option value="NM">New Mexico</option>
-                                    <option value="NY">New York</option>
-                                    <option value="NC">North Carolina</option>
-                                    <option value="ND">North Dakota</option>
-                                    <option value="OH">Ohio</option>
-                                    <option value="OK">Oklahoma</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="PA">Pennsylvania</option>
-                                    <option value="RI">Rhode Island</option>
-                                    <option value="SC">South Carolina</option>
-                                    <option value="SD">South Dakota</option>
-                                    <option value="TN">Tennessee</option>
-                                    <option value="TX">Texas</option>
-                                    <option value="UT">Utah</option>
-                                    <option value="VT">Vermont</option>
-                                    <option value="VA">Virginia</option>
-                                    <option value="WA">Washington</option>
-                                    <option value="WV">West Virginia</option>
-                                    <option value="WI">Wisconsin</option>
-                                    <option value="WY">Wyoming</option>
-                                </select>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="zip">ZIP</label>
-                                    <input class="form-control" id="zip" type="tel" placeholder="ZIP" required>
+                                    <input class="form-control" id="zip" type="tel" value="{{ auth()->user()->zip }}">
                                 </div>
                             </div>
                         </div>
+                        <!-- Notification -->
+                        <h2 class="h5 my-4">Notifications</h2>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
+                                <div>
+                                    <h3 class="h6 mb-1">New Students</h3>
+                                    <p class="small pe-4">Get notified when Teacher add new students.</p>
+                                </div>
+                                <div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="user-notification-1">
+                                        <label class="form-check-label" for="user-notification-1"></label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
+                                <div>
+                                    <h3 class="h6 mb-1">Changed Data</h3>
+                                    <p class="small pe-4">Get notified when Teacher, Parent or Student updated their profiles.</p>
+                                </div>
+                                <div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="user-notification-2" checked>
+                                        <label class="form-check-label" for="user-notification-2"></label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
                         <div class="mt-3">
                             <button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Save all</button>
                         </div>
                     </form>
-                </div>
-                <div class="card card-body border-0 shadow mb-4 mb-xl-0">
-                    <h2 class="h5 mb-4">Alerts & Notifications</h2>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
-                            <div>
-                                <h3 class="h6 mb-1">Company News</h3>
-                                <p class="small pe-4">Get Rocket news, announcements, and product updates</p>
-                            </div>
-                            <div>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="user-notification-1">
-                                    <label class="form-check-label" for="user-notification-1"></label>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
-                            <div>
-                                <h3 class="h6 mb-1">Account Activity</h3>
-                                <p class="small pe-4">Get important notifications about you or activity you've missed</p>
-                            </div>
-                            <div>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="user-notification-2" checked>
-                                    <label class="form-check-label" for="user-notification-2"></label>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex align-items-center justify-content-between px-0">
-                            <div>
-                                <h3 class="h6 mb-1">Meetups Near You</h3>
-                                <p class="small pe-4">Get an email when a Dribbble Meetup is posted close to my location</p>
-                            </div>
-                            <div>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="user-notification-3" checked>
-                                    <label class="form-check-label" for="user-notification-3"></label>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="col-12 col-xl-4">
                 <div class="row">
                     <div class="col-12 mb-4">
                         <div class="card shadow border-0 text-center p-0">
-                            <div class="profile-cover rounded-top" data-background="../assets/img/profile-cover.jpg"></div>
+                            <div class="profile-cover rounded-top" data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
                             <div class="card-body pb-5">
-                                <img src="../assets/img/team/profile-picture-1.jpg" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
-                                <h4 class="h3">Neil Sims</h4>
+                                <img src="{{ auth()->user()->profile_image }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
+                                <h4 class="h3">{{ auth()->user()->firstname . ' ' . auth()->user()->lastname }}</h4>
                                 <h5 class="fw-normal">Senior Software Engineer</h5>
-                                <p class="text-gray mb-4">New York, USA</p>
+                                <p class="text-gray mb-4">{{ auth()->user()->city }}, Morocco</p>
                                 <a class="btn btn-sm btn-gray-800 d-inline-flex align-items-center me-2" href="#">
                                     <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path>
@@ -329,34 +254,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="me-3">
                                     <!-- Avatar -->
-                                    <img class="rounded avatar-xl" src="../assets/img/team/profile-picture-3.jpg" alt="change avatar">
-                                </div>
-                                <div class="file-field">
-                                    <div class="d-flex justify-content-xl-center ms-xl-3">
-                                        <div class="d-flex">
-                                            <svg class="icon text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                      d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
-                                                      clip-rule="evenodd"></path>
-                                            </svg>
-                                            <input type="file">
-                                            <div class="d-md-block text-left">
-                                                <div class="fw-normal text-dark mb-1">Choose Image</div>
-                                                <div class="text-gray small">JPG, GIF or PNG. Max size of 800K</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="card card-body border-0 shadow">
-                            <h2 class="h5 mb-4">Select cover photo</h2>
-                            <div class="d-flex align-items-center">
-                                <div class="me-3">
-                                    <!-- Avatar -->
-                                    <img class="rounded avatar-xl" src="../assets/img/profile-cover.jpg" alt="change cover">
+                                    <img class="rounded avatar-xl" src="{{ asset('assets/img/team/profile-picture-2.jpg') }}" style="object-fit: cover" alt="change avatar">
                                 </div>
                                 <div class="file-field">
                                     <div class="d-flex justify-content-xl-center ms-xl-3">
