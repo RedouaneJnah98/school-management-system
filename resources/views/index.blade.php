@@ -24,7 +24,7 @@
                             <a href="{{ route('student.login') }}" class="nav-link">Student Login</a>
                         </li>
                         <li class="nav-item me-2">
-                            <a href="{{ route('student.register') }}" class="nav-link">Student Register</a>
+                            <a href="#" class="nav-link">Student Register</a>
                         </li>
                     </ul>
                 </div>

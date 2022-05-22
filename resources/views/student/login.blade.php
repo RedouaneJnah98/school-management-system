@@ -19,7 +19,9 @@
                             <div class="text-center text-md-center mb-4 mt-md-0">
                                 <h1 class="mb-0 h3">Sign in to our platform</h1>
                             </div>
-                            <form action="#" class="mt-4">
+                            <form action="{{ route('student.check') }}" method="post" class="mt-4">
+                                @csrf
+
                                 <!-- Form -->
                                 <div class="form-group mb-4">
                                     <label for="email">Your Email</label>
@@ -29,7 +31,12 @@
                                                     d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path
                                                     d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
                                         </span>
-                                        <input type="email" class="form-control" placeholder="example@company.com" id="email" autofocus required>
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="example@company.com" id="email" autofocus>
+                                        @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!-- End of Form -->
@@ -44,7 +51,12 @@
                                                           clip-rule="evenodd"></path>
                                                 </svg>
                                             </span>
-                                            <input type="password" placeholder="Password" class="form-control" id="password" required>
+                                            <input type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" id="password">
+                                            @error('password')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <!-- End of Form -->
@@ -65,7 +77,7 @@
                             <div class="d-flex justify-content-center align-items-center mt-4">
                                 <span class="fw-normal">
                                     Not registered?
-                                    <a href="{{ route('student.register') }}" class="fw-bold">Create account</a>
+                                    <a href="#" class="fw-bold">Create account</a>
                                 </span>
                             </div>
                         </div>
@@ -75,3 +87,6 @@
         </section>
     </main>
 </x-layout>
+
+{{-- Modal --}}
+<x-modals.failed/>

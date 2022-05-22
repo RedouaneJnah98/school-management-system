@@ -107,7 +107,7 @@
                                     <span class="fw-bold">{{ $student->phone }}</span>
                                 </td>
                                 <td class="border-0 fw-bold">
-                                    2 minutes ago
+                                    {{ $student->last_login_date->diffForHumans() }}
                                 </td>
                                 <td class="border-0 text-success">
                                     <div class="dropdown">

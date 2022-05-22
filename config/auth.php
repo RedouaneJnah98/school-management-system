@@ -17,10 +17,10 @@ return [
         'guard' => 'web',
         'passwords' => 'teachers',
     ],
-//    'admin' => [
-//        'driver' => 'eloquent',
-//        'model' => App\Models\Teacher::class,
-//    ],
+    'student' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Student::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -44,15 +44,15 @@ return [
             'driver' => 'session',
             'provider' => 'teachers',
         ],
-//        'admin' => [
-//            'driver' => 'session',
-//            'provider' => 'teachers',
-//        ],
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Teacher Providers
+    | Users Providers
     |--------------------------------------------------------------------------
     |
     | All authentication drivers have a user provider. This defines how the
@@ -72,11 +72,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Teacher::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class,
+        ],
     ],
 
     /*
@@ -101,6 +100,10 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+//        'students' => [
+//            'driver' => 'eloquent',
+//            'model' => App\Models\Student::class,
+//        ],
     ],
 
     /*

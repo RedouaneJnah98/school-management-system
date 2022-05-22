@@ -132,9 +132,9 @@ class TeacherController extends Controller
             $request->session()->regenerate();
 
             return redirect()->route('admin.dashboard');
-        } else {
-            return redirect()->back()->with('failed', 'Something went wrong, please enter valid credentials.');
         }
+
+        return redirect()->back()->with('failed', 'Something went wrong, please enter valid credentials.');
     }
 
     /*

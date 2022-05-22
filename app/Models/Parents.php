@@ -11,6 +11,8 @@ class Parents extends Model
 
     protected $guarded = [];
 
+    protected $dates = ['last_login_date'];
+
     public function childrens()
     {
         return $this->hasMany(Student::class, 'parent_id');

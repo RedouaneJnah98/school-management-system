@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
@@ -31,6 +32,8 @@ class ParentsFactory extends Factory
             'number' => $this->faker->randomDigit(),
             'city' => $this->faker->city(),
             'zip' => $this->faker->randomNumber(5),
+            'last_login_date' => $this->faker->dateTimeBetween('-1 week', Carbon::now()),
+            'last_login_ip' => $this->faker->ipv4(),
         ];
     }
 }
