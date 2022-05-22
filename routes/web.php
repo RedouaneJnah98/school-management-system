@@ -3,6 +3,7 @@
 use App\Http\Controllers\parent\ParentController;
 use App\Http\Controllers\student\LoginController;
 use App\Http\Controllers\student\StudentController;
+use App\Http\Controllers\teacher\GradeController;
 use App\Http\Controllers\teacher\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\teacher\TeacherController;
@@ -40,6 +41,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('teachers', TeacherController::class);
         Route::resource('students', StudentController::class);
         Route::resource('parents', ParentController::class);
+        Route::resource('grades', GradeController::class)->except('show');
 
         // Logout
         Route::post('logout', [TeacherController::class, 'logout'])->name('logout');
