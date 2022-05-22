@@ -25,7 +25,7 @@ return new class extends Migration {
             $table->string('status')->default('teacher');
             $table->string('profile_image');
             $table->string('profile_bio');
-            $table->date('last_login_date')->nullable();
+            $table->timestamp('last_login_date')->nullable();
             $table->ipAddress('last_login_ip')->nullable();
             $table->string('gender');
             $table->string('address');

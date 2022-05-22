@@ -18,6 +18,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        // Event for login details data
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\LastLoginAt',
+        ],
+
     ];
 
     /**
@@ -35,7 +41,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return bool
      */
-    public function shouldDiscoverEvents()
+    public function shouldDiscoverEvents(): bool
     {
         return false;
     }

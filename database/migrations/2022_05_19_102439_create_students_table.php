@@ -24,7 +24,7 @@ return new class extends Migration {
             $table->string('profile_image');
             $table->string('phone');
             $table->date('date_of_join');
-            $table->date('last_login_date')->nullable();
+            $table->timestamp('last_login_date')->nullable();
             $table->ipAddress('last_login_ip')->nullable();
             $table->date('date_of_birth');
             $table->string('gender');
