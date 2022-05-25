@@ -13,7 +13,7 @@
 
         swalWithBootstrapButtons.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this account!",
+            text: "You won't be able to revert this record!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -23,7 +23,7 @@
             if (result.isConfirmed) {
                 swalWithBootstrapButtons.fire(
                     'Deleted!',
-                    'Teacher account has been deleted.',
+                    'Record has been deleted.',
                     'success'
                 ).then((willDelete) => {
                     if (willDelete) {
@@ -35,3 +35,4 @@
         })
     })
 </script>
+

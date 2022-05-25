@@ -4,8 +4,10 @@ namespace App\Http\Controllers\parent;
 
 use App\Http\Controllers\Controller;
 use App\Models\Parents;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class ParentController extends Controller
 {
@@ -23,7 +25,39 @@ class ParentController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'phone_number' => 'required|numeric',
+            'email' => 'required|email|unique:parents,email',
+            'password' => [
+                'required',
+                'confirmed',
+                Password::min(6)
+                    ->mixedCase()
+                    ->letters()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised()
+            ],
+            'password_confirmation' => [
+                'required',
+                Password::min(6)
+                    ->mixedCase()
+                    ->letters()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised()
+
+            ],
+            'date_of_birth' => 'required|date',
+            'profile_image' => 'required|image|mimes:jpeg,jpg,png',
+            'gender' => 'required',
+            'address' => 'required',
+            'number' => 'required|numeric',
+            'city' => 'required',
+            'zip' => 'required|numeric'
+        ]);
     }
 
     public function show(Parents $parent)
