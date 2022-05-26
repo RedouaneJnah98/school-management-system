@@ -10,4 +10,15 @@ class Classroom extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    // Relationships
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class);
+    }
 }

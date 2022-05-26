@@ -154,7 +154,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="../../pages/settings.html" class="nav-link">
+                <a href="{{ route('admin.classes.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
                             <path

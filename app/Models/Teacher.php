@@ -40,4 +40,10 @@ class Teacher extends Authenticatable
     ];
 
     protected $dates = ['last_login_date'];
+
+    // Relationships
+    public function classrooms()
+    {
+        return $this->hasMany(Classroom::class);
+    }
 }

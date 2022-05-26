@@ -10,4 +10,10 @@ class Grade extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    // Relationship
+    public function classrooms()
+    {
+        return $this->hasMany(Classroom::class);
+    }
 }
