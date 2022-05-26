@@ -4,7 +4,7 @@
 
     <main class="content pb-5">
         {{-- Navbar --}}
-        @include('components.navbar')
+        @include('components.settings.admin.navbar')
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
             <div class="d-block mb-4 mb-md-0">

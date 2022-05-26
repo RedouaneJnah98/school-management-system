@@ -4,7 +4,7 @@
 
     <main class="content">
         {{-- Navbar --}}
-        @include('components.navbar')
+        @include('components.settings.admin.navbar')
 
         <div class="py-4">
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">

@@ -4,7 +4,7 @@
 
     <main class="content">
         {{-- Navbar --}}
-        @include('components.navbar')
+        @include('components.settings.student.navbar')
 
         <div class="py-4">
             <div class="dropdown">
