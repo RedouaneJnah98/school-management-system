@@ -20,6 +20,9 @@ Route::prefix('student')->name('student.')->group(function () {
 
     Route::middleware(['auth:student'])->group(function () {
         Route::view('dashboard', 'student.dashboard')->name('dashboard');
+        Route::get('profile', [\App\Http\Controllers\student\ProfileController::class, 'index'])->name('profile');
+        Route::put('update', [\App\Http\Controllers\student\ProfileController::class, 'update'])->name('update');
+
 
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
     });

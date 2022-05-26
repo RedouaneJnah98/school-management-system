@@ -98,7 +98,7 @@
                             <tr>
                                 <td class="border-0">
                                     <div class="d-flex align-items-center">
-                                        <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="{{ $student->profile_image }}">
+                                        <img class="avatar rounded me-2" alt="Image placeholder" src="{{ $student->profile_image }}">
                                         <div><span class="h6">{{ $student->firstname . ' ' . $student->lastname }}</span></div>
                                     </div>
                                 </td>

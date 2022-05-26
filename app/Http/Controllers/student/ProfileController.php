@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\teacher;
+namespace App\Http\Controllers\student;
 
 use App\Http\Controllers\Controller;
-use App\Models\Teacher;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -11,27 +11,22 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('admin.profile');
+        return view('student.profile');
     }
 
     public function update(Request $request)
     {
-        //user ID
-        $id = auth()->user()->id;
-        $user = Teacher::find($id);
+        $student_id = auth()->user()->id;
+        $student = Student::find($student_id);
 
         $attributes = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'dob' => 'required|date',
+            'date_of_birth' => 'required|date',
             'gender' => 'required',
-            'email' => ['required', 'email', Rule::unique('teachers', 'email')->ignore($id)],
+            'email' => ['required', 'email', Rule::unique('students', 'email')->ignore($student_id)],
             'phone' => 'required|numeric',
-            'profile_image' => 'image|mimes:jpg,jpeg,png|max:800',
-            'address' => 'required',
-            'number' => 'required|numeric',
-            'city' => 'required',
-            'zip' => 'required|numeric'
+            'profile_image' => 'image|mimes:jpeg,jpg,png',
         ]);
 
         // check if image exists
@@ -42,12 +37,13 @@ class ProfileController extends Controller
             $attributes['profile_image'] = $name;
             $request->file('profile_image')->storeAs('public/avatars', $name);
         }
-        $update_data = $user->update($attributes);
+        // update profile
+        $update_profile = $student->update($attributes);
 
-        if ($update_data) {
-            return redirect()->route('admin.profile')->with('success', 'Profile credentials updated successfully.');
+        if (!$update_profile) {
+            return redirect()->back()->with('failed', 'Something went wrong, try again.');
         }
 
-        return redirect()->back()->with('failed', 'Something went wrong, try again.');
+        return redirect()->back()->with('success', 'Profile credentials updated successfully.');
     }
 }

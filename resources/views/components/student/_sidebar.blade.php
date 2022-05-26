@@ -3,15 +3,15 @@
 
         <ul class="nav flex-column pt-3 pt-md-0">
             <li class="nav-item">
-                <a href="../../index.html" class="nav-link d-flex align-items-center">
+                <a href="{{ route('student.dashboard') }}" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
-                        <img src="../../assets/img/brand/light.svg" height="20" width="20" alt="Volt Logo"/>
+                        <img src="{{ asset('assets/img/brand/light.svg') }}" height="20" width="20" alt="Volt Logo"/>
                     </span>
                     <span class="mt-1 ms-1 sidebar-text">Ajiale School</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../../pages/dashboard/dashboard.php" class="nav-link">
+                <a href="{{ route('student.dashboard') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
                              xmlns="http://www.w3.org/2000/svg">
@@ -34,19 +34,6 @@
                         </svg>
                     </span>
                     <span class="sidebar-text">Attendances</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="../../pages/settings.html" class="nav-link">
-                    <span class="sidebar-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-person-bounding-box" viewBox="0 0 16 16">
-                            <path
-                                d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
-                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                        </svg>
-                    </span>
-                    <span class="sidebar-text">Profile</span>
                 </a>
             </li>
             <li class="nav-item">
