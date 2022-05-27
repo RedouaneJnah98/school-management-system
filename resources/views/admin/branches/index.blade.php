@@ -19,14 +19,14 @@
                             </a>
                         </li>
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Classrooms</li>
+                        <li class="breadcrumb-item active" aria-current="page">Branches</li>
                     </ol>
                 </nav>
-                <h2 class="h4">All Classrooms</h2>
-                <p class="mb-0">This list contains all classrooms.</p>
+                <h2 class="h4">All Branches</h2>
+                <p class="mb-0">This list contains all branches.</p>
             </div>
             <div class="btn-toolbar mb-2 mb-md-0">
-                <a href="{{ route('admin.classes.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
+                <a href="{{ route('admin.branches.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
                     <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                     </svg>
@@ -49,7 +49,7 @@
                                           clip-rule="evenodd"></path>
                                 </svg>
                             </span>
-                        <input type="text" class="form-control" placeholder="Search class">
+                        <input type="text" class="form-control" placeholder="Search branch">
                     </div>
                 </div>
                 <div class="col-4 col-md-2 col-xl-1 ps-md-0 text-end">
@@ -83,33 +83,26 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-centered table-nowrap mb-0 rounded">
-                        @if(count($classrooms) > 0)
+                        @if(count($branches) > 0)
                             <thead class="thead-light">
                             <tr>
                                 <th class="border-0 rounded-start">#</th>
                                 <th class="border-0 rounded-start">Branch Name</th>
-                                <th class="border-0">Teached By</th>
-                                <th class="border-0">Year</th>
-                                <th class="border-0">Status</th>
-                                <th class="border-0">Remarks</th>
+                                <th class="border-0">Branch Description</th>
+                                <th class="border-0">Created At</th>
+                                <th class="border-0">Last Update</th>
                                 <th class="border-0">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <!-- Item -->
-                            @foreach($classrooms as $classroom)
+                            @foreach($branches as $branch)
                                 <tr>
-                                    <td class="border-0">{{ $classroom->id }}</td>
-                                    <td class="border-0">{{ $classroom->branch }}</td>
-                                    @php
-                                        $teacher_name = $classroom->teacher->firstname . ' ' . $classroom->teacher->lastname;
-                                    @endphp
-                                    <td class="border-0 fw-bold">{{ $teacher_name }}</td>
-                                    <td class="border-0 fw-bold">{{ $classroom->year }}</td>
-                                    <td class="border-0 fw-bold">
-                                        <span class="badge {{ $classroom->status === 'active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>
-                                    </td>
-                                    <td class="border-0 fw-bold text-info">{{ $classroom->remark }}</td>
+                                    <td class="border-0">{{ $branch->id }}</td>
+                                    <td class="border-0">{{ $branch->name }}</td>
+                                    <td class="border-0 fw-bold text-info">{{ $branch->description }}</td>
+                                    <td class="border-0 fw-bold text-info">{{ $branch->created_at }}</td>
+                                    <td class="border-0 fw-bold text-info">{{ $branch->updated_at }}</td>
                                     <td class="border-0 text-success">
                                         <div class="dropdown">
                                             <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
@@ -121,14 +114,10 @@
                                             </a>
                                             <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
                                                 <li>
-                                                    <a class="dropdown-item" href="#">Students</a>
-                                                </li>
-
-                                                <li>
-                                                    <a class="dropdown-item" href="{{ route('admin.classes.edit', $classroom->id) }}">Edit</a>
+                                                    <a class="dropdown-item" href="{{ route('admin.branches.edit', $branch->id) }}">Edit</a>
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('admin.classes.destroy', $classroom->id) }}" method="post">
+                                                    <form action="{{ route('admin.branches.destroy', $branch->id) }}" method="post">
                                                         @method('DELETE')
                                                         @csrf
 

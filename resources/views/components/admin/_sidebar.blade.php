@@ -165,10 +165,19 @@
                 </a>
             </li>
             <li class="nav-item">
-                <span class="nav-link collapsed d-flex justify-content-between align-items-center"
-                      data-bs-toggle="collapse" data-bs-target="#subjects">
-                    <span>
-                        <span class="sidebar-icon">
+                <a href="{{ route('admin.branches.index') }}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-diagram-3-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-6 8A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm6 0A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1z"/>
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">Branches</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.subjects.index') }}" class="nav-link">
+                    <span class="sidebar-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-stack" viewBox="0 0 16 16">
                                 <path
@@ -176,26 +185,9 @@
                                 <path
                                     d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z"/>
                             </svg>
-                        </span>
-                        <span class="sidebar-text">Subjects</span>
                     </span>
-                    <span class="link-arrow">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                </span>
-                <div class="multi-level collapse" role="list" id="subjects" aria-expanded="false">
-                    <ul class="flex-column nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../pages/components/typography.html">
-                                <span class="sidebar-text">Typography</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    <span class="sidebar-text">Subjects</span>
+                </a>
             </li>
             <li class="nav-item">
                 <span class="nav-link collapsed d-flex justify-content-between align-items-center"

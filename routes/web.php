@@ -3,9 +3,11 @@
 use App\Http\Controllers\parent\ParentController;
 use App\Http\Controllers\student\LoginController;
 use App\Http\Controllers\student\StudentController;
+use App\Http\Controllers\teacher\BranchController;
 use App\Http\Controllers\teacher\GradeController;
 use App\Http\Controllers\teacher\ProfileController;
 use App\Http\Controllers\teacher\ClassroomController;
+use App\Http\Controllers\teacher\SubjectController;
 use App\Http\Controllers\teacher\TeacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,7 +48,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('students', StudentController::class);
         Route::resource('parents', ParentController::class);
         Route::resource('grades', GradeController::class)->except('show');
-        Route::resource('classes', ClassroomController::class);
+        Route::resource('branches', BranchController::class)->except('show');
+        Route::resource('classes', ClassroomController::class)->except('show');
+        Route::resource('subjects', SubjectController::class)->except('show');
 
         // Logout
         Route::post('logout', [TeacherController::class, 'logout'])->name('logout');

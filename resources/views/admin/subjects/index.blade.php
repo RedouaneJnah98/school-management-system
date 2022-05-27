@@ -19,14 +19,14 @@
                             </a>
                         </li>
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Classrooms</li>
+                        <li class="breadcrumb-item active" aria-current="page">Subjects</li>
                     </ol>
                 </nav>
-                <h2 class="h4">All Classrooms</h2>
-                <p class="mb-0">This list contains all classrooms.</p>
+                <h2 class="h4">All Subjects</h2>
+                <p class="mb-0">This list contains all subjects.</p>
             </div>
             <div class="btn-toolbar mb-2 mb-md-0">
-                <a href="{{ route('admin.classes.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
+                <a href="{{ route('admin.subjects.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
                     <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                     </svg>
@@ -83,7 +83,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-centered table-nowrap mb-0 rounded">
-                        @if(count($classrooms) > 0)
+                        @if(count($subjects) > 0)
                             <thead class="thead-light">
                             <tr>
                                 <th class="border-0 rounded-start">#</th>
@@ -97,19 +97,19 @@
                             </thead>
                             <tbody>
                             <!-- Item -->
-                            @foreach($classrooms as $classroom)
+                            @foreach($subjects as $subject)
                                 <tr>
-                                    <td class="border-0">{{ $classroom->id }}</td>
-                                    <td class="border-0">{{ $classroom->branch }}</td>
+                                    <td class="border-0">{{ $subject->id }}</td>
+                                    <td class="border-0">{{ $subject->branch }}</td>
                                     @php
-                                        $teacher_name = $classroom->teacher->firstname . ' ' . $classroom->teacher->lastname;
+                                        $teacher_name = $subject->teacher->firstname . ' ' . $subject->teacher->lastname;
                                     @endphp
                                     <td class="border-0 fw-bold">{{ $teacher_name }}</td>
-                                    <td class="border-0 fw-bold">{{ $classroom->year }}</td>
+                                    <td class="border-0 fw-bold">{{ $subject->year }}</td>
                                     <td class="border-0 fw-bold">
-                                        <span class="badge {{ $classroom->status === 'active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>
+                                        <span class="badge {{ $subject->status === 'active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($subject->status) }}</span>
                                     </td>
-                                    <td class="border-0 fw-bold text-info">{{ $classroom->remark }}</td>
+                                    <td class="border-0 fw-bold text-info">{{ $subject->remark }}</td>
                                     <td class="border-0 text-success">
                                         <div class="dropdown">
                                             <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
@@ -125,10 +125,10 @@
                                                 </li>
 
                                                 <li>
-                                                    <a class="dropdown-item" href="{{ route('admin.classes.edit', $classroom->id) }}">Edit</a>
+                                                    <a class="dropdown-item" href="{{ route('admin.classes.edit', $subject->id) }}">Edit</a>
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('admin.classes.destroy', $classroom->id) }}" method="post">
+                                                    <form action="{{ route('admin.classes.destroy', $subject->id) }}" method="post">
                                                         @method('DELETE')
                                                         @csrf
 
