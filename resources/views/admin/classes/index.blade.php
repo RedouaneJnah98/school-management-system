@@ -87,12 +87,12 @@
                             <thead class="thead-light">
                             <tr>
                                 <th class="border-0 rounded-start">#</th>
-                                <th class="border-0 rounded-start">Grade Name</th>
+                                <th class="border-0 rounded-start">Branch Name</th>
                                 <th class="border-0">Teached By</th>
                                 <th class="border-0">Year</th>
-                                <th class="border-0">Section</th>
                                 <th class="border-0">Status</th>
                                 <th class="border-0">Remarks</th>
+                                <th class="border-0">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -100,8 +100,16 @@
                             @foreach($classrooms as $classroom)
                                 <tr>
                                     <td class="border-0">{{ $classroom->id }}</td>
-                                    <td class="border-0">{{ $classroom->name }}</td>
-                                    <td class="border-0 fw-bold">{{ $classroom->description }}</td>
+                                    <td class="border-0">{{ $classroom->branch }}</td>
+                                    @php
+                                        $teacher_name = $classroom->teacher->firstname . ' ' . $classroom->teacher->lastname;
+                                    @endphp
+                                    <td class="border-0 fw-bold">{{ $teacher_name }}</td>
+                                    <td class="border-0 fw-bold">{{ $classroom->year }}</td>
+                                    <td class="border-0 fw-bold">
+                                        <span class="badge {{ $classroom->status === 'active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>
+                                    </td>
+                                    <td class="border-0 fw-bold text-info">{{ $classroom->remark }}</td>
                                     <td class="border-0 text-success">
                                         <div class="dropdown">
                                             <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
@@ -113,10 +121,10 @@
                                             </a>
                                             <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
                                                 <li>
-                                                    <a class="dropdown-item" href="{{ route('admin.classrooms.edit', $classroom->id) }}">Edit</a>
+                                                    <a class="dropdown-item" href="{{ route('admin.classes.edit', $classroom->id) }}">Edit</a>
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('admin.classrooms.destroy', $classroom->id) }}" method="post">
+                                                    <form action="{{ route('admin.classes.destroy', $classroom->id) }}" method="post">
                                                         @method('DELETE')
                                                         @csrf
 

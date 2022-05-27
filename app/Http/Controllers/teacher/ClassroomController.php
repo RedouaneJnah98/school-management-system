@@ -4,6 +4,7 @@ namespace App\Http\Controllers\teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\Classroom;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
@@ -15,24 +16,35 @@ class ClassroomController extends Controller
         return view('admin.classes.index', compact('classrooms'));
     }
 
-    public function create()
+    public function create(Teacher $teacher)
     {
-        return view('admin.classes.create');
+        $teachers = $teacher->all();
+
+        return view('admin.classes.create', compact('teachers'));
     }
 
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'branch' => 'required|unique:classrooms,branch',
+            'year' => 'required',
+            'teacher_id' => 'required',
+            'status' => 'required',
+            'remark' => 'required'
+        ]);
+
+        $insert_data = Classroom::create($attributes);
+
+        if (!$insert_data) {
+            return redirect()->back()->with('failed', 'Something went wrong, try again.');
+        }
+
+        return redirect()->route('admin.classes.index')->with('success', 'Success! You added new class.');
     }
 
-    public function show($id)
+    public function edit(Classroom $classroom)
     {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
+        return view('admin.classes.edit', compact('classroom'));
     }
 
     public function update(Request $request, $id)

@@ -40,47 +40,68 @@
                             <div class="row mb-4">
                                 <div class="col-lg-6 col-sm-6 mb-4">
                                     <label for="name">Branch Name</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z"/>
-                                                <path
-                                                    d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z"/>
-                                            </svg>
-                                        </span>
-                                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"
-                                               placeholder="15.00-20.00" value="{{ old('name') }}">
-                                        @error('name')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
+                                    <input type="text" id="name" class="form-control @error('branch') is-invalid @enderror" name="branch"
+                                           placeholder="Economics">
+                                    @error('branch')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
                                     </div>
-                                    <small class="form-text text-muted">Grade name is between 10/20 to 20/20</small>
+                                    @enderror
                                 </div>
                                 <div class="col-lg-6 col-sm-6 mb-4">
-                                    <label for="name">Grade Name</label>
+                                    <label for="year">Year</label>
+                                    <select class="form-select @error('year') is-invalid @enderror" name="year" id="year">
+                                        <option selected disabled>Select A Year</option>
+                                        <option>2020</option>
+                                        <option>2021</option>
+                                        <option>2022</option>
+                                        <option>2023</option>
+                                    </select>
+                                    @error('year')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-6 col-sm-6 mb-4">
+                                    <label for="teacher">Teached by</label>
+                                    <select class="form-select @error('teacher_id') is-invalid @enderror" name="teacher_id" id="teacher">
+                                        <option selected disabled>Select A Teacher</option>
+                                        @foreach($teachers as $teacher)
+                                            <option value="{{ $teacher->id }}">{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('teacher_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-lg-6 col-sm-6 mb-4">
+                                    <label for="status">Status</label>
                                     <div class="input-group">
-                                        <span class="input-group-text">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z"/>
-                                                <path
-                                                    d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z"/>
-                                            </svg>
-                                        </span>
-                                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"
-                                               placeholder="15.00-20.00" value="{{ old('name') }}">
-                                        @error('name')
+                                        <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
+                                            <option selected disabled>Select Status</option>
+                                            <option value="active">Active</option>
+                                            <option value="not active">Not Active</option>
+                                        </select>
+                                        @error('status')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
-                                    <small class="form-text text-muted">Grade name is between 10/20 to 20/20</small>
                                 </div>
-
+                                <div class="col-lg-6 col-sm-6 mb-4">
+                                    <label for="remark">Remark</label>
+                                    <input type="text" id="remark" class="form-control @error('remark') is-invalid @enderror" name="remark" placeholder="Amazing">
+                                    @error('remark')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
                             </div>
 
                             {{-- Submit Button --}}
