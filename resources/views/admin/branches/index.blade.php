@@ -100,7 +100,7 @@
                                 <tr>
                                     <td class="border-0">{{ $branch->id }}</td>
                                     <td class="border-0">{{ $branch->name }}</td>
-                                    <td class="border-0 fw-bold text-info">{{ $branch->description }}</td>
+                                    <td class="border-0 fw-bold text-info">{{ substr($branch->description, 0, 35) }}...</td>
                                     <td class="border-0 fw-bold text-info">{{ $branch->created_at }}</td>
                                     <td class="border-0 fw-bold text-info">{{ $branch->updated_at }}</td>
                                     <td class="border-0 text-success">

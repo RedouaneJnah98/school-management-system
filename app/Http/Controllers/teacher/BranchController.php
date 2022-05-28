@@ -5,6 +5,7 @@ namespace App\Http\Controllers\teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class BranchController extends Controller
 {
@@ -41,13 +42,26 @@ class BranchController extends Controller
         return view('admin.branches.edit', compact('branch'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Branch $branch)
     {
-        //
+        $attributes = $request->validate([
+            'name' => ['required', Rule::unique('branches', 'name')->ignore($branch->id)],
+            'description' => 'required',
+        ]);
+
+        $update_branch = $branch->update($attributes);
+
+        if (!$update_branch) {
+            return redirect()->back()->with('failed', 'Something went wrong, try again.');
+        }
+
+        return redirect()->route('admin.branches.index')->with('success', 'Success! Branch updated.');
     }
 
-    public function destroy($id)
+    public function destroy(Branch $branch)
     {
-        //
+        $branch->delete();
+
+        return redirect()->back()->with('delete', 'Branch deleted.');
     }
 }
