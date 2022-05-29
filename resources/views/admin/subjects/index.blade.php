@@ -124,10 +124,10 @@
                                             </li>
 
                                             <li>
-                                                <a class="dropdown-item" href="#">Edit</a>
+                                                <a class="dropdown-item" href="{{ route('admin.subjects.edit', $subject->id) }}">Edit</a>
                                             </li>
                                             <li>
-                                                <form action="#" method="post">
+                                                <form action="{{ route('admin.subjects.destroy', $subject->id) }}" method="post">
                                                     @method('DELETE')
                                                     @csrf
 
