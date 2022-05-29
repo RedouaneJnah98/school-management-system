@@ -46,6 +46,8 @@
 
 <!-- Volt JS -->
 <script src="{{ asset('assets/js/volt.js') }}"></script>
+<!-- jQuery Table -->
+<script src="{{ asset('vendor/ddtf/ddtf.js') }}"></script>
 </body>
 
 </html>

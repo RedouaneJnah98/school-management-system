@@ -82,69 +82,66 @@
         <div class="card border-0 shadow">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-centered table-nowrap mb-0 rounded">
-                        @if(count($subjects) > 0)
-                            <thead class="thead-light">
-                            <tr>
-                                <th class="border-0 rounded-start">#</th>
-                                <th class="border-0 rounded-start">Branch Name</th>
-                                <th class="border-0">Teached By</th>
-                                <th class="border-0">Year</th>
-                                <th class="border-0">Status</th>
-                                <th class="border-0">Remarks</th>
-                                <th class="border-0">Action</th>
+                    {{--                    <div class="mb-4">--}}
+                    {{--                        <select name="branch" class="form-select subject_table">--}}
+                    {{--                            <option disabled selected>Select Branch</option>--}}
+                    {{--                            @foreach($branches as $branch)--}}
+                    {{--                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>--}}
+                    {{--                            @endforeach--}}
+                    {{--                        </select>--}}
+                    {{--                        --}}{{--                        <form action="{{ route('admin.subjects.index') }}" method="post" id="form">@csrf</form>--}}
+                    {{--                    </div>--}}
+                    <table class="table table-centered table-nowrap mb-0 rounded" id="subjects">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="border-0 rounded-start">#</th>
+                            <th class="border-0 rounded-start">Subject Name</th>
+                            <th class="border-0">All Branches</th>
+                            <th class="border-0">Last Update</th>
+                            <th class="border-0">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="result">
+                        <!-- Item -->
+                        @foreach($subjects as $subject)
+                            <tr id="result">
+                                <td class="border-0">{{ $subject->id }}</td>
+                                <td class="border-0">{{ $subject->name }}</td>
+                                <td class="border-0 fw-bold text-info">{{ $subject->branch->name }}</td>
+                                <td class="border-0">{{ $subject->updated_at }}</td>
+                                <td class="border-0 text-success">
+                                    <div class="dropdown">
+                                        <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
+                                           data-bs-offset="10,20">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                            </svg>
+                                        </a>
+                                        <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
+                                            <li>
+                                                <a class="dropdown-item" href="#">Students</a>
+                                            </li>
+
+                                            <li>
+                                                <a class="dropdown-item" href="#">Edit</a>
+                                            </li>
+                                            <li>
+                                                <form action="#" method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+
+                                                    <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <!-- Item -->
-                            @foreach($subjects as $subject)
-                                <tr>
-                                    <td class="border-0">{{ $subject->id }}</td>
-                                    <td class="border-0">{{ $subject->branch }}</td>
-                                    @php
-                                        $teacher_name = $subject->teacher->firstname . ' ' . $subject->teacher->lastname;
-                                    @endphp
-                                    <td class="border-0 fw-bold">{{ $teacher_name }}</td>
-                                    <td class="border-0 fw-bold">{{ $subject->year }}</td>
-                                    <td class="border-0 fw-bold">
-                                        <span class="badge {{ $subject->status === 'active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($subject->status) }}</span>
-                                    </td>
-                                    <td class="border-0 fw-bold text-info">{{ $subject->remark }}</td>
-                                    <td class="border-0 text-success">
-                                        <div class="dropdown">
-                                            <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
-                                               data-bs-offset="10,20">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                                </svg>
-                                            </a>
-                                            <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Students</a>
-                                                </li>
+                        @endforeach
+                        <!-- End of Item -->
+                        </tbody>
 
-                                                <li>
-                                                    <a class="dropdown-item" href="{{ route('admin.classes.edit', $subject->id) }}">Edit</a>
-                                                </li>
-                                                <li>
-                                                    <form action="{{ route('admin.classes.destroy', $subject->id) }}" method="post">
-                                                        @method('DELETE')
-                                                        @csrf
-
-                                                        <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>
-                                                    </form>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            <!-- End of Item -->
-                            </tbody>
-                        @else
-                            <div class="alert alert-info text-center">No records inserted.</div>
-                        @endif
                     </table>
                 </div>
             </div>
@@ -158,3 +155,8 @@
 <x-modals.delete/>
 {{-- Delete Notification --}}
 <x-notification.delete_notif/>
+
+<script>
+    $('table').ddTableFilter();
+</script>
+

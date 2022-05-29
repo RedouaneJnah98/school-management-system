@@ -10,4 +10,9 @@ class Branch extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'description'];
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
 }

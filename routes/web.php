@@ -40,6 +40,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Profile Controller
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('update', [ProfileController::class, 'update'])->name('update');
+        // Table
+        Route::get('/branch', [SubjectController::class, 'action'])->name('branch');
         // Route View
         Route::view('dashboard', 'admin.dashboard')->name('dashboard');
 
