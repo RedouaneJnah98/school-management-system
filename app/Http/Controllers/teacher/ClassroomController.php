@@ -3,43 +3,48 @@
 namespace App\Http\Controllers\teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use App\Models\Classroom;
+use App\Models\Grade;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
 {
-    public function index(Classroom $classroom)
+    public function index()
     {
-        $classrooms = $classroom->all();
+        $classrooms = Classroom::all();
 
         return view('admin.classes.index', compact('classrooms'));
     }
 
-    public function create(Teacher $teacher)
+    public function create()
     {
-        $teachers = $teacher->all();
+        $teachers = Teacher::all();
+        $branches = Branch::all();
+        $grades = Grade::all();
 
-        return view('admin.classes.create', compact('teachers'));
+        return view('admin.classes.create', compact(['teachers', 'branches', 'grades']));
     }
 
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'branch' => 'required|unique:classrooms,branch',
-            'year' => 'required',
+            'branch_id' => 'required|numeric',
+            'grade_id' => 'required|numeric',
             'teacher_id' => 'required',
+            'year' => 'required',
             'status' => 'required',
-            'remark' => 'required'
+            'remark' => 'required',
         ]);
 
         $insert_data = Classroom::create($attributes);
 
         if (!$insert_data) {
-            return redirect()->back()->with('failed', 'Something went wrong, try again.');
+            return back()->with('failed', 'Something went wrong, try again.');
         }
 
-        return redirect()->route('admin.classes.index')->with('success', 'Success! You added new class.');
+        return to_route('admin.classes.index')->with('success', 'Success! You added new class.');
     }
 
     public function edit(Classroom $classroom)

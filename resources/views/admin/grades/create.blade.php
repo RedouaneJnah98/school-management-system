@@ -49,20 +49,18 @@
                                                     d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z"/>
                                             </svg>
                                         </span>
-                                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"
-                                               placeholder="15.00-20.00" value="{{ old('name') }}">
+                                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
                                         @error('name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
-                                    <small class="form-text text-muted">Grade name is between 10/20 to 20/20</small>
                                 </div>
                                 <div class="col-lg-6 col-sm-6 mb-4">
                                     <label for="desc">Grade Description</label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="desc"
-                                              cols="30" rows="3" placeholder="Very Good...">{{ old('description') }}</textarea>
+                                              cols="30" rows="3">{{ old('description') }}</textarea>
                                     @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}

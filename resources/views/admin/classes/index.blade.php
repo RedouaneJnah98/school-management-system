@@ -88,6 +88,7 @@
                             <tr>
                                 <th class="border-0 rounded-start">#</th>
                                 <th class="border-0 rounded-start">Branch Name</th>
+                                <th class="border-0">Grade</th>
                                 <th class="border-0">Teached By</th>
                                 <th class="border-0">Year</th>
                                 <th class="border-0">Status</th>
@@ -100,7 +101,8 @@
                             @foreach($classrooms as $classroom)
                                 <tr>
                                     <td class="border-0">{{ $classroom->id }}</td>
-                                    <td class="border-0">{{ $classroom->branch }}</td>
+                                    <td class="border-0">{{ $classroom->branch->name }}</td>
+                                    <td class="border-0">{{ $classroom->grade->name }}</td>
                                     @php
                                         $teacher_name = $classroom->teacher->firstname . ' ' . $classroom->teacher->lastname;
                                     @endphp
