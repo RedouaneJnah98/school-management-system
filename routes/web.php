@@ -4,6 +4,7 @@ use App\Http\Controllers\parent\ParentController;
 use App\Http\Controllers\student\LoginController;
 use App\Http\Controllers\student\StudentController;
 use App\Http\Controllers\teacher\BranchController;
+use App\Http\Controllers\teacher\ClassroomStudentController;
 use App\Http\Controllers\teacher\GradeController;
 use App\Http\Controllers\teacher\ProfileController;
 use App\Http\Controllers\teacher\ClassroomController;
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 // Home Page
 Route::view('/', 'index')->name('home');
 
+/*
+ * Student Prefix
+ */
 Route::prefix('student')->name('student.')->group(function () {
     Route::middleware(['guest:student'])->group(function () {
         Route::view('login', 'student.login')->name('login');
@@ -30,6 +34,16 @@ Route::prefix('student')->name('student.')->group(function () {
     });
 });
 
+/*
+ * Parent Prefix
+ */
+Route::prefix('parent')->name('parent.')->group(function () {
+//    Route::middleware([])
+});
+
+/*
+ * Admin Prefix
+ */
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['guest:web'])->group(function () {
         Route::view('login', 'admin.login')->name('login');
@@ -42,6 +56,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('update', [ProfileController::class, 'update'])->name('update');
         // Route View
         Route::view('dashboard', 'admin.dashboard')->name('dashboard');
+        // Classroom Student
+        Route::get('classroom-student', [ClassroomStudentController::class, 'index'])->name('classroom-student');
+        Route::post('classroom-student', [ClassroomStudentController::class, 'store'])->name('classroom-student.store');
+        Route::get('all_students', [ClassroomStudentController::class, 'all_students'])->name('all_students');
 
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);

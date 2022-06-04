@@ -21,10 +21,10 @@
                             <a href="#" class="nav-link">Ajiale School</a>
                         </li>
                         <li class="nav-item me-2">
-                            <a href="{{ route('student.login') }}" class="nav-link">Student Login</a>
+                            <a href="{{ route('student.login') }}" class="nav-link">Student</a>
                         </li>
                         <li class="nav-item me-2">
-                            <a href="#" class="nav-link">Student Register</a>
+                            <a href="#" class="nav-link">Parent</a>
                         </li>
                     </ul>
                 </div>

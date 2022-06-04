@@ -26,4 +26,9 @@ class Classroom extends Model
     {
         return $this->belongsTo(Branch::class);
     }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class)->withTimestamps();
+    }
 }

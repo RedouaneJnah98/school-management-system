@@ -18,4 +18,8 @@ class Student extends Authenticatable
         return $this->belongsTo(Parents::class, 'parent_id');
     }
 
+    public function classrooms()
+    {
+        return $this->belongsToMany(Classroom::class)->withTimestamps();
+    }
 }
