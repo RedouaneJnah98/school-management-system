@@ -148,8 +148,8 @@
                                                 </svg>
                                             </a>
                                             <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
-                                                <li>
-                                                    <a class="dropdown-item" href="{{ route('admin.all_students') }}">Students</a>
+                                                <li id="branch">
+                                                    <a class="dropdown-item" href="{{ route('admin.all_students', $classroom->id) }}">Students</a>
                                                 </li>
 
                                                 <li>
@@ -186,3 +186,11 @@
 <x-modals.delete/>
 {{-- Delete Notification --}}
 <x-notification.delete_notif/>
+
+
+<script>
+    $(document).ready(function () {
+        let branch = $('#branch').text();
+        console.log(branch);
+    })
+</script>

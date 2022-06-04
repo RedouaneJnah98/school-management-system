@@ -19,53 +19,13 @@
                             </a>
                         </li>
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Classrooms</li>
+                        <li class="breadcrumb-item active" aria-current="page">Classroom Student</li>
                     </ol>
                 </nav>
-                <h2 class="h4">All Classrooms</h2>
-                <p class="mb-0">This list contains all classrooms.</p>
+                <h2 class="h4">All Classrooms Student</h2>
+                <p class="mb-0">This list contains all classroom student related to the current branch.</p>
             </div>
             <div class="btn-toolbar mb-2 mb-md-0">
-                <div class="dropdown">
-                    <button class="btn btn-gray-800 d-inline-flex align-items-center me-2 dropdown-toggle"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                        </svg>
-                        New Task
-                    </button>
-                    <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-                        <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.classes.create') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="dropdown-icon text-gray-400 me-2" viewBox="0 0 20 20">
-                                <path
-                                    d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
-                                <path
-                                    d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
-                            </svg>
-                            Add Classroom
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.classroom-student') }}">
-                            <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z">
-                                </path>
-                            </svg>
-                            Add Student
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z">
-                                </path>
-                            </svg>
-                            Add Files
-                        </a>
-                    </div>
-                </div>
                 <div class="btn-group ms-2 ms-lg-3">
                     <button type="button" class="btn btn-sm btn-outline-gray-600">Share</button>
                     <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button>
@@ -120,31 +80,22 @@
                     <table class="table table-centered table-nowrap mb-0 rounded">
                         <thead class="thead-light">
                         <tr>
-                            {{--                            <th class="border-0 rounded-start">#</th>--}}
-                            <th class="border-0 rounded-start">Branch Name</th>
-                            <th class="border-0">Grade</th>
-                            <th class="border-0">Responsible Teacher</th>
-                            <th class="border-0">Year</th>
-                            <th class="border-0">Status</th>
-                            <th class="border-0">Student</th>
+                            <th class="border-0 rounded-start">Image</th>
+                            <th class="border-0">First Name</th>
+                            <th class="border-0">Last Name</th>
+                            <th class="border-0">Parent</th>
+                            <th class="border-0">Date of join</th>
                         </tr>
                         </thead>
                         <tbody>
                         <!-- Item -->
-                        @foreach($classrooms as $classroom)
+                        @foreach($classrooms->students as $student)
+                            {{--                            @foreach($classroom as $item)--}}
                             <tr>
-                                {{--                                <td class="border-0">{{ $classroom->id }}</td>--}}
-                                <td class="border-0">{{ $classroom->branch->name }}</td>
-                                <td class="border-0">{{ $classroom->grade->name }}</td>
-                                @php
-                                    $teacher_name = $classroom->teacher->firstname . ' ' . $classroom->teacher->lastname;
-                                @endphp
-                                <td class="border-0 fw-bold">{{ $teacher_name }}</td>
-                                <td class="border-0 fw-bold">{{ $classroom->year }}</td>
-                                <td class="border-0 fw-bold">
-                                    <span class="badge {{ $classroom->status === 'active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>
-                                </td>
-                                <td class="border-0 fw-bold text-info">{{ $classroom->students()->name }}</td>
+                                <td class="border-0">{{ $student->firstname }}</td>
+                                <td class="border-0">{{ $student->lastname }}</td>
+                                <td class="border-0">{{ $student->parent->firstname . ' ' . $student->parent->lastname }}</td>
+                                <td class="border-0">{{ $student->pivot->created_at }}</td>
                             </tr>
                         @endforeach
                         <!-- End of Item -->
@@ -162,3 +113,4 @@
 <x-modals.delete/>
 {{-- Delete Notification --}}
 <x-notification.delete_notif/>
+

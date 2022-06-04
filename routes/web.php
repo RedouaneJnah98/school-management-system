@@ -59,7 +59,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Classroom Student
         Route::get('classroom-student', [ClassroomStudentController::class, 'index'])->name('classroom-student');
         Route::post('classroom-student', [ClassroomStudentController::class, 'store'])->name('classroom-student.store');
-        Route::get('all_students', [ClassroomStudentController::class, 'all_students'])->name('all_students');
+        Route::get('all_students/{id}', [ClassroomStudentController::class, 'all_students'])->name('all_students');
 
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);

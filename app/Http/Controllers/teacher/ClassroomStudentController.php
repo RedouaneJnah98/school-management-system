@@ -17,9 +17,9 @@ class ClassroomStudentController extends Controller
         return view('admin.classes.students', compact(['students', 'classrooms']));
     }
 
-    public function all_students()
+    public function all_students($id)
     {
-        $classrooms = Classroom::all();
+        $classrooms = Classroom::find($id);
 
         return view('admin.students', compact('classrooms'));
     }
