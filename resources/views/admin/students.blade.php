@@ -80,21 +80,24 @@
                     <table class="table table-centered table-nowrap mb-0 rounded">
                         <thead class="thead-light">
                         <tr>
-                            <th class="border-0 rounded-start">Image</th>
-                            <th class="border-0">First Name</th>
-                            <th class="border-0">Last Name</th>
+                            <th class="border-0 rounded-start">Student Name</th>
                             <th class="border-0">Parent</th>
+                            <th class="border-0">Date Of Birth</th>
                             <th class="border-0">Date of join</th>
                         </tr>
                         </thead>
                         <tbody>
                         <!-- Item -->
                         @foreach($classrooms->students as $student)
-                            {{--                            @foreach($classroom as $item)--}}
                             <tr>
-                                <td class="border-0">{{ $student->firstname }}</td>
-                                <td class="border-0">{{ $student->lastname }}</td>
+                                <td class="border-0">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar rounded me-2" alt="Image placeholder" src="{{ $student->profile_image }}">
+                                        <div><span class="h6">{{ $student->firstname . ' ' . $student->lastname }}</span></div>
+                                    </div>
+                                </td>
                                 <td class="border-0">{{ $student->parent->firstname . ' ' . $student->parent->lastname }}</td>
+                                <td class="border-0">{{ $student->date_of_birth }}</td>
                                 <td class="border-0">{{ $student->pivot->created_at }}</td>
                             </tr>
                         @endforeach

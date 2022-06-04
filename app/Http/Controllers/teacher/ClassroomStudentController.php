@@ -32,12 +32,12 @@ class ClassroomStudentController extends Controller
         ]);
 
         $classroom = Classroom::find($attributes['classroom_id']);
-        $insert_data = $classroom->students()->sync($attributes);
+        $insert_data = $classroom->students()->syncWithoutDetaching($attributes);
 
         if (!$insert_data) {
             return back()->with('failed', 'Something went wrong, try again.');
         }
 
-        return to_route('admin.classes.index')->with('success', 'Success! You added a new Student to the class.');
+        return to_route('admin.classrooms.index')->with('success', 'Success! You added a new Student to the class.');
     }
 }

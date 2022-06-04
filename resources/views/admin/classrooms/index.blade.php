@@ -37,7 +37,7 @@
                         New Task
                     </button>
                     <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-                        <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.classes.create') }}">
+                        <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.classrooms.create') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="dropdown-icon text-gray-400 me-2" viewBox="0 0 20 20">
                                 <path
                                     d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
@@ -153,10 +153,10 @@
                                                 </li>
 
                                                 <li>
-                                                    <a class="dropdown-item" href="{{ route('admin.classes.edit', $classroom->id) }}">Edit</a>
+                                                    <a class="dropdown-item" href="{{ route('admin.classrooms.edit', $classroom->id) }}">Edit</a>
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('admin.classes.destroy', $classroom->id) }}" method="post">
+                                                    <form action="{{ route('admin.classrooms.destroy', $classroom->id) }}" method="post">
                                                         @method('DELETE')
                                                         @csrf
 

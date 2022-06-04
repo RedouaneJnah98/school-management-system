@@ -67,7 +67,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('parents', ParentController::class);
         Route::resource('grades', GradeController::class)->except('show');
         Route::resource('branches', BranchController::class)->except('show');
-        Route::resource('classes', ClassroomController::class)->except('show');
+        Route::resource('classrooms', ClassroomController::class)->except('show');
         Route::resource('subjects', SubjectController::class)->except('show');
 
         // Logout

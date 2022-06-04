@@ -34,7 +34,7 @@
                 <div class="card border-0 shadow components-section">
                     <div class="card-body">
                         <!-- Form -->
-                        <form action="{{ route('admin.classes.store') }}" method="post">
+                        <form action="{{ route('admin.classrooms.store') }}" method="post">
                             @csrf
 
                             <div class="row mb-4">

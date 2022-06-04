@@ -15,7 +15,7 @@ class ClassroomController extends Controller
     {
         $classrooms = Classroom::all();
 
-        return view('admin.classes.index', compact('classrooms'));
+        return view('admin.classrooms.index', compact('classrooms'));
     }
 
     public function create()
@@ -24,7 +24,7 @@ class ClassroomController extends Controller
         $branches = Branch::all();
         $grades = Grade::all();
 
-        return view('admin.classes.create', compact(['teachers', 'branches', 'grades']));
+        return view('admin.classrooms.create', compact(['teachers', 'branches', 'grades']));
     }
 
     public function store(Request $request)
@@ -44,12 +44,16 @@ class ClassroomController extends Controller
             return back()->with('failed', 'Something went wrong, try again.');
         }
 
-        return to_route('admin.classes.index')->with('success', 'Success! You added new class.');
+        return to_route('admin.classrooms.index')->with('success', 'Success! You added new class.');
     }
 
     public function edit(Classroom $classroom)
     {
-        return view('admin.classes.edit', compact('classroom'));
+        $branches = Branch::all();
+        $grades = Grade::all();
+        $teachers = Teacher::all();
+
+        return view('admin.classrooms.edit', compact(['classroom', 'branches', 'grades', 'teachers']));
     }
 
     public function update(Request $request, $id)
