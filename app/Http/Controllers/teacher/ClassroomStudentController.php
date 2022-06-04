@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\teacher;
 
 use App\Http\Controllers\Controller;
-use App\Models\Branch;
 use App\Models\Classroom;
-use App\Models\Grade;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
