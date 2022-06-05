@@ -43,9 +43,12 @@
                                 <div class="col-lg-6 col-sm-6 mb-4">
                                     <label for="name">Branch Name</label>
                                     <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id" id="year">
-                                        <option selected disabled>Select A Branch</option>
                                         @foreach($branches as $branch)
-                                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                            @if($classroom->branch->name == $branch->name)
+                                                <option value="{{ $branch->id }}" selected>{{ $branch->name }}</option>
+                                            @else
+                                                <option value="{{ $branch->id }}">{{ $branch->name}}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @error('branch_id')
@@ -57,7 +60,7 @@
                                 <div class="col-lg-6 col-sm-6 mb-4">
                                     <label for="year">Year</label>
                                     <select class="form-select @error('year') is-invalid @enderror" name="year" id="year">
-                                        <option selected disabled>Select A Year</option>
+                                        <option selected @selected(old('year'))>{{ $classroom->year }}</option>
                                         <option>2020</option>
                                         <option>2021</option>
                                         <option>2022</option>
@@ -72,9 +75,9 @@
                                 <div class="col-lg-6 col-sm-6 mb-4">
                                     <label for="grade">Grade</label>
                                     <select class="form-select @error('grade_id') is-invalid @enderror" name="grade_id" id="grade">
-                                        <option selected disabled>Select Grade</option>
+                                        <option selected value="{{ $classroom->grade->id }}">{{ $classroom->grade->name }}</option>
                                         @foreach($grades as $grade)
-                                            <option value="{{ $grade->id }}">{{ $grade->name }}</option>
+                                            <option value="{{ $grade->id }}" @selected(old('grade_id'))>{{ $grade->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('grade_id')
@@ -87,9 +90,15 @@
                                 <div class="col-lg-6 col-sm-6 mb-4">
                                     <label for="teacher">Branch Responsible</label>
                                     <select class="form-select @error('teacher_id') is-invalid @enderror" name="teacher_id" id="teacher">
-                                        <option selected disabled>Select A Teacher</option>
+                                        @php
+                                            $firstname = $classroom->teacher->firstname;
+                                        @endphp
                                         @foreach($teachers as $teacher)
-                                            <option value="{{ $teacher->id }}">{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>
+                                            @if($firstname === $teacher->firstname)
+                                                <option selected value="{{ $teacher->id }}">{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>
+                                            @else
+                                                <option value="{{ $teacher->id }}" @selected(old('teacher_id'))>{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @error('teacher_id')
@@ -103,9 +112,13 @@
                                     <label for="status">Status</label>
                                     <div class="input-group">
                                         <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
-                                            <option selected disabled>Select Status</option>
-                                            <option value="active">Active</option>
-                                            <option value="not active">Not Active</option>
+                                            @if($classroom->status === 'Active')
+                                                <option selected @selected(old('status'))>{{ucwords($classroom->status) }}</option>
+                                                <option>Not Active</option>
+                                            @else
+                                                <option>Active</option>
+                                                <option>Not Active</option>
+                                            @endif
                                         </select>
                                         @error('status')
                                         <div class="invalid-feedback">
@@ -116,7 +129,7 @@
                                 </div>
                                 <div class="col-lg-6 col-sm-6 mb-4">
                                     <label for="remark">Remark</label>
-                                    <input type="text" id="remark" class="form-control @error('remark') is-invalid @enderror" name="remark" placeholder="Amazing">
+                                    <input type="text" id="remark" class="form-control @error('remark') is-invalid @enderror" name="remark" placeholder="Amazing" value="{{ $classroom->remark }}">
                                     @error('remark')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -126,7 +139,7 @@
                             </div>
 
                             {{-- Submit Button--}}
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </div>
                 </div>

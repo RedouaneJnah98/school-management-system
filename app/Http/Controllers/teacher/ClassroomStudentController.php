@@ -14,7 +14,7 @@ class ClassroomStudentController extends Controller
         $students = Student::all();
         $classrooms = Classroom::all();
 
-        return view('admin.classes.students', compact(['students', 'classrooms']));
+        return view('admin.classrooms.students', compact(['students', 'classrooms']));
     }
 
     public function all_students($id)
@@ -28,7 +28,9 @@ class ClassroomStudentController extends Controller
     {
         $attributes = $request->validate([
             'classroom_id' => 'required|numeric',
-            'student_id' => 'required|numeric',
+            'student_id' => 'required|numeric|unique:classroom_student',
+        ], [
+            'student_id.unique' => 'This student had already been taken in another class.'
         ]);
 
         $classroom = Classroom::find($attributes['classroom_id']);

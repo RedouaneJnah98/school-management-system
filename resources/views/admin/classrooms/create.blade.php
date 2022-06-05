@@ -43,7 +43,7 @@
                                     <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id" id="year">
                                         <option selected disabled>Select A Branch</option>
                                         @foreach($branches as $branch)
-                                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                            <option value="{{ $branch->id }}" @selected(old('branch_id'))>{{ $branch->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('branch_id')
@@ -56,7 +56,7 @@
                                     <label for="year">Year</label>
                                     <select class="form-select @error('year') is-invalid @enderror" name="year" id="year">
                                         <option selected disabled>Select A Year</option>
-                                        <option>2020</option>
+                                        <option @selected(old('year'))>2020</option>
                                         <option>2021</option>
                                         <option>2022</option>
                                         <option>2023</option>
@@ -72,7 +72,7 @@
                                     <select class="form-select @error('grade_id') is-invalid @enderror" name="grade_id" id="grade">
                                         <option selected disabled>Select Grade</option>
                                         @foreach($grades as $grade)
-                                            <option value="{{ $grade->id }}">{{ $grade->name }}</option>
+                                            <option value="{{ $grade->id }}" @selected(old('grade_id'))>{{ $grade->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('grade_id')
@@ -87,7 +87,7 @@
                                     <select class="form-select @error('teacher_id') is-invalid @enderror" name="teacher_id" id="teacher">
                                         <option selected disabled>Select A Teacher</option>
                                         @foreach($teachers as $teacher)
-                                            <option value="{{ $teacher->id }}">{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>
+                                            <option value="{{ $teacher->id }}" @selected(old('teacher_id'))>{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>
                                         @endforeach
                                     </select>
                                     @error('teacher_id')
@@ -102,8 +102,8 @@
                                     <div class="input-group">
                                         <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
                                             <option selected disabled>Select Status</option>
-                                            <option value="active">Active</option>
-                                            <option value="not active">Not Active</option>
+                                            <option @selected(old('status'))>Active</option>
+                                            <option>Not Active</option>
                                         </select>
                                         @error('status')
                                         <div class="invalid-feedback">

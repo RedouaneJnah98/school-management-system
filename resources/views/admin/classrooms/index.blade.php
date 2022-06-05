@@ -135,7 +135,7 @@
                                     <td class="border-0 fw-bold">{{ $teacher_name }}</td>
                                     <td class="border-0 fw-bold">{{ $classroom->year }}</td>
                                     <td class="border-0 fw-bold">
-                                        <span class="badge {{ $classroom->status === 'active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>
+                                        <span class="badge {{ $classroom->status === 'Active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>
                                     </td>
                                     <td class="border-0 fw-bold text-info">{{ $classroom->remark }}</td>
                                     <td class="border-0 text-success">

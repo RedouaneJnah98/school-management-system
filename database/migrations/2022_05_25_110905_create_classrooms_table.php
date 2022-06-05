@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('classrooms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('teacher_id');
-            $table->foreignId('grade_id');
+            $table->foreignId('grade_id')->unique();
             $table->string('branch_id');
             $table->year('year');
             $table->string('status');
