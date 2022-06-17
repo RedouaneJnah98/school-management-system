@@ -18,8 +18,10 @@ return [
         'passwords' => 'teachers',
     ],
     'student' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Student::class,
+        'guard' => 'student',
+    ],
+    'parent' => [
+        'guard' => 'parent',
     ],
 
     /*
@@ -48,6 +50,10 @@ return [
             'driver' => 'session',
             'provider' => 'students',
         ],
+        'parent' => [
+            'driver' => 'session',
+            'provider' => 'parents'
+        ]
     ],
 
     /*
@@ -76,6 +82,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Student::class,
         ],
+        'parents' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Parents::class
+        ]
     ],
 
     /*

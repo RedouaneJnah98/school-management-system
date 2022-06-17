@@ -32,7 +32,7 @@ class ClassroomController extends Controller
         $attributes = $request->validate([
             'branch_id' => 'required|numeric',
             'grade_id' => 'required|numeric|unique:classrooms',
-            'teacher_id' => 'required',
+//            'teacher_id' => 'required',
             'year' => 'required',
             'status' => 'required',
             'remark' => 'required',
@@ -64,7 +64,7 @@ class ClassroomController extends Controller
             'branch_id' => 'required|numeric',
             'year' => 'required',
             'grade_id' => 'required|numeric',
-            'teacher_id' => 'required|numeric',
+//            'teacher_id' => 'required|numeric',
             'status' => 'required',
             'remark' => 'required'
         ], [

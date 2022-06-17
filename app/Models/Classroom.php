@@ -12,10 +12,10 @@ class Classroom extends Model
     protected $guarded = [];
 
     // Relationships
-    public function teacher()
-    {
-        return $this->belongsTo(Teacher::class);
-    }
+//    public function teacher()
+//    {
+//        return $this->belongsTo(Teacher::class);
+//    }
 
     public function grade()
     {
@@ -27,8 +27,21 @@ class Classroom extends Model
         return $this->belongsTo(Branch::class);
     }
 
+    /*
+     * Many-to-many relationship
+     */
     public function students()
     {
         return $this->belongsToMany(Student::class)->withTimestamps();
+    }
+
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class)->withTimestamps();
+    }
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class)->withTimestamps();
     }
 }

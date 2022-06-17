@@ -44,6 +44,6 @@ class Teacher extends Authenticatable
     // Relationships
     public function classrooms()
     {
-        return $this->hasMany(Classroom::class);
+        return $this->belongsToMany(Classroom::class)->withTimestamps();
     }
 }

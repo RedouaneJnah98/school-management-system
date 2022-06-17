@@ -55,6 +55,15 @@
                             </svg>
                             Add Student
                         </a>
+                        <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.classroom-teacher') }}">
+                            <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z">
+                                </path>
+                            </svg>
+                            Add Teacher Classroom
+                        </a>
                     </div>
                 </div>
                 <div class="btn-group ms-2 ms-lg-3">
@@ -115,7 +124,6 @@
                                 <th class="border-0 rounded-start">#</th>
                                 <th class="border-0 rounded-start">Branch Name</th>
                                 <th class="border-0">Grade</th>
-                                <th class="border-0">Teached By</th>
                                 <th class="border-0">Year</th>
                                 <th class="border-0">Status</th>
                                 <th class="border-0">Remarks</th>
@@ -129,10 +137,6 @@
                                     <td class="border-0">{{ $classroom->id }}</td>
                                     <td class="border-0">{{ $classroom->branch->name }}</td>
                                     <td class="border-0">{{ $classroom->grade->name }}</td>
-                                    @php
-                                        $teacher_name = $classroom->teacher->firstname . ' ' . $classroom->teacher->lastname;
-                                    @endphp
-                                    <td class="border-0 fw-bold">{{ $teacher_name }}</td>
                                     <td class="border-0 fw-bold">{{ $classroom->year }}</td>
                                     <td class="border-0 fw-bold">
                                         <span class="badge {{ $classroom->status === 'Active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>

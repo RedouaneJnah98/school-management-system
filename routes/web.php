@@ -3,8 +3,10 @@
 use App\Http\Controllers\parent\ParentController;
 use App\Http\Controllers\student\LoginController;
 use App\Http\Controllers\student\StudentController;
+use App\Http\Controllers\teacher\AttendanceController;
 use App\Http\Controllers\teacher\BranchController;
 use App\Http\Controllers\teacher\ClassroomStudentController;
+use App\Http\Controllers\teacher\ClassroomTeacherController;
 use App\Http\Controllers\teacher\GradeController;
 use App\Http\Controllers\teacher\ProfileController;
 use App\Http\Controllers\teacher\ClassroomController;
@@ -60,6 +62,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('classroom-student', [ClassroomStudentController::class, 'index'])->name('classroom-student');
         Route::post('classroom-student', [ClassroomStudentController::class, 'store'])->name('classroom-student.store');
         Route::get('all_students/{id}', [ClassroomStudentController::class, 'all_students'])->name('all_students');
+        // Classroom Teacher
+        Route::get('classroom-teacher', [ClassroomTeacherController::class, 'create'])->name('classroom-teacher');
+        Route::post('classroom-teacher', [ClassroomTeacherController::class, 'store'])->name('classroom-teacher.store');
 
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);
@@ -69,6 +74,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('branches', BranchController::class)->except('show');
         Route::resource('classrooms', ClassroomController::class)->except('show');
         Route::resource('subjects', SubjectController::class)->except('show');
+        Route::resource('attendances', AttendanceController::class)->except('show');
 
         // Logout
         Route::post('logout', [TeacherController::class, 'logout'])->name('logout');
