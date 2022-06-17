@@ -24,11 +24,14 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 if ($guard === 'admin') {
-                    return redirect()->route('admin.dashboard');
+                    return to_route('admin.dashboard');
                 }
                 if ($guard === 'student') {
-                    return redirect()->route('student.dashboard');
+                    return to_route('student.dashboard');
                 }
+//                if ($guard === 'parent') {
+//                    return to_route('pare')
+//                }
 
                 return redirect()->route('admin.login');
             }

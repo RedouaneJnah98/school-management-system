@@ -17,12 +17,12 @@ return [
         'guard' => 'web',
         'passwords' => 'teachers',
     ],
-    'student' => [
-        'guard' => 'student',
-    ],
-    'parent' => [
-        'guard' => 'parent',
-    ],
+//    'student' => [
+//        'guard' => 'student',
+//    ],
+//    'parent' => [
+//        'guard' => 'parent',
+//    ],
 
     /*
     |--------------------------------------------------------------------------
