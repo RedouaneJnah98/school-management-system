@@ -14,7 +14,7 @@ class ClassroomController extends Controller
     public function index()
     {
         $classrooms = Classroom::with('students')->get();
-
+        
         return view('admin.classrooms.index', compact('classrooms'));
     }
 

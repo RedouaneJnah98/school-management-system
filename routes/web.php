@@ -7,6 +7,7 @@ use App\Http\Controllers\teacher\AttendanceController;
 use App\Http\Controllers\teacher\BranchController;
 use App\Http\Controllers\teacher\ClassroomStudentController;
 use App\Http\Controllers\teacher\ClassroomTeacherController;
+use App\Http\Controllers\teacher\DownloadController;
 use App\Http\Controllers\teacher\GradeController;
 use App\Http\Controllers\teacher\ProfileController;
 use App\Http\Controllers\teacher\ClassroomController;
@@ -72,6 +73,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Classroom Teacher
         Route::get('classroom-teacher', [ClassroomTeacherController::class, 'create'])->name('classroom-teacher');
         Route::post('classroom-teacher', [ClassroomTeacherController::class, 'store'])->name('classroom-teacher.store');
+        // Download PDF
+        Route::get('download_students', [DownloadController::class, 'download_students'])->name('download_students');
 
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);
