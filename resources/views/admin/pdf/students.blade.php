@@ -70,7 +70,5 @@
     </tbody>
     <caption>all ajiale school students for 2022.</caption>
 </table>
-
-
 </body>
 </html>

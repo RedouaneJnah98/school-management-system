@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Student;
 
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Http\Request;
 
 class DownloadController extends Controller
 {
