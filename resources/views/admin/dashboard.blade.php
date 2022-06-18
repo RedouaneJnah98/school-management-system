@@ -86,14 +86,14 @@
                                     </svg>
                                 </div>
                                 <div class="d-sm-none">
-                                    <h2 class="h5">Customers</h2>
-                                    <h3 class="fw-extrabold mb-1">345,678</h3>
+                                    <h2 class="h5">Teachers</h2>
+                                    <h3 class="fw-extrabold mb-1">0</h3>
                                 </div>
                             </div>
                             <div class="col-12 col-xl-7 px-xl-0">
                                 <div class="d-none d-sm-block">
-                                    <h2 class="h6 text-gray-400 mb-0">Customers</h2>
-                                    <h3 class="fw-extrabold mb-2">345k</h3>
+                                    <h2 class="h6 text-gray-400 mb-0">Teachers</h2>
+                                    <h3 class="fw-extrabold mb-2">0</h3>
                                 </div>
                                 <small class="d-flex align-items-center text-gray-500">
                                     Feb 1 - Apr 1,
@@ -137,14 +137,14 @@
                                     </svg>
                                 </div>
                                 <div class="d-sm-none">
-                                    <h2 class="fw-extrabold h5">Revenue</h2>
-                                    <h3 class="mb-1">$43,594</h3>
+                                    <h2 class="fw-extrabold h5">Students</h2>
+                                    <h3 class="mb-1">0</h3>
                                 </div>
                             </div>
                             <div class="col-12 col-xl-7 px-xl-0">
                                 <div class="d-none d-sm-block">
-                                    <h2 class="h6 text-gray-400 mb-0">Revenue</h2>
-                                    <h3 class="fw-extrabold mb-2">$43,594</h3>
+                                    <h2 class="h6 text-gray-400 mb-0">Students</h2>
+                                    <h3 class="fw-extrabold mb-2">0</h3>
                                 </div>
                                 <small class="d-flex align-items-center text-gray-500">
                                     Feb 1 - Apr 1,
@@ -188,14 +188,14 @@
                                     </svg>
                                 </div>
                                 <div class="d-sm-none">
-                                    <h2 class="fw-extrabold h5">Bounce Rate</h2>
-                                    <h3 class="mb-1">50.88%</h3>
+                                    <h2 class="fw-extrabold h5">Parents</h2>
+                                    <h3 class="mb-1">0</h3>
                                 </div>
                             </div>
                             <div class="col-12 col-xl-7 px-xl-0">
                                 <div class="d-none d-sm-block">
-                                    <h2 class="h6 text-gray-400 mb-0">Bounce Rate</h2>
-                                    <h3 class="fw-extrabold mb-2">50.88%</h3>
+                                    <h2 class="h6 text-gray-400 mb-0">Parents</h2>
+                                    <h3 class="fw-extrabold mb-2">0</h3>
                                 </div>
                                 <small class="text-gray-500"> Feb 1 - Apr 1 </small>
                                 <div class="small d-flex mt-1">

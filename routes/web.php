@@ -21,7 +21,7 @@ Route::view('/', 'index')->name('home');
  * Student Prefix
  */
 Route::prefix('student')->name('student.')->group(function () {
-    Route::middleware(['guest:student'])->group(function () {
+    Route::middleware(['guest'])->group(function () {
         Route::view('login', 'student.login')->name('login');
         Route::post('check', [LoginController::class, 'check'])->name('check');
     });
@@ -40,14 +40,21 @@ Route::prefix('student')->name('student.')->group(function () {
  * Parent Prefix
  */
 Route::prefix('parent')->name('parent.')->group(function () {
-//    Route::middleware([])
+    Route::middleware(['guest'])->group(function () {
+        Route::view('login', 'parent.login')->name('login');
+//        Route::post('check', [LoginController::class, 'check'])->name('check');
+    });
+
+    Route::middleware(['auth:parent'])->group(function () {
+        Route::view('dashboard', 'parent.dashboard')->name('dashboard');
+    });
 });
 
 /*
  * Admin Prefix
  */
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::middleware(['guest:web'])->group(function () {
+    Route::middleware(['guest'])->group(function () {
         Route::view('login', 'admin.login')->name('login');
         Route::post('check', [TeacherController::class, 'check_user'])->name('check');
     });

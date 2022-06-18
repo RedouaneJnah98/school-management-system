@@ -29,9 +29,9 @@ class RedirectIfAuthenticated
                 if ($guard === 'student') {
                     return to_route('student.dashboard');
                 }
-//                if ($guard === 'parent') {
-//                    return to_route('pare')
-//                }
+                if ($guard === 'parent') {
+                    return to_route('parent.dashboard');
+                }
 
                 return redirect()->route('admin.login');
             }

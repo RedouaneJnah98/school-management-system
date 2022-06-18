@@ -24,7 +24,7 @@
                             <a href="{{ route('student.login') }}" class="nav-link">Student</a>
                         </li>
                         <li class="nav-item me-2">
-                            <a href="#" class="nav-link">Parent</a>
+                            <a href="{{ route('parent.login') }}" class="nav-link">Parent</a>
                         </li>
                     </ul>
                 </div>
@@ -64,7 +64,7 @@
                         <h2 class="lead fw-normal text-muted mb-5">We have the best Teachers and Students in the world.</h2>
                         <!-- Button Modal -->
                         <div class="d-flex align-items-center justify-content-center mb-5">
-                            <a href="./pages/dashboard/dashboard.html" class="btn btn-secondary d-inline-flex align-items-center me-4">
+                            <a href="#" class="btn btn-secondary d-inline-flex align-items-center me-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-check-fill" viewBox="0 0 16 16" style="margin-right: 1rem">
                                     <path
                                         d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 1.59 2.498C8 14 8 13 8 12.5a4.5 4.5 0 0 1 5.026-4.47L15.964.686Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="d-flex justify-content-center flex-column mb-6 mb-lg-5">
                             <a href="https://themesberg.com" target="_blank">
-                                <img src="./assets/img/themesberg.svg" class="d-block mx-auto mb-3" height="25" width="25" alt="Themesberg Logo">
+                                <img src="{{ asset('assets/img/themesberg.svg') }}" class="d-block mx-auto mb-3" height="25" width="25" alt="Themesberg Logo">
                                 <span class="text-muted font-small">Login to your account.</span>
                             </a>
                         </div>
@@ -93,7 +93,7 @@
             <div class="container mt-n10 mt-lg-n12 z-2">
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <img src="./assets/img/mockup-presentation.png" alt="Mockup presentation">
+                        <img src="{{ asset('assets/img/mockup-presentation.png') }}" alt="Mockup presentation">
                     </div>
                 </div>
             </div>
