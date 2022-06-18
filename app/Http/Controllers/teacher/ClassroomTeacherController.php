@@ -12,9 +12,9 @@ class ClassroomTeacherController extends Controller
 {
     public function create()
     {
-        $teachers = Teacher::all();
-        $subjects = Subject::all();
-        $classrooms = Classroom::all();
+        $teachers = Teacher::with('classrooms')->get();
+        $subjects = Subject::with('branch')->get();
+        $classrooms = Classroom::with('students')->get();
 
         return view('admin.classrooms.teachers', compact(['teachers', 'subjects', 'classrooms']));
     }

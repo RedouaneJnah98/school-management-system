@@ -12,15 +12,15 @@ class SubjectController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::all();
-        $branches = Branch::all();
+        $subjects = Subject::with('branch')->get();
+        $branches = Branch::with('classrooms')->get();
 
         return view('admin.subjects.index', ['subjects' => $subjects, 'branches' => $branches]);
     }
 
-    public function create(Branch $branch)
+    public function create()
     {
-        $branches = $branch->all();
+        $branches = Branch::with('classrooms')->get();
 
         return view('admin.subjects.create', compact('branches'));
     }
@@ -43,7 +43,7 @@ class SubjectController extends Controller
 
     public function edit(Subject $subject)
     {
-        $branches = Branch::all();
+        $branches = Branch::with('classrooms')->get();
 
         return view('admin.subjects.edit', ['subject' => $subject, 'branches' => $branches]);
     }

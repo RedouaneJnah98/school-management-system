@@ -11,8 +11,8 @@ class ClassroomStudentController extends Controller
 {
     public function index()
     {
-        $students = Student::all();
-        $classrooms = Classroom::all();
+        $students = Student::with('classrooms')->get();
+        $classrooms = Classroom::with('students')->get();
 
         return view('admin.classrooms.students', compact(['students', 'classrooms']));
     }

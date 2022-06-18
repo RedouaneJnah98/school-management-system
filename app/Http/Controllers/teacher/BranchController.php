@@ -11,8 +11,8 @@ class BranchController extends Controller
 {
     public function index(Branch $branch)
     {
-        $branches = $branch->all();
-
+        $branches = $branch->with('classrooms')->get();
+        
         return view('admin.branches.index', compact('branches'));
     }
 

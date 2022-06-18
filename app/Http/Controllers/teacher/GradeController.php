@@ -9,9 +9,9 @@ use Illuminate\Validation\Rule;
 
 class GradeController extends Controller
 {
-    public function index(Grade $grade)
+    public function index()
     {
-        $grades = $grade->all();
+        $grades = Grade::with('classrooms')->get();
 
         return view('admin.grades.index', compact('grades'));
     }

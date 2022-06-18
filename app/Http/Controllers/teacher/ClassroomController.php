@@ -13,16 +13,16 @@ class ClassroomController extends Controller
 {
     public function index()
     {
-        $classrooms = Classroom::all();
+        $classrooms = Classroom::with('students')->get();
 
         return view('admin.classrooms.index', compact('classrooms'));
     }
 
     public function create()
     {
-        $teachers = Teacher::all();
-        $branches = Branch::all();
-        $grades = Grade::all();
+        $teachers = Teacher::with('classrooms')->get();
+        $branches = Branch::with('classrooms')->get();
+        $grades = Grade::with('classrooms')->get();
 
         return view('admin.classrooms.create', compact(['teachers', 'branches', 'grades']));
     }
@@ -51,9 +51,9 @@ class ClassroomController extends Controller
 
     public function edit(Classroom $classroom)
     {
-        $branches = Branch::all();
-        $grades = Grade::all();
-        $teachers = Teacher::all();
+        $teachers = Teacher::with('classrooms')->get();
+        $branches = Branch::with('classrooms')->get();
+        $grades = Grade::with('classrooms')->get();
 
         return view('admin.classrooms.edit', compact(['classroom', 'branches', 'grades', 'teachers']));
     }

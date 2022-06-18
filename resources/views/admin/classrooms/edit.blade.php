@@ -90,15 +90,9 @@
                                 <div class="col-lg-6 col-sm-6 mb-4">
                                     <label for="teacher">Branch Responsible</label>
                                     <select class="form-select @error('teacher_id') is-invalid @enderror" name="teacher_id" id="teacher">
-                                        @php
-                                            $firstname = $classroom->teacher->firstname;
-                                        @endphp
                                         @foreach($teachers as $teacher)
-                                            @if($firstname === $teacher->firstname)
-                                                <option selected value="{{ $teacher->id }}">{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>
-                                            @else
-                                                <option value="{{ $teacher->id }}" @selected(old('teacher_id'))>{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>
-                                            @endif
+                                            <option selected value="{{ $teacher->id }}">{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>
+                                            <option value="{{ $teacher->id }}" @selected(old('teacher_id'))>{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>
                                         @endforeach
                                     </select>
                                     @error('teacher_id')
