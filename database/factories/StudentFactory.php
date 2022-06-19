@@ -20,7 +20,7 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'parent_id' => Parents::factory(),
+//            'parent_id' => Parents::factory(),
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
             'email' => $this->faker->email(),
