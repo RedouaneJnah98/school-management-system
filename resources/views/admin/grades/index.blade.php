@@ -83,53 +83,53 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-centered table-nowrap mb-0 rounded">
-                        @if(count($grades) > 0)
-                            <thead class="thead-light">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="border-0 rounded-start">#</th>
+                            <th class="border-0 rounded-start">Grade Name</th>
+                            <th class="border-0">Grade Description</th>
+                            <th class="border-0">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Item -->
+                        @forelse($grades as $grade)
                             <tr>
-                                <th class="border-0 rounded-start">#</th>
-                                <th class="border-0 rounded-start">Grade Name</th>
-                                <th class="border-0">Grade Description</th>
-                                <th class="border-0">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <!-- Item -->
-                            @foreach($grades as $grade)
-                                <tr>
-                                    <td class="border-0">{{ $grade->id }}</td>
-                                    <td class="border-0">{{ $grade->name }}</td>
-                                    <td class="border-0 fw-bold">{{ $grade->description }}</td>
-                                    <td class="border-0 text-success">
-                                        <div class="dropdown">
-                                            <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
-                                               data-bs-offset="10,20">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                                </svg>
-                                            </a>
-                                            <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
-                                                <li>
-                                                    <a class="dropdown-item" href="{{ route('admin.grades.edit', $grade->id) }}">Edit</a>
-                                                </li>
-                                                <li>
-                                                    <form action="{{ route('admin.grades.destroy', $grade->id) }}" method="post">
-                                                        @method('DELETE')
-                                                        @csrf
+                                <td class="border-0">{{ $grade->id }}</td>
+                                <td class="border-0">{{ $grade->name }}</td>
+                                <td class="border-0 fw-bold">{{ $grade->description }}</td>
+                                <td class="border-0 text-success">
+                                    <div class="dropdown">
+                                        <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
+                                           data-bs-offset="10,20">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                            </svg>
+                                        </a>
+                                        <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('admin.grades.edit', $grade->id) }}">Edit</a>
+                                            </li>
+                                            <li>
+                                                <form action="{{ route('admin.grades.destroy', $grade->id) }}" method="post">
+                                                    @method('DELETE')
+                                                    @csrf
 
-                                                        <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>
-                                                    </form>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            <!-- End of Item -->
-                            </tbody>
-                        @else
-                            <div class="alert alert-info text-center">No records inserted.</div>
-                        @endif
+                                                    <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td class="text-info text-center" colspan="4">No grade inserted yet.</td>
+                            </tr>
+                        @endforelse
+                        <!-- End of Item -->
+                        </tbody>
                     </table>
                 </div>
             </div>

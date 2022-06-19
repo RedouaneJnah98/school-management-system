@@ -118,65 +118,65 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-centered table-nowrap mb-0 rounded">
-                        @if(count($classrooms) > 0)
-                            <thead class="thead-light">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="border-0 rounded-start">#</th>
+                            <th class="border-0 rounded-start">Branch Name</th>
+                            <th class="border-0">Grade</th>
+                            <th class="border-0">Year</th>
+                            <th class="border-0">Status</th>
+                            <th class="border-0">Remarks</th>
+                            <th class="border-0">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Item -->
+                        @forelse($classrooms as $classroom)
                             <tr>
-                                <th class="border-0 rounded-start">#</th>
-                                <th class="border-0 rounded-start">Branch Name</th>
-                                <th class="border-0">Grade</th>
-                                <th class="border-0">Year</th>
-                                <th class="border-0">Status</th>
-                                <th class="border-0">Remarks</th>
-                                <th class="border-0">Action</th>
+                                <td class="border-0">{{ $classroom->id }}</td>
+                                <td class="border-0">{{ $classroom->branch->name }}</td>
+                                <td class="border-0">{{ $classroom->grade->name }}</td>
+                                <td class="border-0 fw-bold">{{ $classroom->year }}</td>
+                                <td class="border-0 fw-bold">
+                                    <span class="badge {{ $classroom->status === 'Active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>
+                                </td>
+                                <td class="border-0 fw-bold text-info">{{ $classroom->remark }}</td>
+                                <td class="border-0 text-success">
+                                    <div class="dropdown">
+                                        <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
+                                           data-bs-offset="10,20">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                            </svg>
+                                        </a>
+                                        <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
+                                            <li id="branch">
+                                                <a class="dropdown-item" href="{{ route('admin.all_students', $classroom->id) }}">Students</a>
+                                            </li>
+
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('admin.classrooms.edit', $classroom->id) }}">Edit</a>
+                                            </li>
+                                            <li>
+                                                <form action="{{ route('admin.classrooms.destroy', $classroom->id) }}" method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+
+                                                    <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <!-- Item -->
-                            @foreach($classrooms as $classroom)
-                                <tr>
-                                    <td class="border-0">{{ $classroom->id }}</td>
-                                    <td class="border-0">{{ $classroom->branch->name }}</td>
-                                    <td class="border-0">{{ $classroom->grade->name }}</td>
-                                    <td class="border-0 fw-bold">{{ $classroom->year }}</td>
-                                    <td class="border-0 fw-bold">
-                                        <span class="badge {{ $classroom->status === 'Active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>
-                                    </td>
-                                    <td class="border-0 fw-bold text-info">{{ $classroom->remark }}</td>
-                                    <td class="border-0 text-success">
-                                        <div class="dropdown">
-                                            <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
-                                               data-bs-offset="10,20">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                                </svg>
-                                            </a>
-                                            <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">
-                                                <li id="branch">
-                                                    <a class="dropdown-item" href="{{ route('admin.all_students', $classroom->id) }}">Students</a>
-                                                </li>
-
-                                                <li>
-                                                    <a class="dropdown-item" href="{{ route('admin.classrooms.edit', $classroom->id) }}">Edit</a>
-                                                </li>
-                                                <li>
-                                                    <form action="{{ route('admin.classrooms.destroy', $classroom->id) }}" method="post">
-                                                        @method('DELETE')
-                                                        @csrf
-
-                                                        <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>
-                                                    </form>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            <!-- End of Item -->
-                            </tbody>
-                        @else
-                            <div class="alert alert-info text-center">No records inserted.</div>
-                        @endif
+                        @empty
+                            <tr>
+                                <td class="text-info text-center" colspan="7">No classroom inserted yet.</td>
+                            </tr>
+                        @endforelse
+                        <!-- End of Item -->
+                        </tbody>
                     </table>
                 </div>
             </div>

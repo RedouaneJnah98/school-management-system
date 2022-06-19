@@ -103,7 +103,7 @@
                         </thead>
                         <tbody id="result">
                         <!-- Item -->
-                        @foreach($subjects as $subject)
+                        @forelse($subjects as $subject)
                             <tr id="result">
                                 <td class="border-0">{{ $subject->id }}</td>
                                 <td class="border-0">{{ $subject->name }}</td>
@@ -138,7 +138,11 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td class="text-info text-center" colspan="7">No subject inserted yet.</td>
+                            </tr>
+                        @endforelse
                         <!-- End of Item -->
                         </tbody>
 

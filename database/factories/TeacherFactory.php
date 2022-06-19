@@ -26,7 +26,7 @@ class TeacherFactory extends Factory
             'password' => Hash::make('12345678'), // password
             'dob' => $this->faker->dateTimeBetween('1985-01-01', '1998-12-31')->format('y/m/d'),
             'phone' => $this->faker->phoneNumber(),
-            'status' => $this->faker->randomElement(['admin', 'teacher']),
+            'status' => 'teacher',
             'profile_bio' => $this->faker->sentence(),
             'password_confirmation' => Hash::make('12345678'),
             'gender' => $this->faker->randomElement(['male', 'female']),
@@ -42,7 +42,7 @@ class TeacherFactory extends Factory
 
     public function admin()
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function () {
             return [
                 'firstname' => 'Jnah',
                 'lastname' => 'Redouane',

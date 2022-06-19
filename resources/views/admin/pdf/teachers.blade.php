@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ajale School Students</title>
+    <title>Ajiale School Teachers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -23,11 +23,11 @@
     }
 
     th {
-        font-size: 14px;
+        font-size: 11px;
     }
 
     td {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     table {
@@ -57,26 +57,28 @@
         <th>Full Name</th>
         <th>Email Address</th>
         <th>Phone Number</th>
-        <th>Gender</th>
-        <th>Date Of Join</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Date Of Birth</th>
     </tr>
     </thead>
     <tbody>
     <!-- Item -->
-    @foreach($students as $student)
+    @foreach($teachers as $teacher)
         <tr>
-            <td>{{ $student['firstname'] . ' ' . $student['lastname'] }}</td>
-            <td>{{ $student['email'] }}</td>
+            <td>{{ $teacher['firstname'] . ' ' . $teacher['lastname'] }}</td>
+            <td>{{ $teacher['email'] }}</td>
             <td>
-                <span>{{ $student['phone'] }}</span>
+                <span>{{ $teacher['phone'] }}</span>
             </td>
-            <td>{{ $student['gender'] }}</td>
-            <td>{{ $student['date_of_join'] }}</td>
+            <td>{{ $teacher['address'] }}</td>
+            <td>{{ $teacher['city'] }}</td>
+            <td>{{ $teacher['dob'] }}</td>
         </tr>
     @endforeach
     <!-- End of Item -->
     </tbody>
-    <caption>all ajiale school students for 2022.</caption>
+    <caption>Ajiale School Teachers.</caption>
 </table>
 </body>
 </html>

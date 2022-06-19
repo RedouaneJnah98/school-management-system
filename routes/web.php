@@ -75,6 +75,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('classroom-teacher', [ClassroomTeacherController::class, 'store'])->name('classroom-teacher.store');
         // Download PDF
         Route::get('download_students', [DownloadController::class, 'download_students'])->name('download_students');
+        Route::get('download_parents', [DownloadController::class, 'download_parents'])->name('download_parents');
+        Route::get('download_teachers', [DownloadController::class, 'download_teachers'])->name('download_teachers');
 
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);
