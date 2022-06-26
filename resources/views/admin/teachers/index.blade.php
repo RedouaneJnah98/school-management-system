@@ -26,12 +26,15 @@
                 <p class="mb-0">This list contains the best Teachers in the world.</p>
             </div>
             <div class="btn-toolbar mb-2 mb-md-0">
-                <a href="{{ route('admin.teachers.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
-                    <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                    Add New
-                </a>
+                @can('create', App\Models\Teacher::class)
+                    <a href="{{ route('admin.teachers.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
+                        <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        Add New
+                    </a>
+                @endcan
+
                 <div class="btn-group ms-2 ms-lg-3">
                     <a href="{{ route('admin.download_teachers') }}" class="btn btn-sm btn-outline-gray-600">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-pdf-fill" viewBox="0 0 16 16">
@@ -96,9 +99,9 @@
                         <th class="border-gray-200">Email</th>
                         <th class="border-gray-200">Date Of Birth</th>
                         <th class="border-gray-200">Status</th>
-                        @can('add_teacher')
+                        @canany(['create', 'update','show','delete'], App\Models\Teacher::class)
                             <th class="border-gray-200">Action</th>
-                        @endcan
+                        @endcanany
                     </tr>
                     </thead>
                     <tbody>
@@ -118,7 +121,7 @@
                             <td><span class="fw-normal">{{ $teacher->email }}</span></td>
                             <td><span class="fw-bold">{{ $teacher->dob }}</span></td>
                             <td><span class="badge {{ $teacher->status === 'admin' ? 'bg-success' : 'bg-secondary' }}">{{ ucfirst($teacher->status) }}</span></td>
-                            @can('add_teacher')
+                            @canany(['update','delete', 'show'], $teacher)
                                 <td>
                                     <div class="dropdown">
                                         <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
@@ -132,25 +135,21 @@
                                             <li>
                                                 <a class="dropdown-item rounded-top" href="{{ route('admin.teachers.show', $teacher->id) }}">View Details</a>
                                             </li>
-                                            @can('edit_teacher')
-                                                <li>
-                                                    <a class="dropdown-item" href="{{ route('admin.teachers.edit', $teacher->id) }}">Edit</a>
-                                                </li>
-                                            @endcan
-                                            @can('delete_teacher')
-                                                <li>
-                                                    <form action="{{ route('admin.teachers.destroy', $teacher->id) }}" method="post">
-                                                        @method('DELETE')
-                                                        @csrf
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('admin.teachers.edit', $teacher->id) }}">Edit</a>
+                                            </li>
+                                            <li>
+                                                <form action="{{ route('admin.teachers.destroy', $teacher->id) }}" method="post">
+                                                    @method('DELETE')
+                                                    @csrf
 
-                                                        <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>
-                                                    </form>
-                                                </li>
-                                            @endcan
+                                                    <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>
+                                                </form>
+                                            </li>
                                         </ul>
                                     </div>
                                 </td>
-                            @endcan
+                            @endcanany
                         </tr>
                     @endforeach
 

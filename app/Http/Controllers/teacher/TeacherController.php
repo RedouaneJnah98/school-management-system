@@ -4,6 +4,7 @@ namespace App\Http\Controllers\teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\Teacher;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,17 +19,20 @@ class TeacherController extends Controller
         return view('admin.teachers.index', compact('teachers'));
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function create()
     {
         // authorize only admin
-        $this->authorize('add_teacher');
+        $this->authorize('create', Teacher::class);
 
         return view('admin.teachers.create');
     }
 
     public function store(Request $request)
     {
-        $this->authorize('add_teacher');
+        $this->authorize('create');
 
         $attributes = $request->validate([
             'firstname' => 'required|string',
@@ -69,19 +73,21 @@ class TeacherController extends Controller
 
     public function show(Teacher $teacher)
     {
+        $this->authorize('show', $teacher);
+
         return view('admin.teachers.show', compact('teacher'));
     }
 
     public function edit(Teacher $teacher)
     {
-        $this->authorize('edit_teacher');
+        $this->authorize('update', $teacher);
 
         return view('admin.teachers.edit', compact('teacher'));
     }
 
     public function update(Request $request, Teacher $teacher)
     {
-        $this->authorize('edit_teacher');
+        $this->authorize('update', $teacher);
 
         $attributes = $request->validate([
             'firstname' => 'required',
@@ -108,7 +114,7 @@ class TeacherController extends Controller
 
     public function destroy(Teacher $teacher)
     {
-        $this->authorize('delete_teacher');
+        $this->authorize('delete', $teacher);
         $teacher->delete();
 
         return redirect()->back()->with('delete', 'Record deleted.');
