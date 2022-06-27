@@ -92,6 +92,6 @@ class StudentController extends Controller
     {
         $student->delete();
 
-        return redirect()->back()->with('delete', 'Record deleted.');
+        return redirect()->back()->with('delete', 'Record moved to trash, you can restore this account.');
     }
 }

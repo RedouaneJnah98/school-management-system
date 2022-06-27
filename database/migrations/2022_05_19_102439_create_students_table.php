@@ -30,6 +30,7 @@ return new class extends Migration {
             $table->string('gender');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

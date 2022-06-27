@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\parent\ParentController;
+use App\Http\Controllers\SoftDeleteController;
 use App\Http\Controllers\student\LoginController;
 use App\Http\Controllers\student\StudentController;
 use App\Http\Controllers\teacher\AttendanceController;
@@ -77,6 +78,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('download_students', [DownloadController::class, 'download_students'])->name('download_students');
         Route::get('download_parents', [DownloadController::class, 'download_parents'])->name('download_parents');
         Route::get('download_teachers', [DownloadController::class, 'download_teachers'])->name('download_teachers');
+        // Soft Delete Student Model
+        Route::get('trashed', [SoftDeleteController::class, 'trashed'])->name('trashed');
+        Route::get('restore_student/{id}', [SoftDeleteController::class, 'restore_student'])->name('restore_student');
 
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);
