@@ -5,6 +5,7 @@ namespace App\Http\Controllers\parent;
 use App\Http\Controllers\Controller;
 use App\Models\Parents;
 use App\Models\Student;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
@@ -18,8 +19,14 @@ class ParentController extends Controller
         return view('admin.parents.index', compact('parents'));
     }
 
+    /**
+     * @throws AuthorizationException
+     */
+
     public function create()
     {
+        $this->authorize('create', Parents::class);
+
         return view('admin.parents.create');
     }
 
@@ -67,11 +74,15 @@ class ParentController extends Controller
 
     public function edit(Parents $parent)
     {
+        $this->authorize('update', $parent);
+
         return view('admin.parents.edit', compact('parent'));
     }
 
     public function update(Request $request, Parents $parent)
     {
+        $this->authorize('update', $parent);
+
         $attributes = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
@@ -92,6 +103,7 @@ class ParentController extends Controller
 
     public function destroy(Parents $parent)
     {
+        $this->authorize('delete', $parent);
         $parent->delete();
 
         return redirect()->back()->with('delete', 'Parent and their student accounts deleted.');

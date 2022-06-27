@@ -26,12 +26,15 @@
                 <p class="mb-0">This list contains the best Parents in the world.</p>
             </div>
             <div class="btn-toolbar mb-2 mb-md-0">
-                <a href="{{ route('admin.parents.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
-                    <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                    Add New
-                </a>
+                @can('create', App\Models\Parents::class)
+                    <a href="{{ route('admin.parents.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
+                        <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        Add New
+                    </a>
+                @endcan
+
                 <div class="btn-group ms-2 ms-lg-3">
                     <a href="{{ route('admin.download_parents') }}" class="btn btn-sm btn-outline-gray-600">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-pdf-fill" viewBox="0 0 16 16">
@@ -95,7 +98,9 @@
                             <th class="border-0 rounded-start">Full Name</th>
                             <th class="border-0">Email Address</th>
                             <th class="border-0">Phone Number</th>
-                            <th class="border-0">Last Login</th>
+                            @can('last_login', \App\Models\Parents::class)
+                                <th class="border-0">Last Login</th>
+                            @endcan
                             <th class="border-0 rounded-end">Action</th>
                         </tr>
                         </thead>
@@ -113,9 +118,12 @@
                                 <td class="border-0 text-danger">
                                     <span class="fw-bold">{{ $parent->phone_number }}</span>
                                 </td>
-                                <td class="border-0 fw-bold">
-                                    {{ $parent->last_login_date->diffForHumans() }}
-                                </td>
+                                @can('last_login', \App\Models\Parents::class)
+                                    <td class="border-0 fw-bold">
+                                        {{ $parent->last_login_date->diffForHumans() }}
+                                    </td>
+                                @endcan
+
                                 <td class="border-0 text-success">
                                     <div class="dropdown">
                                         <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"
@@ -129,17 +137,19 @@
                                             <li>
                                                 <a class="dropdown-item rounded-top" href="{{ route('admin.parents.show', $parent->id) }}">View Details</a>
                                             </li>
-                                            <li>
-                                                <a class="dropdown-item" href="{{ route('admin.parents.edit', $parent->id) }}">Edit</a>
-                                            </li>
-                                            <li>
-                                                <form action="{{ route('admin.parents.destroy', $parent->id) }}" method="post">
-                                                    @method('DELETE')
-                                                    @csrf
+                                            @canany(['update', 'delete'], $parent)
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ route('admin.parents.edit', $parent->id) }}">Edit</a>
+                                                </li>
+                                                <li>
+                                                    <form action="{{ route('admin.parents.destroy', $parent->id) }}" method="post">
+                                                        @method('DELETE')
+                                                        @csrf
 
-                                                    <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>
-                                                </form>
-                                            </li>
+                                                        <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>
+                                                    </form>
+                                                </li>
+                                            @endcanany
                                         </ul>
                                     </div>
                                 </td>
