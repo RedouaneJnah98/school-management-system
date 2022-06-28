@@ -7,6 +7,7 @@ use App\Models\Parents;
 use App\Models\Student;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
@@ -32,10 +33,9 @@ class ParentController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $attributes = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'phone_number' => 'required|numeric',
             'email' => 'required|email|unique:parents,email',
             'password' => [
                 'required',
@@ -57,6 +57,7 @@ class ParentController extends Controller
                     ->uncompromised()
 
             ],
+            'phone_number' => 'required|numeric',
             'date_of_birth' => 'required|date',
             'profile_image' => 'required|image|mimes:jpeg,jpg,png',
             'gender' => 'required',
@@ -65,6 +66,21 @@ class ParentController extends Controller
             'city' => 'required',
             'zip' => 'required|numeric'
         ]);
+
+        $attributes['date_of_birth'] = $request->date('date_of_birth');
+        $image_name = $request->file('profile_image')->getClientOriginalName();
+        // store the image in the public/avatars directory
+        $attributes['profile_image'] = $request->file('profile_image')->storeAs('public/avatars', $image_name);
+        $attributes['password'] = Hash::make($attributes['password']);
+//        $attributes['password_confirmation'] = Hash::make($attributes['password_confirmation']);
+
+        $insert_parent = Parents::create($attributes);
+
+        if ($insert_parent) {
+            return redirect()->route('admin.parents.index')->with('success', 'You added a new Parent.');
+        } else {
+            return redirect()->back()->with('failed', 'Something went wrong, try again.');
+        }
     }
 
     public function show(Parents $parent)
@@ -72,12 +88,20 @@ class ParentController extends Controller
         return view('admin.parents.show', compact('parent'));
     }
 
+    /**
+     * @throws AuthorizationException
+     */
+
     public function edit(Parents $parent)
     {
         $this->authorize('update', $parent);
 
         return view('admin.parents.edit', compact('parent'));
     }
+
+    /**
+     * @throws AuthorizationException
+     */
 
     public function update(Request $request, Parents $parent)
     {
@@ -100,6 +124,10 @@ class ParentController extends Controller
 
         return redirect()->back()->with('failed', 'Something went wrong, try again.');
     }
+
+    /**
+     * @throws AuthorizationException
+     */
 
     public function destroy(Parents $parent)
     {

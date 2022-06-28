@@ -119,8 +119,11 @@
                                     <span class="fw-bold">{{ $parent->phone_number }}</span>
                                 </td>
                                 @can('last_login', \App\Models\Parents::class)
+                                    @php
+                                        $last_login = $parent->last_login_date;
+                                    @endphp
                                     <td class="border-0 fw-bold">
-                                        {{ $parent->last_login_date->diffForHumans() }}
+                                        {{ $last_login ? $last_login->diffForHumans() : 'Not authenticated yet' }}
                                     </td>
                                 @endcan
 

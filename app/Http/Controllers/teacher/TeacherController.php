@@ -32,7 +32,7 @@ class TeacherController extends Controller
 
     public function store(Request $request)
     {
-        $this->authorize('create');
+        $this->authorize('create', Teacher::class);
 
         $attributes = $request->validate([
             'firstname' => 'required|string',

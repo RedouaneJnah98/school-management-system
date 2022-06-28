@@ -116,8 +116,11 @@
                                 <td class="border-0 text-danger">
                                     <span class="fw-bold">{{ $student->phone }}</span>
                                 </td>
+                                @php
+                                    $last_login = $student->last_login_date;
+                                @endphp
                                 <td class="border-0 fw-bold">
-                                    {{ $student->last_login_date->diffForHumans() }}
+                                    {{ $last_login ? $last_login->diffForHumans() : 'Not authenticate yet' }}
                                 </td>
                                 @can('trashed')
                                     <td class="border-0">

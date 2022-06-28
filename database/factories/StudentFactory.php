@@ -31,7 +31,7 @@ class StudentFactory extends Factory
             'date_of_join' => $this->faker->dateTimeInInterval(),
             'date_of_birth' => $this->faker->dateTimeBetween('2008-01-01', '2012-12-31')->format('y/m/d'),
             'gender' => $this->faker->randomElement(['Male', 'Female']),
-            'last_login_date' => $this->faker->dateTimeBetween('-1 week', Carbon::now()),
+            'last_login_date' => $this->faker->dateTimeBetween('-1 week'),
             'last_login_ip' => $this->faker->ipv4(),
         ];
     }

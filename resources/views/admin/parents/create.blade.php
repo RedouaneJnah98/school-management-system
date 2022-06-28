@@ -157,9 +157,9 @@
                                                       clip-rule="evenodd"></path>
                                              </svg>
                                         </span>
-                                        <input data-datepicker="" class="form-control @error('dob') is-invalid @enderror" name="dob" id="birthday"
-                                               placeholder="dd/mm/yyyy" value="{{ old('dob') }}">
-                                        @error('dob')
+                                        <input data-datepicker="" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" id="birthday"
+                                               placeholder="dd/mm/yyyy" value="{{ old('date_of_birth') }}">
+                                        @error('date_of_birth')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
