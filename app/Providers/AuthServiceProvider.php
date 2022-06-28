@@ -29,5 +29,10 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
+
+        // Verify if Teacher account is Admin
+        Gate::define('trashed', function (Teacher $teacher) {
+            return $teacher->status === 'admin';
+        });
     }
 }

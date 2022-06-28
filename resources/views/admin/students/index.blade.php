@@ -96,6 +96,9 @@
                             <th class="border-0">Email Address</th>
                             <th class="border-0">Phone Number</th>
                             <th class="border-0">Last Login</th>
+                            @can('trashed')
+                                <th class="border-0">Is Trashed</th>
+                            @endcan
                             <th class="border-0 rounded-end">Action</th>
                         </tr>
                         </thead>
@@ -116,6 +119,16 @@
                                 <td class="border-0 fw-bold">
                                     {{ $student->last_login_date->diffForHumans() }}
                                 </td>
+                                @can('trashed')
+                                    <td class="border-0">
+                                        @if($student->trashed())
+                                            <span class="badge bg-success">Yes</span>
+                                        @else
+                                            <span class="badge bg-danger">No</span>
+                                        @endif
+                                    </td>
+                                @endcan
+
                                 <td class="border-0 text-success">
                                     <div class="dropdown">
                                         <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"

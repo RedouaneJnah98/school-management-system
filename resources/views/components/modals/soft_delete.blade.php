@@ -1,24 +1,24 @@
 <script>
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-            confirmButton: 'btn btn-danger me-3',
-            cancelButton: 'btn btn-info'
+            confirmButton: 'btn btn-danger',
+            cancelButton: 'btn btn-info me-3'
         },
         buttonsStyling: false
-    });
+    })
 
-    $('.delete-btn').click(function (event) {
+    $('.soft-delete-btn').on('click', function (event) {
         let form = $(this).closest('form');
         event.preventDefault();
 
         swalWithBootstrapButtons.fire({
             title: 'Are you sure?',
-            text: "You want to delete this record?",
+            text: "You won't be able to recover this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
                 swalWithBootstrapButtons.fire(
@@ -30,9 +30,18 @@
                         form.submit();
                     }
                 })
-
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Record is safe :)',
+                    'error'
+                )
             }
         })
-    })
-</script>
 
+    })
+
+</script>

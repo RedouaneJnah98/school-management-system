@@ -81,6 +81,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Soft Delete Student Model
         Route::get('trashed', [SoftDeleteController::class, 'trashed'])->name('trashed');
         Route::get('restore_student/{id}', [SoftDeleteController::class, 'restore_student'])->name('restore_student');
+        Route::delete('force_delete/{id}', [SoftDeleteController::class, 'force_delete'])->name('force_delete');
 
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);

@@ -113,11 +113,11 @@
                                     <a href="{{ route('admin.restore_student', $student->id) }}" class="btn btn-info btn-sm">Restore</a>
                                 </td>
                                 <td class="border-0 text-success">
-                                    <form action="{{ route('admin.students.destroy', $student->id) }}" method="post">
+                                    <form action="{{ route('admin.force_delete', $student->id) }}" method="post">
                                         @method('DELETE')
                                         @csrf
 
-                                        <a class="btn btn-sm delete-btn btn-danger" href="#">Delete</a>
+                                        <a class="btn btn-sm soft-delete-btn btn-danger" href="#">Delete</a>
                                     </form>
                                 </td>
                             </tr>
@@ -139,6 +139,6 @@
 {{-- Success Notification --}}
 <x-notification.success_notif/>
 {{-- Delete Modal --}}
-<x-modals.delete/>
+<x-modals.soft_delete/>
 {{-- Delete Notification --}}
 <x-notification.delete_notif/>

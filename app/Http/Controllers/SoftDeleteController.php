@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
-use Illuminate\Http\Request;
 
 class SoftDeleteController extends Controller
 {
@@ -19,5 +18,12 @@ class SoftDeleteController extends Controller
         Student::withTrashed()->find($id)->restore();
 
         return to_route('admin.students.index')->with('success', 'Student account restored.');
+    }
+
+    public function force_delete($id)
+    {
+        Student::withTrashed()->find($id)->forceDelete();
+
+        return back()->with('success', 'Record deleted permanently!');
     }
 }
