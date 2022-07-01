@@ -48,7 +48,6 @@ class Teacher extends Authenticatable
      *
      * @return Attribute
      */
-
     public function status(): Attribute
     {
         return Attribute::make(
@@ -60,7 +59,6 @@ class Teacher extends Authenticatable
      * Teachers belong to many classrooms.
      * @return BelongsToMany
      */
-
     public function classrooms(): BelongsToMany
     {
         return $this->belongsToMany(Classroom::class)->withTimestamps();
