@@ -15,7 +15,7 @@ class ParentController extends Controller
 {
     public function index(Parents $parent)
     {
-        $parents = $parent->paginate(15);
+        $parents = $parent->newest()->paginate(15);
 
         return view('admin.parents.index', compact('parents'));
     }

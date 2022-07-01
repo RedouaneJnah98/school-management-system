@@ -120,7 +120,7 @@
                             <td><span class="fw-normal">{{ $teacher->lastname }}</span></td>
                             <td><span class="fw-normal">{{ $teacher->email }}</span></td>
                             <td><span class="fw-bold">{{ $teacher->dob }}</span></td>
-                            <td><span class="badge {{ $teacher->status === 'admin' ? 'bg-success' : 'bg-secondary' }}">{{ ucfirst($teacher->status) }}</span></td>
+                            <td><span class="badge {{ $teacher->status === 'Admin' ? 'bg-success' : 'bg-secondary' }}">{{ $teacher->status }}</span></td>
                             @canany(['update','delete', 'show'], $teacher)
                                 <td>
                                     <div class="dropdown">

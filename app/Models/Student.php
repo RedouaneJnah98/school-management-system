@@ -24,14 +24,14 @@ class Student extends Authenticatable
      * @return void
      */
 
-    public function scopeLatest(Builder $query): void
+    public function scopeNewest(Builder $query): void
     {
         $query->orderBy(static::CREATED_AT, 'desc');
     }
 
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(Parents::class, 'parent_id')->latest();
+        return $this->belongsTo(Parents::class, 'parent_id');
     }
 
     public function classrooms(): BelongsToMany

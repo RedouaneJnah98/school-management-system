@@ -32,7 +32,7 @@ class AuthServiceProvider extends ServiceProvider
 
         // Verify if Teacher account is Admin
         Gate::define('trashed', function (Teacher $teacher) {
-            return $teacher->status === 'admin';
+            return $teacher->status === 'Admin';
         });
     }
 }

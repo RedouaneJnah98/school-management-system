@@ -18,7 +18,7 @@ class TeacherPolicy
      */
     public function create(Teacher $teacher): bool
     {
-        return $teacher->status == 'admin';
+        return $this->isAdministrator($teacher);
     }
 
     /**
@@ -29,7 +29,7 @@ class TeacherPolicy
      */
     public function update(Teacher $teacher): bool
     {
-        return $teacher->status === 'admin';
+        return $this->isAdministrator($teacher);
     }
 
     /**
@@ -40,7 +40,7 @@ class TeacherPolicy
      */
     public function delete(Teacher $teacher): bool
     {
-        return $teacher->status === 'admin';
+        return $this->isAdministrator($teacher);
     }
 
     /**
@@ -52,6 +52,18 @@ class TeacherPolicy
 
     public function show(Teacher $teacher): bool
     {
-        return $teacher->status === 'admin';
+        return $this->isAdministrator($teacher);
+    }
+
+    /**
+     * check if the teacher status is admin
+     *
+     * @param  $teacher
+     * @return bool
+     */
+
+    public function isAdministrator($teacher): bool
+    {
+        return $teacher->status === 'Admin';
     }
 }

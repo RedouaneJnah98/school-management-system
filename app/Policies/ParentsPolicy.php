@@ -58,6 +58,6 @@ class ParentsPolicy
 
     public function isAdministrator($teacher): bool
     {
-        return $teacher->status === 'admin';
+        return $teacher->status === 'Admin';
     }
 }
