@@ -1,4 +1,6 @@
 <x-dashboard_layout>
+    @section('title', 'Support')
+
     {{-- Sidebar --}}
     @include('components.admin._sidebar')
 
