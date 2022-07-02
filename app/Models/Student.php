@@ -28,6 +28,16 @@ class Student extends Authenticatable
         $query->orderBy(static::CREATED_AT, 'desc');
     }
 
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function setPasswordConfirmationAttribute($password)
+    {
+        $this->attributes['password_confirmation'] = bcrypt($password);
+    }
+
     /**
      * Student belongs to one parent
      * @return BelongsTo

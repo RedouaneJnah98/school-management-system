@@ -57,9 +57,6 @@ class TeacherController extends Controller
         $image_name = $request->file('profile_image')->getClientOriginalName();
         // store the image in the public/avatars directory
         $attributes['profile_image'] = $request->file('profile_image')->storeAs('public/avatars', $image_name);
-        // Hash password
-        $attributes['password'] = Hash::make($attributes['password']);
-        $attributes['password_confirmation'] = Hash::make($attributes['password_confirmation']);
 
         // insert data into DB
         $insert_data = Teacher::create($attributes);

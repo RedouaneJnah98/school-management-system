@@ -82,6 +82,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('trashed', [SoftDeleteController::class, 'trashed'])->name('trashed');
         Route::get('restore_student/{id}', [SoftDeleteController::class, 'restore_student'])->name('restore_student');
         Route::delete('force_delete/{id}', [SoftDeleteController::class, 'force_delete'])->name('force_delete');
+        // Support Page
+        Route::view('support', 'admin.support')->name('support');
+        // Settings Page
+        Route::view('settings', 'admin.settings')->name('settings');
 
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);

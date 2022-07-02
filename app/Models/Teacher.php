@@ -55,6 +55,16 @@ class Teacher extends Authenticatable
         );
     }
 
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function setPasswordConfirmationAttribute($password)
+    {
+        $this->attributes['password_confirmation'] = bcrypt($password);
+    }
+
     /**
      * Teachers belong to many classrooms.
      * @return BelongsToMany
