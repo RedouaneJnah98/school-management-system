@@ -14,17 +14,16 @@ class ClassroomController extends Controller
     public function index()
     {
         $classrooms = Classroom::with('students')->get();
-        
+
         return view('admin.classrooms.index', compact('classrooms'));
     }
 
     public function create()
     {
-        $teachers = Teacher::with('classrooms')->get();
         $branches = Branch::with('classrooms')->get();
         $grades = Grade::with('classrooms')->get();
 
-        return view('admin.classrooms.create', compact(['teachers', 'branches', 'grades']));
+        return view('admin.classrooms.create', compact(['branches', 'grades']));
     }
 
     public function store(Request $request)
@@ -32,7 +31,6 @@ class ClassroomController extends Controller
         $attributes = $request->validate([
             'branch_id' => 'required|numeric',
             'grade_id' => 'required|numeric|unique:classrooms',
-//            'teacher_id' => 'required',
             'year' => 'required',
             'status' => 'required',
             'remark' => 'required',

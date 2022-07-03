@@ -1,4 +1,5 @@
 <x-dashboard_layout>
+    @section('title', 'Classrooms')
     {{-- sidebar --}}
     @include('components.admin._sidebar')
 
@@ -121,12 +122,12 @@
                         <thead class="thead-light">
                         <tr>
                             <th class="border-0 rounded-start">#</th>
-                            <th class="border-0 rounded-start">Branch Name</th>
+                            <th class="border-0">Branch Name</th>
                             <th class="border-0">Grade</th>
                             <th class="border-0">Year</th>
                             <th class="border-0">Status</th>
                             <th class="border-0">Remarks</th>
-                            <th class="border-0">Action</th>
+                            <th class="border-0 rounded-end">Action</th>
                         </tr>
                         </thead>
                         <tbody>

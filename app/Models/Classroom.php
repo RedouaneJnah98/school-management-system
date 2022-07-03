@@ -11,6 +11,16 @@ class Classroom extends Model
 
     protected $guarded = [];
 
+//    public function setStudentIdAttribute($value)
+//    {
+//        $this->attributes['student_id'] = json_encode($value);
+//    }
+//
+//    public function getStudentIdAttribute($value)
+//    {
+//        $this->attributes['student_id'] = json_decode($value);
+//    }
+
     // Relationships
 //    public function teacher()
 //    {

@@ -1,4 +1,5 @@
 <x-dashboard_layout>
+    @section('title', 'Add Classroom Student')
     {{-- sidebar --}}
     @include('components.admin._sidebar')
 
@@ -24,7 +25,7 @@
             <div>
                 <div class="mb-3 mb-lg-0">
                     <h1 class="h4">Add Classroom Student</h1>
-                    <p class="mb-0">Dozens of reusable components built to provide buttons, alerts, popovers, and more.</p>
+                    <p class="mb-0">Add students to the classroom.</p>
                 </div>
             </div>
         </div>
@@ -37,7 +38,7 @@
                         <form action="{{ route('admin.classroom-student.store') }}" method="post">
                             @csrf
 
-                            <div class="row mb-4">
+                            <div class="row mb-1">
                                 <div class="col-lg-6 col-sm-6 mb-4">
                                     <label for="classroom">Classroom</label>
                                     <select class="form-select @error('classroom_id') is-invalid @enderror" name="classroom_id" id="classroom">
@@ -52,9 +53,9 @@
                                     </div>
                                     @enderror
                                 </div>
-                                <div class="col-lg-6 col-sm-6 mb-4">
+                                <div class="col-lg-6 col-sm-6">
                                     <label for="student">Student</label>
-                                    <select class="form-select @error('student_id') is-invalid @enderror" name="student_id" id="student">
+                                    <select class="form-select js-example-basic-multiple @error('student_id') is-invalid @enderror" name="student_id[]" multiple="multiple" id="student">
                                         <option selected disabled>Select A Student</option>
                                         @foreach($students as $student)
                                             <option value="{{ $student->id }}">{{ $student->firstname . ' ' . $student->lastname }}</option>
@@ -83,3 +84,8 @@
 {{-- Modals --}}
 <x-modals.failed/>
 
+<script>
+    $(document).ready(function () {
+        $('.js-example-basic-multiple').select2();
+    });
+</script>

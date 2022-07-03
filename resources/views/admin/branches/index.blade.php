@@ -86,11 +86,11 @@
                         <thead class="thead-light">
                         <tr>
                             <th class="border-0 rounded-start">#</th>
-                            <th class="border-0 rounded-start">Branch Name</th>
+                            <th class="border-0">Branch Name</th>
                             <th class="border-0">Branch Description</th>
                             <th class="border-0">Created At</th>
                             <th class="border-0">Last Update</th>
-                            <th class="border-0">Action</th>
+                            <th class="border-0 rounded-end">Action</th>
                         </tr>
                         </thead>
                         <tbody>

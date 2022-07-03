@@ -1,4 +1,5 @@
 <x-dashboard_layout>
+    @section('title', 'Trashed')
     {{-- sidebar --}}
     @include('components.admin._sidebar')
 

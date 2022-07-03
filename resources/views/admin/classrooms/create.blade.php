@@ -1,4 +1,5 @@
 <x-dashboard_layout>
+    @section('title', 'Add Class')
     {{-- sidebar --}}
     @include('components.admin._sidebar')
 
@@ -82,20 +83,20 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-lg-6 col-sm-6 mb-4">
-                                    <label for="teacher">Teached by</label>
-                                    <select class="form-select @error('teacher_id') is-invalid @enderror" name="teacher_id" id="teacher">
-                                        <option selected disabled>Select A Teacher</option>
-                                        @foreach($teachers as $teacher)
-                                            <option value="{{ $teacher->id }}" @selected(old('teacher_id'))>{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('teacher_id')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
+                                {{--                                <div class="col-lg-6 col-sm-6 mb-4">--}}
+                                {{--                                    <label for="teacher">Teached by</label>--}}
+                                {{--                                    <select class="form-select @error('teacher_id') is-invalid @enderror" name="teacher_id" id="teacher">--}}
+                                {{--                                        <option selected disabled>Select A Teacher</option>--}}
+                                {{--                                        @foreach($teachers as $teacher)--}}
+                                {{--                                            <option value="{{ $teacher->id }}" @selected(old('teacher_id'))>{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>--}}
+                                {{--                                        @endforeach--}}
+                                {{--                                    </select>--}}
+                                {{--                                    @error('teacher_id')--}}
+                                {{--                                    <div class="invalid-feedback">--}}
+                                {{--                                        {{ $message }}--}}
+                                {{--                                    </div>--}}
+                                {{--                                    @enderror--}}
+                                {{--                                </div>--}}
 
                                 <div class="col-lg-6 col-sm-6 mb-4">
                                     <label for="status">Status</label>
