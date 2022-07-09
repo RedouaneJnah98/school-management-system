@@ -179,8 +179,9 @@
                         <thead>
                         <tr>
                             <th class="border-bottom">
-                                <div class="form-check dashboard-check"><input class="form-check-input" type="checkbox" value="" id="userCheck55"> <label class="form-check-label"
-                                                                                                                                                          for="userCheck55"></label></div>
+                                <div class="form-check dashboard-check"><input class="form-check-input" type="checkbox" value="" id="userCheck55">
+                                    <label class="form-check-label" for="userCheck55"></label>
+                                </div>
                             </th>
                             <th class="border-bottom">Name</th>
                             <th class="border-bottom">Date Created</th>
@@ -195,8 +196,9 @@
                         @foreach($students as $student)
                             <tr>
                                 <td>
-                                    <div class="form-check dashboard-check"><input class="form-check-input" type="checkbox" value="" id="userCheck1"> <label class="form-check-label"
-                                                                                                                                                             for="userCheck1"></label></div>
+                                    <div class="form-check dashboard-check"><input class="form-check-input" type="checkbox" value="" id="userCheck1">
+                                        <label class="form-check-label" for="userCheck1"></label>
+                                    </div>
                                 </td>
                                 <td>
                                     <a href="#" class="d-flex align-items-center"><img src="{{ $student->profile_image }}" class="avatar rounded-circle me-3" alt="Avatar">
