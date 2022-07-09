@@ -37,123 +37,38 @@
                 </a>
             </li>
             <li class="nav-item">
-                <span class="nav-link collapsed d-flex justify-content-between align-items-center"
-                      data-bs-toggle="collapse" data-bs-target="#submenu-app">
-                    <span>
-                        <span class="sidebar-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="#9CA3AF" width="20" height="20">
-                                <path
-                                    d="M592 0h-384C181.5 0 160 22.25 160 49.63V96c23.42 0 45.1 6.781 63.1 17.81V64h352v288h-64V304c0-8.838-7.164-16-16-16h-96c-8.836 0-16 7.162-16 16V352H287.3c22.07 16.48 39.54 38.5 50.76 64h253.9C618.5 416 640 393.8 640 366.4V49.63C640 22.25 618.5 0 592 0zM160 320c53.02 0 96-42.98 96-96c0-53.02-42.98-96-96-96C106.1 128 64 170.1 64 224C64 277 106.1 320 160 320zM192 352H128c-70.69 0-128 57.31-128 128c0 17.67 14.33 32 32 32h256c17.67 0 32-14.33 32-32C320 409.3 262.7 352 192 352z"/>
-                            </svg>
-                        </span>
-                        <span class="sidebar-text">Teachers</span>
+                <a href="{{ route('admin.teachers.index') }}" class="nav-link">
+                    <span class="sidebar-icon">
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="#9CA3AF" width="20" height="20">
+                             <path
+                                 d="M592 0h-384C181.5 0 160 22.25 160 49.63V96c23.42 0 45.1 6.781 63.1 17.81V64h352v288h-64V304c0-8.838-7.164-16-16-16h-96c-8.836 0-16 7.162-16 16V352H287.3c22.07 16.48 39.54 38.5 50.76 64h253.9C618.5 416 640 393.8 640 366.4V49.63C640 22.25 618.5 0 592 0zM160 320c53.02 0 96-42.98 96-96c0-53.02-42.98-96-96-96C106.1 128 64 170.1 64 224C64 277 106.1 320 160 320zM192 352H128c-70.69 0-128 57.31-128 128c0 17.67 14.33 32 32 32h256c17.67 0 32-14.33 32-32C320 409.3 262.7 352 192 352z"/>
+                         </svg>
                     </span>
-                    <span class="link-arrow">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                </span>
-                <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false">
-                    <ul class="flex-column nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.teachers.index') }}">
-                                <span class="sidebar-text">All Teachers</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                @can('create', App\Models\Teacher::class)
-                    <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false">
-                        <ul class="flex-column nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.teachers.create') }}">
-                                    <span class="sidebar-text">Add Teacher</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                @endcan
+                    <span class="sidebar-text">Teachers</span>
+                </a>
             </li>
             <li class="nav-item">
-                <span class="nav-link collapsed d-flex justify-content-between align-items-center"
-                      data-bs-toggle="collapse" data-bs-target="#submenu-pages">
-                    <span>
-                        <span class="sidebar-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-person-hearts" viewBox="0 0 16 16">
+                <a href="{{ route('admin.parents.index') }}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-person-hearts" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                       d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566ZM9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4Zm13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
                             </svg>
-                        </span>
-                        <span class="sidebar-text">Parents</span>
                     </span>
-                    <span class="link-arrow">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                </span>
-                <div class="multi-level collapse" role="list" id="submenu-pages" aria-expanded="false">
-                    <ul class="flex-column nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.parents.index') }}">
-                                <span class="sidebar-text">All Parents</span>
-                            </a>
-                        </li>
-                    </ul>
-                    @can('isAdministrator', \App\Models\Parents::class)
-                        <ul class="flex-column nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.parents.create') }}">
-                                    <span class="sidebar-text">Add Parent</span>
-                                </a>
-                            </li>
-                        </ul>
-                    @endcan
-                </div>
+                    <span class="sidebar-text">Parents</span>
+                </a>
             </li>
             <li class="nav-item">
-                <span class="nav-link collapsed d-flex justify-content-between align-items-center"
-                      data-bs-toggle="collapse" data-bs-target="#submenu-components">
-                    <span>
-                        <span class="sidebar-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#9CA3AF" width="16" height="16">
+                <a href="{{ route('admin.students.index') }}" class="nav-link">
+                    <span class="sidebar-icon">
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#9CA3AF" width="16" height="16">--}}
                                 <path
                                     d="M45.63 79.75L52 81.25v58.5C45 143.9 40 151.3 40 160c0 8.375 4.625 15.38 11.12 19.75L35.5 242C33.75 248.9 37.63 256 43.13 256h41.75c5.5 0 9.375-7.125 7.625-13.1L76.88 179.8C83.38 175.4 88 168.4 88 160c0-8.75-5-16.12-12-20.25V87.13L128 99.63l.001 60.37c0 70.75 57.25 128 128 128s127.1-57.25 127.1-128L384 99.62l82.25-19.87c18.25-4.375 18.25-27 0-31.5l-190.4-46c-13-3-26.62-3-39.63 0l-190.6 46C27.5 52.63 27.5 75.38 45.63 79.75zM359.2 312.8l-103.2 103.2l-103.2-103.2c-69.93 22.3-120.8 87.2-120.8 164.5C32 496.5 47.53 512 66.67 512h378.7C464.5 512 480 496.5 480 477.3C480 400 429.1 335.1 359.2 312.8z"/>
-                            </svg>
-
-                        </span>
-                        <span class="sidebar-text">Students</span>
+                                                    </svg>
                     </span>
-                    <span class="link-arrow">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                </span>
-                <div class="multi-level collapse" role="list" id="submenu-components" aria-expanded="false">
-                    <ul class="flex-column nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.students.index') }}">
-                                <span class="sidebar-text">All Students</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="flex-column nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.students.create') }}">
-                                <span class="sidebar-text">Add Student</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    <span class="sidebar-text">Students</span>
+                </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('admin.classrooms.index') }}" class="nav-link">
@@ -192,45 +107,17 @@
                 </a>
             </li>
             <li class="nav-item">
-                <span class="nav-link collapsed d-flex justify-content-between align-items-center"
-                      data-bs-toggle="collapse" data-bs-target="#grade">
-                    <span>
-                        <span class="sidebar-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
-                                <path
-                                    d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
-                            </svg>
-                        </span>
-                        <span class="sidebar-text">Grade</span>
+                <a href="{{ route('admin.grades.index') }}" class="nav-link">
+                    <span class="sidebar-icon">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+                            <path
+                                d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
+                         </svg>
                     </span>
-                    <span class="link-arrow">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                </span>
-                <div class="multi-level collapse" role="list" id="grade" aria-expanded="false">
-                    <ul class="flex-column nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.grades.index') }}">
-                                <span class="sidebar-text">Grades</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="multi-level collapse" role="list" id="grade" aria-expanded="false">
-                    <ul class="flex-column nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.grades.create') }}">
-                                <span class="sidebar-text">Add Grade</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    <span class="sidebar-text">Grades</span>
+                </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
