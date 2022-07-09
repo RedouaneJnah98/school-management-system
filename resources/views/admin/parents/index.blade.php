@@ -89,87 +89,6 @@
             </div>
         </div>
 
-        {{-- Table --}}
-        {{--        <div class="card border-0 shadow">--}}
-        {{--            <div class="card-body">--}}
-        {{--                <div class="table-responsive">--}}
-        {{--                    <table class="table table-centered table-nowrap mb-0 rounded">--}}
-        {{--                        <thead class="thead-light">--}}
-        {{--                        <tr>--}}
-        {{--                            <th class="border-0 rounded-start">Full Name</th>--}}
-        {{--                            <th class="border-0">Email Address</th>--}}
-        {{--                            <th class="border-0">Phone Number</th>--}}
-        {{--                            @can('last_login', \App\Models\Parents::class)--}}
-        {{--                                <th class="border-0">Last Login</th>--}}
-        {{--                            @endcan--}}
-        {{--                            <th class="border-0 rounded-end">Action</th>--}}
-        {{--                        </tr>--}}
-        {{--                        </thead>--}}
-        {{--                        <tbody>--}}
-        {{--                        <!-- Item -->--}}
-        {{--                        @foreach($parents as $parent)--}}
-        {{--                            <tr>--}}
-        {{--                                <td class="border-0">--}}
-        {{--                                    <div class="d-flex align-items-center">--}}
-        {{--                                        <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="{{ $parent->profile_image }}">--}}
-        {{--                                        <div><span class="h6">{{ $parent->firstname . ' ' . $parent->lastname }}</span></div>--}}
-        {{--                                    </div>--}}
-        {{--                                </td>--}}
-        {{--                                <td class="border-0 fw-bold">{{ $parent->email }}</td>--}}
-        {{--                                <td class="border-0 text-danger">--}}
-        {{--                                    <span class="fw-bold">{{ $parent->phone_number }}</span>--}}
-        {{--                                </td>--}}
-        {{--                                @can('last_login', \App\Models\Parents::class)--}}
-        {{--                                    @php--}}
-        {{--                                        $last_login = $parent->last_login_date;--}}
-        {{--                                    @endphp--}}
-        {{--                                    <td class="border-0 fw-bold">--}}
-        {{--                                        {{ $last_login ? $last_login->diffForHumans() : 'Not authenticated yet' }}--}}
-        {{--                                    </td>--}}
-        {{--                                @endcan--}}
-
-        {{--                                <td class="border-0 text-success">--}}
-        {{--                                    <div class="dropdown">--}}
-        {{--                                        <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"--}}
-        {{--                                           data-bs-offset="10,20">--}}
-        {{--                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">--}}
-        {{--                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>--}}
-        {{--                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>--}}
-        {{--                                            </svg>--}}
-        {{--                                        </a>--}}
-        {{--                                        <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">--}}
-        {{--                                            <li>--}}
-        {{--                                                <a class="dropdown-item rounded-top" href="{{ route('admin.parents.show', $parent->id) }}">View Details</a>--}}
-        {{--                                            </li>--}}
-        {{--                                            @canany(['update', 'delete'], $parent)--}}
-        {{--                                                <li>--}}
-        {{--                                                    <a class="dropdown-item" href="{{ route('admin.parents.edit', $parent->id) }}">Edit</a>--}}
-        {{--                                                </li>--}}
-        {{--                                                <li>--}}
-        {{--                                                    <form action="{{ route('admin.parents.destroy', $parent->id) }}" method="post">--}}
-        {{--                                                        @method('DELETE')--}}
-        {{--                                                        @csrf--}}
-
-        {{--                                                        <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>--}}
-        {{--                                                    </form>--}}
-        {{--                                                </li>--}}
-        {{--                                            @endcanany--}}
-        {{--                                        </ul>--}}
-        {{--                                    </div>--}}
-        {{--                                </td>--}}
-        {{--                            </tr>--}}
-        {{--                        @endforeach--}}
-        {{--                        <!-- End of Item -->--}}
-        {{--                        </tbody>--}}
-        {{--                    </table>--}}
-        {{--                    <hr>--}}
-        {{--                    <div class="card-footer px-3 border-0 d-flex flex-column flex-lg-row align-items-center justify-content-between">--}}
-        {{--                        {{ $parents->links() }}--}}
-        {{--                        <div class="fw-normal small mt-4 mt-lg-0">Showing <b>{{ $parents->firstItem() }}</b> to <b>{{ $parents->lastItem() }}</b> of <b>{{ $parents->total() }}</b> entries</div>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
         <div class="card border-0 shadow">
             <div class="card-body">
                 <div class="d-flex mb-3"><select class="form-select fmxw-200" aria-label="Message select example">
@@ -182,81 +101,6 @@
                 </div>
 
                 <div class="table-responsive">
-                    {{--                    <table class="table table-centered table-nowrap mb-0 rounded" id="example">--}}
-                    {{--                        <thead class="thead-light">--}}
-                    {{--                        <tr>--}}
-                    {{--                            <th class="border-0 rounded-start">Full Name</th>--}}
-                    {{--                            <th class="border-0">Email Address</th>--}}
-                    {{--                            <th class="border-0">Phone Number</th>--}}
-                    {{--                            <th class="border-0">Last Login</th>--}}
-                    {{--                            @can('trashed')--}}
-                    {{--                                <th class="border-0">Is Trashed</th>--}}
-                    {{--                            @endcan--}}
-                    {{--                            <th class="border-0 rounded-end">Action</th>--}}
-                    {{--                        </tr>--}}
-                    {{--                        </thead>--}}
-                    {{--                        <tbody>--}}
-                    {{--                        <!-- Item -->--}}
-                    {{--                        @foreach($students as $student)--}}
-                    {{--                            <tr>--}}
-                    {{--                                <td class="border-0">--}}
-                    {{--                                    <div class="d-flex align-items-center">--}}
-                    {{--                                        <img class="avatar rounded me-2" alt="Image placeholder" src="{{ $student->profile_image }}">--}}
-                    {{--                                        <div><span class="h6">{{ $student->firstname . ' ' . $student->lastname }}</span></div>--}}
-                    {{--                                    </div>--}}
-                    {{--                                </td>--}}
-                    {{--                                <td class="border-0 fw-bold">{{ $student->email }}</td>--}}
-                    {{--                                <td class="border-0 text-danger">--}}
-                    {{--                                    <span class="fw-bold">{{ $student->phone }}</span>--}}
-                    {{--                                </td>--}}
-                    {{--                                @php--}}
-                    {{--                                    $last_login = $student->last_login_date;--}}
-                    {{--                                @endphp--}}
-                    {{--                                <td class="border-0 fw-bold">--}}
-                    {{--                                    {{ $last_login ? $last_login->diffForHumans() : 'Not authenticate yet' }}--}}
-                    {{--                                </td>--}}
-                    {{--                                @can('trashed')--}}
-                    {{--                                    <td class="border-0">--}}
-                    {{--                                        @if($student->trashed())--}}
-                    {{--                                            <span class="badge bg-success">Yes</span>--}}
-                    {{--                                        @else--}}
-                    {{--                                            <span class="badge bg-danger">No</span>--}}
-                    {{--                                        @endif--}}
-                    {{--                                    </td>--}}
-                    {{--                                @endcan--}}
-
-                    {{--                                <td class="border-0 text-success">--}}
-                    {{--                                    <div class="dropdown">--}}
-                    {{--                                        <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"--}}
-                    {{--                                           data-bs-offset="10,20">--}}
-                    {{--                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">--}}
-                    {{--                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>--}}
-                    {{--                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>--}}
-                    {{--                                            </svg>--}}
-                    {{--                                        </a>--}}
-                    {{--                                        <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">--}}
-                    {{--                                            <li>--}}
-                    {{--                                                <a class="dropdown-item rounded-top" href="{{ route('admin.students.show', $student->id) }}">View Details</a>--}}
-                    {{--                                            </li>--}}
-                    {{--                                            <li>--}}
-                    {{--                                                <a class="dropdown-item" href="{{ route('admin.students.edit', $student->id) }}">Edit</a>--}}
-                    {{--                                            </li>--}}
-                    {{--                                            <li>--}}
-                    {{--                                                <form action="{{ route('admin.students.destroy', $student->id) }}" method="post">--}}
-                    {{--                                                    @method('DELETE')--}}
-                    {{--                                                    @csrf--}}
-
-                    {{--                                                    <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>--}}
-                    {{--                                                </form>--}}
-                    {{--                                            </li>--}}
-                    {{--                                        </ul>--}}
-                    {{--                                    </div>--}}
-                    {{--                                </td>--}}
-                    {{--                            </tr>--}}
-                    {{--                        @endforeach--}}
-                    {{--                        <!-- End of Item -->--}}
-                    {{--                        </tbody>--}}
-                    {{--                    </table>--}}
                     <table class="table user-table table-hover align-items-center">
                         <thead>
                         <tr>
@@ -291,7 +135,11 @@
                                 <td>
                                     <div class="avatar-group">
                                         @forelse($parent->childrens as $child)
-                                            <a href="#" class="avatar" data-bs-toggle="tooltip" data-original-title="{{ $child->firstname }}" data-bs-original-title="{{ $child->firstname }}" title=""
+                                            <a href="{{ route('admin.students.show', $child->id) }}" class="avatar" data-bs-toggle="tooltip" data-original-title="{{ $child->firstname }}"
+                                               data-bs-original-title="{{
+                                            $child->firstname
+                                            }}"
+                                               title=""
                                                draggable="false">
                                                 <img class="rounded" alt="Image placeholder" src="{{ $child->profile_image }}" draggable="false">
                                             </a>
@@ -326,31 +174,46 @@
                                                 <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
                                             </svg>
                                             <span class="visually-hidden">Toggle Dropdown</span></button>
-                                        <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1"><a class="dropdown-item d-flex align-items-center" href="#">
-                                                <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
+                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.parents.edit', $parent->id) }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square text-gray-400 me-2" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                     <path fill-rule="evenodd"
-                                                          d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z"
-                                                          clip-rule="evenodd"/>
+                                                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                                 </svg>
-                                                Reset Pass </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                                Edit Info
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.parents.show', $parent->id) }}">
                                                 <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                                                     <path fill-rule="evenodd"
                                                           d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
                                                           clip-rule="evenodd"/>
                                                 </svg>
-                                                View Details </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                                View Details
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
                                                 <svg class="dropdown-icon text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M11 6a3 3 0 11-6 0 3 3 0 016 0zM14 17a6 6 0 00-12 0h12zM13 8a1 1 0 100 2h4a1 1 0 100-2h-4z"/>
                                                 </svg>
-                                                Suspend</a></div>
+                                                Suspend
+                                            </a>
+                                        </div>
                                     </div>
-                                    <svg class="icon icon-xs text-danger ms-1" title="" data-bs-toggle="tooltip" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
-                                         data-bs-original-title="Delete" aria-label="Delete">
-                                        <path fill-rule="evenodd"
-                                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                                              clip-rule="evenodd"/>
-                                    </svg>
+                                    <form action="{{ route('admin.parents.destroy', $parent->id) }}" method="POST" style="display: inline-block">
+                                        @method('DELETE')
+                                        @csrf
+
+                                        <a href="#" class="delete-btn">
+                                            <svg class="icon icon-xs text-danger ms-1" title="" data-bs-toggle="tooltip" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                                                 data-bs-original-title="Delete" aria-label="Delete">
+                                                <path fill-rule="evenodd"
+                                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                                      clip-rule="evenodd"/>
+                                            </svg>
+                                        </a>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
