@@ -8,6 +8,7 @@ use App\Http\Controllers\teacher\AttendanceController;
 use App\Http\Controllers\teacher\BranchController;
 use App\Http\Controllers\teacher\ClassroomStudentController;
 use App\Http\Controllers\teacher\ClassroomTeacherController;
+use App\Http\Controllers\teacher\DashboardController;
 use App\Http\Controllers\teacher\DownloadController;
 use App\Http\Controllers\teacher\GradeController;
 use App\Http\Controllers\teacher\ProfileController;
@@ -65,8 +66,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Profile Controller
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('update', [ProfileController::class, 'update'])->name('update');
-        // Route View
-        Route::view('dashboard', 'admin.dashboard')->name('dashboard');
+        // Dashboard Controller
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         // Classroom Student
         Route::get('classroom-student', [ClassroomStudentController::class, 'index'])->name('classroom-student');
         Route::post('classroom-student', [ClassroomStudentController::class, 'store'])->name('classroom-student.store');

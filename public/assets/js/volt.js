@@ -176,7 +176,8 @@ d.addEventListener("DOMContentLoaded", function (event) {
         new Chartist.Line('.ct-chart-sales-value', {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             series: [
-                [0, 10, 30, 40, 80, 60, 100]
+                [0, 10, 30, 40, 80, 60, 100],
+                [5, 18, 22, 38, 66, 52, 90]
             ]
         }, {
             low: 0,
