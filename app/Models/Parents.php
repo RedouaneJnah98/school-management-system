@@ -30,7 +30,7 @@ class Parents extends Authenticatable
         $this->attributes['password_confirmation'] = bcrypt($password);
     }
 
-    public function childrens(): HasMany
+    public function children(): HasMany
     {
         return $this->hasMany(Student::class, 'parent_id');
     }

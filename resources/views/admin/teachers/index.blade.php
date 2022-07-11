@@ -1,4 +1,5 @@
 <x-dashboard_layout>
+    @section('title', 'Teachers')
     {{-- Sidebar --}}
     @include('components.admin._sidebar')
 

@@ -101,7 +101,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table user-table table-hover align-items-center">
+                    <table class="table user-table table-hover align-items-center" id="myTable">
                         <thead>
                         <tr>
                             <th class="border-bottom">
@@ -134,7 +134,7 @@
                                 </td>
                                 <td>
                                     <div class="avatar-group">
-                                        @forelse($parent->childrens as $child)
+                                        @forelse($parent->children as $child)
                                             <a href="{{ route('admin.students.show', $child->id) }}" class="avatar" data-bs-toggle="tooltip" data-original-title="{{ $child->firstname }}"
                                                data-bs-original-title="{{
                                             $child->firstname

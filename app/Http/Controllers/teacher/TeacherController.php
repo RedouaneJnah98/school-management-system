@@ -12,9 +12,10 @@ use Illuminate\Validation\Rule;
 
 class TeacherController extends Controller
 {
-    public function index(Teacher $teacher)
+    public function index(Request $request)
     {
-        $teachers = $teacher->paginate(10);
+        $teachers = Teacher::with('classrooms')->paginate(10);
+//        $teachers = Teacher::when($request->has('title'))
 
         return view('admin.teachers.index', compact('teachers'));
     }

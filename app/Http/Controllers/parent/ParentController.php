@@ -13,9 +13,9 @@ use Illuminate\Validation\Rules\Password;
 
 class ParentController extends Controller
 {
-    public function index(Parents $parent)
+    public function index()
     {
-        $parents = $parent->newest()->paginate(15);
+        $parents = Parents::with('children')->newest()->paginate(15);
 
         return view('admin.parents.index', compact('parents'));
     }
