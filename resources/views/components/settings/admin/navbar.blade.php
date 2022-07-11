@@ -165,21 +165,12 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown ms-lg-3">
-                    <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
+                    <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="media d-flex align-items-center">
-                            {{-- User Avatar --}}
-                            @php
-                                $avatar = auth()->user()->profile_image;
-                            @endphp
-
                             <img class="avatar rounded-circle" alt="Image placeholder"
                                  src="{{ asset('storage/avatars/' . auth()->user()->profile_image) }}" style="object-fit: cover;object-position: top"/>
                             <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                @php
-                                    $name = auth()->user()->firstname . ' ' . auth()->user()->lastname;
-                                @endphp
-                                <span class="mb-0 font-small fw-bold text-gray-900">{{ $name }}</span>
+                                <span class="mb-0 font-small fw-bold text-gray-900">{{ auth()->user()->fullName }}</span>
                             </div>
                         </div>
                     </a>

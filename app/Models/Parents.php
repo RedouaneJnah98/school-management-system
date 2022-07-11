@@ -15,9 +15,16 @@ class Parents extends Authenticatable
 
     protected $dates = ['last_login_date'];
 
-    public function scopeNewest(Builder $query): void
+    public function scopeNewest(Builder $query): Builder
     {
-        $query->orderBy(static::CREATED_AT, 'desc');
+        return $query->orderBy(static::CREATED_AT, 'desc');
+    }
+
+    public function scopeMostChildren(Builder $query): Builder
+    {
+        return $query->withCount('children')
+            ->has('children', '>=', 3)
+            ->orderBy('children_count', 'desc');
     }
 
     public function setPasswordAttribute($password)

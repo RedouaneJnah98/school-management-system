@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->foreignId('parent_id')->constrained('parents')->cascadeOnDelete();
             $table->string('firstname');
             $table->string('lastname');
+//            $table->string('fullName')->virtualAs("CONCAT(firstname , ' ' , lastname)");
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -15,7 +15,8 @@ class DashboardController extends Controller
         $teachers = Teacher::all()->count();
         $students = Student::all()->count();
         $parents = Parents::all()->count();
+        $most_children = Parents::mostChildren()->take(5)->get();
 
-        return view('admin.dashboard', compact('teachers', 'students', 'parents'));
+        return view('admin.dashboard', compact('teachers', 'students', 'parents', 'most_children'));
     }
 }

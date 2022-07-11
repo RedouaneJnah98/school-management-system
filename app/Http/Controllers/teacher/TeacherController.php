@@ -5,9 +5,10 @@ namespace App\Http\Controllers\teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Teacher;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class TeacherController extends Controller
@@ -110,6 +111,9 @@ class TeacherController extends Controller
         }
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function destroy(Teacher $teacher)
     {
         $this->authorize('delete', $teacher);
@@ -118,10 +122,12 @@ class TeacherController extends Controller
         return redirect()->back()->with('delete', 'Record deleted.');
     }
 
-    /*
-     * Login User Requests
+    /**
+     * Handle an authentication attempt.
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function check_user(Request $request)
+    public function check_user(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
             'email' => 'required|email|exists:teachers',
@@ -142,11 +148,14 @@ class TeacherController extends Controller
     }
 
     /*
-     * Logout User
+     * Logout Admin & Teachers
      */
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::guard('web')->logout();
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
 
         return redirect()->route('admin.login');
     }

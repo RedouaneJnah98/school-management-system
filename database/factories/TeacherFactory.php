@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Teacher>
@@ -23,12 +22,12 @@ class TeacherFactory extends Factory
             'lastname' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('12345678'), // password
+            'password' => '0123456789', // password
             'dob' => $this->faker->dateTimeBetween('1985-01-01', '1998-12-31')->format('y/m/d'),
             'phone' => $this->faker->phoneNumber(),
             'status' => 'teacher',
             'profile_bio' => $this->faker->sentence(),
-            'password_confirmation' => Hash::make('12345678'),
+            'password_confirmation' => '12345678', // Pssword Confirmation
             'gender' => $this->faker->randomElement(['male', 'female']),
             'address' => $this->faker->address(),
             'number' => $this->faker->randomDigit(),
@@ -47,12 +46,12 @@ class TeacherFactory extends Factory
                 'firstname' => 'Jnah',
                 'lastname' => 'Redouane',
                 'email' => 'jnahredouane@gmail.com',
-                'password' => Hash::make('12345678'),
+                'password' => '12345678',
                 'dob' => $this->faker->dateTimeBetween('1985-01-01', '1998-12-31')->format('y/m/d'),
                 'phone' => '0606725541',
                 'status' => 'admin',
                 'profile_bio' => $this->faker->sentence(),
-                'password_confirmation' => Hash::make('12345678'),
+                'password_confirmation' => '12345678',
                 'gender' => 'male',
                 'address' => $this->faker->address(),
                 'number' => $this->faker->randomDigit(),
