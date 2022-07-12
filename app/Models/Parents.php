@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -38,19 +39,17 @@ class Parents extends Authenticatable
             ->orderBy('children_count', 'desc');
     }
 
-//    public function scopeHowManyParentsInLastYear(Builder $query): Builder
-//    {
-//        return $query->with('children', function (Builder $query) {
-//            $query->whereBetween(static::CREATED_AT, [now()->subYear(), now()]);
-//        });
-//    }
+    public function scopeHowManyParentsLastMonth(Builder $query): Builder
+    {
+        return $query->whereMonth('created_at', Carbon::now()->subMonth()->month);
+    }
 
     /**
      * Hash password before save it in the database
      * @param $password
      * @return void
      */
-    public function setPasswordAttribute($password)
+    public function setPasswordAttribute($password): void
     {
         $this->attributes['password'] = bcrypt($password);
     }
@@ -61,7 +60,7 @@ class Parents extends Authenticatable
      * @param $password
      * @return void
      */
-    public function setPasswordConfirmationAttribute($password)
+    public function setPasswordConfirmationAttribute($password): void
     {
         $this->attributes['password_confirmation'] = bcrypt($password);
     }

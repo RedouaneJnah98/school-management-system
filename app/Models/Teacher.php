@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -55,12 +57,30 @@ class Teacher extends Authenticatable
         );
     }
 
-    public function setPasswordAttribute($password)
+    /**
+     * Count How many records last month
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeHowManyTeachersLastMonth(Builder $query): Builder
+    {
+        return $query->whereMonth('created_at', Carbon::now()->subMonth()->month);
+    }
+
+    /**
+     * @param $password
+     * @return void
+     */
+    public function setPasswordAttribute($password): void
     {
         $this->attributes['password'] = bcrypt($password);
     }
 
-    public function setPasswordConfirmationAttribute($password)
+    /**
+     * @param $password
+     * @return void
+     */
+    public function setPasswordConfirmationAttribute($password): void
     {
         $this->attributes['password_confirmation'] = bcrypt($password);
     }

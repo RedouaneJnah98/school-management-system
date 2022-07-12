@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,22 +11,6 @@ class Classroom extends Model
     use HasFactory;
 
     protected $guarded = [];
-
-//    public function setStudentIdAttribute($value)
-//    {
-//        $this->attributes['student_id'] = json_encode($value);
-//    }
-//
-//    public function getStudentIdAttribute($value)
-//    {
-//        $this->attributes['student_id'] = json_decode($value);
-//    }
-
-    // Relationships
-//    public function teacher()
-//    {
-//        return $this->belongsTo(Teacher::class);
-//    }
 
     public function grade()
     {

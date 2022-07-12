@@ -17,12 +17,28 @@ class DashboardController extends Controller
         $students = Student::all()->count();
         $parents = Parents::all()->count();
         $most_children = Parents::mostChildren()->take(7)->get();
-        $parent_last_month = Parents::whereMonth('created_at', Carbon::now()->subMonth()->month)->get()->count();
+        $parent_last_month = Parents::HowManyParentsLastMonth()->get()->count();
+        $teachers_last_month = Teacher::HowManyTeachersLastMonth()->get()->count();
+        $students_last_month = Student::HowManyStudentsLastMonth()->get()->count();
 
-        // calculate reports
-        $current_month = $parents;
-        $parent_states_result = ($current_month - $parent_last_month) / $current_month * 100;
+        // calculate reports for Parents
+        $current_month_parents = $parents;
+        $parent_states_result = ($current_month_parents - $parent_last_month) / $current_month_parents * 100;
+        // calculate reports for Parents
+        $current_month_teachers = $teachers;
+        $teachers_states_result = ($current_month_teachers - $teachers_last_month) / $current_month_teachers * 100;
+        // calculate reports for Parents
+        $current_month_students = $students;
+        $students_states_result = ($current_month_students - $students_last_month) / $current_month_students * 100;
 
-        return view('admin.dashboard', compact('teachers', 'students', 'parents', 'most_children', 'parent_states_result'));
+        return view('admin.dashboard', compact([
+            'teachers',
+            'students',
+            'parents',
+            'most_children',
+            'parent_states_result',
+            'students_states_result',
+            'teachers_states_result'
+        ]));
     }
 }
