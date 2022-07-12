@@ -106,7 +106,7 @@
                             </small>
                             <div class="small d-flex mt-1">
                                 <div>
-                                    Since last year
+                                    Since last month
                                     <svg class="icon icon-xs text-success" fill="currentColor" viewBox="0 0 20 20"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -213,7 +213,7 @@
                                               d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
                                               clip-rule="evenodd"></path>
                                     </svg>
-                                    <span class="text-success fw-bolder">4%</span>
+                                    <span class="text-{{ $parent_states_result >= 1 ? 'success' : 'danger' }} fw-bolder">{{ $parent_states_result }}%</span>
                                 </div>
                             </div>
                         </div>
@@ -230,7 +230,6 @@
                         <div class="card-header border-bottom"><h2 class="fs-5 fw-bold mb-0">Parents that have most children</h2></div>
                         <div class="card-body py-0">
                             <ul class="list-group list-group-flush">
-
                                 @forelse($most_children as $item)
                                     <li class="list-group-item bg-transparent border-bottom py-3 px-0">
                                         <div class="row align-items-center">
@@ -242,11 +241,11 @@
                                                 </h4>
                                                 <div class="d-flex align-items-center">
                                                     @if(\Carbon\Carbon::now()->minute(2) === $item->last_login_date)
-                                                        <x-scripts.parent_status class="success">
+                                                        <x-scripts.parent_status type="success">
                                                             Online
                                                         </x-scripts.parent_status>
                                                     @else
-                                                        <x-scripts.parent_status class="danger">
+                                                        <x-scripts.parent_status type="danger">
                                                             Offline
                                                         </x-scripts.parent_status>
                                                     @endif
