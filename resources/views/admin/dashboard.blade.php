@@ -123,7 +123,7 @@
                                         </svg>
                                     @endif
 
-                                    <span class="text-{{ $parent_states_result >= 1 ? 'success' : 'danger' }} fw-bolder">{{ $teachers_states_result }}%</span>
+                                    <span class="text-{{ $parent_states_result >= 1 ? 'success' : 'danger' }} fw-bolder">{{ ceil($teachers_states_result) }}%</span>
                                 </div>
                             </div>
                         </div>
@@ -183,7 +183,7 @@
                                                   clip-rule="evenodd"></path>
                                         </svg>
                                     @endif
-                                    <span class="text-{{ $parent_states_result >= 1 ? 'success' : 'danger' }} fw-bolder">{{ $students_states_result }}%</span>
+                                    <span class="text-{{ $parent_states_result >= 1 ? 'success' : 'danger' }} fw-bolder">{{ ceil($students_states_result) }}%</span>
                                 </div>
                             </div>
                         </div>
@@ -241,7 +241,7 @@
                                                   clip-rule="evenodd"></path>
                                         </svg>
                                     @endif
-                                    <span class="text-{{ $parent_states_result >= 1 ? 'success' : 'danger' }} fw-bolder">{{ $parent_states_result }}%</span>
+                                    <span class="text-{{ $parent_states_result >= 1 ? 'success' : 'danger' }} fw-bolder">{{ ceil($parent_states_result) }}%</span>
                                 </div>
                             </div>
                         </div>

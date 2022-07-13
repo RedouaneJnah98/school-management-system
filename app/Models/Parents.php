@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -41,7 +40,7 @@ class Parents extends Authenticatable
 
     public function scopeHowManyParentsLastMonth(Builder $query): Builder
     {
-        return $query->whereMonth('created_at', Carbon::now()->subMonth()->month);
+        return $query->whereMonth('created_at', now()->subMonth()->month);
     }
 
     /**

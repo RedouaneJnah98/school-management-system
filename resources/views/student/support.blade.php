@@ -1,11 +1,11 @@
 <x-dashboard_layout>
     @section('title', 'Support')
 
-    {{-- Sidebar --}}
-    @include('components.admin._sidebar')
+    {{-- sidebar --}}
+    @include('components.student._sidebar')
 
     {{-- Navbar --}}
-    @include('components.settings.admin.navbar')
+    @include('components.settings.student.navbar')
 
     <div class="alert alert-info mt-5">
         We want to make Ajiale School a better platform for students; If you encounter any issues when using it, please contact us or left a feedback.

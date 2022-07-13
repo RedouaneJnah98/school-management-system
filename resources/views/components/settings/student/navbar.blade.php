@@ -169,15 +169,11 @@
                        aria-expanded="false">
                         <div class="media d-flex align-items-center">
                             {{-- User Avatar --}}
-                            @php
-                                $avatar = auth()->user()->profile_image;
-                            @endphp
-
                             <img class="avatar rounded-circle" alt="Image placeholder"
                                  src="{{ asset('storage/avatars/' . auth()->user()->profile_image) }}" style="object-fit: cover;object-position: top"/>
                             <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                                 @php
-                                    $name = auth()->user()->firstname . ' ' . auth()->user()->lastname;
+                                    $name = auth()->user()->fullName;
                                 @endphp
                                 <span class="mb-0 font-small fw-bold text-gray-900">{{ $name }}</span>
                             </div>
@@ -193,7 +189,7 @@
                             </svg>
                             My Profile
                         </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
+                        <a class="dropdown-item d-flex align-items-center" href="{{ route('student.settings') }}">
                             <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
@@ -202,16 +198,7 @@
                             </svg>
                             Settings
                         </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                      d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v7h-2l-1 2H8l-1-2H5V5z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
-                            Messages
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
+                        <a class="dropdown-item d-flex align-items-center" href="{{ route('student.support') }}">
                             <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
