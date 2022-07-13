@@ -125,8 +125,8 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="#" class="d-flex align-items-center"><img src="{{ $parent->profile_image }}" class="avatar rounded-circle me-3" alt="Avatar">
-                                    <div class="d-block"><span class="fw-bold">{{ $parent->firstname . ' ' . $parent->lastname }}</span>
+                                <a href="#" class="d-flex align-items-center"><img src="{{ asset('storage/avatars/default-avatar-male.jpg') }}" class="avatar rounded-circle me-3" alt="Avatar">
+                                    <div class="d-block"><span class="fw-bold">{{ $parent->fullName }}</span>
                                         <div class="small text-gray">{{ $parent->email }}</div>
                                     </div>
                                 </a>
@@ -134,13 +134,17 @@
                             <td>
                                 <div class="avatar-group">
                                     @forelse($parent->children as $child)
+                                        @php
+                                            $avatar = $child->profile_image;
+                                        @endphp
                                         <a href="{{ route('admin.students.show', $child->id) }}" class="avatar" data-bs-toggle="tooltip" data-original-title="{{ $child->firstname }}"
                                            data-bs-original-title="{{
                                             $child->firstname
                                             }}"
                                            title=""
                                            draggable="false">
-                                            <img class="rounded" alt="Image placeholder" src="{{ $child->profile_image }}" draggable="false">
+                                            <img class="rounded" alt="Image placeholder" src="{{ asset('storage/avatars/' . ($avatar ?? 'default-student-female.jpg'))  }}" draggable="false"
+                                                 style="object-fit: cover;object-position: top">
                                         </a>
                                     @empty
                                         <span class="badge bg-secondary">No children</span>

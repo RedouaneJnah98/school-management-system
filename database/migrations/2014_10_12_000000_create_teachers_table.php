@@ -24,7 +24,7 @@ return new class extends Migration {
             $table->date('dob');
             $table->string('phone');
             $table->string('status')->default('teacher');
-            $table->string('profile_image');
+            $table->string('profile_image')->nullable();
             $table->string('profile_bio');
             $table->timestamp('last_login_date')->nullable();
             $table->ipAddress('last_login_ip')->nullable();

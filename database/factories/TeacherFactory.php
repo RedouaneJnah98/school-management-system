@@ -33,7 +33,7 @@ class TeacherFactory extends Factory
             'number' => $this->faker->randomDigit(),
             'city' => $this->faker->city(),
             'zip' => $this->faker->randomNumber(5, true),
-            'profile_image' => $this->faker->imageUrl(50, 50, 'avatar'),
+//            'profile_image' => $this->faker->imageUrl(50, 50, 'avatar'),
             'last_login_date' => $this->faker->dateTimeBetween('-1 week', Carbon::now()),
             'last_login_ip' => $this->faker->ipv4(),
         ];
@@ -57,7 +57,7 @@ class TeacherFactory extends Factory
                 'number' => $this->faker->randomDigit(),
                 'city' => 'Tangier',
                 'zip' => '90000',
-                'profile_image' => $this->faker->imageUrl(50, 50, 'avatar'),
+//                'profile_image' => $this->faker->imageUrl(50, 50, 'avatar'),
                 'last_login_date' => $this->faker->dateTimeBetween('-1 week', Carbon::now()),
                 'last_login_ip' => $this->faker->ipv4(),
             ];

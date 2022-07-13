@@ -37,7 +37,7 @@ class ProfileController extends Controller
         // check if image exists
         if ($request->file('profile_image')) {
             // image file original name
-            $name = $request->file('profile_image')->hashName();
+            $name = $request->file('profile_image')->getClientOriginalName();
             // store the image name in the Database
             $attributes['profile_image'] = $name;
             $request->file('profile_image')->storeAs('public/avatars', $name);

@@ -1,4 +1,5 @@
 <x-dashboard_layout>
+
     @section('title', 'Dashboard')
     {{-- sidebar --}}
     @include('components.student._sidebar')
@@ -586,8 +587,7 @@
                                         </div>
                                         <div class="progress mb-0">
                                             <div class="progress-bar bg-danger" role="progressbar"
-                                                 aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"
-                                                 style="width: 34%"></div>
+                                                 aria-valuenow="34" aria-valuemin="0" aria-valuemax="100" style="width: 34%"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -765,4 +765,7 @@
             </div>
         </div>
     </div>
+
 </x-dashboard_layout>
+
+

@@ -1,11 +1,9 @@
 <x-dashboard_layout>
-    @section('title', 'Dashboard')
 
-    {{--    <main class="content">--}}
+    @section('title', 'Dashboard')
     {{-- sidebar --}}
     @include('components.admin._sidebar')
 
-    {{--    <main class="content">--}}
     {{-- Navbar --}}
     @include('components.settings.admin.navbar')
 
@@ -752,8 +750,7 @@
             </div>
         </div>
     </div>
-
-    {{--    </main>--}}
+    
 </x-dashboard_layout>
 
 <x-scripts.admin_chart :teachers="$teachers" :students="$students" :parents="$parents"/>

@@ -99,81 +99,6 @@
             </div>
 
             <div class="table-responsive">
-                {{--                    <table class="table table-centered table-nowrap mb-0 rounded" id="example">--}}
-                {{--                        <thead class="thead-light">--}}
-                {{--                        <tr>--}}
-                {{--                            <th class="border-0 rounded-start">Full Name</th>--}}
-                {{--                            <th class="border-0">Email Address</th>--}}
-                {{--                            <th class="border-0">Phone Number</th>--}}
-                {{--                            <th class="border-0">Last Login</th>--}}
-                {{--                            @can('trashed')--}}
-                {{--                                <th class="border-0">Is Trashed</th>--}}
-                {{--                            @endcan--}}
-                {{--                            <th class="border-0 rounded-end">Action</th>--}}
-                {{--                        </tr>--}}
-                {{--                        </thead>--}}
-                {{--                        <tbody>--}}
-                {{--                        <!-- Item -->--}}
-                {{--                        @foreach($students as $student)--}}
-                {{--                            <tr>--}}
-                {{--                                <td class="border-0">--}}
-                {{--                                    <div class="d-flex align-items-center">--}}
-                {{--                                        <img class="avatar rounded me-2" alt="Image placeholder" src="{{ $student->profile_image }}">--}}
-                {{--                                        <div><span class="h6">{{ $student->firstname . ' ' . $student->lastname }}</span></div>--}}
-                {{--                                    </div>--}}
-                {{--                                </td>--}}
-                {{--                                <td class="border-0 fw-bold">{{ $student->email }}</td>--}}
-                {{--                                <td class="border-0 text-danger">--}}
-                {{--                                    <span class="fw-bold">{{ $student->phone }}</span>--}}
-                {{--                                </td>--}}
-                {{--                                @php--}}
-                {{--                                    $last_login = $student->last_login_date;--}}
-                {{--                                @endphp--}}
-                {{--                                <td class="border-0 fw-bold">--}}
-                {{--                                    {{ $last_login ? $last_login->diffForHumans() : 'Not authenticate yet' }}--}}
-                {{--                                </td>--}}
-                {{--                                @can('trashed')--}}
-                {{--                                    <td class="border-0">--}}
-                {{--                                        @if($student->trashed())--}}
-                {{--                                            <span class="badge bg-success">Yes</span>--}}
-                {{--                                        @else--}}
-                {{--                                            <span class="badge bg-danger">No</span>--}}
-                {{--                                        @endif--}}
-                {{--                                    </td>--}}
-                {{--                                @endcan--}}
-
-                {{--                                <td class="border-0 text-success">--}}
-                {{--                                    <div class="dropdown">--}}
-                {{--                                        <a href="#" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false"--}}
-                {{--                                           data-bs-offset="10,20">--}}
-                {{--                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">--}}
-                {{--                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>--}}
-                {{--                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>--}}
-                {{--                                            </svg>--}}
-                {{--                                        </a>--}}
-                {{--                                        <ul class="dropdown-menu py-0 dropdown-menu-dark" aria-labelledby="dropdownMenuOffset">--}}
-                {{--                                            <li>--}}
-                {{--                                                <a class="dropdown-item rounded-top" href="{{ route('admin.students.show', $student->id) }}">View Details</a>--}}
-                {{--                                            </li>--}}
-                {{--                                            <li>--}}
-                {{--                                                <a class="dropdown-item" href="{{ route('admin.students.edit', $student->id) }}">Edit</a>--}}
-                {{--                                            </li>--}}
-                {{--                                            <li>--}}
-                {{--                                                <form action="{{ route('admin.students.destroy', $student->id) }}" method="post">--}}
-                {{--                                                    @method('DELETE')--}}
-                {{--                                                    @csrf--}}
-
-                {{--                                                    <a class="dropdown-item rounded-bottom delete-btn" href="#">Delete</a>--}}
-                {{--                                                </form>--}}
-                {{--                                            </li>--}}
-                {{--                                        </ul>--}}
-                {{--                                    </div>--}}
-                {{--                                </td>--}}
-                {{--                            </tr>--}}
-                {{--                        @endforeach--}}
-                {{--                        <!-- End of Item -->--}}
-                {{--                        </tbody>--}}
-                {{--                    </table>--}}
                 <table class="table user-table table-hover align-items-center">
                     <thead>
                     <tr>
@@ -203,8 +128,8 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="#" class="d-flex align-items-center"><img src="{{ $student->profile_image }}" class="avatar rounded-circle me-3" alt="Avatar">
-                                    <div class="d-block"><span class="fw-bold">{{ $student->firstname . ' ' . $student->lastname }}</span>
+                                <a href="#" class="d-flex align-items-center"><img src="{{ asset('storage/avatars/default-avatar-male.jpg') }}" class="avatar rounded-circle me-3" alt="Avatar">
+                                    <div class="d-block"><span class="fw-bold">{{ $student->fullName }}</span>
                                         <div class="small text-gray">{{ $student->email }}</div>
                                     </div>
                                 </a>

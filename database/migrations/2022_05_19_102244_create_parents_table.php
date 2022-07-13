@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
-//            $table->string('fullName')->virtualAs("CONCAT(firstname , ' ' , lastname)");
+            $table->string('fullName')->virtualAs("CONCAT(firstname , ' ' , lastname)");
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -24,7 +24,7 @@ return new class extends Migration {
             $table->string('phone_number');
             $table->timestamp('last_login_date')->nullable();
             $table->ipAddress('last_login_ip')->nullable();
-            $table->string('profile_image');
+            $table->string('profile_image')->nullable();
             $table->date('date_of_birth');
             $table->string('gender');
             $table->string('address');

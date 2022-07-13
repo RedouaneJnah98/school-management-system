@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../../pages/transactions.php" class="nav-link">
+                <a href="#" class="nav-link">
                     <span class="sidebar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-calendar-date-fill" viewBox="0 0 16 16">
@@ -62,7 +62,7 @@
                 <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
+                            <a class="nav-link" href="#">
                                 <span class="sidebar-text">Bootstrap Tables</span>
                             </a>
                         </li>
@@ -94,7 +94,7 @@
                 <div class="multi-level collapse" role="list" id="staff" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
+                            <a class="nav-link" href="#">
                                 <span class="sidebar-text">Bootstrap Tables</span>
                             </a>
                         </li>
@@ -126,7 +126,7 @@
                 <div class="multi-level collapse" role="list" id="submenu-pages" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/examples/500.html">
+                            <a class="nav-link" href="#">
                                 <span class="sidebar-text">Add</span>
                             </a>
                         </li>
@@ -134,7 +134,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="../../pages/settings.html" class="nav-link">
+                <a href="#" class="nav-link">
                     <span class="sidebar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-award-fill" viewBox="0 0 16 16">
