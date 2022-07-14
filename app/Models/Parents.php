@@ -72,4 +72,12 @@ class Parents extends Authenticatable
     {
         return $this->hasMany(Student::class, 'parent_id');
     }
+
+    /**
+     * @return HasMany
+     */
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
 }

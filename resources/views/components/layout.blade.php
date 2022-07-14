@@ -2,7 +2,7 @@
 
 {{ $slot }}
 
-@include('components.footer')
+{{--@include('components.footer')--}}
 
 <!-- Core -->
 <script src="{{ asset('vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>

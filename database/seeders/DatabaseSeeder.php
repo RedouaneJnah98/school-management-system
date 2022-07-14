@@ -2,11 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Parents;
-use App\Models\Student;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Teacher;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +18,7 @@ class DatabaseSeeder extends Seeder
             TeacherSeeder::class,
             ParentSeeder::class,
             StudentSeeder::class,
+            MessageSeeder::class,
         ]);
     }
 }
