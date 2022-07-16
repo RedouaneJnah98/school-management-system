@@ -11,6 +11,7 @@ use App\Http\Controllers\teacher\ClassroomTeacherController;
 use App\Http\Controllers\teacher\DashboardController;
 use App\Http\Controllers\teacher\DownloadController;
 use App\Http\Controllers\teacher\GradeController;
+use App\Http\Controllers\teacher\MessageController;
 use App\Http\Controllers\teacher\ProfileController;
 use App\Http\Controllers\teacher\ClassroomController;
 use App\Http\Controllers\teacher\SubjectController;
@@ -67,6 +68,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Profile Controller
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('update', [ProfileController::class, 'update'])->name('update');
+        // Message Controller
+        Route::get('messages', [MessageController::class, 'index'])->name('messages');
         // Dashboard Controller
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         // Classroom Student
@@ -84,9 +87,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('trashed', [SoftDeleteController::class, 'trashed'])->name('trashed');
         Route::get('restore_student/{id}', [SoftDeleteController::class, 'restore_student'])->name('restore_student');
         Route::delete('force_delete/{id}', [SoftDeleteController::class, 'force_delete'])->name('force_delete');
-        // Support Page
+        // Views Routes
         Route::view('support', 'admin.support')->name('support');
-        // Settings Page
         Route::view('settings', 'admin.settings')->name('settings');
 
         // Resource Controllers

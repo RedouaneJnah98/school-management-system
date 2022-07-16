@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Message;
 use App\Models\Parents;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,6 +16,8 @@ class ParentSeeder extends Seeder
      */
     public function run(): void
     {
-        Parents::factory(50)->create();
+        Parents::factory(50)->hasAttached(
+            Message::factory(),
+        )->create();
     }
 }

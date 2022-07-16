@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Parents extends Authenticatable
@@ -74,10 +75,10 @@ class Parents extends Authenticatable
     }
 
     /**
-     * @return HasMany
+     * @return MorphToMany
      */
-    public function messages(): HasMany
+    public function messages(): MorphToMany
     {
-        return $this->hasMany(Message::class);
+        return $this->morphToMany(Message::class, 'messageable');
     }
 }

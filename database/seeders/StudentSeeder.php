@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Message;
 use App\Models\Parents;
 use App\Models\Student;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;

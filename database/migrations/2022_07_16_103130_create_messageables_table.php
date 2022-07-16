@@ -12,12 +12,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->id();
-//            $table->foreignId('student_id')->nullable()->constrained();
-//            $table->foreignId('parent_id')->nullable()->constrained();
-            $table->text('message');
-            $table->timestamps();
+        Schema::create('messageables', function (Blueprint $table) {
+//            $table->id();
+            $table->foreignId('message_id')->constrained();
+            $table->foreignId('messageable_id');
+            $table->string('messageable_type');
+//            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('messageables');
     }
 };

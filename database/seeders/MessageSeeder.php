@@ -17,14 +17,14 @@ class MessageSeeder extends Seeder
      */
     public function run(): void
     {
-        $parents = Parents::all();
-        $students = Student::all();
-
-        Message::factory(15)->make()->each(function ($message) use ($parents, $students) {
-            $message->parent_id = $parents->random()->id;
-            $message->student_id = $students->random()->id;
-            $message->save();
-        });
+//        $parents = Parents::all();
+//        $students = Student::all();
+//
+//        Message::factory(15)->make()->each(function ($message) use ($parents, $students) {
+//            $message->parent_id = $parents->random()->id;
+//            $message->student_id = $students->random()->id;
+//            $message->save();
+//        });
 //        Message::factory(10)->create();
     }
 }

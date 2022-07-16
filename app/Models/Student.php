@@ -3,11 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -67,10 +66,10 @@ class Student extends Authenticatable
     }
 
     /**
-     * @return HasMany
+     * @return MorphToMany
      */
-    public function messages(): HasMany
+    public function messages(): MorphToMany
     {
-        return $this->hasMany(Message::class);
+        return $this->morphToMany(Message::class, 'messageable');
     }
 }

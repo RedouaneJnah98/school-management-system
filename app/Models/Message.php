@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Message extends Model
 {
@@ -13,18 +12,18 @@ class Message extends Model
     protected $guarded = [];
 
     /**
-     * @return HasMany
+     * Get all the students that are assigned this message.
      */
-    public function students(): HasMany
+    public function students()
     {
-        return $this->hasMany(Student::class);
+        return $this->morphedByMany(Student::class, 'messageable');
     }
 
     /**
-     * @return HasMany
+     * Get all the parents that are assigned this message.
      */
-    public function parents(): HasMany
+    public function parents()
     {
-        return $this->hasMany(Parents::class);
+        return $this->morphedByMany(Parents::class, 'messageable');
     }
 }
