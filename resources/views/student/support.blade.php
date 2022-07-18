@@ -12,12 +12,21 @@
     </div>
     <div class="card border-0 shadow mt-2">
         <div class="card-body">
-            <form action="" method="post">
+            <form action="{{ route('student.send_message') }}" method="post">
                 @csrf
+
                 <label for="textarea">Please send your suggestions, ideas and comments!</label>
-                <textarea class="form-control" placeholder="Enter your message..." id="textarea" rows="4"></textarea>
+                <textarea class="form-control @error('message') is-invalid @enderror" name="message" placeholder="Enter your message..." id="textarea" rows="4"></textarea>
+                @error('message')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
                 <button type="submit" class="btn btn-success mt-4 text-white">Send Message</button>
             </form>
         </div>
     </div>
 </x-dashboard_layout>
+
+<x-modals.success/>
+<x-modals.failed/>

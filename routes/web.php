@@ -36,6 +36,7 @@ Route::prefix('student')->name('student.')->group(function () {
         Route::put('update', [\App\Http\Controllers\student\ProfileController::class, 'update'])->name('update');
         Route::view('settings', 'student.settings')->name('settings');
         Route::view('support', 'student.support')->name('support');
+        Route::post('send_message', [MessageController::class, 'store_student_message'])->name('send_message');
 
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
     });

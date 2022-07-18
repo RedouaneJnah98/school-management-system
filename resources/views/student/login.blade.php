@@ -1,4 +1,5 @@
 <x-layout>
+    @section('title', 'Student Login')
     <main>
 
         <!-- Section -->
