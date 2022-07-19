@@ -65,11 +65,11 @@ class Student extends Authenticatable
         return $this->belongsToMany(Classroom::class)->withTimestamps();
     }
 
-//    /**
-//     * @return MorphToMany
-//     */
-//    public function messages(): MorphToMany
-//    {
-//        return $this->morphToMany(Message::class, 'messageable');
-//    }
+    /**
+     * @return MorphToMany
+     */
+    public function messages(): MorphToMany
+    {
+        return $this->morphToMany(Message::class, 'messageable');
+    }
 }

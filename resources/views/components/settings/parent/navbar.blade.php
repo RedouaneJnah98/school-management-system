@@ -41,8 +41,10 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="../../assets/img/team/profile-picture-1.jpg"
-                                             class="avatar-md rounded"/>
+                                        @php
+                                            $avatar = auth()->user()->profile_image;
+                                        @endphp
+                                        <img alt="Image placeholder" src="{{ asset('storage/avatars/' . $avatar) }}" class="avatar-md rounded"/>
                                     </div>
                                     <div class="col ps-0 ms-2">
                                         <div class="d-flex justify-content-between align-items-center">

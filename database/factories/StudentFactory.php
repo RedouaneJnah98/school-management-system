@@ -23,7 +23,7 @@ class StudentFactory extends Factory
             'email' => $this->faker->email(),
             'password' => '12345678',
             'password_confirmation' => '12345678',
-//            'profile_image' => $this->faker->imageUrl(50, 50, 'avatar'),
+            'profile_image' => 'default-avatar-male.jpg',
             'phone' => $this->faker->phoneNumber(),
             'date_of_join' => $this->faker->dateTimeInInterval(),
             'date_of_birth' => $this->faker->dateTimeBetween('2008-01-01', '2012-12-31')->format('y/m/d'),
