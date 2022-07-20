@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\parent\AuthController;
 use App\Http\Controllers\parent\ParentController;
 use App\Http\Controllers\SoftDeleteController;
 use App\Http\Controllers\student\LoginController;
@@ -25,7 +26,7 @@ Route::view('/', 'index')->name('home');
  * Student Prefix
  */
 Route::prefix('student')->name('student.')->group(function () {
-    Route::middleware(['guest'])->group(function () {
+    Route::middleware(['guest:student'])->group(function () {
         Route::view('login', 'student.login')->name('login');
         Route::post('check', [LoginController::class, 'check'])->name('check');
     });
@@ -46,13 +47,15 @@ Route::prefix('student')->name('student.')->group(function () {
  * Parent Prefix
  */
 Route::prefix('parent')->name('parent.')->group(function () {
-    Route::middleware(['guest'])->group(function () {
+    Route::middleware(['guest:parent'])->group(function () {
         Route::view('login', 'parent.login')->name('login');
-//        Route::post('check', [LoginController::class, 'check'])->name('check');
+        Route::post('check', [AuthController::class, 'check'])->name('check');
     });
 
     Route::middleware(['auth:parent'])->group(function () {
         Route::view('dashboard', 'parent.dashboard')->name('dashboard');
+        // Logout
+        Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     });
 });
 
@@ -60,7 +63,7 @@ Route::prefix('parent')->name('parent.')->group(function () {
  * Admin Prefix
  */
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::middleware(['guest'])->group(function () {
+    Route::middleware(['guest:web'])->group(function () {
         Route::view('login', 'admin.login')->name('login');
         Route::post('check', [TeacherController::class, 'check_user'])->name('check');
     });

@@ -1,37 +1,36 @@
 <?php
 
-namespace App\Http\Controllers\student;
+namespace App\Http\Controllers\parent;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     public function check(Request $request)
     {
         $attributes = $request->validate([
-            'email' => 'required|email|exists:students',
+            'email' => 'required|email|exists:parents',
             'password' => 'required'
         ]);
 
-        if (Auth::guard('student')->attempt($attributes)) {
+        if (Auth::guard('parent')->attempt($attributes)) {
             // regenerate session ID
             $request->session()->regenerate();
 
-            return redirect()->route('student.dashboard');
+            return redirect()->route('parent.dashboard');
         }
 
         return redirect()->back()->with('failed', 'Something went wrong, please enter valid credentials.');
     }
 
-    /*
-     * Logout
-     */
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::guard('student')->logout();
+        Auth::guard('parent')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-        return to_route('student.login');
+        return to_route('parent.login');
     }
 }

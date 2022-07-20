@@ -7,6 +7,7 @@ use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
 
 class RedirectIfAuthenticated
 {
@@ -16,7 +17,7 @@ class RedirectIfAuthenticated
      * @param Request $request
      * @param Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @param string|null ...$guards
-     * @return Illuminate\Http\Response|RedirectResponse
+     * @return Response|RedirectResponse
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
@@ -24,9 +25,6 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                if ($guard === 'web') {
-                    return to_route('admin.dashboard');
-                }
                 if ($guard === 'student') {
                     return to_route('student.dashboard');
                 }
@@ -34,7 +32,7 @@ class RedirectIfAuthenticated
                     return to_route('parent.dashboard');
                 }
 
-                return to_route('admin.login');
+                return to_route('admin.dashboard');
             }
         }
 

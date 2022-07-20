@@ -17,12 +17,6 @@ return [
         'guard' => 'web',
         'passwords' => 'teachers',
     ],
-//    'student' => [
-//        'guard' => 'student',
-//    ],
-//    'parent' => [
-//        'guard' => 'parent',
-//    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -110,10 +104,6 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-//        'students' => [
-//            'driver' => 'eloquent',
-//            'model' => App\Models\Student::class,
-//        ],
     ],
 
     /*

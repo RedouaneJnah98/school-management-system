@@ -1,4 +1,5 @@
 <x-layout>
+    @section('title', 'Parent Portal')
     <main>
 
         <!-- Section -->
@@ -19,7 +20,7 @@
                             <div class="text-center text-md-center mb-4 mt-md-0">
                                 <h1 class="mb-0 h3">Login to our application</h1>
                             </div>
-                            <form action='#' method="post" class="mt-4">
+                            <form action='{{ route('parent.check') }}' method="post" class="mt-4">
                                 @csrf
 
                                 <!-- Form -->
