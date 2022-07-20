@@ -33,10 +33,10 @@ Route::prefix('student')->name('student.')->group(function () {
 
     Route::middleware(['auth:student'])->group(function () {
         Route::view('dashboard', 'student.dashboard')->name('dashboard');
-        Route::get('profile', [\App\Http\Controllers\student\ProfileController::class, 'index'])->name('profile');
-        Route::put('update', [\App\Http\Controllers\student\ProfileController::class, 'update'])->name('update');
         Route::view('settings', 'student.settings')->name('settings');
         Route::view('support', 'student.support')->name('support');
+        Route::get('profile', [\App\Http\Controllers\student\ProfileController::class, 'index'])->name('profile');
+        Route::put('update', [\App\Http\Controllers\student\ProfileController::class, 'update'])->name('update');
         Route::post('send_message', [MessageController::class, 'store_student_message'])->name('send_message');
 
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -54,6 +54,12 @@ Route::prefix('parent')->name('parent.')->group(function () {
 
     Route::middleware(['auth:parent'])->group(function () {
         Route::view('dashboard', 'parent.dashboard')->name('dashboard');
+        Route::view('support', 'parent.support')->name('support');
+        Route::view('settings', 'parent.settings')->name('settings');
+        Route::get('profile', [\App\Http\Controllers\parent\ProfileController::class, 'index'])->name('profile');
+        Route::put('update', [\App\Http\Controllers\parent\ProfileController::class, 'update'])->name('update');
+        Route::post('send_message', [MessageController::class, 'store_parent_message'])->name('send_message');
+
         // Logout
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     });
@@ -92,7 +98,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('restore_student/{id}', [SoftDeleteController::class, 'restore_student'])->name('restore_student');
         Route::delete('force_delete/{id}', [SoftDeleteController::class, 'force_delete'])->name('force_delete');
         // Views Routes
-        Route::view('support', 'admin.support')->name('support');
         Route::view('settings', 'admin.settings')->name('settings');
 
         // Resource Controllers

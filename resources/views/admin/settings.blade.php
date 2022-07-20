@@ -9,8 +9,12 @@
     {{-- Modal --}}
     <x-modals.settings_modal/>
 
-    <div class="alert alert-info mt-5">
-        Edit your account settings and change your password here.
+    <div class="card border-0 shadow mt-5">
+        <div class="card-body">
+            <div class="alert alert-info mb-0">
+                Edit your account settings and change your password here.
+            </div>
+        </div>
     </div>
 
     <div class="card border-0 shadow mt-2">

@@ -2,10 +2,10 @@
     @section('title', 'Settings')
 
     {{-- sidebar --}}
-    @include('components.student._sidebar')
+    @include('components.parent._sidebar')
 
     {{-- Navbar --}}
-    @include('components.settings.student.navbar')
+    @include('components.settings.parent.navbar')
     {{-- Modal --}}
     <x-modals.settings_modal/>
 

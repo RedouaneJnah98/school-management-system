@@ -1,4 +1,5 @@
 <x-dashboard_layout>
+    @section('title', 'Parent Info')
     {{-- sidebar --}}
     @include('components.admin._sidebar')
 
@@ -201,8 +202,8 @@
                     <div class="card shadow border-0 text-center p-0">
                         <div class="profile-cover rounded-top" data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
                         <div class="card-body pb-5">
-                            <img src="{{ $parent->profile_image }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
-                            <h4 class="h3">{{ $parent->firstname . ' ' . $parent->lastname }}</h4>
+                            <img src="{{ asset('storage/avatars/' . $parent->profile_image) }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
+                            <h4 class="h3">{{ $parent->fullName }}</h4>
                             <h5 class="fw-normal">Cool Parent.</h5>
                             <p class="text-gray mb-4">Tangier</p>
                             <a class="btn btn-sm btn-gray-800 d-inline-flex align-items-center me-2" href="#">
@@ -218,15 +219,15 @@
                 <div class="col-12">
                     <div class="card card-body border-0 shadow mb-4">
                         <h2 class="h5 mb-4">Children(s)</h2>
-                        @foreach($parent->childrens as $child)
+                        @foreach($parent->children as $child)
                             <div class="d-flex align-items-center">
                                 <div class="me-3">
                                     <!-- Avatar -->
-                                    <img class="rounded avatar-xl" src="{{  $child->profile_image }}" alt="change avatar">
+                                    <img class="rounded avatar-xl" src="{{  asset('storage/avatars/' . $child->profile_image) }}" alt="change avatar">
                                 </div>
                                 <div class="file-field">
                                     <div class="d-flex justify-content-xl-center ms-xl-3">
-                                        <div class="fw-normal">{{ $child->firstname . ' ' . $child->lastname }}</div>
+                                        <div class="fw-normal">{{ $child->fullName }}</div>
                                     </div>
                                     <!-- Current Year -->
                                 </div>

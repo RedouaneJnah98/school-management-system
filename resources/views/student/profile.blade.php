@@ -1,4 +1,5 @@
 <x-dashboard_layout>
+    @section('title', 'Profile')
     {{-- sidebar --}}
     @include('components.student._sidebar')
 

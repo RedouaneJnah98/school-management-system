@@ -4,7 +4,9 @@ namespace App\Http\Controllers\teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
+use App\Models\Parents;
 use App\Models\Student;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -16,7 +18,7 @@ class MessageController extends Controller
         return view('admin.messages', compact('messages'));
     }
 
-    public function store_student_message(Request $request)
+    public function store_student_message(Request $request): RedirectResponse
     {
         $request->validate([
             'message' => 'required',
@@ -28,6 +30,26 @@ class MessageController extends Controller
         $message->message = $request->input('message');
         $student->messages()->save($message);
 
-        return back()->with('success', 'Thank you! Your message has been successfully sent.');
+        return back()->with('success', $this->message());
+    }
+
+    public function store_parent_message(Request $request)
+    {
+        $request->validate([
+            'message' => 'required'
+        ]);
+
+        $parent_id = auth()->user()->id;
+        $parent = Parents::find($parent_id);
+        $message = new Message;
+        $message->message = $request->input('message');
+        $parent->messages()->save($message);
+
+        return back()->with('success', $this->message());
+    }
+
+    public function message(): string
+    {
+        return 'Thank you! Your message has been successfully sent.';
     }
 }
