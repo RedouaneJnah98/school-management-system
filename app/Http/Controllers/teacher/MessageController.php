@@ -11,11 +11,19 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
-    public function index()
+    public function index_parents()
     {
-        $messages = Message::with(['students', 'parents'])->get();
+        $messages = Message::with('parents')->paginate();
 
-        return view('admin.messages', compact('messages'));
+        return view('admin.messages.parents', compact('messages'));
+    }
+
+    public function index_students()
+    {
+        $messages = Message::with('students')->paginate();
+
+        return view('admin.messages.students', compact('messages'));
+
     }
 
     public function store_student_message(Request $request): RedirectResponse

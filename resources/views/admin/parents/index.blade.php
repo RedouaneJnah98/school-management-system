@@ -129,7 +129,7 @@
                                 $parent_avatar = ($parent->gender === 'Male' ? $parent->profile_image : 'default-avatar-female.jpg');
                             @endphp
                             <td>
-                                <a href="#" class="d-flex align-items-center">
+                                <a href="{{ route('admin.parents.show', $parent->id) }}" class="d-flex align-items-center">
                                     <img src="{{ asset('storage/avatars/' . $parent_avatar) }}" class="avatar rounded-circle me-3" alt="Avatar">
                                     <div class="d-block">
                                         <span class="fw-bold">{{ $parent->fullName }}</span>
