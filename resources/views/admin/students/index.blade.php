@@ -114,7 +114,7 @@
                                 </a>
                             </td>
                             <td>
-                                <span class="fw-normal">{{ $student->created_at }}</span></td>
+                                <span class="fw-normal">{{ $student->created_at->toFormattedDateString() }}</span></td>
                             <td>
                                             <span class="fw-normal d-flex align-items-center">
                                                 <svg class="icon icon-xxs text-success me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

@@ -39,6 +39,16 @@
 
                         <div class="row mb-4">
                             <div class="col-lg-6 col-sm-6 mb-4">
+                                <label for="name">Classroom Name</label>
+                                <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="e.g: Group A">
+                                @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6 mb-4">
                                 <label for="name">Branch Name</label>
                                 <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id" id="year">
                                     <option selected disabled>Select A Branch</option>
@@ -81,22 +91,6 @@
                                 </div>
                                 @enderror
                             </div>
-
-                            {{--                                <div class="col-lg-6 col-sm-6 mb-4">--}}
-                            {{--                                    <label for="teacher">Teached by</label>--}}
-                            {{--                                    <select class="form-select @error('teacher_id') is-invalid @enderror" name="teacher_id" id="teacher">--}}
-                            {{--                                        <option selected disabled>Select A Teacher</option>--}}
-                            {{--                                        @foreach($teachers as $teacher)--}}
-                            {{--                                            <option value="{{ $teacher->id }}" @selected(old('teacher_id'))>{{ $teacher->firstname . ' ' . $teacher->lastname }}</option>--}}
-                            {{--                                        @endforeach--}}
-                            {{--                                    </select>--}}
-                            {{--                                    @error('teacher_id')--}}
-                            {{--                                    <div class="invalid-feedback">--}}
-                            {{--                                        {{ $message }}--}}
-                            {{--                                    </div>--}}
-                            {{--                                    @enderror--}}
-                            {{--                                </div>--}}
-
                             <div class="col-lg-6 col-sm-6 mb-4">
                                 <label for="status">Status</label>
                                 <div class="input-group">

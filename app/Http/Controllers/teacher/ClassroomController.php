@@ -29,13 +29,11 @@ class ClassroomController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->validate([
+            'name' => 'required|unique:classrooms',
             'branch_id' => 'required|numeric',
-            'grade_id' => 'required|numeric|unique:classrooms',
+            'grade_id' => 'required|numeric',
             'year' => 'required',
             'status' => 'required',
-            'remark' => 'required',
-        ], [
-            'grade_id.unique' => 'This grade had already been taken.'
         ]);
 
         $insert_data = Classroom::create($attributes);

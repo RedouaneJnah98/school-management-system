@@ -43,7 +43,7 @@
                                 <select class="form-select @error('classroom_id') is-invalid @enderror" name="classroom_id" id="classroom">
                                     <option selected disabled>Select A Class</option>
                                     @foreach($classrooms as $classroom)
-                                        <option value="{{ $classroom->id }}">{{ $classroom->grade->name }}</option>
+                                        <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('classroom_id')
@@ -57,7 +57,7 @@
                                 <select class="form-select js-example-basic-multiple @error('student_id') is-invalid @enderror" name="student_id[]" multiple="multiple" id="student">
                                     <option selected disabled>Select A Student</option>
                                     @foreach($students as $student)
-                                        <option value="{{ $student->id }}">{{ $student->firstname . ' ' . $student->lastname }}</option>
+                                        <option value="{{ $student->id }}">{{ $student->fullName }}</option>
                                     @endforeach
                                 </select>
                                 @error('student_id')

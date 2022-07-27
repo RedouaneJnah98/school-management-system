@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('grade_id')->constrained();
             $table->foreignId('branch_id')->constrained();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->year('year');
             $table->string('status');
             $table->string('remark')->default('Amazing');
