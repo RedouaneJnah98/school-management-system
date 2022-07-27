@@ -141,7 +141,9 @@
                             <td class="border-0 fw-bold">
                                 <span class="badge {{ $classroom->status === 'Active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>
                             </td>
-                            <td class="border-0 fw-bold text-info">See Students</td>
+                            <td class="border-0 fw-bold text-info">
+                                <a data-bs-toggle="modal" data-bs-target="#classroom-students">See Students</a>
+                            </td>
                             <td class="border-0 fw-bold text-info">See Teachers</td>
                             <td class="border-0">
                                 <a href="{{ route('admin.classrooms.edit', $classroom->id) }}" class="btn btn-outline-info btn-sm me-2">Edit</a>
@@ -172,11 +174,13 @@
 <x-modals.delete/>
 {{-- Delete Notification --}}
 <x-notification.delete_notif/>
+{{-- Classroom Students --}}
+<x-modals.classroom_students/>
 
 
 <script>
-    $(document).ready(function () {
-        let branch = $('#branch').text();
-        console.log(branch);
-    })
+    // $(document).ready(function () {
+    //     let branch = $('#branch').text();
+    //     console.log(branch);
+    // })
 </script>
