@@ -1,4 +1,5 @@
 <x-dashboard_layout>
+    @section('title', 'Subjects')
     {{-- sidebar --}}
     @include('components.admin._sidebar')
     {{-- Navbar --}}
@@ -80,29 +81,20 @@
     <div class="card border-0 shadow">
         <div class="card-body">
             <div class="table-responsive">
-                {{--                    <div class="mb-4">--}}
-                {{--                        <select name="branch" class="form-select subject_table">--}}
-                {{--                            <option disabled selected>Select Branch</option>--}}
-                {{--                            @foreach($branches as $branch)--}}
-                {{--                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>--}}
-                {{--                            @endforeach--}}
-                {{--                        </select>--}}
-                {{--                        --}}{{--                        <form action="{{ route('admin.subjects.index') }}" method="post" id="form">@csrf</form>--}}
-                {{--                    </div>--}}
-                <table class="table table-centered table-nowrap mb-0 rounded" id="subjects">
+                <table class="table table-centered table-nowrap mb-0 rounded">
                     <thead class="thead-light">
                     <tr>
                         <th class="border-0 rounded-start">#</th>
-                        <th class="border-0 rounded-start">Subject Name</th>
+                        <th class="border-0">Subject Name</th>
                         <th class="border-0">All Branches</th>
                         <th class="border-0">Last Update</th>
-                        <th class="border-0">Action</th>
+                        <th class="border-0 rounded-end">Action</th>
                     </tr>
                     </thead>
-                    <tbody id="result">
+                    <tbody>
                     <!-- Item -->
                     @forelse($subjects as $subject)
-                        <tr id="result">
+                        <tr>
                             <td class="border-0">{{ $subject->id }}</td>
                             <td class="border-0">{{ $subject->name }}</td>
                             <td class="border-0 fw-bold text-info">{{ $subject->branch->name }}</td>
@@ -156,8 +148,4 @@
 <x-modals.delete/>
 {{-- Delete Notification --}}
 <x-notification.delete_notif/>
-
-<script>
-    $('table').ddTableFilter();
-</script>
 

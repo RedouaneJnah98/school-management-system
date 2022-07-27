@@ -47,55 +47,34 @@
         </div>
     </div>
 
-    <div class="table-settings mb-4">
-        <div class="row align-items-center justify-content-between">
-            <div class="col col-md-6 col-lg-3 col-xl-4">
-                <div class="input-group me-2 me-lg-3 fmxw-400">
-                            <span class="input-group-text">
-                                <svg class="icon icon-xs" x-description="Heroicon name: solid/search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                          clip-rule="evenodd"></path>
-                                </svg>
-                            </span>
-                    <input type="text" class="form-control" placeholder="Search student">
-                </div>
-            </div>
-            <div class="col-4 col-md-2 col-xl-1 ps-md-0 text-end">
-                <div class="dropdown">
-                    <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-xs dropdown-menu-end pb-0">
-                        <span class="small ps-3 fw-bold text-dark">Show</span>
-                        <a class="dropdown-item d-flex align-items-center fw-bold" href="#">10
-                            <svg class="icon icon-xxs ms-auto" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                        <a class="dropdown-item fw-bold" href="#">20</a>
-                        <a class="dropdown-item fw-bold rounded-bottom" href="#">30</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{--         Table --}}
+    {{-- Table --}}
     <div class="card border-0 shadow">
         <div class="card-body">
-            <div class="d-flex mb-3"><select class="form-select fmxw-200" aria-label="Message select example">
+            <div class="d-flex mb-5">
+                <select class="form-select fmxw-200" aria-label="Message select example">
                     <option selected="selected">Bulk Action</option>
                     <option value="1">Send Email</option>
                     <option value="2">Change Group</option>
                     <option value="3">Delete User</option>
                 </select>
                 <button class="btn btn-sm px-3 btn-secondary ms-3">Apply</button>
+            </div>
+
+            <div class="dataTable-top">
+                <div class="dataTable-dropdown">
+                    <label>
+                        <select class="dataTable-selector">
+                            <option value="5">5</option>
+                            <option value="10" selected="">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                        </select> entries per page
+                    </label>
+                </div>
+                <div class="dataTable-search">
+                    <input class="dataTable-input" placeholder="Search Student..." type="text">
+                </div>
             </div>
 
             <div class="table-responsive">
@@ -137,15 +116,15 @@
                             <td>
                                 <span class="fw-normal">{{ $student->created_at }}</span></td>
                             <td>
-                                    <span class="fw-normal d-flex align-items-center">
-                                        <svg class="icon icon-xxs text-success me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd"/>
-                                        </svg>
-                                        Email
-                                    </span>
+                                            <span class="fw-normal d-flex align-items-center">
+                                                <svg class="icon icon-xxs text-success me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                        clip-rule="evenodd"/>
+                                                </svg>
+                                                Email
+                                            </span>
                             </td>
                             <td>
                                 <span class="fw-normal">{{ $student->phone }}</span>
@@ -228,6 +207,134 @@
             </div>
         </div>
     </div>
+
+    {{--    <div class="card">--}}
+    {{--        <div class="table-responsive py-4">--}}
+    {{--            <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">--}}
+    {{--                <div class="dataTable-top">--}}
+    {{--                    <div class="dataTable-dropdown"><label><select class="dataTable-selector">--}}
+    {{--                                <option value="5">5</option>--}}
+    {{--                                <option value="10" selected="">10</option>--}}
+    {{--                                <option value="15">15</option>--}}
+    {{--                                <option value="20">20</option>--}}
+    {{--                                <option value="25">25</option>--}}
+    {{--                            </select> entries per page</label></div>--}}
+    {{--                    <div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"></div>--}}
+    {{--                </div>--}}
+    {{--                <div class="dataTable-container">--}}
+    {{--                    <table class="table table-flush dataTable-table" id="datatable">--}}
+    {{--                        <thead class="thead-light">--}}
+    {{--                        <tr>--}}
+    {{--                            <th data-sortable="" style="width: 23.8304%;"><a href="#" class="dataTable-sorter">Name</a></th>--}}
+    {{--                            <th data-sortable="" style="width: 34.0643%;"><a href="#" class="dataTable-sorter">Position</a></th>--}}
+    {{--                            <th data-sortable="" style="width: 20.614%;"><a href="#" class="dataTable-sorter">Office</a></th>--}}
+    {{--                            <th data-sortable="" style="width: 10.6725%;"><a href="#" class="dataTable-sorter">Age</a></th>--}}
+    {{--                            <th data-sortable="" style="width: 18.2749%;"><a href="#" class="dataTable-sorter">Start date</a></th>--}}
+    {{--                            <th data-sortable="" style="width: 16.5205%;"><a href="#" class="dataTable-sorter">Salary</a></th>--}}
+    {{--                        </tr>--}}
+    {{--                        </thead>--}}
+    {{--                        <tbody>--}}
+    {{--                        <tr>--}}
+    {{--                            <td>Tiger Nixon</td>--}}
+    {{--                            <td>System Architect</td>--}}
+    {{--                            <td>Edinburgh</td>--}}
+    {{--                            <td>61</td>--}}
+    {{--                            <td>2011/04/25</td>--}}
+    {{--                            <td>$320,800</td>--}}
+    {{--                        </tr>--}}
+    {{--                        <tr>--}}
+    {{--                            <td>Garrett Winters</td>--}}
+    {{--                            <td>Accountant</td>--}}
+    {{--                            <td>Tokyo</td>--}}
+    {{--                            <td>63</td>--}}
+    {{--                            <td>2011/07/25</td>--}}
+    {{--                            <td>$170,750</td>--}}
+    {{--                        </tr>--}}
+    {{--                        <tr>--}}
+    {{--                            <td>Ashton Cox</td>--}}
+    {{--                            <td>Junior Technical Author</td>--}}
+    {{--                            <td>San Francisco</td>--}}
+    {{--                            <td>66</td>--}}
+    {{--                            <td>2009/01/12</td>--}}
+    {{--                            <td>$86,000</td>--}}
+    {{--                        </tr>--}}
+    {{--                        <tr>--}}
+    {{--                            <td>Cedric Kelly</td>--}}
+    {{--                            <td>Senior Javascript Developer</td>--}}
+    {{--                            <td>Edinburgh</td>--}}
+    {{--                            <td>22</td>--}}
+    {{--                            <td>2012/03/29</td>--}}
+    {{--                            <td>$433,060</td>--}}
+    {{--                        </tr>--}}
+    {{--                        <tr>--}}
+    {{--                            <td>Airi Satou</td>--}}
+    {{--                            <td>Accountant</td>--}}
+    {{--                            <td>Tokyo</td>--}}
+    {{--                            <td>33</td>--}}
+    {{--                            <td>2008/11/28</td>--}}
+    {{--                            <td>$162,700</td>--}}
+    {{--                        </tr>--}}
+    {{--                        <tr>--}}
+    {{--                            <td>Brielle Williamson</td>--}}
+    {{--                            <td>Integration Specialist</td>--}}
+    {{--                            <td>New York</td>--}}
+    {{--                            <td>61</td>--}}
+    {{--                            <td>2012/12/02</td>--}}
+    {{--                            <td>$372,000</td>--}}
+    {{--                        </tr>--}}
+    {{--                        <tr>--}}
+    {{--                            <td>Herrod Chandler</td>--}}
+    {{--                            <td>Sales Assistant</td>--}}
+    {{--                            <td>San Francisco</td>--}}
+    {{--                            <td>59</td>--}}
+    {{--                            <td>2012/08/06</td>--}}
+    {{--                            <td>$137,500</td>--}}
+    {{--                        </tr>--}}
+    {{--                        <tr>--}}
+    {{--                            <td>Rhona Davidson</td>--}}
+    {{--                            <td>Integration Specialist</td>--}}
+    {{--                            <td>Tokyo</td>--}}
+    {{--                            <td>55</td>--}}
+    {{--                            <td>2010/10/14</td>--}}
+    {{--                            <td>$327,900</td>--}}
+    {{--                        </tr>--}}
+    {{--                        <tr>--}}
+    {{--                            <td>Colleen Hurst</td>--}}
+    {{--                            <td>Javascript Developer</td>--}}
+    {{--                            <td>San Francisco</td>--}}
+    {{--                            <td>39</td>--}}
+    {{--                            <td>2009/09/15</td>--}}
+    {{--                            <td>$205,500</td>--}}
+    {{--                        </tr>--}}
+    {{--                        <tr>--}}
+    {{--                            <td>Sonya Frost</td>--}}
+    {{--                            <td>Software Engineer</td>--}}
+    {{--                            <td>Edinburgh</td>--}}
+    {{--                            <td>23</td>--}}
+    {{--                            <td>2008/12/13</td>--}}
+    {{--                            <td>$103,600</td>--}}
+    {{--                        </tr>--}}
+    {{--                        </tbody>--}}
+    {{--                    </table>--}}
+    {{--                </div>--}}
+    {{--                <div class="dataTable-bottom">--}}
+    {{--                    <div class="dataTable-info">Showing 1 to 10 of 57 entries</div>--}}
+    {{--                    <nav class="dataTable-pagination">--}}
+    {{--                        <ul class="dataTable-pagination-list">--}}
+    {{--                            <li class="pager"><a href="#" data-page="1">‹</a></li>--}}
+    {{--                            <li class="active"><a href="#" data-page="1">1</a></li>--}}
+    {{--                            <li class=""><a href="#" data-page="2">2</a></li>--}}
+    {{--                            <li class=""><a href="#" data-page="3">3</a></li>--}}
+    {{--                            <li class=""><a href="#" data-page="4">4</a></li>--}}
+    {{--                            <li class=""><a href="#" data-page="5">5</a></li>--}}
+    {{--                            <li class=""><a href="#" data-page="6">6</a></li>--}}
+    {{--                            <li class="pager"><a href="#" data-page="2">›</a></li>--}}
+    {{--                        </ul>--}}
+    {{--                    </nav>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
 </x-dashboard_layout>
 
 {{-- Success Notification --}}
