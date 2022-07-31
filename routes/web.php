@@ -79,8 +79,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('update', [ProfileController::class, 'update'])->name('update');
         // Message Controller
-        Route::get('parents_messages', [MessageController::class, 'index_parents'])->name('parents_messages');
-        Route::get('students_messages', [MessageController::class, 'index_students'])->name('students_messages');
+        Route::get('messages', [MessageController::class, 'index'])->name('messages');
         // Dashboard Controller
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         // Classroom Student

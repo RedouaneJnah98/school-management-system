@@ -12,21 +12,17 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
-    public function index_parents()
+    public function index(Request $request)
     {
-        $students = Message::with('student_messages')->latest()->simplePaginate(3, '*', 's_page');
-        $parents = Message::with('parent_messages')->latest()->simplePaginate(3, '*', 'p_page');
+        $students = Message::with('student_messages')->latest()->paginate(3, '*', 's_page');
+        $parents = Message::with('parent_messages')->latest()->paginate(3, '*', 'p_page');
 
-        return view('admin.messages.parents', compact(['students', 'parents']));
+        if ($request->ajax()) {
+            return view('admin.messages.pagiresult', compact(['students', 'parents']));
+        }
+
+        return view('admin.messages.index', compact(['students', 'parents']));
     }
-
-//    public function index_students()
-//    {
-//        $messages = Message::with('student_messages')->orderBy('created_at', 'desc')->paginate(10);
-//
-//        return view('admin.messages.students', compact('messages'));
-//
-//    }
 
     public function store_student_message(Request $request): RedirectResponse
     {

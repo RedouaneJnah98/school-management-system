@@ -71,7 +71,6 @@
                         <th class="border-bottom">Name</th>
                         <th class="border-bottom">Date Created</th>
                         <th class="border-bottom">Verified</th>
-                        <th class="border-bottom">Date of birth</th>
                         <th class="border-bottom">Last seen</th>
                         @can('trashed')
                             <th class="border-bottom">Is Trashed</th>
@@ -106,9 +105,6 @@
                                                 </svg>
                                                 Email
                                             </span>
-                            </td>
-                            <td>
-                                <span class="fw-normal">{{ $student->date_of_birth }}</span>
                             </td>
                             <td>
                                 @php

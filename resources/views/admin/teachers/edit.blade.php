@@ -112,12 +112,12 @@
                             <div class="col-lg-6 col-sm-6 mb-4">
                                 <label for="status">Account Status</label>
                                 <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
-                                    @if($teacher->status === 'admin')
-                                        <option value="admin" selected>Admin</option>
-                                        <option value="teacher">Teacher</option>
+                                    @if($teacher->status === 'Admin')
+                                        <option value="{{ $teacher->status }}" selected>{{ $teacher->status }}</option>
+                                        <option value="Teacher">Teacher</option>
                                     @else
                                         <option value="{{ $teacher->status }}">{{ $teacher->status }}</option>
-                                        <option value="admin">Admin</option>
+                                        <option value="Admin">Admin</option>
                                     @endif
                                 </select>
                                 @error('status')

@@ -17,7 +17,7 @@ class ParentSeeder extends Seeder
     public function run(): void
     {
         Parents::factory(50)->hasAttached(
-            Message::factory(10),
+            Message::factory(),
         )->create();
     }
 }
