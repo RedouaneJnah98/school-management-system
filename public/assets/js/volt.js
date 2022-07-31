@@ -15,6 +15,20 @@
 
 */
 
+$(document).ready(function () {
+    $('#myTable').DataTable({
+        'pagingType': 'first_last_numbers',
+        lengthMenu: [5, 10, 25, 50],
+        pageLength: 10,
+        language: {
+            lengthMenu: "_MENU_ Entries per page",
+            sSearchPlaceholder: 'Search...',
+        }
+    });
+
+    $('#myTable_info').addClass('fw-normal small');
+});
+
 "use strict";
 const d = document;
 d.addEventListener("DOMContentLoaded", function (event) {

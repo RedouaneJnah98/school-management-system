@@ -13,7 +13,7 @@ class StudentController extends Controller
 {
     public function index(Student $student)
     {
-        $students = $student->newest()->withTrashed()->paginate(20);
+        $students = $student->newest()->withTrashed()->get();
 
         return view('admin.students.index', compact('students'));
     }

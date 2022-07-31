@@ -90,7 +90,7 @@
 
     @if(count($teachers) > 0)
         <div class="card card-body border-0 shadow table-wrapper table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover" id="myTable">
                 <thead>
                 <tr>
                     <th class="border-gray-200">ID</th>
@@ -110,9 +110,9 @@
                 @foreach($teachers as $teacher)
                     <tr>
                         <td>
-                                <span class="fw-bold">
-                                    {{ $teacher->id }}
-                                </span>
+                            <span class="fw-bold">
+                                {{ $teacher->id }}
+                            </span>
                         </td>
                         <td>
                             <span class="fw-normal">{{ $teacher->firstname }}</span>
@@ -155,10 +155,7 @@
 
                 </tbody>
             </table>
-            <div class="card-footer px-3 border-0 d-flex flex-column flex-lg-row align-items-center justify-content-between">
-                {{ $teachers->links() }}
-                <div class="fw-normal small mt-4 mt-lg-0">Showing <b>{{ $teachers->firstItem() }}</b> to <b>{{ $teachers->lastItem() }}</b> of <b>{{ $teachers->total() }}</b> entries</div>
-            </div>
+
         </div>
     @else
         <div class="alert alert-info text-center mt-5">No data available.</div>
@@ -173,3 +170,7 @@
 
 {{-- Delete Confirmation Modale --}}
 <x-modals.delete/>
+
+<script>
+
+</script>

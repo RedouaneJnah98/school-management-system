@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Message;
 use App\Models\Parents;
 use App\Models\Student;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -13,18 +14,19 @@ class MessageController extends Controller
 {
     public function index_parents()
     {
-        $messages = Message::with('parents')->paginate();
+        $students = Message::with('student_messages')->latest()->simplePaginate(3, '*', 's_page');
+        $parents = Message::with('parent_messages')->latest()->simplePaginate(3, '*', 'p_page');
 
-        return view('admin.messages.parents', compact('messages'));
+        return view('admin.messages.parents', compact(['students', 'parents']));
     }
 
-    public function index_students()
-    {
-        $messages = Message::with('students')->paginate();
-
-        return view('admin.messages.students', compact('messages'));
-
-    }
+//    public function index_students()
+//    {
+//        $messages = Message::with('student_messages')->orderBy('created_at', 'desc')->paginate(10);
+//
+//        return view('admin.messages.students', compact('messages'));
+//
+//    }
 
     public function store_student_message(Request $request): RedirectResponse
     {

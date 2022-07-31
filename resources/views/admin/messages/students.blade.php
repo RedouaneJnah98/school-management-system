@@ -9,12 +9,12 @@
 
     <div class="d-flex justify-content-between align-items-center pb-2 pt-4 pb-md-4">
         <div>
-            <a href="{{ route('admin.students_messages') }}" class="btn btn-secondary d-inline-flex align-items-center mb-3 mb-md-0">
+            <a href="{{ route('admin.parents_messages') }}" class="btn btn-secondary d-inline-flex align-items-center mb-3 mb-md-0">
                 <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
                     <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd"></path>
                 </svg>
-                Student Messages
+                Parents Messages
             </a></div>
         <div class="d-block d-sm-flex">
             <div class="btn-group mb-3 me-3 mb-md-0 d-none d-md-inline-flex">
@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-12">
                 @forelse($messages as $message)
-                    @foreach($message->students as $student)
+                    @foreach($message->student_messages as $student)
                         <div class="card hover-state border-bottom rounded-0 rounded-top py-3">
                             <div class="card-body d-flex align-items-center flex-wrap flex-lg-nowrap py-0">
                                 <div class="col-1 align-items-center px-0 d-none d-lg-flex">
@@ -95,7 +95,7 @@
                                     </a>
                                 </div>
                                 <div class="col-2 col-lg-2 d-flex align-items-center justify-content-end px-0 order-lg-4">
-                                    <div class="text-muted small d-none d-lg-block">11:01 AM</div>
+                                    <div class="text-muted small d-none d-lg-block">{{ $message->created_at->diffForHumans() }}</div>
                                     <div class="dropdown ms-3">
                                         <button type="button" class="btn btn-sm fs-6 px-1 py-0 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                             <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -149,25 +149,25 @@
                 @endforelse
             </div>
         </div>
-        <div class="row p-4">
-            <div class="col-7 mt-1">Showing {{ $messages->firstItem() }} - {{ $messages->lastItem() }} of {{ $messages->total() }}</div>
-            <div class="col-5">
-                <div class="btn-group float-end">
-                    <a href="{{ $messages->previousPageUrl() }}" class="btn btn-gray-100 {{ $messages->onFirstPage() ? 'disabled' : '' }}">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                    <a href="{{ $messages->nextPageUrl() }}" class="btn btn-gray-800 {{ $messages->onLastPage() ? 'disabled' : '' }}">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
+        {{--        <div class="row p-4">--}}
+        {{--            <div class="col-7 mt-1">Showing {{ $messages->firstItem() }} - {{ $messages->lastItem() }} of {{ $messages->total() }}</div>--}}
+        {{--            <div class="col-5">--}}
+        {{--                <div class="btn-group float-end">--}}
+        {{--                    <a href="{{ $messages->previousPageUrl() }}" class="btn btn-gray-100 {{ $messages->onFirstPage() ? 'disabled' : '' }}">--}}
+        {{--                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">--}}
+        {{--                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"--}}
+        {{--                                  clip-rule="evenodd"></path>--}}
+        {{--                        </svg>--}}
+        {{--                    </a>--}}
+        {{--                    <a href="{{ $messages->nextPageUrl() }}" class="btn btn-gray-800 {{ $messages->onLastPage() ? 'disabled' : '' }}">--}}
+        {{--                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">--}}
+        {{--                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"--}}
+        {{--                                  clip-rule="evenodd"></path>--}}
+        {{--                        </svg>--}}
+        {{--                    </a>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
     </div>
 
 </x-dashboard_layout>

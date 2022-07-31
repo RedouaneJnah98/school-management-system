@@ -15,7 +15,7 @@ class TeacherController extends Controller
 {
     public function index(Request $request)
     {
-        $teachers = Teacher::with('classrooms')->paginate(10);
+        $teachers = Teacher::with('classrooms')->get();
 //        $teachers = Teacher::when($request->has('title'))
 
         return view('admin.teachers.index', compact('teachers'));

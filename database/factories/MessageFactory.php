@@ -19,8 +19,6 @@ class MessageFactory extends Factory
     public function definition()
     {
         return [
-//            'parent_id' => Parents::factory(),
-//            'student_id' => Student::factory(),
             'message' => $this->faker->text
         ];
     }
