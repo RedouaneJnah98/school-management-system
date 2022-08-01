@@ -81,37 +81,9 @@
 
         <div class="row p-4">
             <div class="col-12">
-                <!-- Tab Nav -->
-                <div class="nav-wrapper position-relative mb-2">
-                    <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link mb-sm-3 mb-md-0 active d-flex align-items-center justify-content-center" id="tabs-icons-text-1-tab" data-bs-toggle="tab" href="#tabs-icons-text-1"
-                               role="tab" aria-controls="tabs-icons-text-1" aria-selected="true">
-                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
-                                    <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                                </svg>
-
-                                Parents Messages
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mb-sm-3 mb-md-0 d-flex align-items-center justify-content-center" id="tabs-icons-text-2-tab" data-bs-toggle="tab" href="#tabs-icons-text-2" role="tab"
-                               aria-controls="tabs-icons-text-2" aria-selected="false">
-                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
-                                    <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                                </svg>
-
-                                Students Messages
-                            </a>
-                        </li>
-                    </ul>
+                <div id="tag_container">
+                    @include('admin.messages.pagiresult')
                 </div>
-                <!-- End of Tab Nav -->
-                <!-- Tab Content -->
-                @include('admin.messages.pagiresult')
-                <!-- End of Tab Content -->
             </div>
         </div>
     </div>
@@ -119,21 +91,40 @@
 </x-dashboard_layout>
 
 <script>
-    // $(window).on('hashchange', function () {
-    //     if (window.location.hash) {
-    //         let page = window.location.hash.replace('#', '');
-    //         console.log(page);
-    //     }
-    // })
+    $(window).on('hashchange', function () {
+        if (window.location.hash) {
+            let page = window.location.hash.replace('#', '');
+
+            if (page === Number.NaN || page <= 0) {
+                return false;
+            } else {
+                getData(page);
+            }
+        }
+    })
 
     $(document).ready(function () {
         $(document).on('click', '.test a', function (e) {
             e.preventDefault();
 
-            let url = $(location).attr('href');
-            let s_page = url.split('s_page=')[1];
-            let p_page = url.split('p_page=')[1];
-            console.log(s_page, p_page);
+            let url = $(this).attr('href');
+            let page = url.split('page=')[1];
+
+            getData(page);
         })
     })
+
+    function getData(page) {
+        $.ajax({
+            url: '?page=' + page,
+            type: 'get',
+            dataType: 'html',
+            success: function (data) {
+                $('#tag_container').empty().html(data);
+            },
+            error: function () {
+                console.log('No response from the server!!');
+            }
+        })
+    }
 </script>
