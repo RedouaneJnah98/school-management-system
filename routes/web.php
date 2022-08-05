@@ -1,22 +1,22 @@
 <?php
 
+use App\Http\Controllers\admin\GroupController;
 use App\Http\Controllers\parent\AuthController;
 use App\Http\Controllers\parent\ParentController;
 use App\Http\Controllers\SoftDeleteController;
 use App\Http\Controllers\student\LoginController;
 use App\Http\Controllers\student\StudentController;
-use App\Http\Controllers\teacher\AttendanceController;
-use App\Http\Controllers\teacher\BranchController;
-use App\Http\Controllers\teacher\ClassroomStudentController;
-use App\Http\Controllers\teacher\ClassroomTeacherController;
-use App\Http\Controllers\teacher\DashboardController;
-use App\Http\Controllers\teacher\DownloadController;
-use App\Http\Controllers\teacher\GradeController;
-use App\Http\Controllers\teacher\MessageController;
-use App\Http\Controllers\teacher\ProfileController;
-use App\Http\Controllers\teacher\ClassroomController;
-use App\Http\Controllers\teacher\SubjectController;
-use App\Http\Controllers\teacher\TeacherController;
+use App\Http\Controllers\admin\AttendanceController;
+use App\Http\Controllers\admin\BranchController;
+use App\Http\Controllers\admin\ClassroomStudentController;
+use App\Http\Controllers\admin\ClassroomTeacherController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\DownloadController;
+use App\Http\Controllers\admin\MessageController;
+use App\Http\Controllers\admin\ProfileController;
+use App\Http\Controllers\admin\ClassroomController;
+use App\Http\Controllers\admin\SubjectController;
+use App\Http\Controllers\admin\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 // Home Page
@@ -104,7 +104,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('teachers', TeacherController::class);
         Route::resource('students', StudentController::class);
         Route::resource('parents', ParentController::class);
-        Route::resource('grades', GradeController::class)->except('show');
+        Route::resource('groups', GroupController::class)->except('show');
         Route::resource('branches', BranchController::class)->except('show');
         Route::resource('classrooms', ClassroomController::class)->except('show');
         Route::resource('subjects', SubjectController::class)->except('show');

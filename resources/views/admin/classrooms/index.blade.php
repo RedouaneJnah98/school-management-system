@@ -136,7 +136,7 @@
                         <tr>
                             <td class="border-0">{{ $classroom->name }}</td>
                             <td class="border-0">{{ $classroom->branch->name }}</td>
-                            <td class="border-0">{{ $classroom->grade->name }}</td>
+                            <td class="border-0">{{ $classroom->group->name }}</td>
                             <td class="border-0 fw-bold">{{ $classroom->year }}</td>
                             <td class="border-0 fw-bold">
                                 <span class="badge {{ $classroom->status === 'Active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>

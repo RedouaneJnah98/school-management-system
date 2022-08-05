@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\teacher;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
@@ -12,7 +12,7 @@ class BranchController extends Controller
     public function index(Branch $branch)
     {
         $branches = $branch->with('classrooms')->get();
-        
+
         return view('admin.branches.index', compact('branches'));
     }
 

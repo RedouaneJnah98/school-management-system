@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\teacher;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;

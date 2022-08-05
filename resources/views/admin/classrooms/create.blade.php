@@ -81,11 +81,11 @@
                                 <label for="grade">Grade</label>
                                 <select class="form-select @error('grade_id') is-invalid @enderror" name="grade_id" id="grade">
                                     <option selected disabled>Select Grade</option>
-                                    @foreach($grades as $grade)
-                                        <option value="{{ $grade->id }}" @selected(old('grade_id'))>{{ $grade->name }}</option>
+                                    @foreach($groups as $group)
+                                        <option value="{{ $group->id }}" @selected(old('group_id'))>{{ $group->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('grade_id')
+                                @error('group_id')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

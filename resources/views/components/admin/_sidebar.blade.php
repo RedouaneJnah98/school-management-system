@@ -107,7 +107,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.grades.index') }}" class="nav-link">
+                <a href="{{ route('admin.groups.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard-fill" viewBox="0 0 16 16">
                             <path
@@ -116,7 +116,7 @@
                                 d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
                          </svg>
                     </span>
-                    <span class="sidebar-text">Grades</span>
+                    <span class="sidebar-text">Groups</span>
                 </a>
             </li>
             <li class="nav-item">
