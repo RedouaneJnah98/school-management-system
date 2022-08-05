@@ -50,7 +50,8 @@
     {{-- Table --}}
     <div class="card border-0 shadow">
         <div class="card-body">
-            <div class="d-flex mb-5"><select class="form-select fmxw-200" aria-label="Message select example">
+            <div class="d-flex mb-5">
+                <select class="form-select fmxw-200" aria-label="Message select example">
                     <option selected="selected">Bulk Action</option>
                     <option value="1">Send Email</option>
                     <option value="2">Change Group</option>
@@ -94,17 +95,18 @@
                                 </a>
                             </td>
                             <td>
-                                <span class="fw-normal">{{ $student->created_at->toFormattedDateString() }}</span></td>
+                                <span class="fw-normal">{{ $student->created_at->toFormattedDateString() }}</span>
+                            </td>
                             <td>
-                                            <span class="fw-normal d-flex align-items-center">
-                                                <svg class="icon icon-xxs text-success me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        fill-rule="evenodd"
-                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                        clip-rule="evenodd"/>
-                                                </svg>
-                                                Email
-                                            </span>
+                                <span class="fw-normal d-flex align-items-center">
+                                    <svg class="icon icon-xxs text-success me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"/>
+                                    </svg>
+                                    Email
+                                </span>
                             </td>
                             <td>
                                 @php

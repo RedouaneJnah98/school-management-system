@@ -49,54 +49,28 @@
 
         </div>
     </div>
-    <div class="table-settings mb-4">
-        <div class="row align-items-center justify-content-between">
-            <div class="col col-md-6 col-lg-3 col-xl-4">
-                <div class="input-group me-2 me-lg-3 fmxw-400">
-                            <span class="input-group-text">
-                                <svg class="icon icon-xs" x-description="Heroicon name: solid/search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                          clip-rule="evenodd"></path>
-                                </svg>
-                            </span>
-                    <input type="text" class="form-control" placeholder="Search orders">
-                </div>
-            </div>
-            <div class="col-4 col-md-2 col-xl-1 ps-md-0 text-end">
-                <div class="dropdown">
-                    <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-xs dropdown-menu-end pb-0">
-                        <span class="small ps-3 fw-bold text-dark">Show</span>
-                        <a class="dropdown-item d-flex align-items-center fw-bold" href="#">10
-                            <svg class="icon icon-xxs ms-auto" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                        <a class="dropdown-item fw-bold" href="#">20</a>
-                        <a class="dropdown-item fw-bold rounded-bottom" href="#">30</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     @if(count($teachers) > 0)
         <div class="card card-body border-0 shadow table-wrapper table-responsive">
-            <table class="table table-hover" id="myTable">
+            <div class="d-flex mb-5"><select class="form-select fmxw-200" aria-label="Message select example">
+                    <option selected="selected">Bulk Action</option>
+                    <option value="1">Send Email</option>
+                    <option value="2">Change Group</option>
+                    <option value="3">Delete User</option>
+                </select>
+                <button class="btn btn-sm px-3 btn-secondary ms-3">Apply</button>
+            </div>
+            <table class="table user-table table-hover align-items-center" id="myTable">
                 <thead>
                 <tr>
+                    <th class="border-bottom">
+                        <div class="form-check dashboard-check"><input class="form-check-input" type="checkbox" value="" id="userCheck55">
+                            <label class="form-check-label" for="userCheck55"></label>
+                        </div>
+                    </th>
                     <th class="border-gray-200">ID</th>
-                    <th class="border-gray-200">First Name</th>
-                    <th class="border-gray-200">Last Name</th>
-                    <th class="border-gray-200">Email</th>
+                    <th class="border-gray-200">Name</th>
+                    <th class="border-gray-200">Verified</th>
                     <th class="border-gray-200">Date Of Birth</th>
                     <th class="border-gray-200">Status</th>
                     @canany(['create', 'update','show','delete'], App\Models\Teacher::class)
@@ -110,16 +84,37 @@
                 @foreach($teachers as $teacher)
                     <tr>
                         <td>
+                            <div class="form-check dashboard-check"><input class="form-check-input" type="checkbox" value="" id="userCheck1">
+                                <label class="form-check-label" for="userCheck1"></label>
+                            </div>
+                        </td>
+                        <td>
                             <span class="fw-bold">
                                 {{ $teacher->id }}
                             </span>
                         </td>
                         <td>
-                            <span class="fw-normal">{{ $teacher->firstname }}</span>
+                            <a href="#" class="d-flex align-items-center"><img src="{{ asset('storage/avatars/default-avatar-male.jpg') }}" class="avatar rounded-circle me-3" alt="Avatar">
+                                <div class="d-block">
+                                    <span class="fw-bold">{{ $teacher->fullName }}</span>
+                                    <div class="small text-gray">{{ $teacher->email }}</div>
+                                </div>
+                            </a>
                         </td>
-                        <td><span class="fw-normal">{{ $teacher->lastname }}</span></td>
-                        <td><span class="fw-normal">{{ $teacher->email }}</span></td>
-                        <td><span class="fw-bold">{{ $teacher->dob }}</span></td>
+                        <td>
+                            <span class="fw-normal d-flex align-items-center">
+                                <svg class="icon icon-xxs text-success me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd"/>
+                                </svg>
+                                Email
+                            </span>
+                        </td>
+                        <td>
+                            <span class="fw-bold">{{ $teacher->dob }}</span>
+                        </td>
                         <td><span class="badge {{ $teacher->status === 'Admin' ? 'bg-success' : 'bg-secondary' }}">{{ $teacher->status }}</span></td>
                         @canany(['update','delete', 'show'], $teacher)
                             <td>
