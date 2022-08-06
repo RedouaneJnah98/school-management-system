@@ -1,4 +1,5 @@
 <x-dashboard_layout>
+    @section('title', 'Create Classroom')
     {{-- sidebar --}}
     @include('components.admin._sidebar')
 
@@ -38,7 +39,7 @@
 
                         <div class="row mb-4">
                             <div class="col-lg-6 col-sm-6 mb-4">
-                                <label for="name">Grade Name</label>
+                                <label for="name">Group Name</label>
                                 <div class="input-group">
                                         <span class="input-group-text">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
@@ -57,10 +58,14 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-6 mb-4">
-                                <label for="desc">Grade Description</label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="desc"
-                                          cols="30" rows="3">{{ old('description') }}</textarea>
-                                @error('description')
+                                <label for="branch">Related Branch</label>
+                                <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id" id="branch">
+                                    <option selected disabled>Select Branch</option>
+                                    @foreach($branches as $branch)
+                                        <option value="{{ $branch->id }}" @selected(old('branch_id'))>{{ $branch->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('branch_id')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

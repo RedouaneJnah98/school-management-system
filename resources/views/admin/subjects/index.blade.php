@@ -97,7 +97,7 @@
                         <tr>
                             <td class="border-0">{{ $subject->id }}</td>
                             <td class="border-0">{{ $subject->name }}</td>
-                            <td class="border-0 fw-bold text-info">{{ $subject->branch->name }}</td>
+                            {{--                            <td class="border-0 fw-bold text-info">{{ $subject->branch->name }}</td>--}}
                             <td class="border-0">{{ $subject->updated_at }}</td>
                             <td class="border-0 text-success">
                                 <div class="dropdown">

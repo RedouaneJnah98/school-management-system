@@ -1,7 +1,7 @@
 <div class="card border-0">
     <div class="card-body p-0">
-        @forelse($messages as $message)
-            @foreach($message->parent_messages as $parent)
+        @forelse($feedbacks as $feedback)
+            @foreach($feedback->parent_messages as $parent)
                 <div class="card hover-state border-bottom rounded-0 rounded-top py-3">
                     <div class="card-body d-flex align-items-center flex-wrap flex-lg-nowrap py-0">
                         <div class="col-1 align-items-center px-0 d-none d-lg-flex">
@@ -20,7 +20,7 @@
                             </a>
                         </div>
                         <div class="col-2 col-lg-2 d-flex align-items-center justify-content-end px-0 order-lg-4">
-                            <div class="text-muted small d-none d-lg-block">{{ $message->created_at->diffForHumans() }}</div>
+                            <div class="text-muted small d-none d-lg-block">{{ $feedback->created_at->format('g:i A') }}</div>
                             <div class="dropdown ms-3">
                                 <button type="button" class="btn btn-sm fs-6 px-1 py-0 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                     <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -63,20 +63,21 @@
                         </div>
                         <div class="col-12 col-lg-7 d-flex align-items-center mt-3 mt-lg-0 ps-0">
                             <a href="./single-message.html" class="fw-normal text-gray-600-900 truncate-text">
-                                <span class="fw-bold ps-lg-5">{{ $message->message }}</span>
+                                <span class="fw-bold ps-lg-5">{{ $feedback->message }}</span>
                                 {{--                                                        <span class="fw-bold d-none d-md-inline">We’ve noticed you haven’t set up email forwarding and we could help you</span>--}}
                             </a>
                         </div>
                     </div>
                 </div>
             @endforeach
-            @foreach($message->student_messages as $student)
+            @foreach($feedback->student_messages as $student)
                 <div class="card hover-state border-bottom rounded-0 rounded-top py-3">
                     <div class="card-body d-flex align-items-center flex-wrap flex-lg-nowrap py-0">
                         <div class="col-1 align-items-center px-0 d-none d-lg-flex">
-                            <div class="form-check inbox-check me-2 mb-0"><input class="form-check-input" type="checkbox" value="" id="mailCheck1"> <label
-                                    class="form-check-label"
-                                    for="mailCheck1"></label></div>
+                            <div class="form-check inbox-check me-2 mb-0">
+                                <input class="form-check-input" type="checkbox" value="" id="mailCheck1">
+                                <label class="form-check-label" for="mailCheck1"></label>
+                            </div>
                             <svg class="icon icon-sm rating-star d-none d-lg-inline-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
@@ -89,7 +90,7 @@
                             </a>
                         </div>
                         <div class="col-2 col-lg-2 d-flex align-items-center justify-content-end px-0 order-lg-4">
-                            <div class="text-muted small d-none d-lg-block">{{ $message->created_at->diffForHumans() }}</div>
+                            <div class="text-muted small d-none d-lg-block">{{ $feedback->created_at->format('g:i A') }}</div>
                             <div class="dropdown ms-3">
                                 <button type="button" class="btn btn-sm fs-6 px-1 py-0 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                     <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -132,7 +133,7 @@
                         </div>
                         <div class="col-12 col-lg-7 d-flex align-items-center mt-3 mt-lg-0 ps-0">
                             <a href="./single-message.html" class="fw-normal text-gray-600-900 truncate-text">
-                                <span class="fw-bold ps-lg-5">{{ $message->message }}</span>
+                                <span class="fw-bold ps-lg-5">{{ $feedback->message }}</span>
                                 {{--                                                        <span class="fw-bold d-none d-md-inline">We’ve noticed you haven’t set up email forwarding and we could help you</span>--}}
                             </a>
                         </div>
@@ -144,16 +145,16 @@
         @endforelse
 
         <div class="row p-4">
-            <div class="col-7 mt-1">Showing {{ $messages->firstItem() }} - {{ $messages->lastItem() }} of {{ $messages->total() }}</div>
+            <div class="col-7 mt-1">Showing {{ $feedbacks->firstItem() }} - {{ $feedbacks->lastItem() }} of {{ $feedbacks->total() }}</div>
             <div class="col-5">
                 <div class="btn-group float-end test">
-                    <a href="{{ $messages->previousPageUrl() }}" class="btn btn-gray-100 {{ $messages->onFirstPage() ? 'disabled' : '' }}">
+                    <a href="{{ $feedbacks->previousPageUrl() }}" class="btn btn-gray-100 {{ $feedbacks->onFirstPage() ? 'disabled' : '' }}">
                         <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
                                   clip-rule="evenodd"/>
                         </svg>
                     </a>
-                    <a href="{{ $messages->nextPageUrl() }}" class="btn btn-gray-800 {{ $messages->onLastPage() ? 'disabled' : '' }}">
+                    <a href="{{ $feedbacks->nextPageUrl() }}" class="btn btn-gray-800 {{ $feedbacks->onLastPage() ? 'disabled' : '' }}">
                         <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                   clip-rule="evenodd"/>

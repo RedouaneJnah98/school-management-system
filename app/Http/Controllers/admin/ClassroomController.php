@@ -20,17 +20,16 @@ class ClassroomController extends Controller
 
     public function create()
     {
-        $branches = Branch::with('classrooms')->get();
+//        $branches = Branch::with('classrooms')->get();
         $groups = Group::with('classrooms')->get();
 
-        return view('admin.classrooms.create', compact(['branches', 'groups']));
+        return view('admin.classrooms.create', compact('groups'));
     }
 
     public function store(Request $request)
     {
         $attributes = $request->validate([
             'name' => 'required|unique:classrooms',
-            'branch_id' => 'required|numeric',
             'group_id' => 'required|numeric',
             'year' => 'required',
             'status' => 'required',

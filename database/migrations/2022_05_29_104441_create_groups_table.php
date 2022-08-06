@@ -14,8 +14,8 @@ return new class extends Migration {
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('branch_id')->constrained();
             $table->string('name')->unique();
-            $table->text('description');
             $table->timestamps();
         });
     }

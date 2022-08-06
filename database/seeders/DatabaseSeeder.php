@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             ParentSeeder::class,
             StudentSeeder::class,
             BranchSeeder::class,
-            GroupSeeder::class,
+//            GroupSeeder::class,
         ]);
     }
 }

@@ -19,11 +19,29 @@ class ClassroomStudentController extends Controller
         return view('admin.classrooms.students', compact(['students', 'classrooms']));
     }
 
-    public function all_students($id)
+    public function all_students(Request $request)
     {
-        $classrooms = Classroom::find($id);
+        $classrooms = Classroom::find($request->id);
+        $result = '';
+        foreach ($classrooms->students as $student) {
+            $result .= '<tr>';
+            $result .= '<td>' . '<span class="fw-bold">' . $student->id . '</span>' . '</td>';
+            $result .= '<td>';
+            $result .= '<a href="#" class="d-flex align-items-center">';
+            $result .= '<img src="/storage/avatars/default-avatar-male.jpg" class="avatar rounded-circle me-3" alt="Avatar" />';
+            $result .= '<div class="d-block">';
+            $result .= '<span class="fw-bold">' . $student->fullName . '</span>';
+            $result .= '</div>';
+            $result .= '</a>';
+            $result .= '</td>';
+            $result .= '<td >' . $student->email . '</td>';
+            $result .= '<td>' . $student->gender . '</td>';
+            $result .= '<td>' . $student->phone . '</td>';
+            $result .= '</tr>';
+        }
 
-        return view('admin.students', compact('classrooms'));
+        return response()->json($result);
+//        return view('admin.students', compact('classrooms'));
     }
 
     public function store(Request $request)

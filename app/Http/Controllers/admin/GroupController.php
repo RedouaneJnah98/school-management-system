@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use App\Models\Grade;
 use App\Models\Group;
 use Illuminate\Http\Request;
@@ -19,14 +20,16 @@ class GroupController extends Controller
 
     public function create()
     {
-        return view('admin.groups.create');
+        $branches = Branch::all();
+
+        return view('admin.groups.create', compact('branches'));
     }
 
     public function store(Request $request)
     {
         $attributes = $request->validate([
             'name' => 'required|unique:groups',
-            'description' => 'required'
+            'branch_id' => 'required'
         ]);
 
         // insert Data

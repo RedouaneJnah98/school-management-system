@@ -82,7 +82,7 @@
         <div class="row p-4">
             <div class="col-12">
                 <div id="tag_container">
-                    @include('admin.messages.pagiresult')
+                    @include('admin.feedbacks.pagiresult')
                 </div>
             </div>
         </div>

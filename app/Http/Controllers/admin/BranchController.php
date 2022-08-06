@@ -9,9 +9,9 @@ use Illuminate\Validation\Rule;
 
 class BranchController extends Controller
 {
-    public function index(Branch $branch)
+    public function index()
     {
-        $branches = $branch->with('classrooms')->get();
+        $branches = Branch::all();
 
         return view('admin.branches.index', compact('branches'));
     }

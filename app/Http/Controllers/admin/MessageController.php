@@ -14,14 +14,14 @@ class MessageController extends Controller
 {
     public function index(Request $request)
     {
-        $messages = Message::with(['parent_messages', 'student_messages'])->latest()->paginate(10);
+        $feedbacks = Message::with(['parent_messages', 'student_messages'])->latest()->paginate(10);
 //        $parents = Message::with('parent_messages')->latest()->paginate(3, '*', 'p_page');
 
         if ($request->ajax()) {
-            return view('admin.messages.pagiresult', compact('messages'));
+            return view('admin.feedbacks.pagiresult', compact('feedbacks'));
         }
 
-        return view('admin.messages.index', compact('messages'));
+        return view('admin.feedbacks.index', compact('feedbacks'));
     }
 
     public function store_student_message(Request $request): RedirectResponse
