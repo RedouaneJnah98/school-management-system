@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\Classroom;
-use App\Models\Grade;
+use App\Models\Group;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -21,9 +21,9 @@ class ClassroomController extends Controller
     public function create()
     {
         $branches = Branch::with('classrooms')->get();
-        $grades = Grade::with('classrooms')->get();
+        $groups = Group::with('classrooms')->get();
 
-        return view('admin.classrooms.create', compact(['branches', 'grades']));
+        return view('admin.classrooms.create', compact(['branches', 'groups']));
     }
 
     public function store(Request $request)
@@ -31,7 +31,7 @@ class ClassroomController extends Controller
         $attributes = $request->validate([
             'name' => 'required|unique:classrooms',
             'branch_id' => 'required|numeric',
-            'grade_id' => 'required|numeric',
+            'group_id' => 'required|numeric',
             'year' => 'required',
             'status' => 'required',
         ]);
@@ -49,9 +49,9 @@ class ClassroomController extends Controller
     {
         $teachers = Teacher::with('classrooms')->get();
         $branches = Branch::with('classrooms')->get();
-        $grades = Grade::with('classrooms')->get();
+        $groups = Group::with('classrooms')->get();
 
-        return view('admin.classrooms.edit', compact(['classroom', 'branches', 'grades', 'teachers']));
+        return view('admin.classrooms.edit', compact(['classroom', 'branches', 'groups', 'teachers']));
     }
 
     public function update(Request $request, Classroom $classroom)
@@ -59,7 +59,7 @@ class ClassroomController extends Controller
         $attributes = $request->validate([
             'branch_id' => 'required|numeric',
             'year' => 'required',
-            'grade_id' => 'required|numeric',
+            'group_id' => 'required|numeric',
 //            'teacher_id' => 'required|numeric',
             'status' => 'required',
             'remark' => 'required'

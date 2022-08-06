@@ -1,5 +1,5 @@
 <x-dashboard_layout>
-    @section('title', 'Add Class')
+    @section('title', 'Create New Class')
     {{-- sidebar --}}
     @include('components.admin._sidebar')
 
@@ -78,9 +78,9 @@
                                 @enderror
                             </div>
                             <div class="col-lg-6 col-sm-6 mb-4">
-                                <label for="grade">Grade</label>
-                                <select class="form-select @error('grade_id') is-invalid @enderror" name="grade_id" id="grade">
-                                    <option selected disabled>Select Grade</option>
+                                <label for="group">Groups</label>
+                                <select class="form-select @error('group_id') is-invalid @enderror" name="group_id" id="group">
+                                    <option selected disabled>Select Group</option>
                                     @foreach($groups as $group)
                                         <option value="{{ $group->id }}" @selected(old('group_id'))>{{ $group->name }}</option>
                                     @endforeach

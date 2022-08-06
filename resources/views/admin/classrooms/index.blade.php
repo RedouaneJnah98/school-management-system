@@ -122,7 +122,7 @@
                     <tr>
                         <th class="border-0 rounded-start">Classroom Name</th>
                         <th class="border-0">Branch Name</th>
-                        <th class="border-0">Grade</th>
+                        <th class="border-0">Group</th>
                         <th class="border-0">Year</th>
                         <th class="border-0">Status</th>
                         <th class="border-0">Students</th>
