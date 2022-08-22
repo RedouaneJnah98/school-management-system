@@ -37,16 +37,33 @@
                 </div>
                 <hr>
                 <h6>Password:</h6>
-                <form action="">
+                <form action="{{ route('admin.update-password') }}" method="POST">
                     @csrf
 
-                    <input type="password" class="form-control" placeholder="Enter Current Password">
-                    <input type="password" class="form-control my-3" placeholder="Enter New Password">
-                    <input type="password" class="form-control" placeholder="Re-type New Password">
+                    <input type="password" class="form-control @error('old_password') is-invalid @enderror" name="old_password"
+                           placeholder="Enter Old Password" value="{{ old('old_password') }}">
+                    @error('old_password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
 
-                    <button type="submit" class="btn btn-primary text-white mt-5">Change Password</button>
+                    <input type="password" class="form-control mt-3 @error('new_password') is-invalid @enderror" name="new_password"
+                           placeholder="Enter New Password" value="{{ old('new_password') }}">
+                    @error('new_password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                    <input type="password" class="form-control mt-3" name="new_password_confirmation"
+                           placeholder="Re-type New Password" value="{{ old('new_password_confirmation') }}">
+
+                    <button type="submit" class="btn btn-primary text-white mt-5">Submit</button>
                 </form>
             </div>
         </div>
     </div>
 </x-dashboard_layout>
+
+<x-modals.failed/>
+<x-modals.success/>

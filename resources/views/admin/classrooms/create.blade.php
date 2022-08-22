@@ -47,7 +47,6 @@
                                 </div>
                                 @enderror
                             </div>
-
                             {{--                            <div class="col-lg-6 col-sm-6 mb-4">--}}
                             {{--                                <label for="name">Branch Name</label>--}}
                             {{--                                <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id" id="year">--}}

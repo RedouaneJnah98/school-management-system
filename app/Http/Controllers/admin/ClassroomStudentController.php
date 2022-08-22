@@ -7,6 +7,7 @@ use App\Models\Classroom;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\In;
+use phpDocumentor\Reflection\Types\Iterable_;
 use Symfony\Component\Console\Input\Input;
 
 class ClassroomStudentController extends Controller
@@ -23,25 +24,29 @@ class ClassroomStudentController extends Controller
     {
         $classrooms = Classroom::find($request->id);
         $result = '';
-        foreach ($classrooms->students as $student) {
-            $result .= '<tr>';
-            $result .= '<td>' . '<span class="fw-bold">' . $student->id . '</span>' . '</td>';
-            $result .= '<td>';
-            $result .= '<a href="#" class="d-flex align-items-center">';
-            $result .= '<img src="/storage/avatars/default-avatar-male.jpg" class="avatar rounded-circle me-3" alt="Avatar" />';
-            $result .= '<div class="d-block">';
-            $result .= '<span class="fw-bold">' . $student->fullName . '</span>';
-            $result .= '</div>';
-            $result .= '</a>';
-            $result .= '</td>';
-            $result .= '<td >' . $student->email . '</td>';
-            $result .= '<td>' . $student->gender . '</td>';
-            $result .= '<td>' . $student->phone . '</td>';
-            $result .= '</tr>';
+
+        if ($classrooms->students->count() > 0) {
+            foreach ($classrooms->students as $student) {
+                $result .= '<tr>';
+                $result .= '<td>' . '<span class="fw-bold">' . $student->id . '</span>' . '</td>';
+                $result .= '<td>';
+                $result .= '<a href="#" class="d-flex align-items-center">';
+                $result .= '<img src="/storage/avatars/default-avatar-male.jpg" class="avatar rounded-circle me-3" alt="Avatar" />';
+                $result .= '<div class="d-block">';
+                $result .= '<span class="fw-bold">' . $student->fullName . '</span>';
+                $result .= '</div>';
+                $result .= '</a>';
+                $result .= '</td>';
+                $result .= '<td >' . $student->email . '</td>';
+                $result .= '<td>' . $student->gender . '</td>';
+                $result .= '<td>' . $student->phone . '</td>';
+                $result .= '</tr>';
+            }
+        } else {
+            $result .= '<tr><td class="text-info text-center" colspan="5">Oops...there is no student in thi class.</td></tr>';
         }
 
         return response()->json($result);
-//        return view('admin.students', compact('classrooms'));
     }
 
     public function store(Request $request)

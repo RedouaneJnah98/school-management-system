@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="row">
         <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
@@ -52,20 +52,20 @@
                                 </div>
                                 @enderror
                             </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <label for="student">Student</label>
-                                <select class="form-select js-example-basic-multiple @error('student_id') is-invalid @enderror" name="student_id[]" multiple="multiple" id="student">
-                                    <option selected disabled>Select A Student</option>
-                                    @foreach($students as $student)
-                                        <option value="{{ $student->id }}">{{ $student->fullName }}</option>
-                                    @endforeach
-                                </select>
-                                @error('student_id')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
+                            {{--                            <div class="col-lg-6 col-sm-6">--}}
+                            {{--                                <label for="student">Student</label>--}}
+                            {{--                                <select class="form-select js-example-basic-multiple @error('student_id') is-invalid @enderror" name="student_id[]" multiple="multiple" id="student">--}}
+                            {{--                                    <option selected disabled>Select A Student</option>--}}
+                            {{--                                    @foreach($students as $student)--}}
+                            {{--                                        <option value="{{ $student->id }}">{{ $student->fullName }}</option>--}}
+                            {{--                                    @endforeach--}}
+                            {{--                                </select>--}}
+                            {{--                                @error('student_id')--}}
+                            {{--                                <div class="invalid-feedback">--}}
+                            {{--                                    {{ $message }}--}}
+                            {{--                                </div>--}}
+                            {{--                                @enderror--}}
+                            {{--                            </div>--}}
                         </div>
 
                         {{-- Submit Button --}}

@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class TeacherController extends Controller
@@ -32,6 +33,9 @@ class TeacherController extends Controller
         return view('admin.teachers.create');
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function store(Request $request)
     {
         $this->authorize('create', Teacher::class);
@@ -109,6 +113,31 @@ class TeacherController extends Controller
         } else {
             return redirect()->back()->with('error', 'Error! Something went wrong, try again.');
         }
+    }
+
+    /**
+     * Update password from settings
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function update_password(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed'
+        ]);
+        // Match the old password
+        if (!Hash::check($request->input('old_password'), \auth()->user()->password)) {
+            return back()->with('failed', "Error! Old password does not match!");
+        }
+        // Update the new password
+        $new_password = Hash::make($request->input('new_password'));
+
+        Teacher::whereId(\auth()->user()->id)->update([
+            'password' => $new_password,
+            'password_confirmation' => $new_password,
+        ]);
+        return back()->with('success', 'Password changed successfully!');
     }
 
     /**

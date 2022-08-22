@@ -42,7 +42,7 @@
                                 <select class="form-select @error('classroom_id') is-invalid @enderror" name="classroom_id" id="classroom">
                                     <option selected disabled>Select A Class</option>
                                     @foreach($classrooms as $classroom)
-                                        <option value="{{ $classroom->id }}">{{ $classroom->grade->name }}</option>
+                                        <option value="{{ $classroom->id }}">{{ $classroom->group->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('classroom_id')

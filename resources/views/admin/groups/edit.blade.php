@@ -33,7 +33,7 @@
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
                     <!-- Form -->
-                    <form action="{{ route('admin.groups.update', $grade->id) }}" method="post">
+                    <form action="{{ route('admin.groups.update', $group->id) }}" method="post">
                         @method('PUT')
                         @csrf
 
@@ -50,7 +50,7 @@
                                             </svg>
                                         </span>
                                     <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"
-                                           value="{{ $grade->name }}">
+                                           value="{{ $group->name }}">
                                     @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -62,7 +62,7 @@
                             <div class="col-lg-6 col-sm-6 mb-4">
                                 <label for="desc">Grade Description</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="desc"
-                                          cols="30" rows="3" placeholder="Very Good...">{{ $grade->description }}</textarea>
+                                          cols="30" rows="3" placeholder="Very Good...">{{ $group->description }}</textarea>
                                 @error('description')
                                 <div class="invalid-feedback">
                                     {{ $message }}

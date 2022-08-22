@@ -99,6 +99,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('force_delete/{id}', [SoftDeleteController::class, 'force_delete'])->name('force_delete');
         // Views Routes
         Route::view('settings', 'admin.settings')->name('settings');
+        // Update password from settings
+        Route::post('update-password', [TeacherController::class, 'update_password'])->name('update-password');
 
         // Resource Controllers
         Route::resource('teachers', TeacherController::class);
