@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\Rule;
 
 class TeacherController extends Controller
@@ -160,11 +161,10 @@ class TeacherController extends Controller
     {
         $credentials = $request->validate([
             'email' => 'required|email|exists:teachers',
-            'password' => 'required|min:6|max:30'
+            'password' => 'required'
         ]);
 
         $remember_me = $request->has('remember_me');
-
         // check the user's credentials if they are valid
         if (Auth::guard('web')->attempt($credentials, $remember_me)) {
             // regenerate session ID

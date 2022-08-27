@@ -89,14 +89,5 @@
                 </svg>
             </figure>
         </section>
-        <div class="section pt-0">
-            <div class="container mt-n10 mt-lg-n12 z-2">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <img src="{{ asset('assets/img/mockup-presentation.png') }}" alt="Mockup presentation">
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
 </x-layout>

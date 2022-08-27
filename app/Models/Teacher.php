@@ -14,7 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Teacher extends Authenticatable implements CanResetPassword
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, \Illuminate\Auth\Passwords\CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -67,23 +67,15 @@ class Teacher extends Authenticatable implements CanResetPassword
         return $query->whereMonth('created_at', now()->subMonth()->month);
     }
 
-    /**
-     * @param $password
-     * @return void
-     */
-    public function setPasswordAttribute($password): void
-    {
-        $this->attributes['password'] = bcrypt($password);
-    }
+//    /**
+//     * @param $password
+//     * @return void
+//     */
+//    public function setPasswordAttribute($password): void
+//    {
+//        $this->attributes['password'] = bcrypt($password);
+//    }
 
-    /**
-     * @param $password
-     * @return void
-     */
-    public function setPasswordConfirmationAttribute($password): void
-    {
-        $this->attributes['password_confirmation'] = bcrypt($password);
-    }
 
     /**
      * Teachers belong to many classrooms.
