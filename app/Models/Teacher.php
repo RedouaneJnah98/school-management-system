@@ -66,17 +66,7 @@ class Teacher extends Authenticatable implements CanResetPassword
     {
         return $query->whereMonth('created_at', now()->subMonth()->month);
     }
-
-//    /**
-//     * @param $password
-//     * @return void
-//     */
-//    public function setPasswordAttribute($password): void
-//    {
-//        $this->attributes['password'] = bcrypt($password);
-//    }
-
-
+    
     /**
      * Teachers belong to many classrooms.
      * @return BelongsToMany

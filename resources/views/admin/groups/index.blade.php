@@ -105,7 +105,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="text-info text-center" colspan="4">No group inserted yet.</td>
+                            <td class="text-info text-center" colspan="5">No group inserted yet.</td>
                         </tr>
                     @endforelse
                     <!-- End of Item -->

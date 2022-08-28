@@ -47,7 +47,6 @@ class TeacherController extends Controller
             'phone' => 'required|numeric',
             'email' => 'required|email|unique:teachers,email',
             'password' => 'required|confirmed|min:6|max:30',
-            'password_confirmation' => 'required|min:6|max:30',
             'dob' => 'required|date',
             'profile_image' => 'required|image',
             'status' => 'required',
@@ -75,6 +74,9 @@ class TeacherController extends Controller
         return redirect()->back()->with('error', 'Error! Something went wrong, try again.');
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function show(Teacher $teacher)
     {
         $this->authorize('show', $teacher);
@@ -82,6 +84,9 @@ class TeacherController extends Controller
         return view('admin.teachers.show', compact('teacher'));
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function edit(Teacher $teacher)
     {
         $this->authorize('update', $teacher);
@@ -89,6 +94,9 @@ class TeacherController extends Controller
         return view('admin.teachers.edit', compact('teacher'));
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function update(Request $request, Teacher $teacher)
     {
         $this->authorize('update', $teacher);

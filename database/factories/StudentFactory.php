@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 
 /**
@@ -21,8 +22,7 @@ class StudentFactory extends Factory
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
             'email' => $this->faker->email(),
-            'password' => '12345678',
-            'password_confirmation' => '12345678',
+            'password' => Hash::make('12345678'),
             'profile_image' => 'default-avatar-male.jpg',
             'phone' => $this->faker->phoneNumber(),
             'date_of_join' => $this->faker->dateTimeInInterval(),
