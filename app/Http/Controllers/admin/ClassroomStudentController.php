@@ -5,17 +5,26 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Classroom;
 use App\Models\Student;
+use DB;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\In;
-use phpDocumentor\Reflection\Types\Iterable_;
-use Symfony\Component\Console\Input\Input;
+
 
 class ClassroomStudentController extends Controller
 {
+    private array $students_arr = [];
+    private array $classrooms_arr = [];
+
     public function index()
     {
-        $students = Student::with('classrooms')->get();
-        $classrooms = Classroom::with('students')->get();
+        $classroom_student_table = DB::table('classroom_student')->get();
+
+        foreach ($classroom_student_table as $row) {
+            $this->students_arr[] = $row->student_id;
+            $this->classrooms_arr[] = $row->classroom_id;
+        }
+
+        $students = Student::with('classrooms')->whereNotIn('id', $this->students_arr)->get();
+        $classrooms = Classroom::with('students')->whereNotIn('id', $this->classrooms_arr)->get();
 
         return view('admin.classrooms.students', compact(['students', 'classrooms']));
     }
@@ -51,18 +60,13 @@ class ClassroomStudentController extends Controller
 
     public function store(Request $request)
     {
-        $attributes = $request->validate([
-            'classroom_id' => 'required|numeric',
-            'student_id' => 'required|unique:classroom_student',
-        ], [
-            'student_id.unique' => 'This student had already been taken in another class.'
-        ]);
+        $attributes = $request->only('student_id', 'classroom_id');
 
         foreach ($request->get('student_id') as $value) {
             $classroom = Classroom::find($attributes['classroom_id']);
             $insert_data = $classroom->students()->syncWithoutDetaching($value);
             if (!$insert_data) {
-                return back()->with('failed', 'Something went wrong, try again.');
+                return back()->with('failed', 'Something went wrong, try again!');
             }
         }
 

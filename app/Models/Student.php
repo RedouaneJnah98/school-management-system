@@ -37,15 +37,15 @@ class Student extends Authenticatable
         return $query->whereMonth('created_at', now()->subMonth()->month);
     }
 
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = bcrypt($password);
-    }
+//    public function setPasswordAttribute($password)
+//    {
+//        $this->attributes['password'] = bcrypt($password);
+//    }
 
-    public function setPasswordConfirmationAttribute($password)
-    {
-        $this->attributes['password_confirmation'] = bcrypt($password);
-    }
+//    public function setPasswordConfirmationAttribute($password)
+//    {
+//        $this->attributes['password_confirmation'] = bcrypt($password);
+//    }
 
     /**
      * Student belongs to one parent
