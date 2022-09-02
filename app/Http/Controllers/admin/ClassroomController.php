@@ -8,6 +8,7 @@ use App\Models\Classroom;
 use App\Models\Group;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ClassroomController extends Controller
 {
@@ -47,23 +48,21 @@ class ClassroomController extends Controller
     public function edit(Classroom $classroom)
     {
         $teachers = Teacher::with('classrooms')->get();
-        $branches = Branch::with('classrooms')->get();
+//        $branches = Branch::with('classrooms')->get();
         $groups = Group::with('classrooms')->get();
 
-        return view('admin.classrooms.edit', compact(['classroom', 'branches', 'groups', 'teachers']));
+        return view('admin.classrooms.edit', compact(['classroom', 'groups', 'teachers']));
     }
 
     public function update(Request $request, Classroom $classroom)
     {
         $attributes = $request->validate([
-            'branch_id' => 'required|numeric',
+            'name' => ['required', Rule::unique('classrooms')->ignore($classroom->id)],
             'year' => 'required',
             'group_id' => 'required|numeric',
-//            'teacher_id' => 'required|numeric',
             'status' => 'required',
-            'remark' => 'required'
         ], [
-            'branch_id.required' => 'Branch is required'
+            'group_id.required' => 'Group is required'
         ]);
 
         $update_classroom = $classroom->update($attributes);

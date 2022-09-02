@@ -47,20 +47,6 @@
                                 </div>
                                 @enderror
                             </div>
-                            {{--                            <div class="col-lg-6 col-sm-6 mb-4">--}}
-                            {{--                                <label for="name">Branch Name</label>--}}
-                            {{--                                <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id" id="year">--}}
-                            {{--                                    <option selected disabled>Select A Branch</option>--}}
-                            {{--                                    @foreach($branches as $branch)--}}
-                            {{--                                        <option value="{{ $branch->id }}" @selected(old('branch_id'))>{{ $branch->name }}</option>--}}
-                            {{--                                    @endforeach--}}
-                            {{--                                </select>--}}
-                            {{--                                @error('branch_id')--}}
-                            {{--                                <div class="invalid-feedback">--}}
-                            {{--                                    {{ $message }}--}}
-                            {{--                                </div>--}}
-                            {{--                                @enderror--}}
-                            {{--                            </div>--}}
                             <div class="col-lg-6 col-sm-6 mb-4">
                                 <label for="year">Year</label>
                                 <select class="form-select @error('year') is-invalid @enderror" name="year" id="year">
