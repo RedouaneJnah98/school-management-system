@@ -101,15 +101,14 @@
                                 <span class="badge {{ $classroom->status === 'Active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>
                             </td>
                             <td class="border-0 fw-bold text-info">
-                                {{--                                <a data-bs-toggle="modal" data-bs-target="#students-1">See Students</a>--}}
-                                <a class="text-info test" data-id="{{ $classroom->id }}">See Students</a>
+                                <a class="text-info student-link" data-id="{{ $classroom->id }}">See Students</a>
                             </td>
                             <td class="border-0 fw-bold text-info">See Teachers</td>
                             <td class="border-0">
                                 <div class="btn-group">
                                     <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"/>
                                         </svg>
                                         <span class="visually-hidden">Toggle Dropdown</span></button>
                                     <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
@@ -171,7 +170,7 @@
     });
 
     $(document).ready(function () {
-        $('.test').on('click', function () {
+        $('.student-link').on('click', function () {
             let id = $(this).data('id');
 
             // Ajax request
@@ -182,7 +181,7 @@
                 success: function (data) {
                     $('.data').html(data);
 
-                    $('#test').modal('show');
+                    $('#student-modal').modal('show');
                 },
                 error: function () {
                     console.log('there is an error');

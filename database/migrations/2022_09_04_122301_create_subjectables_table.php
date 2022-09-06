@@ -12,10 +12,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->id();
-            $table->text('message');
-            $table->timestamps();
+        Schema::create('subjectables', function (Blueprint $table) {
+            $table->foreignId('subject_id')->constrained();
+            $table->morphs('subjectable');
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('subjectables');
     }
 };

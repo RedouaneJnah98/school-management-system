@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -66,7 +67,7 @@ class Teacher extends Authenticatable implements CanResetPassword
     {
         return $query->whereMonth('created_at', now()->subMonth()->month);
     }
-    
+
     /**
      * Teachers belong to many classrooms.
      * @return BelongsToMany
@@ -74,5 +75,10 @@ class Teacher extends Authenticatable implements CanResetPassword
     public function classrooms(): BelongsToMany
     {
         return $this->belongsToMany(Classroom::class)->withTimestamps();
+    }
+
+    public function subjects(): MorphToMany
+    {
+        return $this->morphToMany(Subject::class, 'subjectable');
     }
 }

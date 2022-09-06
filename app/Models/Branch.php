@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Branch extends Model
 {
@@ -23,18 +24,18 @@ class Branch extends Model
 
     /**
      * Branch Table has many subjects
-     * @return HasMany
+     * @return MorphToMany
      */
-    public function subjects()
+    public function subjects(): MorphToMany
     {
-        return $this->hasMany(Subject::class);
+        return $this->morphToMany(Subject::class, 'subjectable');
     }
 
     /**
      * Branch table has many classrooms
      * @return HasMany
      */
-    public function classrooms()
+    public function classrooms(): HasMany
     {
         return $this->hasMany(Classroom::class);
     }

@@ -1,4 +1,4 @@
-<div class="modal fade" id="test" tabindex="-1" role="dialog" aria-labelledby="modalTitleSubscribe" aria-hidden="true">
+<div class="modal fade" id="student-modal" tabindex="-1" role="dialog" aria-labelledby="modalTitleSubscribe" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content py-xl-4">
             <div class="modal-body text-center py-3">

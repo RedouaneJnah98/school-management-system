@@ -13,11 +13,10 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('messageables', function (Blueprint $table) {
-//            $table->id();
             $table->foreignId('message_id')->constrained();
-            $table->foreignId('messageable_id');
-            $table->string('messageable_type');
-//            $table->timestamps();
+//            $table->foreignId('messageable_id');
+//            $table->string('messageable_type');
+            $table->morphs('messageable');
         });
     }
 

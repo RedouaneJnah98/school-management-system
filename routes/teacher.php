@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\MessageController;
 use App\Http\Controllers\admin\NewPasswordController;
 use App\Http\Controllers\admin\PasswordResetLinkController;
 use App\Http\Controllers\admin\ProfileController;
+use App\Http\Controllers\admin\SubjectBranchController;
 use App\Http\Controllers\admin\SubjectController;
 use App\Http\Controllers\admin\TeacherController;
 use App\Http\Controllers\parent\ParentController;
@@ -45,6 +46,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Classroom Teacher
         Route::get('/classroom-teacher', [ClassroomTeacherController::class, 'create'])->name('classroom-teacher');
         Route::post('/classroom-teacher', [ClassroomTeacherController::class, 'store'])->name('classroom-teacher.store');
+        // Subject 'Teacher, Branch' routes
+        Route::get('/subject-branch', [SubjectBranchController::class, 'index'])->name('subject-branch');
+        Route::post('/subject-branch', [SubjectBranchController::class, 'store'])->name('subject-branch.store');
         // Download PDF
         Route::get('/download_students', [DownloadController::class, 'download_students'])->name('download_students');
         Route::get('/download_parents', [DownloadController::class, 'download_parents'])->name('download_parents');

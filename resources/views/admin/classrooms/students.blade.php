@@ -57,8 +57,8 @@
 
                                         @forelse($classrooms as $classroom)
                                             <div class="form-check">
-                                                <input class="form-check-input" name="classroom" type="checkbox" id="{{ $classroom->id }}">
-                                                <label class="form-check-label fw-light student" for="{{ $classroom->id }}">
+                                                <input class="form-check-input" name="classroom" type="checkbox" id="classroom-{{ $classroom->id }}" data-id="{{ $classroom->id }}">
+                                                <label class="form-check-label fw-light" for="classroom-{{ $classroom->id }}">
                                                     {{ $classroom->name }}
                                                 </label>
                                             </div>
@@ -98,8 +98,8 @@
                                         @forelse($students as $student)
                                             <div class="form-check">
                                                 <input class="form-check-input" name="student" type="checkbox"
-                                                       id="{{ $student->id }}" value="{{ $student->fullName }}">
-                                                <label class="form-check-label fw-light" for="{{ $student->id }}">
+                                                       id="student-{{ $student->id }}" data-id="{{ $student->id }}" value="{{ $student->fullName }}">
+                                                <label class="form-check-label fw-light" for="student-{{ $student->id }}">
                                                     {{ $student->fullName }}
                                                 </label>
                                             </div>
@@ -184,11 +184,10 @@
         let hiddenInput = '';
 
         $.each(inputNameChecked, function () {
-            let id = $(this).attr('id');
-            // console.log(id)
+            let id = $(this).data('id');
+
             hiddenInput = `<input type="hidden" name="${postName}" value="${id}" />`;
             $(`${className}`).append(hiddenInput);
-            console.log(hiddenInput);
         })
         $.each(newArr, function (i, item) {
             let html = '<li class="fw-light">' + item + '</li>';
