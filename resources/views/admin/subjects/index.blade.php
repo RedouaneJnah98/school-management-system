@@ -36,7 +36,7 @@
                     New Task
                 </button>
                 <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-                    <a class="dropdown-item d-flex align-items-center" href="#">
+                    <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.subject-teacher') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="dropdown-icon text-gray-400 me-2" viewBox="0 0 20 20">
                             <path
                                 d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
@@ -92,19 +92,11 @@
                             </td>
                             <td class="border-0">{{ $subject->id }}</td>
                             <td class="border-0">{{ $subject->name }}</td>
-                            <td class="border-0 fw-bold">test</td>
                             <td class="border-0 fw-bold">
-                                {{--                                @foreach($subject->branchs as $branch)--}}
-                                {{--                                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="Disabled popover">--}}
-                                {{--                                   <button class="btn btn-primary" type="button" disabled>Disabled button</button>--}}
-                                {{--                               </span>--}}
-                                {{--                                @endforeach--}}
-
-                                <button type="button" class="btn btn-secondary btn-sm mb-3" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" title="Popover on top"
-                                        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                    Popover on top
-                                </button>
-
+                                <a class="badge bg-success teachers-link" data-id="{{ $subject->id }}">Teachers</a>
+                            </td>
+                            <td class="border-0 fw-bold">
+                                <a class="badge bg-secondary branches-link" data-id="{{ $subject->id }}">Branches</a>
                             </td>
                             <td class="border-0">
                                 <div class="btn-group">
@@ -161,13 +153,59 @@
 <x-modals.delete/>
 {{-- Delete Notification --}}
 <x-notification.delete_notif/>
+{{-- Live modal --}}
+<x-modals.subject-teachers/>
+<x-modals.subject-branches/>
 
 <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $(document).ready(function () {
         $('select').removeClass('form-select-sm');
         $('select').addClass('dataTable-selector');
+
+        $('.teachers-link').on('click', function () {
+            let id = $(this).data('id');
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('admin.all-subject-teachers') }}',
+                data: {id: id},
+                success: function (data) {
+                    $('.data').html(data);
+
+                    $('#subject-teachers-modal').modal('show');
+                },
+                error: function () {
+                    console.log('there is an error');
+                }
+            })
+        })
     })
 
-    // console.log(test);
+    $('.branches-link').on('click', function () {
+        let id = $(this).data('id');
+
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('admin.all-subject-branches') }}',
+            data: {id: id},
+            success: function (data) {
+                $('.data').html(data);
+
+                $('#subject-branches-modal').modal('show');
+            },
+            error: function () {
+                console.log('there is an error');
+            }
+        })
+    })
+
+
+    // function
 </script>
 

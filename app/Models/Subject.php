@@ -13,7 +13,7 @@ class Subject extends Model
 
     protected $fillable = ['name', 'branch_id'];
 
-    public function branchs(): MorphToMany
+    public function branches(): MorphToMany
     {
         return $this->morphedByMany(Branch::class, 'subjectable');
     }

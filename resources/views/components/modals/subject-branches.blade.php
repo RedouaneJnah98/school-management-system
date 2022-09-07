@@ -1,17 +1,15 @@
-<div class="modal fade" id="student-modal" tabindex="-1" role="dialog" aria-labelledby="modalTitleSubscribe" aria-hidden="true">
+<div class="modal fade" id="subject-branches-modal" tabindex="-1" role="dialog" aria-labelledby="modalTitleSubscribe" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content py-xl-4">
             <div class="modal-body text-center py-3">
-                <h3 class="modal-title mb-3" id="modalTitleSubscribe">List of students in this class</h3>
+                <h3 class="modal-title mb-3" id="modalTitleSubscribe">Taught By.</h3>
                 <div class="table-responsive">
                     <table class="table user-table table-hover align-items-center" id="myTable">
                         <thead>
                         <tr>
                             <th class="border-bottom">#</th>
                             <th class="border-bottom">Name</th>
-                            <th class="border-bottom">Email</th>
-                            <th class="border-bottom">Gender</th>
-                            <th class="border-bottom">Phone</th>
+                            <th class="border-bottom">Description</th>
                         </tr>
                         </thead>
                         <tbody class="data">

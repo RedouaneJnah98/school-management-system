@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\PasswordResetLinkController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\SubjectBranchController;
 use App\Http\Controllers\admin\SubjectController;
+use App\Http\Controllers\admin\SubjectTeacherController;
 use App\Http\Controllers\admin\TeacherController;
 use App\Http\Controllers\parent\ParentController;
 use App\Http\Controllers\SoftDeleteController;
@@ -49,6 +50,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Subject 'Teacher, Branch' routes
         Route::get('/subject-branch', [SubjectBranchController::class, 'index'])->name('subject-branch');
         Route::post('/subject-branch', [SubjectBranchController::class, 'store'])->name('subject-branch.store');
+        Route::get('/subject-teacher', [SubjectTeacherController::class, 'index'])->name('subject-teacher');
+        Route::post('/subject-teacher', [SubjectTeacherController::class, 'store'])->name('subject-teacher.store');
+        Route::post('/all-subject-teachers', [SubjectTeacherController::class, 'related_teachers'])->name('all-subject-teachers');
+        Route::post('/all-subject-branches', [SubjectTeacherController::class, 'related_branches'])->name('all-subject-branches');
         // Download PDF
         Route::get('/download_students', [DownloadController::class, 'download_students'])->name('download_students');
         Route::get('/download_parents', [DownloadController::class, 'download_parents'])->name('download_parents');
