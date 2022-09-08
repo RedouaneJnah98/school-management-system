@@ -48,20 +48,6 @@
                                 </div>
                                 @enderror
                             </div>
-                            {{--                            <div class="col-lg-12 col-sm-6 mb-4">--}}
-                            {{--                                <label for="branch">Branch</label>--}}
-                            {{--                                <select name="branch_id" id="branch" class="form-select @error('branch_id') is-invalid @enderror">--}}
-                            {{--                                    <option disabled selected>{{ $subject->branch->name }}</option>--}}
-                            {{--                                    @foreach($branches as $branch)--}}
-                            {{--                                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>--}}
-                            {{--                                    @endforeach--}}
-                            {{--                                </select>--}}
-                            {{--                                @error('description')--}}
-                            {{--                                <div class="invalid-feedback">--}}
-                            {{--                                    {{ $message }}--}}
-                            {{--                                </div>--}}
-                            {{--                                @enderror--}}
-                            {{--                            </div>--}}
                         </div>
 
                         {{-- Submit Button --}}

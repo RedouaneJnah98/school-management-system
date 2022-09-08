@@ -22,9 +22,4 @@ class Subject extends Model
     {
         return $this->morphedByMany(Teacher::class, 'subjectable');
     }
-
-    public function classrooms(): BelongsToMany
-    {
-        return $this->belongsToMany(Classroom::class)->withTimestamps();
-    }
 }

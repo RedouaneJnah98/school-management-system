@@ -37,8 +37,4 @@ class Classroom extends Model
         return $this->belongsToMany(Teacher::class)->withTimestamps();
     }
 
-    public function subjects(): BelongsToMany
-    {
-        return $this->belongsToMany(Subject::class)->withTimestamps();
-    }
 }
