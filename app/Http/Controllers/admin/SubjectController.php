@@ -81,7 +81,6 @@ class SubjectController extends Controller
     {
         $attributes = $request->validate([
             'name' => ['required'],
-            'branch_id' => 'required|numeric',
         ]);
 
         $update_subject = $subject->update($attributes);
@@ -90,7 +89,7 @@ class SubjectController extends Controller
             return redirect()->back()->with('failed', 'Something went wrong, try again');
         }
 
-        return redirect()->route('admin.subjects.index')->with('success', 'Success! Subject updated.');
+        return redirect()->route('admin.subjects.index')->with('success', 'Success! Subject name updated.');
     }
 
     public function destroy(Subject $subject)

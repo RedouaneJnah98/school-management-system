@@ -93,10 +93,10 @@
                             <td class="border-0">{{ $subject->id }}</td>
                             <td class="border-0">{{ $subject->name }}</td>
                             <td class="border-0 fw-bold">
-                                <a class="badge bg-success teachers-link" data-id="{{ $subject->id }}">Teachers</a>
+                                <a class="badge bg-success teachers-link" data-id="{{ $subject->id }}">Teacher(s)</a>
                             </td>
                             <td class="border-0 fw-bold">
-                                <a class="badge bg-secondary branches-link" data-id="{{ $subject->id }}">Branches</a>
+                                <a class="badge bg-secondary branches-link" data-id="{{ $subject->id }}">Branch(es)</a>
                             </td>
                             <td class="border-0">
                                 <div class="btn-group">
@@ -135,7 +135,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="text-info text-center" colspan="5">Table is empty.</td>
+                            <td class="text-info text-center" colspan="7">Table is empty.</td>
                         </tr>
                     @endforelse
                     <!-- End of Item -->
@@ -165,8 +165,6 @@
     });
 
     $(document).ready(function () {
-        $('select').removeClass('form-select-sm');
-        $('select').addClass('dataTable-selector');
 
         $('.teachers-link').on('click', function () {
             let id = $(this).data('id');
@@ -185,27 +183,24 @@
                 }
             })
         })
-    })
+        $('.branches-link').on('click', function () {
+            let id = $(this).data('id');
 
-    $('.branches-link').on('click', function () {
-        let id = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('admin.all-subject-branches') }}',
+                data: {id: id},
+                success: function (data) {
+                    $('.data').html(data);
 
-        $.ajax({
-            type: 'POST',
-            url: '{{ route('admin.all-subject-branches') }}',
-            data: {id: id},
-            success: function (data) {
-                $('.data').html(data);
-
-                $('#subject-branches-modal').modal('show');
-            },
-            error: function () {
-                console.log('there is an error');
-            }
+                    $('#subject-branches-modal').modal('show');
+                },
+                error: function () {
+                    console.log('there is an error');
+                }
+            })
         })
+
     })
-
-
-    // function
 </script>
 

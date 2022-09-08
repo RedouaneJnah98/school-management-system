@@ -56,14 +56,14 @@
                                     <div class="border overflow-auto p-3 w-100" style="height: 250px;">
                                         <div class="text-center pt-2 border mb-2 border-2">
                                             <div>
-                                                <input type="radio" class="form-check-input" name="classroom-all" id="select-classroom">
-                                                <label for="select-classroom">Select All</label>
+                                                <input type="radio" class="form-check-input" name="branch-all" id="select-branch">
+                                                <label for="select-branch">Select All</label>
                                             </div>
                                         </div>
                                         <div class="text-center pt-2 border mb-4 border-2">
                                             <div>
-                                                <input type="radio" class="form-check-input" name="classroom-all" id="deselect-classroom" checked>
-                                                <label for="deselect-classroom">Deselect All</label>
+                                                <input type="radio" class="form-check-input" name="branch-all" id="deselect-branch" checked>
+                                                <label for="deselect-branch">Deselect All</label>
                                             </div>
                                         </div>
 
@@ -133,40 +133,38 @@
             $(this).val('');
         }
     })
+    checkboxAll('#select-branch', '#deselect-branch', 'branch');
 
     $('#branch-btn').on('click', function (event) {
         event.preventDefault();
         inputName('branch', '.branches', 'branch_id[]');
     })
 
-    function inputName(name, className, postName) {
-        let inputNameChecked = $(`input:checkbox[name="${name}"]:checked`);
-        let labelText = $(inputNameChecked).next().text();
-        let trimmedLabel = labelText.replaceAll('  ', '');
-        let arr = trimmedLabel.split('\n');
-        let newArr = arr.filter(function (value) {
-            return value != null && value !== "";
-        });
-        let hiddenInput = '';
+    // function inputName(name, className, postName) {
+    //     let inputNameChecked = $(`input:checkbox[name="${name}"]:checked`);
+    //     let labelText = $(inputNameChecked).next().text();
+    //     let trimmedLabel = labelText.replaceAll('  ', '');
+    //     let arr = trimmedLabel.split('\n');
+    //     let newArr = arr.filter(function (value) {
+    //         return value != null && value !== "";
+    //     });
+    //     let hiddenInput = '';
+    //
+    //     $.each(inputNameChecked, function () {
+    //         let id = $(this).data('id');
+    //
+    //         hiddenInput = `<input type="hidden" name="${postName}" value="${id}" />`;
+    //         $(`${className}`).append(hiddenInput);
+    //     })
+    //     $.each(newArr, function (i, item) {
+    //         let html = '<li class="fw-light">' + item + '</li>';
+    //
+    //         $.each(inputNameChecked, function () {
+    //             $(`input:checkbox[name="${name}"]:checked`).parent().remove();
+    //         });
+    //         $(`${className}`).append(html);
+    //     })
+    // }
 
-        $.each(inputNameChecked, function () {
-            let id = $(this).data('id');
-
-            hiddenInput = `<input type="hidden" name="${postName}" value="${id}" />`;
-            $(`${className}`).append(hiddenInput);
-        })
-        $.each(newArr, function (i, item) {
-            let html = '<li class="fw-light">' + item + '</li>';
-
-            $.each(inputNameChecked, function () {
-                $(`input:checkbox[name="${name}"]:checked`).parent().remove();
-            });
-            $(`${className}`).append(html);
-        })
-    }
-
-    function addSubject(subject) {
-        $('.subjects').append(`<li>${subject}</li><input type="hidden" name="subject_name" value="${subject}" />`);
-    }
 
 </script>

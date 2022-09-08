@@ -1,3 +1,10 @@
+$(document).ready(function () {
+    let selector = 'select[name="myTable_length"]';
+
+    $(selector).removeClass('select-sm');
+    $(selector).addClass('dataTable-selector');
+});
+
 function inputName(name, className, postName) {
     let inputNameChecked = $(`input:checkbox[name="${name}"]:checked`);
     let labelText = $(inputNameChecked).next().text();
@@ -23,3 +30,18 @@ function inputName(name, className, postName) {
         $(`${className}`).append(html);
     })
 }
+
+function checkboxAll(selectAll, deselectAll, name) {
+    $(`${selectAll}`).on('click', function () {
+        $(`input:checkbox[name=${name}]`).prop('checked', true);
+    });
+    $(`${deselectAll}`).on('click', function () {
+        $(`input:checkbox[name=${name}]`).prop('checked', false);
+    });
+}
+
+function addSubject(subject) {
+    $('.subjects').append(`<li>${subject}</li><input type="hidden" name="subject_name" value="${subject}" />`);
+}
+
+

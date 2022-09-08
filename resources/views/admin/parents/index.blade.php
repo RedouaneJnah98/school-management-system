@@ -59,7 +59,7 @@
                 </select>
                 <button class="btn btn-sm px-3 btn-secondary ms-3">Apply</button>
             </div>
-
+            <hr>
             <div class="table-responsive">
                 <table class="table user-table table-hover align-items-center" id="myTable">
                     <thead>
