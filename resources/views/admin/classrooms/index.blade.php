@@ -103,7 +103,9 @@
                             <td class="border-0 fw-bold text-info">
                                 <a class="text-info student-link" data-id="{{ $classroom->id }}">See Students</a>
                             </td>
-                            <td class="border-0 fw-bold text-info">See Teachers</td>
+                            <td class="border-0 fw-bold text-info">
+                                <a class="text-info teacher-link" data-id="{{ $classroom->id }}">See Teachers</a>
+                            </td>
                             <td class="border-0">
                                 <div class="btn-group">
                                     <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -187,7 +189,25 @@
                     console.log('there is an error');
                 }
             })
+        })
 
+        $('.teachers-link').on('click', function () {
+            let id = $(this).data('id');
+
+            // Ajax request
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('admin.all_students') }}',
+                data: {id: id},
+                success: function (data) {
+                    $('.data').html(data);
+
+                    $('#student-modal').modal('show');
+                },
+                error: function () {
+                    console.log('there is an error');
+                }
+            })
         })
 
     });

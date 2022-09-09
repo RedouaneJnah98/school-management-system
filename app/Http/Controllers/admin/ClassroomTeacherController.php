@@ -20,23 +20,18 @@ class ClassroomTeacherController extends Controller
 
     public function store(Request $request)
     {
-        $attributes = $request->validate([
-            'classroom_id' => 'required|numeric',
-            'teacher_id' => 'required|numeric',
-        ], [
-            'classroom_id.required' => 'The classroom field is required',
-            'teacher_id.required' => 'The teacher field is required',
-        ]);
+        $classroom = Classroom::find($request->input('classroom_id'));
+        $insert_data = $classroom->teachers()->syncWithoutDetaching($request->input('teacher_id'));
 
-        dump($attributes);
+        if (!$insert_data) {
+            return back()->with('failed', 'Something went wrong, try again.');
+        }
 
-//        $classroom = Classroom::find($attributes['classroom_id']);
-//        $insert_data = $classroom->teachers()->syncWithoutDetaching($attributes);
-//
-//        if (!$insert_data) {
-//            return back()->with('failed', 'Something went wrong, try again.');
-//        }
-//
-//        return to_route('admin.classrooms.index')->with('success', 'Success! You added new teacher to the classroom');
+        return to_route('admin.classrooms.index')->with('success', 'Success! You added new teacher to the classroom');
+    }
+
+    public function all_teachers()
+    {
+        //
     }
 }

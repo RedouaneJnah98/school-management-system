@@ -93,10 +93,20 @@
                             <td class="border-0">{{ $subject->id }}</td>
                             <td class="border-0">{{ $subject->name }}</td>
                             <td class="border-0 fw-bold">
-                                <a class="badge bg-success teachers-link" data-id="{{ $subject->id }}">Teacher(s)</a>
+                                <a class="badge bg-gray-200 text-black position-relative teachers-link" data-id="{{ $subject->id }}">
+                                    Teacher(s)
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
+                                        {{ $subject->teachers_count }}
+                                    </span>
+                                </a>
                             </td>
                             <td class="border-0 fw-bold">
-                                <a class="badge bg-secondary branches-link" data-id="{{ $subject->id }}">Branch(es)</a>
+                                <a class="badge bg-gray-200 text-black position-relative branches-link" data-id="{{ $subject->id }}">
+                                    Branch(es)
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
+                                        {{ $subject->branches_count }}
+                                    </span>
+                                </a>
                             </td>
                             <td class="border-0">
                                 <div class="btn-group">

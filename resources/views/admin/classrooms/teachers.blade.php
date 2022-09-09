@@ -57,7 +57,7 @@
                                         @forelse($classrooms as $classroom)
                                             <div class="form-check">
                                                 <input class="form-check-input" name="classroom" type="checkbox"
-                                                       id="classroom-{{ $classroom->id }}" value="{{ $classroom->name }}">
+                                                       id="classroom-{{ $classroom->id }}" data-id="{{ $classroom->id }}" value="{{ $classroom->name }}">
                                                 <label class="form-check-label fw-light" for="classroom-{{ $classroom->id }}">
                                                     {{ $classroom->name }}
                                                 </label>
@@ -98,7 +98,7 @@
                                         @forelse($teachers as $teacher)
                                             <div class="form-check">
                                                 <input class="form-check-input" name="teacher" type="checkbox"
-                                                       id="teacher-{{ $teacher->id }}" value="{{ $teacher->fullName }}">
+                                                       id="teacher-{{ $teacher->id }}" data-id="{{ $teacher->id }}" value="{{ $teacher->fullName }}">
                                                 <label class="form-check-label fw-light" for="teacher-{{ $teacher->id }}">
                                                     {{ $teacher->fullName }}
                                                 </label>

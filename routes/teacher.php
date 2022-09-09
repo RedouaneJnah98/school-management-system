@@ -47,6 +47,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Classroom Teacher
         Route::get('/classroom-teacher', [ClassroomTeacherController::class, 'create'])->name('classroom-teacher');
         Route::post('/classroom-teacher', [ClassroomTeacherController::class, 'store'])->name('classroom-teacher.store');
+        Route::post('/all_teachers', [ClassroomTeacherController::class, 'all_teachers'])->name('all_teachers');
         // Subject 'Teacher, Branch' routes
         Route::get('/subject-branch', [SubjectBranchController::class, 'index'])->name('subject-branch');
         Route::post('/subject-branch', [SubjectBranchController::class, 'store'])->name('subject-branch.store');
@@ -75,7 +76,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('/branches', BranchController::class)->except('show');
         Route::resource('/classrooms', ClassroomController::class)->except('show');
         Route::resource('/subjects', SubjectController::class)->except('show');
-        Route::resource('/attendances', AttendanceController::class)->except('show');
+        Route::resource('/attendances', AttendanceController::class)->except(['show', 'store']);
 
         // Logout
         Route::post('/logout', [TeacherController::class, 'logout'])->name('logout');

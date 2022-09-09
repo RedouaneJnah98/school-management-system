@@ -87,7 +87,7 @@ class SubjectTeacherController extends Controller
 
     public function empty_table()
     {
-        return '<tr><td class="text-info text-center" colspan="5">Oops...there no data to show.</td></tr>';
+        return '<tr><td class="text-info text-center" colspan="5">Oops...there is no data to show.</td></tr>';
     }
 
 }

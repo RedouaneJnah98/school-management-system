@@ -52,7 +52,7 @@ class ClassroomStudentController extends Controller
                 $result .= '</tr>';
             }
         } else {
-            $result .= '<tr><td class="text-info text-center" colspan="5">Oops...there is no student in thi class.</td></tr>';
+            $result .= '<tr><td class="text-info text-center" colspan="5">Oops...there is no data to show.</td></tr>';
         }
 
         return response()->json($result);
