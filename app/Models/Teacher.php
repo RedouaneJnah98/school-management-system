@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class Teacher extends Authenticatable implements CanResetPassword
@@ -24,6 +25,7 @@ class Teacher extends Authenticatable implements CanResetPassword
      */
 
     protected $guarded = [];
+    protected array $teacher_arr = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -81,4 +83,16 @@ class Teacher extends Authenticatable implements CanResetPassword
     {
         return $this->morphToMany(Subject::class, 'subjectable');
     }
+
+    public function scopeRetrieveTeacherNotInTable(Builder $query): Builder
+    {
+        $classroom_teacher_table = DB::table('classroom_teacher')->get();
+
+        foreach ($classroom_teacher_table as $row) {
+            $this->teacher_arr[] = $row->teacher_id;
+        }
+
+        return $query->whereNotIn('id', $this->teacher_arr);
+    }
+
 }

@@ -11,20 +11,10 @@ use Illuminate\Http\Request;
 
 class ClassroomStudentController extends Controller
 {
-    private array $students_arr = [];
-    private array $classrooms_arr = [];
-
     public function index()
     {
-        $classroom_student_table = DB::table('classroom_student')->get();
-
-        foreach ($classroom_student_table as $row) {
-            $this->students_arr[] = $row->student_id;
-            $this->classrooms_arr[] = $row->classroom_id;
-        }
-
-        $students = Student::with('classrooms')->whereNotIn('id', $this->students_arr)->get();
-        $classrooms = Classroom::with('students')->whereNotIn('id', $this->classrooms_arr)->get();
+        $classrooms = Classroom::with('students')->retrieveClassroomStudentNotInTable()->get();
+        $students = Student::with('classrooms')->retrieveStudentNotInTable()->get();
 
         return view('admin.classrooms.students', compact(['students', 'classrooms']));
     }

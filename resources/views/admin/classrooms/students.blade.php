@@ -38,8 +38,8 @@
                         @csrf
 
                         <div class="row mb-1">
-                            <div class="col-lg-4 col-sm-6 mb-4">
-                                <p class="text-tertiary">Classroom</p>
+                            <div class="col-lg-6 col-sm-6 mb-4">
+                                <p class="text-tertiary">Classroom:</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="border overflow-auto p-3 w-100" style="height: 250px;">
                                         <div class="text-center pt-2 border mb-2 border-2">
@@ -78,8 +78,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-sm-6 mb-4">
-                                <p class="text-tertiary">Students</p>
+                            <div class="col-lg-6 col-sm-6 mb-4">
+                                <p class="text-tertiary">Students:</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="border overflow-auto p-3 w-100" style="height: 250px">
                                         <div class="text-center pt-2 border mb-2 border-2">
@@ -119,31 +119,21 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-sm-6 mb-4">
-                                <p class="text-tertiary">Selected class</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="me-2">
-                                        <button class="btn btn-outline-gray-300 btn-sm" id="student-btn"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Deselect">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                                                <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="border overflow-scroll p-3 w-100" style="height: 250px">
+                            <div class="col-lg-12 col-sm-6 mb-4">
+                                <p class="text-tertiary">Selected:</p>
+                                <div class="border overflow-scroll p-5 w-100" style="height: 250px">
+                                    <div class="d-flex justify-content-between">
                                         <ul>
                                             <li class="h6 fw-bold">Classroom:</li>
                                             <ul class="classroom">
                                             </ul>
                                         </ul>
-                                        <hr>
+                                        <div class="border-end" style="max-height: 100%"></div>
                                         <ul>
                                             <li class="h6 fw-bold">Students:</li>
                                             <ul class="students"></ul>
                                         </ul>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -157,7 +147,7 @@
 </x-dashboard_layout>
 
 {{-- Modals --}}
-<x-modals.failed/>
+<x-modals.messages.failed/>
 
 <script>
     $('#student-btn').on('click', function (e) {
