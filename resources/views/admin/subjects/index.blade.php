@@ -160,12 +160,12 @@
 {{-- Success Notification --}}
 <x-notification.success_notif/>
 {{-- Delete Modal --}}
-<x-modals.delete/>
+<x-modals.messages.delete/>
 {{-- Delete Notification --}}
 <x-notification.delete_notif/>
 {{-- Live modal --}}
-<x-modals.subject-teachers/>
-<x-modals.subject-branches/>
+<x-modals.subject.teachers/>
+<x-modals.subject.branches/>
 
 <script>
     $.ajaxSetup({

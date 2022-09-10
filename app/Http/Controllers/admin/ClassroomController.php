@@ -14,14 +14,13 @@ class ClassroomController extends Controller
 {
     public function index()
     {
-        $classrooms = Classroom::with('students')->get();
+        $classrooms = Classroom::withCount(['students', 'teachers'])->get();
 
         return view('admin.classrooms.index', compact('classrooms'));
     }
 
     public function create()
     {
-//        $branches = Branch::with('classrooms')->get();
         $groups = Group::with('classrooms')->get();
 
         return view('admin.classrooms.create', compact('groups'));

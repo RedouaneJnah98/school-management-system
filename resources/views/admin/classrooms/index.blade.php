@@ -101,10 +101,22 @@
                                 <span class="badge {{ $classroom->status === 'Active' ? 'bg-success' : 'bg-danger' }}">{{ ucwords($classroom->status) }}</span>
                             </td>
                             <td class="border-0 fw-bold text-info">
-                                <a class="text-info student-link" data-id="{{ $classroom->id }}">See Students</a>
+                                {{--                                <a class="text-info student-link" data-id="{{ $classroom->id }}">See Students</a>--}}
+                                <a class="badge bg-gray-200 text-black position-relative student-link" data-id="{{ $classroom->id }}">
+                                    Students
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
+                                        {{ $classroom->students_count }}
+                                    </span>
+                                </a>
                             </td>
                             <td class="border-0 fw-bold text-info">
-                                <a class="text-info teacher-link" data-id="{{ $classroom->id }}">See Teachers</a>
+                                {{--                                <a class="text-info teacher-link" data-id="{{ $classroom->id }}">See Teachers</a>--}}
+                                <a class="badge bg-gray-200 text-black position-relative teacher-link" data-id="{{ $classroom->id }}">
+                                    Teachers
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
+                                        {{ $classroom->teachers_count }}
+                                    </span>
+                                </a>
                             </td>
                             <td class="border-0">
                                 <div class="btn-group">
@@ -156,11 +168,12 @@
 {{-- Success Notification --}}
 <x-notification.success_notif/>
 {{-- Delete Modal --}}
-<x-modals.delete/>
+<x-modals.messages.delete/>
 {{-- Delete Notification --}}
 <x-notification.delete_notif/>
-{{-- Classroom Students --}}
-<x-modals.classroom_students/>
+{{-- Classroom Modals --}}
+<x-modals.classroom.students/>
+<x-modals.classroom.teachers/>
 
 
 <script>
@@ -191,24 +204,23 @@
             })
         })
 
-        $('.teachers-link').on('click', function () {
+        $('.teacher-link').on('click', function () {
             let id = $(this).data('id');
 
             // Ajax request
             $.ajax({
                 type: 'POST',
-                url: '{{ route('admin.all_students') }}',
+                url: '{{ route('admin.all_teachers') }}',
                 data: {id: id},
                 success: function (data) {
                     $('.data').html(data);
 
-                    $('#student-modal').modal('show');
+                    $('#teacher-modal').modal('show');
                 },
                 error: function () {
                     console.log('there is an error');
                 }
             })
         })
-
     });
 </script>
