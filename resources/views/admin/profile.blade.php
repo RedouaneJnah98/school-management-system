@@ -344,7 +344,7 @@
 </x-dashboard_layout>
 
 {{-- Success Modal --}}
-<x-modals.success/>
+<x-modals.messages.success/>
 
 <script>
     $(document).ready(function () {

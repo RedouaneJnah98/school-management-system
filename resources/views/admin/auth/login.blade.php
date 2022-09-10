@@ -95,4 +95,4 @@
 </x-layout>
 
 {{-- Modal --}}
-<x-modals.failed/>
+<x-modals.messages.failed/>

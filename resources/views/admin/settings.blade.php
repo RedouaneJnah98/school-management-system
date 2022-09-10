@@ -7,7 +7,7 @@
     {{-- Navbar --}}
     @include('components.settings.admin.navbar')
     {{-- Modal --}}
-    <x-modals.settings_modal/>
+    <x-modals.messages.settings_modal/>
 
     <div class="card border-0 shadow mt-5">
         <div class="card-body">
@@ -65,5 +65,5 @@
     </div>
 </x-dashboard_layout>
 
-<x-modals.failed/>
-<x-modals.success/>
+<x-modals.messages.failed/>
+<x-modals.messages.success/>

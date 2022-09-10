@@ -266,9 +266,9 @@
 </x-dashboard_layout>
 
 {{-- Success Modal --}}
-<x-modals.success/>
+<x-modals.messages.success/>
 
-<x-modals.failed/>
+<x-modals.messages.failed/>
 
 <script>
     $(document).ready(function () {

@@ -33,7 +33,7 @@
                                                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                                             </svg>
                                         </span>
-                                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="example@company.com" id="email" autofocus>
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="name@example.com" id="email" autofocus>
                                         @error('email')
                                         <div class="invalid-feedback">
                                             {{ $message }}
