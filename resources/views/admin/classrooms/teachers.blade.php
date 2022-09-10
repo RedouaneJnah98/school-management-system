@@ -147,7 +147,7 @@
 </x-dashboard_layout>
 
 {{-- Modals --}}
-<x-modals.failed/>
+<x-modals.messages.failed/>
 
 <script>
     $('#classroom-btn').on('click', function (e) {

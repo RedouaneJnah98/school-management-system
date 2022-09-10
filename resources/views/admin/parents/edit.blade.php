@@ -139,4 +139,4 @@
 </x-dashboard_layout>
 
 {{-- Modal --}}
-<x-modals.failed/>
+<x-modals.messages.failed/>

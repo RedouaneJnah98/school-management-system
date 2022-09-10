@@ -119,6 +119,6 @@
 {{-- Success Notification --}}
 <x-notification.success_notif/>
 {{-- Delete Modal --}}
-<x-modals.delete/>
+<x-modals.messages.delete/>
 {{-- Delete Notification --}}
 <x-notification.delete_notif/>

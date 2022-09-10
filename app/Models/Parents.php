@@ -45,27 +45,6 @@ class Parents extends Authenticatable
     }
 
     /**
-     * Hash password before save it in the database
-     * @param $password
-     * @return void
-     */
-    public function setPasswordAttribute($password): void
-    {
-        $this->attributes['password'] = bcrypt($password);
-    }
-
-    /**
-     * Hash password confirmation column
-     * before save it in the database
-     * @param $password
-     * @return void
-     */
-    public function setPasswordConfirmationAttribute($password): void
-    {
-        $this->attributes['password_confirmation'] = bcrypt($password);
-    }
-
-    /**
      * Parents have many children
      * @return HasMany
      */

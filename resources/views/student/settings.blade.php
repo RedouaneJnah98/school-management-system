@@ -7,7 +7,7 @@
     {{-- Navbar --}}
     @include('components.settings.student.navbar')
     {{-- Modal --}}
-    <x-modals.settings_modal/>
+    <x-modals.messages.settings_modal/>
 
     <div class="card border-0 shadow mt-5">
         <div class="card-body">

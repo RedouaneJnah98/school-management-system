@@ -28,5 +28,5 @@
     </div>
 </x-dashboard_layout>
 
-<x-modals.success/>
-<x-modals.failed/>
+<x-modals.messages.success/>
+<x-modals.messages.failed/>

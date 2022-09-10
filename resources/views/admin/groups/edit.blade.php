@@ -71,7 +71,6 @@
                             </div>
                         </div>
 
-                        {{-- Submit Button --}}
                         <button type="submit" class="btn btn-primary">Update</button>
 
                     </form>
@@ -82,5 +81,5 @@
 </x-dashboard_layout>
 
 {{-- Modals --}}
-<x-modals.failed/>
+<x-modals.messages.failed/>
 
