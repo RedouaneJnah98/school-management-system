@@ -1,5 +1,5 @@
 <x-dashboard_layout>
-    @section('title', 'Related Branch')
+    @section('title', 'Related Teacher(s)')
     {{-- sidebar --}}
     @include('components.admin._sidebar')
 
@@ -149,7 +149,7 @@
 </x-dashboard_layout>
 
 {{-- Modals --}}
-<x-modals.failed/>
+<x-modals.messages.failed/>
 
 <script>
     $('#teacher-btn').on('click', function (event) {

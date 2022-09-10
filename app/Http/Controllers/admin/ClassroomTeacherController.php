@@ -12,8 +12,8 @@ class ClassroomTeacherController extends Controller
 {
     public function create()
     {
-        $teachers = Teacher::with('classrooms')->retrieveTeacherNotInTable()->get();
-        $classrooms = Classroom::with('students')->retrieveClassroomTeacherNotInTable()->get();
+        $teachers = Teacher::doesntHave('classrooms')->get();
+        $classrooms = Classroom::doesntHave('students')->get();
 
         return view('admin.classrooms.teachers', compact(['teachers', 'classrooms']));
     }

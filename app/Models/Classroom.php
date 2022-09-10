@@ -14,8 +14,6 @@ class Classroom extends Model
     use HasFactory;
 
     protected $guarded = [];
-    private array $classroom_student = [];
-    private array $classroom_teacher = [];
 
     public function group(): BelongsTo
     {
@@ -39,28 +37,4 @@ class Classroom extends Model
     {
         return $this->belongsToMany(Teacher::class)->withTimestamps();
     }
-
-
-    public function scopeRetrieveClassroomStudentNotInTable(Builder $query): Builder
-    {
-        $classroom_teacher_table = DB::table('classroom_student')->get();
-
-        foreach ($classroom_teacher_table as $row) {
-            $this->classroom_student[] = $row->classroom_id;
-        }
-
-        return $query->whereNotIn('id', $this->classroom_student);
-    }
-
-    public function scopeRetrieveClassroomTeacherNotInTable(Builder $query): Builder
-    {
-        $classroom_teacher_table = DB::table('classroom_teacher')->get();
-
-        foreach ($classroom_teacher_table as $row) {
-            $this->classroom_teacher[] = $row->classroom_id;
-        }
-
-        return $query->whereNotIn('id', $this->classroom_teacher);
-    }
-
 }

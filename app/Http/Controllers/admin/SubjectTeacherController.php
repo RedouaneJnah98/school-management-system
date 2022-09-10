@@ -13,8 +13,8 @@ class SubjectTeacherController extends Controller
 
     public function index()
     {
-        $subjects = Subject::all();
-        $teachers = Teacher::all();
+        $teachers = Teacher::doesntHave('subjects')->get();
+        $subjects = Subject::doesntHave('teachers')->get();
 
         return view('admin.subjects.teacher', compact(['teachers', 'subjects']));
     }

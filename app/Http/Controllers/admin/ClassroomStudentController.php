@@ -13,8 +13,8 @@ class ClassroomStudentController extends Controller
 {
     public function index()
     {
-        $classrooms = Classroom::with('students')->retrieveClassroomStudentNotInTable()->get();
-        $students = Student::with('classrooms')->retrieveStudentNotInTable()->get();
+        $classrooms = Classroom::doesntHave('students')->get();
+        $students = Student::doesntHave('classrooms')->get();
 
         return view('admin.classrooms.students', compact(['students', 'classrooms']));
     }

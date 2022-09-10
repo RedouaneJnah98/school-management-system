@@ -18,7 +18,6 @@ class Student extends Authenticatable
     protected $guarded = [];
 
     protected $dates = ['last_login_date'];
-    protected array $student_arr = [];
 
     /**
      * Scope a query to only include the latest students.
@@ -48,17 +47,6 @@ class Student extends Authenticatable
 //    {
 //        $this->attributes['password_confirmation'] = bcrypt($password);
 //    }
-
-    public function scopeRetrieveStudentNotInTable(Builder $query): Builder
-    {
-        $classroom_student_table = DB::table('classroom_student')->get();
-
-        foreach ($classroom_student_table as $row) {
-            $this->student_arr[] = $row->student_id;
-        }
-
-        return $query->whereNotIn('id', $this->student_arr);
-    }
 
     /**
      * Student belongs to one parent
