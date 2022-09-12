@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\admin\AttendanceController;
+use App\Http\Controllers\admin\auth\EmailVerificationNotificationController;
+use App\Http\Controllers\admin\auth\EmailVerificationPromptController;
+use App\Http\Controllers\admin\auth\VerifyEmailController;
 use App\Http\Controllers\admin\BranchController;
 use App\Http\Controllers\admin\ClassroomController;
 use App\Http\Controllers\admin\ClassroomStudentController;
@@ -20,7 +23,10 @@ use App\Http\Controllers\parent\ParentController;
 use App\Http\Controllers\SoftDeleteController;
 use App\Http\Controllers\student\StudentController;
 
-Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->middleware('guest')->name('password.reset');
+// Reset Password
+Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
+    ->middleware('guest')
+    ->name('password.reset');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['guest'])->group(function () {
@@ -32,7 +38,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
     });
 
-    Route::middleware(['auth:web'])->group(function () {
+    Route::middleware(['auth:web', 'verified'])->group(function () {
         // Profile Controller
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('/update', [ProfileController::class, 'update'])->name('update');
@@ -81,4 +87,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Logout
         Route::post('/logout', [TeacherController::class, 'logout'])->name('logout');
     });
+});
+
+// Email verification
+Route::middleware('auth:web')->group(function () {
+    Route::get('/email/verify', [EmailVerificationPromptController::class, '__invoke'])
+        ->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
+        ->middleware(['signed', 'throttle:6,1'])
+        ->name('verification.verify');
+
+    Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+        ->middleware('throttle:6,1')
+        ->name('verification.send');
 });

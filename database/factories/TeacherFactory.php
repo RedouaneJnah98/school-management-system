@@ -22,7 +22,6 @@ class TeacherFactory extends Factory
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
             'dob' => $this->faker->dateTimeBetween('1985-01-01', '1998-12-31')->format('y/m/d'),
             'phone' => $this->faker->phoneNumber(),
@@ -56,7 +55,6 @@ class TeacherFactory extends Factory
                 'number' => $this->faker->randomDigit(),
                 'city' => 'Tangier',
                 'zip' => '90000',
-//                'profile_image' => $this->faker->imageUrl(50, 50, 'avatar'),
                 'last_login_date' => $this->faker->dateTimeBetween('-1 week', Carbon::now()),
                 'last_login_ip' => $this->faker->ipv4(),
             ];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Teacher;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -20,6 +21,13 @@ class TeacherController extends Controller
         $teachers = Teacher::with('classrooms')->get();
 //        $teachers = Teacher::when($request->has('title'))
 
+//        foreach ($teachers as $teacher) {
+//            if ($teacher->hasVerifiedEmail()) {
+//                dump('yes');
+//            } else {
+//                dump('no');
+//            }
+//        }
         return view('admin.teachers.index', compact('teachers'));
     }
 
@@ -177,6 +185,8 @@ class TeacherController extends Controller
         if (Auth::guard('web')->attempt($credentials, $remember_me)) {
             // regenerate session ID
             $request->session()->regenerate();
+            // Dispatch the event after the teacher login is successful
+            event(new Registered(auth()->user()));
 
             return redirect()->route('admin.dashboard');
         }

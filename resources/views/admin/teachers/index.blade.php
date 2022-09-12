@@ -88,9 +88,9 @@
                         </div>
                     </td>
                     <td>
-                            <span class="fw-bold">
-                                {{ $teacher->id }}
-                            </span>
+                        <span class="fw-bold">
+                            {{ $teacher->id }}
+                        </span>
                     </td>
                     <td>
                         <a href="#" class="d-flex align-items-center">
@@ -102,6 +102,7 @@
                         </a>
                     </td>
                     <td>
+                        @if($teacher->hasVerifiedEmail())
                             <span class="fw-normal d-flex align-items-center">
                                 <svg class="icon icon-xxs text-success me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -110,12 +111,18 @@
                                         clip-rule="evenodd"/>
                                 </svg>
                                 Email
-                            </span>
+                        @else
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon icon-xxs text-info" viewBox="0 0 20 20">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                                </svg>
+                                    Email
+                             </span>
+                        @endif
                     </td>
                     <td>
                         <span class="fw-bold">{{ $teacher->dob }}</span>
                     </td>
-                    <td><span class="badge {{ $teacher->status === 'Admin' ? 'bg-success' : 'bg-secondary' }}">{{ $teacher->status }}</span></td>
+                    <td><span class="badge {{ $teacher->status === 'Admin' ? 'bg-success' : 'bg-info' }}">{{ $teacher->status }}</span></td>
                     @canany(['update','delete', 'show'], $teacher)
                         <td>
                             <div class="btn-group">
@@ -184,7 +191,7 @@
 <x-notification.delete_notif/>
 
 {{-- Delete Confirmation Modale --}}
-<x-modals.delete/>
+<x-modals.messages.delete/>
 
 <script>
 
