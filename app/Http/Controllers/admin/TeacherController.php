@@ -19,15 +19,7 @@ class TeacherController extends Controller
     public function index(Request $request)
     {
         $teachers = Teacher::with('classrooms')->get();
-//        $teachers = Teacher::when($request->has('title'))
 
-//        foreach ($teachers as $teacher) {
-//            if ($teacher->hasVerifiedEmail()) {
-//                dump('yes');
-//            } else {
-//                dump('no');
-//            }
-//        }
         return view('admin.teachers.index', compact('teachers'));
     }
 
@@ -76,7 +68,7 @@ class TeacherController extends Controller
         $insert_data = Teacher::create($attributes);
 
         if ($insert_data) {
-            return redirect()->route('admin.teachers.index')->with('success', "You added a new Teacher.");
+            return to_route('admin.teachers.index')->with('success', "You added a new Teacher.");
         }
 
         return redirect()->back()->with('error', 'Error! Something went wrong, try again.');
@@ -126,7 +118,7 @@ class TeacherController extends Controller
         $update_credentials = $teacher->update($attributes);
 
         if ($update_credentials) {
-            return redirect()->route('admin.teachers.index')->with('success', 'Credentials updated successfully');
+            return to_route('admin.teachers.index')->with('success', 'Credentials updated successfully');
         } else {
             return redirect()->back()->with('error', 'Error! Something went wrong, try again.');
         }
@@ -188,7 +180,7 @@ class TeacherController extends Controller
             // Dispatch the event after the teacher login is successful
             event(new Registered(auth()->user()));
 
-            return redirect()->route('admin.dashboard');
+            return to_route('admin.dashboard');
         }
 
         return redirect()->back()->with('failed', 'Something went wrong, please enter valid credentials.');
@@ -204,6 +196,6 @@ class TeacherController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('admin.login');
+        return to_route('admin.login');
     }
 }

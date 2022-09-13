@@ -59,6 +59,7 @@
             </select>
             <button class="btn btn-sm px-3 btn-secondary ms-3">Apply</button>
         </div>
+        <hr>
         <table class="table user-table table-hover align-items-center" id="myTable">
             <thead>
             <tr>
@@ -102,22 +103,21 @@
                         </a>
                     </td>
                     <td>
-                        @if($teacher->hasVerifiedEmail())
-                            <span class="fw-normal d-flex align-items-center">
-                                <svg class="icon icon-xxs text-success me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                         <span class="fw-normal d-flex align-items-center">
+                             @if($teacher->hasVerifiedEmail())
+                                 <svg class="icon icon-xxs text-success me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         fill-rule="evenodd"
                                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                         clip-rule="evenodd"/>
                                 </svg>
-                                Email
-                        @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon icon-xxs text-info" viewBox="0 0 20 20">
+                             @else
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon icon-xxs text-info" viewBox="0 0 20 20">
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                                 </svg>
-                                    Email
-                             </span>
-                        @endif
+                             @endif
+                             Email
+                         </span>
                     </td>
                     <td>
                         <span class="fw-bold">{{ $teacher->dob }}</span>
