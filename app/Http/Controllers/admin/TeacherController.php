@@ -8,17 +8,16 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\Rule;
 
 class TeacherController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $teachers = Teacher::with('classrooms')->get();
+        $teachers = Teacher::all();
 
         return view('admin.teachers.index', compact('teachers'));
     }

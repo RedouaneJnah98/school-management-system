@@ -79,6 +79,7 @@
 <script src="{{ asset('vendor/ddtf/ddtf.js') }}"></script>
 
 <script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('assets/js/request.js') }}"></script>
 
 </body>
 
