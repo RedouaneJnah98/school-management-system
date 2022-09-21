@@ -153,7 +153,8 @@
                                             <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd"
                                                       d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                      clip-rule="evenodd"></path></svg>
+                                                      clip-rule="evenodd"/>
+                                            </svg>
                                         </span>
                                     <input class="form-control @error('dob') is-invalid @enderror" name="dob" id="birthday" type="date" value="{{ auth()->user()->dob }}">
                                     @error('dob')
@@ -295,7 +296,7 @@
                         <div class="card shadow border-0 text-center p-0">
                             <div class="profile-cover rounded-top" data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
                             <div class="card-body pb-5">
-                                <img src="{{ asset('storage/avatars/'. auth()->user()->profile_image) }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Profile Image"
+                                <img src="{{ Storage::url(auth()->user()->profile_image) }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Profile Image"
                                      style="object-fit: cover;object-position: top">
                                 <h4 class="h3">{{ auth()->user()->firstname . ' ' . auth()->user()->lastname }}</h4>
                                 <p class="text-gray mb-4">{{ auth()->user()->city }}, Morocco</p>

@@ -202,7 +202,7 @@
                     <div class="card shadow border-0 text-center p-0">
                         <div class="profile-cover rounded-top" data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
                         <div class="card-body pb-5">
-                            <img src="{{ asset('storage/avatars/' . $student->profile_image) }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
+                            <img src="{{ Storage::url($student->profile_image) }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
                             <h4 class="h3">{{ $student->fullName }}</h4>
                             <h5 class="fw-normal">Cool Student.</h5>
                             <p class="text-gray mb-4">Tangier</p>
@@ -222,7 +222,7 @@
                         <div class="d-flex align-items-center">
                             <div class="me-3">
                                 <!-- Avatar -->
-                                <img class="rounded avatar-xl" src="{{ asset('storage/avatars/' . $student->parent->profile_image) }}" alt="change avatar">
+                                <img class="rounded avatar-xl" src="{{ Storage::url($student->parent->profile_image) }}" alt="change avatar">
                             </div>
                             <div class="file-field">
                                 <div class="d-flex justify-content-xl-center ms-xl-3">
