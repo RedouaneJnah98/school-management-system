@@ -88,7 +88,8 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="#" class="d-flex align-items-center"><img src="{{ asset('storage/avatars/default-avatar-male.jpg') }}" class="avatar rounded-circle me-3" alt="Avatar">
+                                <a href="#" class="d-flex align-items-center">
+                                    <img src="{{ Storage::url($student->profile_image) }}" class="avatar rounded-circle me-3" alt="Avatar" style="object-fit: cover;object-position: top;">
                                     <div class="d-block"><span class="fw-bold">{{ $student->fullName }}</span>
                                         <div class="small text-gray">{{ $student->email }}</div>
                                     </div>
@@ -184,6 +185,6 @@
 {{-- Success Notification --}}
 <x-notification.success_notif/>
 {{-- Delete Modal --}}
-<x-modals.delete/>
+<x-modals.messages.delete/>
 {{-- Delete Notification --}}
 <x-notification.delete_notif/>

@@ -27,7 +27,7 @@ class ProfileController extends Controller
             'gender' => 'required',
             'email' => ['required', 'email', Rule::unique('teachers', 'email')->ignore($id)],
             'phone' => 'required|numeric',
-            'profile_image' => 'image|mimes:jpg,jpeg,png|max:800',
+            'profile_image' => 'image|mimes:jpg,jpeg,png,svg|max:800',
             'address' => 'required',
             'number' => 'required|numeric',
             'city' => 'required',
@@ -35,12 +35,11 @@ class ProfileController extends Controller
         ]);
 
         // check if image exists
-        if ($request->file('profile_image')) {
+        if ($request->hasFile('profile_image')) {
             // image file original name
-            $name = $request->file('profile_image')->getClientOriginalName();
-            // store the image name in the Database
-            $attributes['profile_image'] = $name;
-            $request->file('profile_image')->storeAs('public/avatars', $name);
+            $name = $request->file('profile_image')->hashName();
+            // store image full path
+            $attributes['profile_image'] = $request->file('profile_image')->storeAs('public/avatars', $name);
         }
         $update_data = $user->update($attributes);
 

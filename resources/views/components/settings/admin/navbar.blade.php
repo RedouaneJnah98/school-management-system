@@ -87,8 +87,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="../../assets/img/team/profile-picture-3.jpg"
-                                             class="avatar-md rounded"/>
+                                        <img alt="Image placeholder" src="../../assets/img/team/profile-picture-3.jpg" class="avatar-md rounded"/>
                                     </div>
                                     <div class="col ps-0 m-2">
                                         <div class="d-flex justify-content-between align-items-center">
@@ -171,7 +170,7 @@
                                 $avatar = auth()->user()->profile_image;
                             @endphp
                             <img class="avatar rounded-circle" alt="Image placeholder"
-                                 src="{{ asset('storage/avatars/' . $avatar ) }}" style="object-fit: cover;object-position: top"/>
+                                 src="{{ Storage::url(auth()->user()->profile_image) }}" style="object-fit: cover;object-position: top"/>
                             <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                                 <span class="mb-0 font-small fw-bold text-gray-900">{{ auth()->user()->fullName }}</span>
                             </div>

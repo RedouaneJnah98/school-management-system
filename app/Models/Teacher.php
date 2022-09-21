@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Storage;
 
 class Teacher extends User implements CanResetPassword, MustVerifyEmail
 {
@@ -56,6 +57,11 @@ class Teacher extends User implements CanResetPassword, MustVerifyEmail
         return Attribute::make(
             get: fn($value) => ucfirst($value),
         );
+    }
+
+    public function image_url(): string
+    {
+        return Storage::url($this->profile_image);
     }
 
     /**

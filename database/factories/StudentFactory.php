@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
+use Storage;
 
 
 /**
@@ -18,12 +19,14 @@ class StudentFactory extends Factory
      */
     public function definition(): array
     {
+        $avatars = Storage::files('public/avatars');
+
         return [
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
             'email' => $this->faker->email(),
             'password' => Hash::make('12345678'),
-            'profile_image' => 'default-avatar-male.jpg',
+            'profile_image' => $this->faker->randomElement($avatars),
             'phone' => $this->faker->phoneNumber(),
             'date_of_join' => $this->faker->dateTimeInInterval(),
             'date_of_birth' => $this->faker->dateTimeBetween('2008-01-01', '2012-12-31')->format('y/m/d'),

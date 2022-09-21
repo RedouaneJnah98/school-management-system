@@ -86,12 +86,9 @@
                                     <label class="form-check-label" for="userCheck1"></label>
                                 </div>
                             </td>
-                            @php
-                                $parent_avatar = ($parent->gender === 'Male' ? $parent->profile_image : 'default-avatar-female.jpg');
-                            @endphp
                             <td>
                                 <a href="{{ route('admin.parents.show', $parent->id) }}" class="d-flex align-items-center">
-                                    <img src="{{ asset('storage/avatars/' . $parent_avatar) }}" class="avatar rounded-circle me-3" alt="Avatar">
+                                    <img src="{{ Storage::url($parent->profile_image) }}" class="avatar rounded-circle me-3" alt="Avatar" style="object-fit: cover;object-position: top;">
                                     <div class="d-block">
                                         <span class="fw-bold">{{ $parent->fullName }}</span>
                                         <div class="small text-gray">{{ $parent->email }}</div>
@@ -101,12 +98,9 @@
                             <td>
                                 <div class="avatar-group">
                                     @forelse($parent->children as $child)
-                                        @php
-                                            $student_avatar = ($child->gender === 'Male' ? $child->profile_image : 'default-student-female.jpg');
-                                        @endphp
                                         <a href="{{ route('admin.students.show', $child->id) }}" class="avatar" data-bs-toggle="tooltip" data-original-title="{{ $child->firstname }}"
                                            data-bs-original-title="{{ $child->firstname }}" title="" draggable="false">
-                                            <img class="rounded" alt="Image placeholder" src="{{ asset('storage/avatars/' . $student_avatar)  }}" draggable="false"
+                                            <img class="rounded" alt="Image placeholder" src="{{ Storage::url($child->profile_image)  }}" draggable="false"
                                                  style="object-fit: cover;object-position: top">
                                         </a>
                                     @empty

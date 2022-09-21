@@ -95,7 +95,7 @@
                     </td>
                     <td>
                         <a href="#" class="d-flex align-items-center">
-                            <img src="{{ asset('storage/avatars/default-avatar-male.jpg') }}" class="avatar rounded-circle me-3" alt="Avatar">
+                            <img src="{{ $teacher->image_url() }}" class="avatar rounded-circle me-3" alt="Avatar" style="object-fit: cover;object-position: top">
                             <div class="d-block">
                                 <span class="fw-bold">{{ $teacher->fullName }}</span>
                                 <div class="small text-gray">{{ $teacher->email }}</div>

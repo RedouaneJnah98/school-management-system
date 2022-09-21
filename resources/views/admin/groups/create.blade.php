@@ -84,5 +84,5 @@
 </x-dashboard_layout>
 
 {{-- Modals --}}
-<x-modals.failed/>
+<x-modals.messages.failed/>
 

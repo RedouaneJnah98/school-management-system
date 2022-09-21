@@ -3,15 +3,19 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTeacherRequest;
 use App\Models\Teacher;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\File;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Storage;
 
 class TeacherController extends Controller
 {
@@ -40,23 +44,7 @@ class TeacherController extends Controller
     {
         $this->authorize('create', Teacher::class);
 
-        $attributes = $request->validate([
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
-            'phone' => 'required|numeric',
-            'email' => 'required|email|unique:teachers,email',
-            'password' => 'required|confirmed|min:6|max:30',
-            'dob' => 'required|date',
-            'profile_image' => 'required|image',
-            'status' => 'required',
-            'profile_bio' => 'required',
-            'gender' => 'required',
-            'address' => 'required',
-            'number' => 'required|numeric',
-            'city' => 'required',
-            'zip' => 'required|numeric'
-        ]);
-
+        $attributes = $request->validated();
         $attributes['dob'] = $request->date('dob');
         // get the original file name of the image
         $image_name = $request->file('profile_image')->getClientOriginalName();

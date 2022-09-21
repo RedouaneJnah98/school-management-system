@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
+use Storage;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Parents>
@@ -17,6 +18,8 @@ class ParentsFactory extends Factory
      */
     public function definition(): array
     {
+        $avatars = Storage::files('public/avatars');
+
         return [
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
@@ -25,7 +28,7 @@ class ParentsFactory extends Factory
             'phone_number' => $this->faker->phoneNumber(),
             'date_of_birth' => $this->faker->dateTimeBetween('1970/01/01', '1999/31/12'),
             'gender' => $this->faker->randomElement(['Male', 'Female']),
-            'profile_image' => 'default-avatar-parent.jpg',
+            'profile_image' => $this->faker->randomElement($avatars),
             'address' => $this->faker->address(),
             'number' => $this->faker->randomDigit(),
             'city' => $this->faker->city(),
