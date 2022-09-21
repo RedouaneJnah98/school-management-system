@@ -40,7 +40,7 @@ class TeacherController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function store(StoreTeacherRequest $request)
     {
         $this->authorize('create', Teacher::class);
 
