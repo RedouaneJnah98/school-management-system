@@ -80,7 +80,6 @@
             </thead>
             <tbody>
             <!-- Teachers -->
-
             @forelse($teachers as $teacher)
                 <tr>
                     <td>
@@ -177,7 +176,6 @@
             @empty
                 <p class="text-center">No data.</p>
             @endforelse
-
             </tbody>
         </table>
 
