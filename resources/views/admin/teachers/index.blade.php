@@ -121,7 +121,9 @@
                     <td>
                         <span class="fw-bold">{{ $teacher->dob }}</span>
                     </td>
-                    <td><span class="badge {{ $teacher->status === 'Admin' ? 'bg-success' : 'bg-info' }}">{{ $teacher->status }}</span></td>
+                    <td>
+                        <span class="badge {{ $teacher->status === 'Admin' ? 'bg-success' : 'bg-info' }}">{{ $teacher->status }}</span>
+                    </td>
                     @canany(['update','delete', 'show'], $teacher)
                         <td>
                             <div class="btn-group">
@@ -176,6 +178,7 @@
             @empty
                 <p class="text-center">No data.</p>
             @endforelse
+
             </tbody>
         </table>
 
