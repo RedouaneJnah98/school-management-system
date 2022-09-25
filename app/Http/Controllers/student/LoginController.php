@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\student;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,11 +19,13 @@ class LoginController extends Controller
         if (Auth::guard('student')->attempt($attributes)) {
             // regenerate session ID
             $request->session()->regenerate();
+            // Dispatch event after logged in
+            event(new Registered(auth('student')->user()));
 
-            return redirect()->route('student.dashboard');
+            return to_route('student.dashboard');
         }
 
-        return redirect()->back()->with('failed', 'Something went wrong, please enter valid credentials.');
+        return back()->with('failed', 'Something went wrong, please enter valid credentials.');
     }
 
     /*

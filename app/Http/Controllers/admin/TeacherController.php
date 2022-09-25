@@ -165,7 +165,7 @@ class TeacherController extends Controller
             // regenerate session ID
             $request->session()->regenerate();
             // Dispatch the event after the teacher login is successful
-            event(new Registered(auth()->user()));
+            event(new Registered(auth('admin')->user()));
 
             return to_route('admin.dashboard');
         }

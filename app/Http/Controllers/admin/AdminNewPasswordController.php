@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -17,13 +18,9 @@ class AdminNewPasswordController extends Controller
         return view('admin.auth.reset-password', compact('request'));
     }
 
-    public function store(Request $request)
+    public function store(ResetPasswordRequest $request)
     {
-        $request->validate([
-            'token' => ['required'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        $request->validated();
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the
         // database. Otherwise, we will parse the error and return the response.

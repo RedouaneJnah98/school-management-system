@@ -17,15 +17,15 @@ class NewPasswordController extends Controller
         return view('student.auth.reset-password', compact('request'));
     }
 
-//    public function store(ResetPasswordRequest $request)
-//    {
-//        $request->validated();
-//
-//        return $this->password_status($request) === Password::PASSWORD_RESET
-//            ? to_route('student.login')->with('status', __($this->password_status($request)))
-//            : back()->withInput($request->only('email'))
-//                ->withErrors(['email' => __($this->password_status($request))]);
-//    }
+    public function store(ResetPasswordRequest $request)
+    {
+        $request->validated();
+
+        return $this->password_status($request) === Password::PASSWORD_RESET
+            ? to_route('student.login')->with('status', __($this->password_status($request)))
+            : back()->withInput($request->only('email'))
+                ->withErrors(['email' => __($this->password_status($request))]);
+    }
 
     protected function password_status($request)
     {

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -14,7 +14,10 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\URL;
 use Laravel\Sanctum\HasApiTokens;
 use Storage;
 
@@ -92,28 +95,15 @@ class Teacher extends User implements CanResetPassword, MustVerifyEmail
         return $this->morphToMany(Subject::class, 'subjectable');
     }
 
-//    public function sendPasswordResetNotification($token)
-//    {
-////        $this->notify(new ResetPassword($token));
-////        $this->sendPasswordResetNotification($token);
-////        $this->notify(new Send);
-//        return to_route('admin.password.reset', $token);
-//    }
-
     public function sendPasswordResetNotification($token)
     {
-//        $this->send_message($token);
-//        return to_route('admin.password.reset', $token);
-//        $this->notify(new ResetPasswordRequest($token));
         $resetPassword = new ResetPassword($token);
         $resetPassword::createUrlUsing(function () use ($token) {
             return to_route('admin.password.reset', $token);
         });
 
-//        $notifiable = $notifiable->getEmailForPasswordReset()
         $resetPassword::toMailUsing(function ($notifiable) use ($token) {
-//            $url = url(config('app.name') . $token . $notifiable->getEmailForPasswordReset());
-            $url = config('app.url') . "/reset-password/$token?email=" . $notifiable->getEmailForPasswordReset();
+            $url = config('app.url') . "/admin/reset-password/$token?email=" . $notifiable->getEmailForPasswordReset();
 
             return (new MailMessage)
                 ->subject(Lang::get('Reset Password Notification'))
@@ -126,8 +116,20 @@ class Teacher extends User implements CanResetPassword, MustVerifyEmail
         $this->notify($resetPassword);
     }
 
-//    public function send_message($token)
-//    {
-//        $this->notify(new ResetPassword($token));
-//    }
+    public function sendEmailVerificationNotification()
+    {
+        $emailVerification = new VerifyEmail();
+        $emailVerification::createUrlUsing(function ($notifiable) {
+            return URL::temporarySignedRoute(
+                'admin.verification.verify',
+                Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
+                [
+                    'id' => $notifiable->getKey(),
+                    'hash' => sha1($notifiable->getEmailForVerification()),
+                ]
+            );
+        });
+
+        $this->notify($emailVerification);
+    }
 }

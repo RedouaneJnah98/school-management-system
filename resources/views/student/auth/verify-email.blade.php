@@ -14,7 +14,7 @@
                                 {{ __('A new verification link has been sent to the email address you provided during registration.') }}
                             </div>
                         @endif
-                        <form action="{{ route('admin.verification.send') }}" method="post">
+                        <form action="{{ route('student.verification.send') }}" method="post">
                             @csrf
                             <button class="btn btn-info rounded-pill">
                                 {{ __('Resend Verification Email') }}

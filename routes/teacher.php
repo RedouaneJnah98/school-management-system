@@ -23,9 +23,6 @@ use App\Http\Controllers\parent\ParentController;
 use App\Http\Controllers\SoftDeleteController;
 use App\Http\Controllers\student\StudentController;
 
-Route::get('/reset-password/{token}', [AdminNewPasswordController::class, 'create'])
-    ->name('password.reset');
-
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['guest'])->group(function () {
         Route::view('/login', 'admin.auth.login')->name('login');
@@ -34,10 +31,24 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::view('/forgot-password', 'admin.auth.forgot-password')->name('password.request');
         Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
         Route::post('/reset-password', [AdminNewPasswordController::class, 'store'])->name('password.update');
+        Route::get('/reset-password/{token}', [AdminNewPasswordController::class, 'create'])
+            ->name('password.reset');
+    });
+    // Routes for email verification
+    Route::middleware('auth:admin')->group(function () {
+        Route::get('/email/verify', [EmailVerificationPromptController::class, '__invoke'])
+            ->name('verification.notice');
+
+        Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
+            ->middleware(['signed', 'throttle:6,1'])
+            ->name('verification.verify');
+
+        Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+            ->middleware('throttle:6,1')
+            ->name('verification.send');
     });
 
-    Route::middleware(['auth:admin', 'verified'])->group(function () {
-        // Profile Controller
+    Route::middleware(['auth:admin', 'admin.verified'])->group(function () {
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('/update', [ProfileController::class, 'update'])->name('update');
         // Message Controller
@@ -85,18 +96,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Logout
         Route::post('/logout', [TeacherController::class, 'logout'])->name('logout');
     });
-});
-
-// Email verification
-Route::middleware('auth:admin')->group(function () {
-    Route::get('/email/verify', [EmailVerificationPromptController::class, '__invoke'])
-        ->name('verification.notice');
-
-    Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-        ->middleware(['signed', 'throttle:6,1'])
-        ->name('verification.verify');
-
-    Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-        ->middleware('throttle:6,1')
-        ->name('verification.send');
 });
