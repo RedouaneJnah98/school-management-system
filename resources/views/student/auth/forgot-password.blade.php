@@ -16,17 +16,9 @@
                     </p>
                     <div class="col-12 d-flex align-items-center justify-content-center">
                         <div class="signin-inner my-3 my-lg-0 bg-white shadow border-0 rounded p-4 p-lg-5 w-100 fmxw-500">
-                            @if(session('status'))
-                                <div class="alert alert-success">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
+                            <x-notification.status/>
 
-                            @if(session('email'))
-                                <div class="alert alert-danger">
-                                    {{ session('email') }}
-                                </div>
-                            @endif
+                            <x-notification.email/>
                             <h1 class="h3">Forgot your password?</h1>
                             <p class="mb-4">Don't fret! Just type in your email, and we will send you a link to reset your password!</p>
                             <form action="{{ route('student.password.email') }}" method="post">
