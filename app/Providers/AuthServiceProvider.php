@@ -6,6 +6,7 @@ use App\Models\Parents;
 use App\Models\Teacher;
 use App\Policies\ParentsPolicy;
 use App\Policies\TeacherPolicy;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Notifications\Messages\MailMessage;

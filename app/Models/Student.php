@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,11 +10,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Notifications\Notifiable;
 
-class Student extends Authenticatable
+class Student extends Authenticatable implements \Illuminate\Contracts\Auth\CanResetPassword
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Notifiable, CanResetPassword;
 
     protected $guarded = [];
 

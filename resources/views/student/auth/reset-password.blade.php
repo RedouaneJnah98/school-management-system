@@ -17,6 +17,8 @@
                     <div class="col-12 d-flex align-items-center justify-content-center">
                         <div class="bg-white shadow border-0 rounded p-4 p-lg-5 w-100 fmxw-500">
 
+                            <x-notification.status/>
+
                             @if(session('email'))
                                 <div class="alert alert-danger">
                                     {{ session('email') }}
@@ -24,7 +26,7 @@
                             @endif
 
                             <h1 class="h3 mb-4">Reset password</h1>
-                            <form action="{{ route('admin.password.update') }}" method="post">
+                            <form action="{{ route('student.password.update') }}" method="post">
                                 @csrf
 
                                 <input type="hidden" name="token" value="{{ $request->token }}">

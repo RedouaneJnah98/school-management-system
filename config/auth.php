@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'teachers',
+        'guard' => 'admin',
+        'passwords' => 'admin',
     ],
 
     /*
@@ -36,9 +36,9 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'teachers',
+            'provider' => 'admin',
         ],
         'student' => [
             'driver' => 'session',
@@ -68,7 +68,7 @@ return [
     */
 
     'providers' => [
-        'teachers' => [
+        'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\Teacher::class,
         ],
@@ -98,12 +98,18 @@ return [
     */
 
     'passwords' => [
-        'teachers' => [
-            'provider' => 'teachers',
+        'admin' => [
+            'provider' => 'admin',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
+        'student' => [
+            'provider' => 'students',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60
+        ]
     ],
 
     /*

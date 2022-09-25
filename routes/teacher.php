@@ -12,7 +12,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\DownloadController;
 use App\Http\Controllers\admin\GroupController;
 use App\Http\Controllers\admin\MessageController;
-use App\Http\Controllers\admin\NewPasswordController;
+use App\Http\Controllers\admin\AdminNewPasswordController;
 use App\Http\Controllers\admin\PasswordResetLinkController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\SubjectBranchController;
@@ -23,9 +23,7 @@ use App\Http\Controllers\parent\ParentController;
 use App\Http\Controllers\SoftDeleteController;
 use App\Http\Controllers\student\StudentController;
 
-// Reset Password
-Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
-    ->middleware('guest')
+Route::get('/reset-password/{token}', [AdminNewPasswordController::class, 'create'])
     ->name('password.reset');
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -35,10 +33,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Reset & Forgot Password Routes
         Route::view('/forgot-password', 'admin.auth.forgot-password')->name('password.request');
         Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
-        Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+        Route::post('/reset-password', [AdminNewPasswordController::class, 'store'])->name('password.update');
     });
 
-    Route::middleware(['auth:web', 'verified'])->group(function () {
+    Route::middleware(['auth:admin', 'verified'])->group(function () {
         // Profile Controller
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('/update', [ProfileController::class, 'update'])->name('update');
@@ -90,7 +88,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 // Email verification
-Route::middleware('auth:web')->group(function () {
+Route::middleware('auth:admin')->group(function () {
     Route::get('/email/verify', [EmailVerificationPromptController::class, '__invoke'])
         ->name('verification.notice');
 

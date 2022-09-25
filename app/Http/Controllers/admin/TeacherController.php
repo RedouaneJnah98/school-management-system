@@ -161,7 +161,7 @@ class TeacherController extends Controller
 
         $remember_me = $request->has('remember_me');
         // check the user's credentials if they are valid
-        if (Auth::guard('web')->attempt($credentials, $remember_me)) {
+        if (Auth::guard('admin')->attempt($credentials, $remember_me)) {
             // regenerate session ID
             $request->session()->regenerate();
             // Dispatch the event after the teacher login is successful
@@ -178,7 +178,7 @@ class TeacherController extends Controller
      */
     public function logout(Request $request)
     {
-        Auth::guard('web')->logout();
+        Auth::guard('admin')->logout();
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
