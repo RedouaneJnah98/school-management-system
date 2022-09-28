@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\admin\MessageController;
+use App\Http\Controllers\parent\auth\PasswordResetLinkController;
 use App\Http\Controllers\parent\auth\EmailVerificationNotificationController;
 use App\Http\Controllers\parent\auth\EmailVerificationPromptController;
+use App\Http\Controllers\parent\auth\NewPasswordController;
 use App\Http\Controllers\parent\auth\VerifyEmailController;
 use App\Http\Controllers\parent\AuthController;
 use App\Http\Controllers\parent\ProfileController;
@@ -11,8 +13,16 @@ Route::prefix('parent')->name('parent.')->group(function () {
     Route::middleware(['guest:parent'])->group(function () {
         Route::view('/login', 'parent.auth.login')->name('login');
         Route::post('/check', [AuthController::class, 'check'])->name('check');
+        Route::view('/forgot-password', 'parent.auth.forgot-password')
+            ->name('password.request');
+        Route::post('/forgot-password', [PasswordResetLinkController::class, '__invoke'])
+            ->name('password.email');
+        Route::post('/reset-password', [NewPasswordController::class, 'store'])
+            ->name('password.update');
+        Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
+            ->name('password.reset');
     });
-// Routes for email verification
+    // Routes for email verification
     Route::middleware('auth:parent')->group(function () {
         Route::get('/email/verify', [EmailVerificationPromptController::class, '__invoke'])
             ->name('verification.notice');
@@ -27,12 +37,18 @@ Route::prefix('parent')->name('parent.')->group(function () {
     });
 
     Route::middleware(['auth:parent', 'parent.verified'])->group(function () {
-        Route::view('/dashboard', 'parent.dashboard')->name('dashboard');
-        Route::view('/support', 'parent.support')->name('support');
-        Route::view('/settings', 'parent.settings')->name('settings');
-        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-        Route::put('/update', [ProfileController::class, 'update'])->name('update');
-        Route::post('/send_message', [MessageController::class, 'store_parent_message'])->name('send_message');
+        Route::view('/dashboard', 'parent.dashboard')
+            ->name('dashboard');
+        Route::view('/support', 'parent.support')
+            ->name('support');
+        Route::view('/settings', 'parent.settings')
+            ->name('settings');
+        Route::get('/profile', [ProfileController::class, 'index'])
+            ->name('profile');
+        Route::put('/update', [ProfileController::class, 'update'])
+            ->name('update');
+        Route::post('/send_message', [MessageController::class, 'store_parent_message'])
+            ->name('send_message');
 
         // Logout
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

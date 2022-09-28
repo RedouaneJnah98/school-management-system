@@ -20,7 +20,7 @@
                             <x-notification.email/>
 
                             <h1 class="h3 mb-4">Reset password</h1>
-                            <form action="{{ route('student.password.update') }}" method="post">
+                            <form action="{{ route('parent.password.update') }}" method="post">
                                 @csrf
 
                                 <input type="hidden" name="token" value="{{ $request->token }}">

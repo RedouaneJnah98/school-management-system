@@ -17,7 +17,6 @@ Route::prefix('student')->name('student.')->group(function () {
         Route::post('/forgot-password', [PasswordResetLinkController::class, '__invoke'])->name('password.email');
         Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
         Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
-            ->middleware('guest')
             ->name('password.reset');
     });
     // Routes for email verification

@@ -2,21 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 
-class Parents extends Authenticatable implements MustVerifyEmail
+class Parents extends User implements MustVerifyEmail, \Illuminate\Contracts\Auth\CanResetPassword
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, CanResetPassword;
 
     protected $guarded = [];
 
@@ -65,6 +69,27 @@ class Parents extends Authenticatable implements MustVerifyEmail
     public function messages(): MorphToMany
     {
         return $this->morphToMany(Message::class, 'messageable');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $resetPassword = new ResetPassword($token);
+        $resetPassword::createUrlUsing(function () use ($token) {
+            return to_route('parent.password.reset', $token);
+        });
+
+        $resetPassword::toMailUsing(function ($notifiable) use ($token) {
+            $url = config('app.url') . "/parent/reset-password/$token?email=" . $notifiable->getEmailForPasswordReset();
+
+            return (new MailMessage)
+                ->subject(Lang::get('Reset Password Notification'))
+                ->line(Lang::get('You are receiving this email because we received a password reset request for your account.'))
+                ->action(Lang::get('Reset Password'), $url)
+                ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire')]))
+                ->line(Lang::get('If you did not request a password reset, no further action is required.'));
+        });
+
+        $this->notify($resetPassword);
     }
 
     public function sendEmailVerificationNotification()
