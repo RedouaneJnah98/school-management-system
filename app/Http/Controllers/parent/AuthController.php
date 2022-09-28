@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\parent;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,7 @@ class AuthController extends Controller
         if (Auth::guard('parent')->attempt($attributes)) {
             // regenerate session ID
             $request->session()->regenerate();
+            event(new Registered(\auth('parent')->user()));
 
             return redirect()->route('parent.dashboard');
         }

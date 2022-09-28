@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Subject;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Storage;
 
 class SubjectTeacherController extends Controller
 {
@@ -51,11 +52,13 @@ class SubjectTeacherController extends Controller
     {
         if ($subject->teachers()->count() > 0) {
             foreach ($subject->teachers as $teacher) {
+                $avatar = Storage::url($teacher->profile_image);
+
                 $this->result .= '<tr>';
                 $this->result .= '<td>' . '<span class="fw-bold">' . $teacher->id . '</span>' . '</td>';
                 $this->result .= '<td>';
                 $this->result .= '<a href="#" class="d-flex align-items-center">';
-                $this->result .= '<img src="/storage/avatars/default-avatar-male.jpg" class="avatar rounded-circle me-3" alt="Avatar" />';
+                $this->result .= "<img src='$avatar' class='avatar rounded-circle me-3' alt='Avatar' />";
                 $this->result .= '<div class="d-block">';
                 $this->result .= '<span class="fw-bold">' . $teacher->fullName . '</span>';
                 $this->result .= '</div>';

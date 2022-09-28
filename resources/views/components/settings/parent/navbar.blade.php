@@ -41,31 +41,6 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        @php
-                                            $avatar = auth()->user()->profile_image;
-                                        @endphp
-                                        <img alt="Image placeholder" src="{{ asset('storage/avatars/' . $avatar) }}" class="avatar-md rounded"/>
-                                    </div>
-                                    <div class="col ps-0 ms-2">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <h4 class="h6 mb-0 text-small">Jose Leos</h4>
-                                            </div>
-                                            <div class="text-end">
-                                                <small class="text-danger">a few moments ago</small>
-                                            </div>
-                                        </div>
-                                        <p class="font-small mt-1 mb-0">
-                                            Added you to an event "Project stand-up" tomorrow at
-                                            12:30 AM.
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action border-bottom">
-                                <div class="row align-items-center">
-                                    <div class="col-auto">
-                                        <!-- Avatar -->
                                         <img alt="Image placeholder" src="../../assets/img/team/profile-picture-2.jpg"
                                              class="avatar-md rounded"/>
                                     </div>
@@ -170,18 +145,10 @@
                     <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         <div class="media d-flex align-items-center">
-                            {{-- User Avatar --}}
-                            @php
-                                $avatar = auth()->user()->profile_image;
-                            @endphp
-
                             <img class="avatar rounded-circle" alt="Image placeholder"
-                                 src="{{ asset('storage/avatars/' . auth()->user()->profile_image) }}" style="object-fit: cover;object-position: top"/>
+                                 src="{{ Storage::url(auth()->user()->profile_image) }}" style="object-fit: cover;object-position: top"/>
                             <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                @php
-                                    $name = auth()->user()->firstname . ' ' . auth()->user()->lastname;
-                                @endphp
-                                <span class="mb-0 font-small fw-bold text-gray-900">{{ $name }}</span>
+                                <span class="mb-0 font-small fw-bold text-gray-900">{{ auth()->user()->fullName }}</span>
                             </div>
                         </div>
                     </a>

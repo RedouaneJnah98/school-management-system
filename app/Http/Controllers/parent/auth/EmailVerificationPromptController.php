@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\student\auth;
+namespace App\Http\Controllers\parent\auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -10,8 +10,8 @@ class EmailVerificationPromptController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return $request->user('student')->hasVerifiedEmail()
-            ? redirect()->intended(RouteServiceProvider::STUDENT_HOME)
-            : view('student.auth.verify-email');
+        return $request->user('parent')->hasVerifiedEmail()
+            ? redirect()->intended(RouteServiceProvider::PARENT_HOME)
+            : view('parent.auth.verify-email');
     }
 }
