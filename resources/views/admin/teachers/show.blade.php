@@ -205,7 +205,7 @@
                     <div class="card shadow border-0 text-center p-0">
                         <div class="profile-cover rounded-top" data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
                         <div class="card-body pb-5">
-                            <img src="{{ asset('storage/avatars/' . $teacher->profile_image) }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait"
+                            <img src="{{ $teacher->image_url() }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait"
                                  style="object-fit: cover;object-position: top">
                             <h4 class="h3">{{ $teacher->firstname . ' ' . $teacher->lastname }}</h4>
                             <h5 class="fw-normal">{{ $teacher->profile_bio }}</h5>

@@ -218,7 +218,7 @@
                         <div class="card shadow border-0 text-center p-0">
                             <div class="profile-cover rounded-top" data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
                             <div class="card-body pb-5">
-                                <img src="{{ asset('storage/avatars/'. auth()->user()->profile_image) }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Profile Image"
+                                <img src="{{ Storage::url(auth()->user()->profile_image) }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Profile Image"
                                      style="object-fit: cover;object-position: top">
                                 <h4 class="h3">{{ auth()->user()->firstname . ' ' . auth()->user()->lastname }}</h4>
                                 <p class="text-gray mb-4">{{ auth()->user()->city }}, Morocco</p>
