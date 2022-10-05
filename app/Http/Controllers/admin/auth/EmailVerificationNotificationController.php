@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin\auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\teacherEmailVerification;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ class EmailVerificationNotificationController extends Controller
         }
 
         $request->user('admin')->sendEmailVerificationNotification();
+        TeacherEmailVerification::dispatch($request->user('admin'));
 
         return back()->with('status', 'verification-link-sent');
     }

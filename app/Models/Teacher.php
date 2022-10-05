@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Jobs\teacherEmailVerification;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
@@ -129,6 +130,7 @@ class Teacher extends User implements CanResetPassword, MustVerifyEmail
                 ]
             );
         });
+        TeacherEmailVerification::dispatch($this);
 
         $this->notify($emailVerification);
     }

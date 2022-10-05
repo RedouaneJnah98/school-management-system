@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Jobs\StudentEmailVerification;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,7 +22,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 
-class Student extends Authenticatable implements MustVerifyEmail, \Illuminate\Contracts\Auth\CanResetPassword
+class Student extends Authenticatable implements MustVerifyEmail, ShouldQueue, \Illuminate\Contracts\Auth\CanResetPassword
 {
     use HasFactory, SoftDeletes, Notifiable, CanResetPassword;
 
@@ -107,6 +109,7 @@ class Student extends Authenticatable implements MustVerifyEmail, \Illuminate\Co
                 ]
             );
         });
+        StudentEmailVerification::dispatch($this);
 
         $this->notify($emailVerification);
     }

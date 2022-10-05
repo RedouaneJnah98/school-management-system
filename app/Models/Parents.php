@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Jobs\ParentEmailVerification;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -105,6 +106,7 @@ class Parents extends User implements MustVerifyEmail, \Illuminate\Contracts\Aut
                 ]
             );
         });
+        ParentEmailVerification::dispatch($this);
 
         $this->notify($emailVerification);
     }
