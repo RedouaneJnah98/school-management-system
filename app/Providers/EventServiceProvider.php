@@ -2,7 +2,12 @@
 
 namespace App\Providers;
 
+use App\Events\EmailVerified;
+use App\Listeners\LastLoginAt;
+use App\Listeners\UpdateStatus;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -18,12 +23,15 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-
-        // Event for login details data
-        'Illuminate\Auth\Events\Login' => [
-            'App\Listeners\LastLoginAt',
+        Login::class => [
+            LastLoginAt::class
         ],
-
+//        EmailVerified::class => [
+//            UpdateStatus::class
+//        ],
+        Verified::class => [
+            UpdateStatus::class
+        ],
     ];
 
     /**

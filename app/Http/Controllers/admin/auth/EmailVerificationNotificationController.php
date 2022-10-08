@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\admin\auth;
 
+use App\Events\EmailVerified;
 use App\Http\Controllers\Controller;
 use App\Jobs\teacherEmailVerification;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 

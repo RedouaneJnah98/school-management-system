@@ -2,13 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Teacher;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Storage;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Teacher>
+ * @extends Factory<Teacher>
  */
 class TeacherFactory extends Factory
 {
@@ -28,7 +29,6 @@ class TeacherFactory extends Factory
             'password' => Hash::make('12345678'),
             'dob' => $this->faker->dateTimeBetween('1985-01-01', '1998-12-31')->format('y/m/d'),
             'phone' => $this->faker->phoneNumber(),
-            'status' => 'teacher',
             'profile_bio' => $this->faker->sentence(),
             'gender' => $this->faker->randomElement(['male', 'female']),
             'address' => $this->faker->address(),
@@ -49,7 +49,6 @@ class TeacherFactory extends Factory
                 'lastname' => 'Redouane',
                 'email' => 'jnahredouane@gmail.com',
                 'phone' => '0606725541',
-                'status' => 'admin',
                 'gender' => 'male',
                 'city' => 'Tangier',
                 'zip' => '90000',

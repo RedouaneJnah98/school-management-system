@@ -7,6 +7,7 @@ use App\Http\Requests\StoreTeacherRequest;
 use App\Models\Teacher;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\File;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -162,6 +163,10 @@ class TeacherController extends Controller
         $remember_me = $request->has('remember_me');
         // check the user's credentials if they are valid
         if (Auth::guard('admin')->attempt($credentials, $remember_me)) {
+            if ($request->user('admin')->hasVerifiedEmail()) {
+                event(new Verified($request->user('admin')));
+            }
+
             // regenerate session ID
             $request->session()->regenerate();
             // Dispatch the event after the teacher login is successful

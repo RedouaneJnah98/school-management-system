@@ -108,9 +108,10 @@
                                         clip-rule="evenodd"/>
                                 </svg>
                                    @else
-                                       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon icon-xxs text-info" viewBox="0 0 20 20">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-                                </svg>
+                                       <svg class="icon icon-xxs text-purple me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0
+                                            100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                       </svg>
                                    @endif
                              Email
                          </span>

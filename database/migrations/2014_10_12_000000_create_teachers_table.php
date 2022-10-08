@@ -22,7 +22,8 @@ return new class extends Migration {
             $table->string('password');
             $table->date('dob');
             $table->string('phone');
-            $table->string('status')->default('teacher');
+            $table->boolean('is_admin')->default(false);
+            $table->string('status')->default('Pending');
             $table->string('profile_image')->nullable();
             $table->string('profile_bio');
             $table->timestamp('last_login_date')->nullable();
