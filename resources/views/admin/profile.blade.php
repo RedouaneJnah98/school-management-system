@@ -125,7 +125,7 @@
                             <div class="col-md-6 mb-3">
                                 <div>
                                     <label for="first_name">First Name</label>
-                                    <input class="form-control @error('firstname') is-invalid @enderror" name="firstname" id="first_name" type="text" value="{{ auth()->user()->firstname }}">
+                                    <input class="form-control @error('firstname') is-invalid @enderror" name="firstname" id="first_name" type="text" value="{{ auth('admin')->user()->firstname }}">
                                     @error('firstname')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -136,7 +136,7 @@
                             <div class="col-md-6 mb-3">
                                 <div>
                                     <label for="last_name">Last Name</label>
-                                    <input class="form-control @error('lastname') is-invalid @enderror" name="lastname" id="last_name" type="text" value="{{ auth()->user()->lastname }}">
+                                    <input class="form-control @error('lastname') is-invalid @enderror" name="lastname" id="last_name" type="text" value="{{ auth('admin')->user()->lastname }}">
                                     @error('lastname')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -156,37 +156,37 @@
                                                       clip-rule="evenodd"/>
                                             </svg>
                                         </span>
-                                    <input class="form-control @error('dob') is-invalid @enderror" name="dob" id="birthday" type="date" value="{{ auth()->user()->dob }}">
-                                    @error('dob')
+                                    <input class="form-control @error('dob') is-invalid @enderror" name="date_of_birth" id="birthday" type="date" value="{{ auth('admin')->user()->date_of_birth }}">
+                                    @error('date_of_birth')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="gender">Gender</label>
-                                <select class="form-select mb-0 @error('gender') is-invalid @enderror" name="gender" id="gender" aria-label="Gender select example">
-                                    @if( auth()->user()->gender === 'female')
-                                        <option selected>Female</option>
-                                        <option value="male">Male</option>
-                                    @else
-                                        <option value="male" selected>Male</option>
-                                        <option value="female">Female</option>
-                                    @endif
-                                </select>
-                                @error('gender')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
+                            {{--                            <div class="col-md-6 mb-3">--}}
+                            {{--                                <label for="gender">Gender</label>--}}
+                            {{--                                <select class="form-select mb-0 @error('gender') is-invalid @enderror" name="gender" id="gender" aria-label="Gender select example">--}}
+                            {{--                                    @if( auth('admin')->user()-> === 'female')--}}
+                            {{--                                        <option selected>Female</option>--}}
+                            {{--                                        <option value="male">Male</option>--}}
+                            {{--                                    @else--}}
+                            {{--                                        <option value="male" selected>Male</option>--}}
+                            {{--                                        <option value="female">Female</option>--}}
+                            {{--                                    @endif--}}
+                            {{--                                </select>--}}
+                            {{--                                @error('gender')--}}
+                            {{--                                <div class="invalid-feedback">--}}
+                            {{--                                    {{ $message }}--}}
+                            {{--                                </div>--}}
+                            {{--                                @enderror--}}
+                            {{--                            </div>--}}
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input class="form-control @error('email') is-invalid @enderror" name="email" id="email" type="email" value="{{ auth()->user()->email }}">
+                                    <input class="form-control @error('email') is-invalid @enderror" name="email" id="email" type="email" value="{{ auth('admin')->user()->email }}">
                                     @error('email')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -197,8 +197,9 @@
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input class="form-control @error('phone') is-invalid @enderror" name="phone" id="phone" type="text" value="{{ auth()->user()->phone }}">
-                                    @error('phone')
+                                    <input class="form-control @error('phone') is-invalid @enderror" name="phone_number" id="phone_number" type="text"
+                                           value="{{ auth('admin')->user()->phone_number }}">
+                                    @error('phone_number')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -211,7 +212,7 @@
                             <div class="col-sm-9 mb-3">
                                 <div class="form-group">
                                     <label for="address">Address</label>
-                                    <input class="form-control @error('address') is-invalid @enderror" name="address" id="address" type="text" value="{{ auth()->user()->address }}">
+                                    <input class="form-control @error('address') is-invalid @enderror" name="address" id="address" type="text" value="{{ auth('admin')->user()->address }}">
                                     @error('address')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -222,7 +223,7 @@
                             <div class="col-sm-3 mb-3">
                                 <div class="form-group">
                                     <label for="number">Number</label>
-                                    <input class="form-control @error('number') is-invalid @enderror" name="number" id="number" type="number" value="{{ auth()->user()->number }}">
+                                    <input class="form-control @error('number') is-invalid @enderror" name="number" id="number" type="number" value="{{ auth('admin')->user()->number }}">
                                     @error('number')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -235,7 +236,7 @@
                             <div class="col-sm-4 mb-3">
                                 <div class="form-group">
                                     <label for="city">City</label>
-                                    <input class="form-control @error('city') is-invalid @enderror" name="city" id="city" type="text" value="{{ auth()->user()->city }}">
+                                    <input class="form-control @error('city') is-invalid @enderror" name="city" id="city" type="text" value="{{ auth('admin')->user()->city }}">
                                     @error('city')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -246,7 +247,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="zip">ZIP</label>
-                                    <input class="form-control @error('zip') is-invalid @enderror" name="zip" id="zip" type="tel" value="{{ auth()->user()->zip }}">
+                                    <input class="form-control @error('zip') is-invalid @enderror" name="zip" id="zip" type="tel" value="{{ auth('admin')->user()->zip }}">
                                     @error('zip')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -296,10 +297,10 @@
                         <div class="card shadow border-0 text-center p-0">
                             <div class="profile-cover rounded-top" data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
                             <div class="card-body pb-5">
-                                <img src="{{ Storage::url(auth()->user()->profile_image) }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Profile Image"
+                                <img src="{{ Storage::url(auth('admin')->user()->profile_image) }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Profile Image"
                                      style="object-fit: cover;object-position: top">
-                                <h4 class="h3">{{ auth()->user()->firstname . ' ' . auth()->user()->lastname }}</h4>
-                                <p class="text-gray mb-4">{{ auth()->user()->city }}, Morocco</p>
+                                <h4 class="h3">{{ auth('admin')->user()->fullName }}</h4>
+                                <p class="text-gray mb-4">{{ auth('admin')->user()->city }}, Morocco</p>
                                 <a class="btn btn-sm btn-gray-800 d-inline-flex align-items-center me-2" href="#">
                                     <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path>

@@ -8,7 +8,7 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TeacherController extends Controller
+class TeacherAuthController extends Controller
 {
     public function check(Request $request)
     {
@@ -33,5 +33,15 @@ class TeacherController extends Controller
         }
 
         return back()->with('failed', 'Something went wrong, please enter valid credentials.');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('teacher')->logout();
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return to_route('teacher.login');
     }
 }

@@ -1,32 +1,11 @@
 <?php
 
-use App\Http\Controllers\admin\AttendanceController;
-use App\Http\Controllers\admin\auth\EmailVerificationNotificationController;
-use App\Http\Controllers\admin\auth\EmailVerificationPromptController;
-use App\Http\Controllers\admin\auth\VerifyEmailController;
-use App\Http\Controllers\admin\BranchController;
-use App\Http\Controllers\admin\ClassroomController;
-use App\Http\Controllers\admin\ClassroomStudentController;
-use App\Http\Controllers\admin\ClassroomTeacherController;
-use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\DownloadController;
-use App\Http\Controllers\admin\GroupController;
-use App\Http\Controllers\admin\MessageController;
-use App\Http\Controllers\admin\AdminNewPasswordController;
-use App\Http\Controllers\admin\PasswordResetLinkController;
-use App\Http\Controllers\admin\ProfileController;
-use App\Http\Controllers\admin\SubjectBranchController;
-use App\Http\Controllers\admin\SubjectController;
-use App\Http\Controllers\admin\SubjectTeacherController;
-use App\Http\Controllers\admin\TeacherController;
-use App\Http\Controllers\parent\ParentController;
-use App\Http\Controllers\SoftDeleteController;
-use App\Http\Controllers\student\StudentController;
+use App\Http\Controllers\teacher\TeacherAuthController;
 
 Route::prefix('teacher')->name('teacher.')->group(function () {
 //    Route::middleware(['guest'])->group(function () {
 //        Route::view('/login', 'teacher.auth.login')->name('login');
-//        Route::post('/check', [TeacherController::class, 'check_user'])->name('check');
+//        Route::post('/check', [TeacherAuthController::class, 'check_user'])->name('check');
 //        // Reset & Forgot Password Routes
 //        Route::view('/forgot-password', 'teacher.auth.forgot-password')->name('password.request');
 //        Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
@@ -50,11 +29,14 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
 
     Route::middleware('guest')->group(function () {
         Route::view('/login', 'teacher.auth.login')->name('login');
-        Route::post('/check', [TeacherController::class, 'check_user'])->name('check');
+        Route::post('/check', [TeacherAuthController::class, 'check'])->name('check');
     });
 
     Route::middleware(['auth:teacher'])->group(function () {
         Route::view('/dashboard', 'teacher.dashboard')->name('dashboard');
+//        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+        Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('logout');
     });
 
 //    Route::middleware(['auth:teacher', 'teacher.verified'])->group(function () {
@@ -90,10 +72,10 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
 //        // Views Routes
 //        Route::view('/settings', 'teacher.settings')->name('settings');
 //        // Update password from settings
-//        Route::post('/update-password', [TeacherController::class, 'update_password'])->name('update-password');
+//        Route::post('/update-password', [TeacherAuthController::class, 'update_password'])->name('update-password');
 //
 //        // Resource Controllers
-//        Route::resource('/teachers', TeacherController::class);
+//        Route::resource('/teachers', TeacherAuthController::class);
 //        Route::resource('/students', StudentController::class);
 //        Route::resource('/parents', ParentController::class);
 //        Route::resource('/groups', GroupController::class)->except('show');
@@ -103,6 +85,6 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
 //        Route::resource('/attendances', AttendanceController::class)->except(['show', 'store']);
 //
 //        // Logout
-//        Route::post('/logout', [TeacherController::class, 'logout'])->name('logout');
+//        Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('logout');
 //    });
 });

@@ -2,10 +2,10 @@
 
     @section('title', 'Dashboard')
     {{-- sidebar --}}
-    @include('components.student._sidebar')
+    @include('components.teacher._sidebar')
 
     {{-- Navbar --}}
-    @include('components.settings.student.navbar')
+    @include('components.settings.teacher.navbar')
 
     <div class="py-4">
         <div class="dropdown">
