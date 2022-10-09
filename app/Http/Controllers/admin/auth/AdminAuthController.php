@@ -16,13 +16,13 @@ class AdminAuthController extends Controller
             'email' => 'required|email|exists:admins',
             'password' => 'required'
         ]);
-        
+
         $remember_me = $request->has('remember_me');
         // check the user's credentials if they are valid
         if (Auth::guard('admin')->attempt($credentials, $remember_me)) {
-//            if ($request->user('admin')->hasVerifiedEmail()) {
-//                event(new Verified($request->user('admin')));
-//            }
+            if ($request->user('admin')->hasVerifiedEmail()) {
+                event(new Verified($request->user('admin')));
+            }
 
             // regenerate session ID
             $request->session()->regenerate();

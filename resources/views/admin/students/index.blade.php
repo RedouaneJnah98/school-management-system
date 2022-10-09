@@ -73,9 +73,9 @@
                         <th class="border-bottom">Date Created</th>
                         <th class="border-bottom">Verified</th>
                         <th class="border-bottom">Last seen</th>
-                        @can('trashed')
-                            <th class="border-bottom">Is Trashed</th>
-                        @endcan
+                        {{--                        @can('trashed')--}}
+                        <th class="border-bottom">Is Trashed</th>
+                        {{--                        @endcan--}}
                         <th class="border-bottom">Action</th>
                     </tr>
                     </thead>
@@ -122,15 +122,15 @@
                                 @endphp
                                 <span class="fw-normal {{ $last_seen ? 'text-success' : 'text-danger' }}">{{ $last_seen ? $last_seen->diffForHumans() : 'Not authenticated yet' }}</span>
                             </td>
-                            @can('trashed')
-                                <td>
-                                    @if($student->trashed())
-                                        <span class="badge bg-success">Yes</span>
-                                    @else
-                                        <span class="badge bg-danger">No</span>
-                                    @endif
-                                </td>
-                            @endcan
+                            {{--                            @can('trashed')--}}
+                            <td>
+                                @if($student->trashed())
+                                    <span class="badge bg-success">Yes</span>
+                                @else
+                                    <span class="badge bg-danger">No</span>
+                                @endif
+                            </td>
+                            {{--                            @endcan--}}
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -10,7 +10,7 @@
                     <span class="mt-1 ms-1 sidebar-text">Ajiale School</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
@@ -22,7 +22,7 @@
                     <span class="sidebar-text">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ request()->routeIs('admin.attendances.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.attendances.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -37,40 +37,56 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.teachers.index') }}" class="nav-link">
+                <a href="{{ route('admin.attendances.index') }}" class="nav-link">
                     <span class="sidebar-icon">
-                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="#9CA3AF" width="20" height="20">
-                             <path
-                                 d="M592 0h-384C181.5 0 160 22.25 160 49.63V96c23.42 0 45.1 6.781 63.1 17.81V64h352v288h-64V304c0-8.838-7.164-16-16-16h-96c-8.836 0-16 7.162-16 16V352H287.3c22.07 16.48 39.54 38.5 50.76 64h253.9C618.5 416 640 393.8 640 366.4V49.63C640 22.25 618.5 0 592 0zM160 320c53.02 0 96-42.98 96-96c0-53.02-42.98-96-96-96C106.1 128 64 170.1 64 224C64 277 106.1 320 160 320zM192 352H128c-70.69 0-128 57.31-128 128c0 17.67 14.33 32 32 32h256c17.67 0 32-14.33 32-32C320 409.3 262.7 352 192 352z"/>
-                         </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="20" height="20" fill="currentColor">
+                            <path
+                                d="M224 256c-70.7 0-128-57.3-128-128S153.3 0 224 0s128 57.3 128 128s-57.3 128-128 128zm96.1 48c2.3 74.7 36.7 158.5 106 208H0L64 304H320.1zm271.2 8.4L496 275.5V460.4c56.5-26.3 90.2-87 95.3-148zM496 512c-96-32-144-130.2-144-216V279.8L496 224l144 55.8V296c0 85.8-48 184-144 216z"/>
+                        </svg>
                     </span>
-                    <span class="sidebar-text">Teachers</span>
+                    <span class="sidebar-text">App Admin</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.parents.index') }}" class="nav-link">
+                <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-components">
+                  <span>
                     <span class="sidebar-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-person-hearts" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                      d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566ZM9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4Zm13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
-                            </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" height="20" width="20" fill="currentColor">
+                          <path
+                              d="M0 24C0 10.7 10.7 0 24 0H616c13.3 0 24 10.7 24 24s-10.7 24-24 24H24C10.7 48 0 37.3 0 24zM0 488c0-13.3 10.7-24 24-24H616c13.3 0 24 10.7 24 24s-10.7 24-24 24H24c-13.3 0-24-10.7-24-24zM211.2 160c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64zM32 320c0-35.3 28.7-64 64-64h96c12.2 0 23.7 3.4 33.4 9.4c-37.2 15.1-65.6 47.2-75.8 86.6H64c-17.7 0-32-14.3-32-32zm461.6 32c-10.3-40.1-39.6-72.6-77.7-87.4c9.4-5.5 20.4-8.6 32.1-8.6h96c35.3 0 64 28.7 64 64c0 17.7-14.3 32-32 32H493.6zM391.2 290.4c32.1 7.4 58.1 30.9 68.9 61.6c3.5 10 5.5 20.8 5.5 32c0 17.7-14.3 32-32 32h-224c-17.7 0-32-14.3-32-32c0-11.2 1.9-22 5.5-32c10.5-29.7 35.3-52.8 66.1-60.9c7.8-2.1 16-3.1 24.5-3.1h96c7.4 0 14.7 .8 21.6 2.4zM563.2 160c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64zM321.6 256c-44.2 0-80-35.8-80-80s35.8-80 80-80s80 35.8 80 80s-35.8 80-80 80z"/>
+                      </svg>
                     </span>
-                    <span class="sidebar-text">Parents</span>
-                </a>
+                    <span class="sidebar-text">Users</span>
+                  </span>
+                  <span class="link-arrow">
+                    <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                  </span>
+                </span>
+                <div class="multi-level collapse " role="list"
+                     id="submenu-components" aria-expanded="false">
+                    <ul class="flex-column nav">
+                        <li class="nav-item {{ request()->routeIs('admin.teachers.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.teachers.index') }}">
+                                <span class="sidebar-text">Teachers</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ request()->routeIs('admin.parents.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.parents.index') }}">
+                                <span class="sidebar-text">Parents</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ request()->routeIs('admin.students.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.students.index') }}">
+                                <span class="sidebar-text">Students</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('admin.students.index') }}" class="nav-link">
-                    <span class="sidebar-icon">
-                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#9CA3AF" width="16" height="16">--}}
-                                <path
-                                    d="M45.63 79.75L52 81.25v58.5C45 143.9 40 151.3 40 160c0 8.375 4.625 15.38 11.12 19.75L35.5 242C33.75 248.9 37.63 256 43.13 256h41.75c5.5 0 9.375-7.125 7.625-13.1L76.88 179.8C83.38 175.4 88 168.4 88 160c0-8.75-5-16.12-12-20.25V87.13L128 99.63l.001 60.37c0 70.75 57.25 128 128 128s127.1-57.25 127.1-128L384 99.62l82.25-19.87c18.25-4.375 18.25-27 0-31.5l-190.4-46c-13-3-26.62-3-39.63 0l-190.6 46C27.5 52.63 27.5 75.38 45.63 79.75zM359.2 312.8l-103.2 103.2l-103.2-103.2c-69.93 22.3-120.8 87.2-120.8 164.5C32 496.5 47.53 512 66.67 512h378.7C464.5 512 480 496.5 480 477.3C480 400 429.1 335.1 359.2 312.8z"/>
-                         </svg>
-                    </span>
-                    <span class="sidebar-text">Students</span>
-                </a>
-            </li>
-            <li class="nav-item">
+            <li class="nav-item {{ request()->routeIs('admin.classrooms.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.classrooms.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
@@ -81,7 +97,7 @@
                     <span class="sidebar-text">Classrooms</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ request()->routeIs('admin.branches.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.branches.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-diagram-3-fill" viewBox="0 0 16 16">
@@ -92,7 +108,7 @@
                     <span class="sidebar-text">Branches</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ request()->routeIs('admin.subjects.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.subjects.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -106,7 +122,7 @@
                     <span class="sidebar-text">Subjects</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ request()->routeIs('admin.groups.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.groups.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-collection-fill" viewBox="0 0 16 16">
@@ -129,7 +145,7 @@
                     <span class="sidebar-text">Marks</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ request()->routeIs('admin.trashed') ? 'active' : '' }}">
                 <a href="{{ route('admin.trashed') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash2" viewBox="0 0 16 16">

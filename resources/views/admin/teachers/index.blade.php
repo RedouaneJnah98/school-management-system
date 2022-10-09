@@ -26,14 +26,14 @@
             <p class="mb-0">This list contains the best Teachers in the world.</p>
         </div>
         <div class="btn-toolbar mb-2 mb-md-0">
-            @can('create', App\Models\Teacher::class)
-                <a href="{{ route('admin.teachers.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
-                    <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                    Add New
-                </a>
-            @endcan
+            {{--            @can('create', App\Models\Teacher::class)--}}
+            <a href="{{ route('admin.teachers.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
+                <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                Add New
+            </a>
+            {{--            @endcan--}}
 
             <div class="btn-group ms-2 ms-lg-3">
                 <a href="{{ route('admin.download_teachers') }}" class="btn btn-sm btn-outline-gray-600">
@@ -73,9 +73,9 @@
                 <th class="border-gray-200">Created Account</th>
                 <th class="border-gray-200">Verified</th>
                 <th class="border-gray-200">Status</th>
-                @canany(['create', 'update','show','delete'], App\Models\Teacher::class)
-                    <th class="border-gray-200">Action</th>
-                @endcanany
+                {{--                @canany(['create', 'update','show','delete'], App\Models\Teacher::class)--}}
+                <th class="border-gray-200">Action</th>
+                {{--                @endcanany--}}
             </tr>
             </thead>
             <tbody>
@@ -125,56 +125,56 @@
                     <td>
                         <span class="badge bg-gray-100 {{ $teacher->status === 'Active' ? 'text-success' : 'text-info' }}">{{ $teacher->status }}</span>
                     </td>
-                    @canany(['update','delete', 'show'], $teacher)
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                    </svg>
-                                    <span class="visually-hidden">Toggle Dropdown</span></button>
-                                <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-                                    <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.teachers.edit', $teacher->id) }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square text-gray-400 me-2" viewBox="0 0 16 16">
-                                            <path
-                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                            <path fill-rule="evenodd"
-                                                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                        </svg>
-                                        Edit Info
-                                    </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.teachers.show', $teacher->id) }}">
-                                        <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                            <path fill-rule="evenodd"
-                                                  d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                                                  clip-rule="evenodd"/>
-                                        </svg>
-                                        View Details
-                                    </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <svg class="dropdown-icon text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M11 6a3 3 0 11-6 0 3 3 0 016 0zM14 17a6 6 0 00-12 0h12zM13 8a1 1 0 100 2h4a1 1 0 100-2h-4z"/>
-                                        </svg>
-                                        Suspend
-                                    </a>
-                                </div>
-                            </div>
-                            <form action="{{ route('admin.teachers.destroy', $teacher->id) }}" method="POST" style="display: inline-block">
-                                @method('DELETE')
-                                @csrf
-
-                                <a href="#" class="delete-btn">
-                                    <svg class="icon icon-xs text-danger ms-1" title="" data-bs-toggle="tooltip" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
-                                         data-bs-original-title="Delete" aria-label="Delete">
+                    {{--                    @canany(['update','delete', 'show'], $teacher)--}}
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                </svg>
+                                <span class="visually-hidden">Toggle Dropdown</span></button>
+                            <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
+                                <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.teachers.edit', $teacher->id) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square text-gray-400 me-2" viewBox="0 0 16 16">
+                                        <path
+                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                         <path fill-rule="evenodd"
-                                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                    </svg>
+                                    Edit Info
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.teachers.show', $teacher->id) }}">
+                                    <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                        <path fill-rule="evenodd"
+                                              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
                                               clip-rule="evenodd"/>
                                     </svg>
+                                    View Details
                                 </a>
-                            </form>
-                        </td>
-                    @endcanany
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <svg class="dropdown-icon text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 6a3 3 0 11-6 0 3 3 0 016 0zM14 17a6 6 0 00-12 0h12zM13 8a1 1 0 100 2h4a1 1 0 100-2h-4z"/>
+                                    </svg>
+                                    Suspend
+                                </a>
+                            </div>
+                        </div>
+                        <form action="{{ route('admin.teachers.destroy', $teacher->id) }}" method="POST" style="display: inline-block">
+                            @method('DELETE')
+                            @csrf
+
+                            <a href="#" class="delete-btn">
+                                <svg class="icon icon-xs text-danger ms-1" title="" data-bs-toggle="tooltip" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                                     data-bs-original-title="Delete" aria-label="Delete">
+                                    <path fill-rule="evenodd"
+                                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                          clip-rule="evenodd"/>
+                                </svg>
+                            </a>
+                        </form>
+                    </td>
+                    {{--                    @endcanany--}}
                 </tr>
             @empty
                 <p class="text-center">No data.</p>
