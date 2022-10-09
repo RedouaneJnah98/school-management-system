@@ -41,18 +41,18 @@ class TeacherFactory extends Factory
         ];
     }
 
-    public function admin()
-    {
-        return $this->state(function () {
-            return [
-                'firstname' => 'Jnah',
-                'lastname' => 'Redouane',
-                'email' => 'jnahredouane@gmail.com',
-                'phone' => '0606725541',
-                'gender' => 'male',
-                'city' => 'Tangier',
-                'zip' => '90000',
-            ];
-        });
-    }
+//    public function admin()
+//    {
+//        return $this->state(function () {
+//            return [
+//                'firstname' => 'Jnah',
+//                'lastname' => 'Redouane',
+//                'email' => 'jnahredouane@gmail.com',
+//                'phone' => '0606725541',
+//                'gender' => 'male',
+//                'city' => 'Tangier',
+//                'zip' => '90000',
+//            ];
+//        });
+//    }
 }

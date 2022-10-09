@@ -12,26 +12,25 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parent_id')->constrained('parents')->cascadeOnDelete();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('fullName')->virtualAs("CONCAT(firstname , ' ' , lastname)");
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('profile_image')->nullable();
-            $table->string('phone');
-            $table->date('date_of_join');
-            $table->string('status')->default('pending');
+            $table->string('phone_number');
             $table->timestamp('last_login_date')->nullable();
             $table->ipAddress('last_login_ip')->nullable();
-            $table->date('date_of_birth');
-            $table->string('gender');
+            $table->string('profile_image')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('address')->nullable();
+            $table->integer('number')->nullable();
+            $table->string('city');
+            $table->integer('zip')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -42,6 +41,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('admins');
     }
 };

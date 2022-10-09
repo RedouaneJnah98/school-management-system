@@ -1,4 +1,5 @@
 <x-layout>
+    @section('title', 'Home')
     <header class="header-global">
         <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-4 navbar-dark">
             <div class="container position-relative">
@@ -26,6 +27,9 @@
                         <li class="nav-item me-2">
                             <a href="{{ route('parent.login') }}" class="nav-link">Parent</a>
                         </li>
+                        <li class="nav-item me-2">
+                            <a href="{{ route('teacher.login') }}" class="nav-link">Teacher</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="d-flex align-items-center ms-auto">
@@ -41,7 +45,7 @@
                             <path
                                 d="M4.81 1.37A6.5 6.5 0 0 1 14.56 7a.5.5 0 1 1-1 0 5.5 5.5 0 0 0-8.25-4.765.5.5 0 0 1-.5-.865Zm-.89 1.257a.5.5 0 0 1 .04.706A5.478 5.478 0 0 0 2.56 7a.5.5 0 0 1-1 0c0-1.664.626-3.184 1.655-4.333a.5.5 0 0 1 .706-.04ZM1.915 8.02a.5.5 0 0 1 .346.616l-.779 2.767a.5.5 0 1 1-.962-.27l.778-2.767a.5.5 0 0 1 .617-.346Zm12.15.481a.5.5 0 0 1 .49.51c-.03 1.499-.161 3.025-.727 4.533l-.07.187a.5.5 0 0 1-.936-.351l.07-.187c.506-1.35.634-2.74.663-4.202a.5.5 0 0 1 .51-.49Z"/>
                         </svg>
-                        Teacher
+                        Admin
                     </a>
                 </div>
             </div>

@@ -70,7 +70,7 @@
                 </th>
                 <th class="border-gray-200">ID</th>
                 <th class="border-gray-200">Name</th>
-                <th class="border-gray-200">Date Of Birth</th>
+                <th class="border-gray-200">Created Account</th>
                 <th class="border-gray-200">Verified</th>
                 <th class="border-gray-200">Status</th>
                 @canany(['create', 'update','show','delete'], App\Models\Teacher::class)
@@ -102,7 +102,7 @@
                         </a>
                     </td>
                     <td>
-                        <span class="fw-bold">{{ $teacher->created_at }}</span>
+                        <span class="fw-bold">{{  $teacher->created_at->format('d M Y') }}</span>
                     </td>
                     <td>
                          <span class="fw-normal d-flex align-items-center">

@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone_number');
+            $table->string('status')->default('pending');
             $table->timestamp('last_login_date')->nullable();
             $table->ipAddress('last_login_ip')->nullable();
             $table->string('profile_image')->nullable();

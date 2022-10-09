@@ -26,9 +26,6 @@ class EventServiceProvider extends ServiceProvider
         Login::class => [
             LastLoginAt::class
         ],
-//        EmailVerified::class => [
-//            UpdateStatus::class
-//        ],
         Verified::class => [
             UpdateStatus::class
         ],

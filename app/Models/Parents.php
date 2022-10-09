@@ -8,6 +8,7 @@ use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -26,6 +27,13 @@ class Parents extends User implements MustVerifyEmail, \Illuminate\Contracts\Aut
     protected $guarded = [];
 
     protected $dates = ['last_login_date'];
+
+    public function status(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => ucfirst($value),
+        );
+    }
 
     /**
      * local scope the newest Parents

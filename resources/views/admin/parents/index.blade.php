@@ -72,7 +72,7 @@
                         <th class="border-bottom">Full Name</th>
                         <th class="border-bottom">Children</th>
                         <th class="border-bottom">Verified</th>
-                        <th class="border-bottom">Phone</th>
+                        <th class="border-bottom">Status</th>
                         <th class="border-bottom">Last seen</th>
                         <th class="border-bottom">Action</th>
                     </tr>
@@ -126,7 +126,7 @@
                                     </span>
                             </td>
                             <td>
-                                <span class="fw-normal">{{ $parent->phone_number }}</span>
+                                <span class="badge bg-gray-100 {{ $parent->status === 'Active' ? 'text-success' : 'text-info' }}">{{ $parent->status }}</span>
                             </td>
                             <td>
                                 @php
