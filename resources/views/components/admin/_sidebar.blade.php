@@ -37,7 +37,56 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.attendances.index') }}" class="nav-link">
+                <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-academic">
+                  <span>
+                    <span class="sidebar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" height="20" width="20" fill="currentColor">
+                            <path
+                                d="M288 0H400c8.8 0 16 7.2 16 16V64c0 8.8-7.2 16-16 16H320V95.5L410.3 160H512c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H336V400c0-26.5-21.5-48-48-48s-48 21.5-48 48V512H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64H165.7L256 95.5V32c0-17.7 14.3-32 32-32zm48 240c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM80 224c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H80zm368 16v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H464c-8.8 0-16 7.2-16 16zM80 352c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V368c0-8.8-7.2-16-16-16H80zm384 0c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V368c0-8.8-7.2-16-16-16H464z"/>
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">Academic</span>
+                  </span>
+                  <span class="link-arrow">
+                    <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                  </span>
+                </span>
+                <div class="multi-level collapse" role="list"
+                     id="submenu-academic" aria-expanded="false">
+                    <ul class="flex-column nav">
+                        <li class="nav-item {{ request()->routeIs('admin.branches.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.branches.index') }}">
+                                <span class="sidebar-text">Branches</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ request()->routeIs('admin.classrooms.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.classrooms.index') }}">
+                                <span class="sidebar-text">Classes</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ request()->routeIs('admin.classrooms.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.classrooms.index') }}">
+                                <span class="sidebar-text">Class Routine</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ request()->routeIs('admin.groups.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.groups.index') }}">
+                                <span class="sidebar-text">Groups</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ request()->routeIs('admin.subjects.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.subjects.index') }}">
+                                <span class="sidebar-text">Subject</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item {{ request()->routeIs('admin.admins.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.admins.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="20" height="20" fill="currentColor">
                             <path
@@ -48,7 +97,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-components">
+                <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-users">
                   <span>
                     <span class="sidebar-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" height="20" width="20" fill="currentColor">
@@ -65,8 +114,8 @@
                     </svg>
                   </span>
                 </span>
-                <div class="multi-level collapse " role="list"
-                     id="submenu-components" aria-expanded="false">
+                <div class="multi-level collapse {{ request()->routeIs('admin.teachers.index', 'admin.students.index', 'admin.parents.index') ? 'show' : '' }}" role="list"
+                     id="submenu-users" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item {{ request()->routeIs('admin.teachers.index') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.teachers.index') }}">
@@ -85,53 +134,6 @@
                         </li>
                     </ul>
                 </div>
-            </li>
-            <li class="nav-item {{ request()->routeIs('admin.classrooms.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.classrooms.index') }}" class="nav-link">
-                    <span class="sidebar-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
-                            <path
-                                d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
-                        </svg>
-                    </span>
-                    <span class="sidebar-text">Classrooms</span>
-                </a>
-            </li>
-            <li class="nav-item {{ request()->routeIs('admin.branches.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.branches.index') }}" class="nav-link">
-                    <span class="sidebar-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-diagram-3-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-6 8A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm6 0A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1z"/>
-                        </svg>
-                    </span>
-                    <span class="sidebar-text">Branches</span>
-                </a>
-            </li>
-            <li class="nav-item {{ request()->routeIs('admin.subjects.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.subjects.index') }}" class="nav-link">
-                    <span class="sidebar-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-stack" viewBox="0 0 16 16">
-                                <path
-                                    d="m14.12 10.163 1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z"/>
-                                <path
-                                    d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z"/>
-                            </svg>
-                    </span>
-                    <span class="sidebar-text">Subjects</span>
-                </a>
-            </li>
-            <li class="nav-item {{ request()->routeIs('admin.groups.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.groups.index') }}" class="nav-link">
-                    <span class="sidebar-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-collection-fill" viewBox="0 0 16 16">
-                          <path
-                              d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
-                        </svg>
-                    </span>
-                    <span class="sidebar-text">Groups</span>
-                </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">

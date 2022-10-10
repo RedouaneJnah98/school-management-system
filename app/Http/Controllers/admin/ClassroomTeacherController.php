@@ -7,13 +7,14 @@ use App\Models\Classroom;
 use App\Models\Subject;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Storage;
 
 class ClassroomTeacherController extends Controller
 {
     public function create()
     {
         $teachers = Teacher::doesntHave('classrooms')->get();
-        $classrooms = Classroom::doesntHave('students')->get();
+        $classrooms = Classroom::doesntHave('teachers')->get();
 
         return view('admin.classrooms.teachers', compact(['teachers', 'classrooms']));
     }
@@ -37,11 +38,13 @@ class ClassroomTeacherController extends Controller
 
         if ($classrooms->teachers->count() > 0) {
             foreach ($classrooms->teachers as $teacher) {
+                $avatar = $this->avatar($teacher);
+
                 $result .= '<tr>';
                 $result .= '<td>' . '<span class="fw-bold">' . $teacher->id . '</span>' . '</td>';
                 $result .= '<td>';
                 $result .= '<a href="#" class="d-flex align-items-center">';
-                $result .= '<img src="/storage/avatars/default-avatar-male.jpg" class="avatar rounded-circle me-3" alt="Avatar" />';
+                $result .= "<img src='$avatar' class='avatar rounded-circle me-3' alt='Avatar' style='object-fit: cover;object-position: top;'/>";
                 $result .= '<div class="d-block">';
                 $result .= '<span class="fw-bold">' . $teacher->fullName . '</span>';
                 $result .= '</div>';
@@ -63,5 +66,10 @@ class ClassroomTeacherController extends Controller
         }
 
         return response()->json($result);
+    }
+
+    protected function avatar($teacher)
+    {
+        return Storage::url($teacher->profile_image);
     }
 }

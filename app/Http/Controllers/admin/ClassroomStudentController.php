@@ -7,6 +7,7 @@ use App\Models\Classroom;
 use App\Models\Student;
 use DB;
 use Illuminate\Http\Request;
+use Storage;
 
 
 class ClassroomStudentController extends Controller
@@ -26,11 +27,13 @@ class ClassroomStudentController extends Controller
 
         if ($classrooms->students->count() > 0) {
             foreach ($classrooms->students as $student) {
+                $avatar = Storage::url($student->profile_image);
+
                 $result .= '<tr>';
                 $result .= '<td>' . '<span class="fw-bold">' . $student->id . '</span>' . '</td>';
                 $result .= '<td>';
                 $result .= '<a href="#" class="d-flex align-items-center">';
-                $result .= '<img src="/storage/avatars/default-avatar-male.jpg" class="avatar rounded-circle me-3" alt="Avatar" />';
+                $result .= "<img src='$avatar' class='avatar rounded-circle me-3' alt='Avatar' style='object-fit: cover;object-position: top;'/>";
                 $result .= '<div class="d-block">';
                 $result .= '<span class="fw-bold">' . $student->fullName . '</span>';
                 $result .= '</div>';

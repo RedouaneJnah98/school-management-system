@@ -29,6 +29,7 @@ return new class extends Migration {
             $table->integer('number')->nullable();
             $table->string('city');
             $table->integer('zip')->nullable();
+            $table->string('status')->default('pending');
             $table->rememberToken();
             $table->timestamps();
         });

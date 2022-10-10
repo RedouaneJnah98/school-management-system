@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\AttendanceController;
 use App\Http\Controllers\admin\auth\AdminAuthController;
 use App\Http\Controllers\admin\auth\EmailVerificationNotificationController;
@@ -85,6 +86,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/update-password', [TeacherController::class, 'update_password'])->name('update-password');
 
         // Resource Controllers
+        Route::resource('admins', AdminController::class);
         Route::resource('/teachers', TeacherController::class);
         Route::resource('/students', StudentController::class);
         Route::resource('/parents', ParentController::class);
