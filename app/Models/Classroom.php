@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Classroom extends Model
 {
@@ -36,5 +35,10 @@ class Classroom extends Model
     public function teachers(): BelongsToMany
     {
         return $this->belongsToMany(Teacher::class)->withTimestamps();
+    }
+
+    public function classesSchedule(): BelongsTo
+    {
+        return $this->belongsTo(ClassSchedule::class);
     }
 }

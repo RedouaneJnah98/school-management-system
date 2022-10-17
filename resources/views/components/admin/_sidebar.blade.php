@@ -54,8 +54,10 @@
                     </svg>
                   </span>
                 </span>
-                <div class="multi-level collapse" role="list"
-                     id="submenu-academic" aria-expanded="false">
+                <div
+                    class="multi-level collapse {{ request()->routeIs('admin.branches.index', 'admin.classrooms.index', 'admin.routines.index', 'admin.groups.index', 'admin.subjects.index') ? 'show' : '' }}"
+                    role="list"
+                    id="submenu-academic" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item {{ request()->routeIs('admin.branches.index') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.branches.index') }}">
@@ -67,8 +69,8 @@
                                 <span class="sidebar-text">Classes</span>
                             </a>
                         </li>
-                        <li class="nav-item {{ request()->routeIs('admin.classrooms.index') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('admin.classrooms.index') }}">
+                        <li class="nav-item {{ request()->routeIs('admin.routines.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.routines.index') }}">
                                 <span class="sidebar-text">Class Routine</span>
                             </a>
                         </li>

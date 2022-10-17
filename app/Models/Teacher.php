@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -94,6 +95,11 @@ class Teacher extends User implements CanResetPassword, MustVerifyEmail
     public function subjects(): MorphToMany
     {
         return $this->morphToMany(Subject::class, 'subjectable');
+    }
+
+    public function classesSchedule(): BelongsTo
+    {
+        return $this->belongsTo(ClassSchedule::class);
     }
 
 //    public function sendPasswordResetNotification($token)

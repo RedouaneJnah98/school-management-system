@@ -16,7 +16,7 @@
                         @endif
                         <form action="{{ route('admin.verification.send') }}" method="post">
                             @csrf
-                            <button class="btn btn-info rounded-pill">
+                            <button class="btn btn-info">
                                 {{ __('Resend Verification Email') }}
                             </button>
                         </form>

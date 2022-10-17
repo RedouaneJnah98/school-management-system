@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\BranchController;
 use App\Http\Controllers\admin\ClassroomController;
 use App\Http\Controllers\admin\ClassroomStudentController;
 use App\Http\Controllers\admin\ClassroomTeacherController;
+use App\Http\Controllers\admin\ClassScheduleController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\DownloadController;
 use App\Http\Controllers\admin\GroupController;
@@ -84,6 +85,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::view('/settings', 'admin.settings')->name('settings');
         // Update password from settings
         Route::post('/update-password', [TeacherController::class, 'update_password'])->name('update-password');
+        // Ajax routes
+        Route::post('/teachersSubject', [ClassScheduleController::class, 'teachers'])->name('teachersSubject');
 
         // Resource Controllers
         Route::resource('admins', AdminController::class);
@@ -95,6 +98,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('/classrooms', ClassroomController::class)->except('show');
         Route::resource('/subjects', SubjectController::class)->except('show');
         Route::resource('/attendances', AttendanceController::class)->except(['show', 'store']);
+        Route::resource('/routines', ClassScheduleController::class);
 
         // Logout
         Route::post('/logout', [TeacherController::class, 'logout'])->name('logout');
