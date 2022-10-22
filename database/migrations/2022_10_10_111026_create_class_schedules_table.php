@@ -14,14 +14,13 @@ return new class extends Migration {
     {
         Schema::create('class_schedules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('classroom_id')->constrained();
-            $table->foreignId('subject_id')->constrained();
-            $table->foreignId('teacher_id')->constrained();
             $table->string('day');
             $table->string('starting_hour');
             $table->string('starting_minute');
             $table->string('ending_hour');
             $table->string('ending_minute');
+            $table->time('start_time')->virtualAs("CONCAT(starting_hour, ':', starting_minute)");
+            $table->time('end_time')->virtualAs("CONCAT(ending_hour, ':', ending_minute)");
             $table->timestamps();
         });
     }

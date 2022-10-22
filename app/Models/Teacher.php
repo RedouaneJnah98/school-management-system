@@ -97,9 +97,9 @@ class Teacher extends User implements CanResetPassword, MustVerifyEmail
         return $this->morphToMany(Subject::class, 'subjectable');
     }
 
-    public function classesSchedule(): BelongsTo
+    public function schedules(): MorphToMany
     {
-        return $this->belongsTo(ClassSchedule::class);
+        return $this->morphToMany(ClassSchedule::class, 'scheduleable');
     }
 
 //    public function sendPasswordResetNotification($token)

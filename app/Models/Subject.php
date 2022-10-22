@@ -24,8 +24,8 @@ class Subject extends Model
         return $this->morphedByMany(Teacher::class, 'subjectable');
     }
 
-    public function classesSchedule(): BelongsTo
+    public function schedules(): MorphToMany
     {
-        return $this->belongsTo(ClassSchedule::class);
+        return $this->morphToMany(ClassSchedule::class, 'scheduleable');
     }
 }

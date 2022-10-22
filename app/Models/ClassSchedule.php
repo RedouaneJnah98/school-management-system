@@ -13,18 +13,18 @@ class ClassSchedule extends Model
 
     public $guarded = [];
 
-    public function teachers(): HasMany
+    public function teachers(): MorphToMany
     {
-        return $this->hasMany(Teacher::class);
+        return $this->morphedByMany(Teacher::class, 'scheduleable');
     }
 
-    public function classes(): HasMany
+    public function classes(): MorphToMany
     {
-        return $this->hasMany(Classroom::class);
+        return $this->morphedByMany(Classroom::class, 'scheduleable');
     }
 
-    public function subjects(): HasMany
+    public function subjects(): MorphToMany
     {
-        return $this->hasMany(Subject::class);
+        return $this->morphedByMany(Subject::class, 'scheduleable');
     }
 }
