@@ -13,7 +13,7 @@ class ClassScheduleController extends Controller
 {
     public function index()
     {
-        $classes = Classroom::all();
+        $classes = Classroom::where('status', '=', 'Active')->get();
         $subjects = Subject::all();
         $schedules = ClassSchedule::all();
 

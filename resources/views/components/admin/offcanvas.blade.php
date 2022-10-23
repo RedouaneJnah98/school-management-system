@@ -11,11 +11,13 @@
         <div class="offcanvas-body">
             <div class="col-12 mb-2">
                 <label for="inputState" class="form-label">Class</label>
+                <option>Select a class</option>
                 <select id="inputState" name="class_id" class="form-select">
-                    <option selected disabled>Choose a class</option>
-                    @foreach($classes as $class)
+                    @forelse($classes as $class)
                         <option value="{{ $class->id }}">{{ $class->name }}</option>
-                    @endforeach
+                    @empty
+                        <option selected disabled>No classroom found</option>
+                    @endforelse
                 </select>
             </div>
             <div class="col-12 mb-2">

@@ -177,7 +177,7 @@
                     {{--                    @endcanany--}}
                 </tr>
             @empty
-                <p class="text-center">No data.</p>
+                <x-empty colspan="7"/>
             @endforelse
 
             </tbody>

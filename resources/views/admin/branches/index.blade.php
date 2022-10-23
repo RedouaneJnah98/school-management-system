@@ -99,9 +99,7 @@
                             </td>
                         </tr>
                     @empty
-                        <tr>
-                            <td class="text-info text-center" colspan="7">No branch inserted yet.</td>
-                        </tr>
+                        <x-empty colspan="7"/>
                     @endforelse
                     <!-- End of Item -->
                     </tbody>

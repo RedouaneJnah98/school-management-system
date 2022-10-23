@@ -64,9 +64,7 @@
                             </td>
                         </tr>
                     @empty
-                        <tr>
-                            <td class="text-info text-center" colspan="4">Table is empty.</td>
-                        </tr>
+                        <x-empty colspan="4"/>
                     @endforelse
                     <!-- End of Item -->
                     </tbody>

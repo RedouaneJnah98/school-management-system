@@ -104,9 +104,7 @@
                             </td>
                         </tr>
                     @empty
-                        <tr>
-                            <td class="text-info text-center" colspan="5">No group inserted yet.</td>
-                        </tr>
+                        <x-empty colspan="5"/>
                     @endforelse
                     <!-- End of Item -->
                     </tbody>

@@ -87,6 +87,8 @@
                         <li><span>15:00</span></li>
                         <li><span>15:30</span></li>
                         <li><span>16:00</span></li>
+                        <li><span>16:30</span></li>
+                        <li><span>17:00</span></li>
                     </ul>
                 </div> <!-- .cd-schedule__timeline -->
 
@@ -100,15 +102,19 @@
                             <ul>
                                 @foreach($schedules as $routine)
                                     @if($routine->day === 'monday')
+                                        @php
+                                            $start_time = strtotime($routine->start_time);
+                                            $end_time = strtotime($routine->end_time);
+                                        @endphp
                                         <li class="cd-schedule__event">
-                                            <a data-start="{{ $routine->start_time }}"
-                                               data-end="{{ $routine->end_time }}" data-content="event-abs-circuit" data-event="event-{{ $routine->id }}"
+                                            <a data-start="{{ date('H:i', $start_time) }}"
+                                               data-end="{{ date('H:i', $end_time) }}" data-content="event-abs-circuit" data-event="event-{{ $routine->id }}"
                                                href="#0">
                                                 @foreach($routine->subjects as $subject)
                                                     <em class="cd-schedule__name">{{ $subject->name }}</em>
                                                 @endforeach
                                                 @foreach($routine->teachers as $teacher)
-                                                    <p class="text-gray-50 font-small">{{ $teacher->fullName }}</p>
+                                                    <p class="text-gray-50 text-sm">{{ $teacher->fullName }}</p>
                                                 @endforeach
                                             </a>
                                         </li>
@@ -121,29 +127,49 @@
                             <div class="cd-schedule__top-info"><span>Tuesday</span></div>
 
                             <ul>
-                                <li class="cd-schedule__event">
-                                    <a data-start="10:00" data-end="11:00" data-content="event-rowing-workout" data-event="event-2" href="#0">
-                                        <em class="cd-schedule__name">Rowing Workout</em>
-                                    </a>
-                                </li>
+                                @foreach($schedules as $routine)
+                                    @if($routine->day === 'tuesday')
+                                        @php
+                                            $start_time = strtotime($routine->start_time);
+                                            $end_time = strtotime($routine->end_time);
+                                        @endphp
+                                        <li class="cd-schedule__event">
+                                            <a data-start="{{ date('H:i', $start_time) }}"
+                                               data-end="{{ date('H:i', $end_time) }}" data-content="event-abs-circuit" data-event="event-{{ $routine->id }}"
+                                               href="#0">
+                                                @foreach($routine->subjects as $subject)
+                                                    <em class="cd-schedule__name">{{ $subject->name }}</em>
+                                                @endforeach
+                                                @foreach($routine->teachers as $teacher)
+                                                    <p class="text-gray-50 text-sm">{{ $teacher->fullName }}</p>
+                                                @endforeach
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="10:00" data-end="11:00" data-content="event-rowing-workout" data-event="event-2" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Rowing Workout</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
 
-                                <li class="cd-schedule__event">
-                                    <a data-start="11:30" data-end="13:00" data-content="event-restorative-yoga" data-event="event-4" href="#0">
-                                        <em class="cd-schedule__name">Restorative Yoga</em>
-                                    </a>
-                                </li>
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="11:30" data-end="13:00" data-content="event-restorative-yoga" data-event="event-4" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Restorative Yoga</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
 
-                                <li class="cd-schedule__event">
-                                    <a data-start="13:30" data-end="15:00" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                                        <em class="cd-schedule__name">Abs Circuit</em>
-                                    </a>
-                                </li>
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="13:30" data-end="15:00" data-content="event-abs-circuit" data-event="event-1" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Abs Circuit</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
 
-                                <li class="cd-schedule__event">
-                                    <a data-start="15:45" data-end="16:45" data-content="event-yoga-1" data-event="event-3" href="#0">
-                                        <em class="cd-schedule__name">Yoga Level 1</em>
-                                    </a>
-                                </li>
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="15:45" data-end="16:45" data-content="event-yoga-1" data-event="event-3" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Yoga Level 1</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
                             </ul>
                         </li>
 
@@ -151,29 +177,49 @@
                             <div class="cd-schedule__top-info"><span>Wednesday</span></div>
 
                             <ul>
-                                <li class="cd-schedule__event">
-                                    <a data-start="09:00" data-end="10:15" data-content="event-restorative-yoga" data-event="event-4" href="#0">
-                                        <em class="cd-schedule__name">Restorative Yoga</em>
-                                    </a>
-                                </li>
+                                @foreach($schedules as $routine)
+                                    @if($routine->day === 'wednesday')
+                                        @php
+                                            $start_time = strtotime($routine->start_time);
+                                            $end_time = strtotime($routine->end_time);
+                                        @endphp
+                                        <li class="cd-schedule__event">
+                                            <a data-start="{{ date('H:i', $start_time) }}"
+                                               data-end="{{ date('H:i', $end_time) }}" data-content="event-abs-circuit" data-event="event-{{ $routine->id }}"
+                                               href="#0">
+                                                @foreach($routine->subjects as $subject)
+                                                    <em class="cd-schedule__name">{{ $subject->name }}</em>
+                                                @endforeach
+                                                @foreach($routine->teachers as $teacher)
+                                                    <p class="text-gray-50 text-sm">{{ $teacher->fullName }}</p>
+                                                @endforeach
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="09:00" data-end="10:15" data-content="event-restorative-yoga" data-event="event-4" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Restorative Yoga</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
 
-                                <li class="cd-schedule__event">
-                                    <a data-start="10:45" data-end="11:45" data-content="event-yoga-1" data-event="event-3" href="#0">
-                                        <em class="cd-schedule__name">Yoga Level 1</em>
-                                    </a>
-                                </li>
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="10:45" data-end="11:45" data-content="event-yoga-1" data-event="event-3" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Yoga Level 1</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
 
-                                <li class="cd-schedule__event">
-                                    <a data-start="12:00" data-end="13:45" data-content="event-rowing-workout" data-event="event-2" href="#0">
-                                        <em class="cd-schedule__name">Rowing Workout</em>
-                                    </a>
-                                </li>
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="12:00" data-end="13:45" data-content="event-rowing-workout" data-event="event-2" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Rowing Workout</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
 
-                                <li class="cd-schedule__event">
-                                    <a data-start="13:45" data-end="15:00" data-content="event-yoga-1" data-event="event-3" href="#0">
-                                        <em class="cd-schedule__name">Yoga Level 1</em>
-                                    </a>
-                                </li>
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="13:45" data-end="15:00" data-content="event-yoga-1" data-event="event-3" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Yoga Level 1</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
                             </ul>
                         </li>
 
@@ -181,29 +227,49 @@
                             <div class="cd-schedule__top-info"><span>Thursday</span></div>
 
                             <ul>
-                                <li class="cd-schedule__event">
-                                    <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                                        <em class="cd-schedule__name">Abs Circuit</em>
-                                    </a>
-                                </li>
+                                @foreach($schedules as $routine)
+                                    @if($routine->day === 'thursday')
+                                        @php
+                                            $start_time = strtotime($routine->start_time);
+                                            $end_time = strtotime($routine->end_time);
+                                        @endphp
+                                        <li class="cd-schedule__event">
+                                            <a data-start="{{ date('H:i', $start_time) }}"
+                                               data-end="{{ date('H:i', $end_time) }}" data-content="event-abs-circuit" data-event="event-{{ $routine->id }}"
+                                               href="#0">
+                                                @foreach($routine->subjects as $subject)
+                                                    <em class="cd-schedule__name">{{ $subject->name }}</em>
+                                                @endforeach
+                                                @foreach($routine->teachers as $teacher)
+                                                    <p class="text-gray-50 text-sm">{{ $teacher->fullName }}</p>
+                                                @endforeach
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Abs Circuit</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
 
-                                <li class="cd-schedule__event">
-                                    <a data-start="12:00" data-end="13:45" data-content="event-restorative-yoga" data-event="event-4" href="#0">
-                                        <em class="cd-schedule__name">Restorative Yoga</em>
-                                    </a>
-                                </li>
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="12:00" data-end="13:45" data-content="event-restorative-yoga" data-event="event-4" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Restorative Yoga</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
 
-                                <li class="cd-schedule__event">
-                                    <a data-start="15:30" data-end="16:00" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                                        <em class="cd-schedule__name">Abs Circuit</em>
-                                    </a>
-                                </li>
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="15:30" data-end="16:00" data-content="event-abs-circuit" data-event="event-1" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Abs Circuit</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
 
-                                <li class="cd-schedule__event">
-                                    <a data-start="17:00" data-end="18:00" data-content="event-rowing-workout" data-event="event-2" href="#0">
-                                        <em class="cd-schedule__name">Rowing Workout</em>
-                                    </a>
-                                </li>
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="17:00" data-end="18:00" data-content="event-rowing-workout" data-event="event-2" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Rowing Workout</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
                             </ul>
                         </li>
 
@@ -211,23 +277,43 @@
                             <div class="cd-schedule__top-info"><span>Friday</span></div>
 
                             <ul>
-                                <li class="cd-schedule__event">
-                                    <a data-start="10:00" data-end="11:00" data-content="event-rowing-workout" data-event="event-2" href="#0">
-                                        <em class="cd-schedule__name">Rowing Workout</em>
-                                    </a>
-                                </li>
+                                @foreach($schedules as $routine)
+                                    @if($routine->day === 'friday')
+                                        @php
+                                            $start_time = strtotime($routine->start_time);
+                                            $end_time = strtotime($routine->end_time);
+                                        @endphp
+                                        <li class="cd-schedule__event">
+                                            <a data-start="{{ date('H:i', $start_time) }}"
+                                               data-end="{{ date('H:i', $end_time) }}" data-content="event-abs-circuit" data-event="event-{{ $routine->id }}"
+                                               href="#0">
+                                                @foreach($routine->subjects as $subject)
+                                                    <em class="cd-schedule__name">{{ $subject->name }}</em>
+                                                @endforeach
+                                                @foreach($routine->teachers as $teacher)
+                                                    <p class="text-gray-50 text-sm">{{ $teacher->fullName }}</p>
+                                                @endforeach
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="10:00" data-end="11:00" data-content="event-rowing-workout" data-event="event-2" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Rowing Workout</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
 
-                                <li class="cd-schedule__event">
-                                    <a data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                                        <em class="cd-schedule__name">Abs Circuit</em>
-                                    </a>
-                                </li>
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Abs Circuit</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
 
-                                <li class="cd-schedule__event">
-                                    <a data-start="15:45" data-end="16:45" data-content="event-yoga-1" data-event="event-3" href="#0">
-                                        <em class="cd-schedule__name">Yoga Level 1</em>
-                                    </a>
-                                </li>
+                                {{--                                <li class="cd-schedule__event">--}}
+                                {{--                                    <a data-start="15:45" data-end="16:45" data-content="event-yoga-1" data-event="event-3" href="#0">--}}
+                                {{--                                        <em class="cd-schedule__name">Yoga Level 1</em>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
                             </ul>
                         </li>
                     </ul>
