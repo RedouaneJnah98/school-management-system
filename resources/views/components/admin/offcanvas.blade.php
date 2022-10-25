@@ -11,8 +11,8 @@
         <div class="offcanvas-body">
             <div class="col-12 mb-2">
                 <label for="inputState" class="form-label">Class</label>
-                <option>Select a class</option>
                 <select id="inputState" name="class_id" class="form-select">
+                    <option>Select a class</option>
                     @forelse($classes as $class)
                         <option value="{{ $class->id }}">{{ $class->name }}</option>
                     @empty

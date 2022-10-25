@@ -10,7 +10,7 @@
     <x-modals.messages.settings_modal/>
 
     <x-settings.alert>
-        Edit your account settings, and change your password here.
+        Edit your account settings, or change your password here.
     </x-settings.alert>
 
     <div class="card border-0 shadow mt-2">

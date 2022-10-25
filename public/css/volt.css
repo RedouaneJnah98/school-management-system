@@ -17,19 +17,19 @@
 */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
-/*.custom-alert::before {*/
-/*    content: '';*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    width: 6px;*/
-/*    background-color: red;*/
-/*    height: 100%;*/
-/*}*/
+.bg-image-vertical {
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+}
 
-/*.custom-alert {*/
-/*    background-color: #E1F7EF;*/
-/*}*/
+@media (min-width: 1025px) {
+    .h-custom-2 {
+        height: 100%;
+    }
+}
 
 .custom-alert:before {
     content: '';

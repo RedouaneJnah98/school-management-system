@@ -19,7 +19,7 @@
                     </div>
                     <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                         <li class="nav-item me-2">
-                            <a href="#" class="nav-link">Ajiale School</a>
+                            <img src="{{ asset('assets/img/icons/color-logo.svg') }}" width="200" alt="logo">
                         </li>
                         <li class="nav-item me-2">
                             <a href="{{ route('student.login') }}" class="nav-link">Student</a>
@@ -76,12 +76,6 @@
                                         d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z"/>
                                 </svg>
                                 Contact Us
-                            </a>
-                        </div>
-                        <div class="d-flex justify-content-center flex-column mb-6 mb-lg-5">
-                            <a href="https://themesberg.com" target="_blank">
-                                <img src="{{ asset('assets/img/themesberg.svg') }}" class="d-block mx-auto mb-3" height="25" width="25" alt="Themesberg Logo">
-                                <span class="text-muted font-small">Login to your account.</span>
                             </a>
                         </div>
                     </div>

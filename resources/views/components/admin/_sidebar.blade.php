@@ -2,13 +2,10 @@
     <div class="sidebar-inner px-4 pt-3">
 
         <ul class="nav flex-column pt-3 pt-md-0">
-            <li class="nav-item">
-                <a href="{{ route('admin.dashboard') }}" class="nav-link d-flex align-items-center">
-                    <span class="sidebar-icon">
-                        <img src="{{ asset('assets/img/brand/light.svg') }}" height="20" width="20" alt="Volt Logo"/>
+            <li class="nav-item mb-4">
+                  <span class="sidebar-icon">
+                        <img src="{{ asset('assets/img/icons/color-logo.svg') }}" alt="Volt Logo"/>
                     </span>
-                    <span class="mt-1 ms-1 sidebar-text">Ajiale School</span>
-                </a>
             </li>
             <li class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link">
@@ -33,7 +30,7 @@
                                 d="M16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-6.664-1.21c-1.11 0-1.656-.767-1.703-1.407h.683c.043.37.387.82 1.051.82.844 0 1.301-.848 1.305-2.164h-.027c-.153.414-.637.79-1.383.79-.852 0-1.676-.61-1.676-1.77 0-1.137.871-1.809 1.797-1.809 1.172 0 1.953.734 1.953 2.668 0 1.805-.742 2.871-2 2.871zm-2.89-5.435v5.332H5.77V8.079h-.012c-.29.156-.883.52-1.258.777V8.16a12.6 12.6 0 0 1 1.313-.805h.632z"/>
                         </svg>
                     </span>
-                    <span class="sidebar-text">Attendance</span>
+                    <span class="sidebar-text">Daily Attendance</span>
                 </a>
             </li>
             <li class="nav-item">
