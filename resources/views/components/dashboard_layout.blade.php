@@ -31,16 +31,15 @@
 </main>
 
 <!-- Schedule JS files -->
-<script src="{{ asset('assets/js/util.js') }}"></script>
-<script src="{{ asset('assets/js/main.js') }}"></script>
+{{--<script src="{{ asset('assets/js/util.js') }}"></script>--}}
+{{--<script src="{{ asset('assets/js/main.js') }}"></script>--}}
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-
 <!-- Core -->
 <x-scripts.layout/>
-
+<!-- Volt -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
 <script src="{{ asset('assets/js/request.js') }}"></script>
 

@@ -15,7 +15,6 @@ class MessageController extends Controller
     public function index(Request $request)
     {
         $feedbacks = Message::with(['parent_messages', 'student_messages'])->latest()->paginate(10);
-//        $parents = Message::with('parent_messages')->latest()->paginate(3, '*', 'p_page');
 
         if ($request->ajax()) {
             return view('admin.feedbacks.pagiresult', compact('feedbacks'));
