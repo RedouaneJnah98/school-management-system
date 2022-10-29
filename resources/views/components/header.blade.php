@@ -10,7 +10,7 @@
     <!-- Routine Schedule -->
     <script>document.getElementsByTagName("html")[0].className += " js";</script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    
+
     <link rel="canonical" href="https://themesberg.com/product/admin-dashboard/volt-premium-bootstrap-5-dashboard">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">

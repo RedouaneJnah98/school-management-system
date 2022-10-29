@@ -88,7 +88,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Ajax routes
         Route::post('/teachersSubject', [ClassScheduleController::class, 'teachers'])->name('teachersSubject');
         Route::post('/subjectClass', [ClassScheduleController::class, 'subjects'])->name('subjectClass');
-//        Route::get('/schedules', [ClassScheduleController::class, 'schedules'])->name()
+        // Route::get('/schedules', [ClassScheduleController::class, 'schedules'])->name()
         Route::post('/schedules', [ClassScheduleController::class, 'schedules'])->name('schedules');
 
         // Resource Controllers

@@ -41,7 +41,7 @@
         </div>
 
     </div>
-
+    
     <div class="card border-0 shadow">
         <div class="card-body">
             {{-- Offcanvas --}}
@@ -81,7 +81,6 @@
             </div>
         </div>
     </div>
-
 </x-dashboard_layout>
 
 {{-- Success Notification --}}
