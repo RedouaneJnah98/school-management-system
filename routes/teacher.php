@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\teacher\AttendanceController;
 use App\Http\Controllers\teacher\auth\EmailVerificationNotificationController;
 use App\Http\Controllers\teacher\auth\EmailVerificationPromptController;
 use App\Http\Controllers\teacher\auth\PasswordResetLinkController;
@@ -44,9 +45,9 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
         Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('logout');
     });
 
-    Route::middleware(['auth:teacher', 'teacher.verified'])->group(function () {
-        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-        Route::put('/update', [ProfileController::class, 'update'])->name('update');
+    Route::middleware(['auth:teacher'])->group(function () {
+//        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+//        Route::put('/update', [ProfileController::class, 'update'])->name('update');
 //        // Message Controller
 //        Route::get('/feedbacks', [MessageController::class, 'index'])->name('feedbacks');
 //        // Dashboard Controller
@@ -76,10 +77,12 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
 //        Route::delete('/force_delete/{id}', [SoftDeleteController::class, 'force_delete'])->name('force_delete');
 //        // Views Routes
         Route::view('/settings', 'teacher.settings')->name('settings');
+//        Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance');
 //        // Update password from settings
 //        Route::post('/update-password', [TeacherAuthController::class, 'update_password'])->name('update-password');
 //
 //        // Resource Controllers
+        Route::resource('/attendances', AttendanceController::class);
 //        Route::resource('/teachers', TeacherAuthController::class);
 //        Route::resource('/students', StudentController::class);
 //        Route::resource('/parents', ParentController::class);
