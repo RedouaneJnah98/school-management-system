@@ -41,7 +41,7 @@
         </div>
 
     </div>
-    
+
     <div class="card border-0 shadow">
         <div class="card-body">
             {{-- Offcanvas --}}
@@ -58,12 +58,10 @@
                         </select>
                     </div>
 
-                    <div class="d-flex align-items-center loader visually-hidden">
-                        <span class="spinner-border spinner-border-sm me-" role="status" aria-hidden="true"></span>
-                        Loading
-                    </div>
+                    <x-filter_button/>
 
                     <button class="btn btn-gray-200 ms-4" id="class_schedule_filter" type="submit">
+
                         <div class="after-loading">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
                                 <path
@@ -77,7 +75,7 @@
             <hr class="mt-4">
 
             <!-- .cd-schedule --> <!-- .cd-schedule -->
-            <div class="test_container">
+            <div class="schedule-container">
             </div>
         </div>
     </div>
@@ -92,9 +90,10 @@
 
 <script>
     $(document).ready(function () {
-        let loading = $('.loading').html();
-        let filterLoader = $('.loader').html();
-        let afterLoading = $('.after-loading').html();
+        const loading = $('.loading').html();
+        const loadingBtn = $('.loader').html();
+        const afterLoading = $('.after-loading').html();
+        const filterBtn = $('#class_schedule_filter');
 
         $.ajaxSetup({
             headers: {
@@ -102,21 +101,23 @@
             }
         });
 
-        $('#class_schedule_filter').on('click', function () {
-            let classroom = $('#class_schedule').val();
+        $(filterBtn).on('click', function () {
+            const classroom = $('#class_schedule').val();
 
             $.ajax({
                 type: 'POST',
                 url: "{{ route('admin.schedules') }}",
                 data: {id: classroom},
                 beforeSend: function () {
-                    $('#class_schedule_filter').html(filterLoader).show();
+                    $(filterBtn).html(loadingBtn).show();
+                    $(filterBtn).addClass('disabled');
                 },
                 complete: function () {
-                    $('#class_schedule_filter').html(afterLoading).show();
+                    $(filterBtn).html(afterLoading).show();
+                    $(filterBtn).removeClass('disabled');
                 },
                 success: function (data) {
-                    $('.test_container').html(data);
+                    $('.schedule-container').html(data);
                 }
             })
         });

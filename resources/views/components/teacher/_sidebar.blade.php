@@ -2,13 +2,10 @@
     <div class="sidebar-inner px-4 pt-3">
 
         <ul class="nav flex-column pt-3 pt-md-0">
-            <li class="nav-item">
-                <a href="{{ route('student.dashboard') }}" class="nav-link d-flex align-items-center">
-                    <span class="sidebar-icon">
-                        <img src="{{ asset('assets/img/brand/light.svg') }}" height="20" width="20" alt="Volt Logo"/>
+            <li class="nav-item mb-4">
+                  <span class="sidebar-icon">
+                        <img src="{{ asset('assets/img/icons/color-logo.svg') }}" alt="Volt Logo"/>
                     </span>
-                    <span class="mt-1 ms-1 sidebar-text">Ajiale School</span>
-                </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('student.dashboard') }}" class="nav-link">
@@ -23,18 +20,45 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-academic">
+                  <span>
                     <span class="sidebar-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-calendar-date-fill" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" height="20" width="20" fill="currentColor">
                             <path
-                                d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zm5.402 9.746c.625 0 1.184-.484 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168 1.21 0 .817.543 1.2 1.144 1.2z"/>
-                            <path
-                                d="M16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-6.664-1.21c-1.11 0-1.656-.767-1.703-1.407h.683c.043.37.387.82 1.051.82.844 0 1.301-.848 1.305-2.164h-.027c-.153.414-.637.79-1.383.79-.852 0-1.676-.61-1.676-1.77 0-1.137.871-1.809 1.797-1.809 1.172 0 1.953.734 1.953 2.668 0 1.805-.742 2.871-2 2.871zm-2.89-5.435v5.332H5.77V8.079h-.012c-.29.156-.883.52-1.258.777V8.16a12.6 12.6 0 0 1 1.313-.805h.632z"/>
+                                d="M288 0H400c8.8 0 16 7.2 16 16V64c0 8.8-7.2 16-16 16H320V95.5L410.3 160H512c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H336V400c0-26.5-21.5-48-48-48s-48 21.5-48 48V512H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64H165.7L256 95.5V32c0-17.7 14.3-32 32-32zm48 240c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM80 224c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H80zm368 16v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H464c-8.8 0-16 7.2-16 16zM80 352c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V368c0-8.8-7.2-16-16-16H80zm384 0c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V368c0-8.8-7.2-16-16-16H464z"/>
                         </svg>
                     </span>
-                    <span class="sidebar-text">Attendances</span>
-                </a>
+                    <span class="sidebar-text">Academic</span>
+                  </span>
+                  <span class="link-arrow">
+                    <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                  </span>
+                </span>
+                <div
+                    class="multi-level collapse"
+                    role="list"
+                    id="submenu-academic" aria-expanded="false">
+                    <ul class="flex-column nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span class="sidebar-text">Daily Attendance</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span class="sidebar-text">Classes</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span class="sidebar-text">Class Routine</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
             <li class="nav-item">
                 <span class="nav-link collapsed d-flex justify-content-between align-items-center"

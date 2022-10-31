@@ -1,31 +1,36 @@
 <?php
 
+use App\Http\Controllers\teacher\auth\EmailVerificationNotificationController;
+use App\Http\Controllers\teacher\auth\EmailVerificationPromptController;
+use App\Http\Controllers\teacher\auth\PasswordResetLinkController;
+use App\Http\Controllers\teacher\auth\TeacherNewPasswordController;
+use App\Http\Controllers\teacher\auth\VerifyEmailController;
 use App\Http\Controllers\teacher\TeacherAuthController;
 
 Route::prefix('teacher')->name('teacher.')->group(function () {
-//    Route::middleware(['guest'])->group(function () {
-//        Route::view('/login', 'teacher.auth.login')->name('login');
-//        Route::post('/check', [TeacherAuthController::class, 'check_user'])->name('check');
-//        // Reset & Forgot Password Routes
-//        Route::view('/forgot-password', 'teacher.auth.forgot-password')->name('password.request');
-//        Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
-//        Route::post('/reset-password', [AdminNewPasswordController::class, 'store'])->name('password.update');
-//        Route::get('/reset-password/{token}', [AdminNewPasswordController::class, 'create'])
-//            ->name('password.reset');
-//    });
-    // Routes for email verification
-//    Route::middleware('auth:teacher')->group(function () {
-//        Route::get('/email/verify', [EmailVerificationPromptController::class, '__invoke'])
-//            ->name('verification.notice');
-//
-//        Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-//            ->middleware(['signed', 'throttle:6,1'])
-//            ->name('verification.verify');
-//
-//        Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-//            ->middleware('throttle:6,1')
-//            ->name('verification.send');
-//    });
+    Route::middleware(['guest'])->group(function () {
+        Route::view('/login', 'teacher.auth.login')->name('login');
+        Route::post('/check', [TeacherAuthController::class, 'check_user'])->name('check');
+        // Reset & Forgot Password Routes
+        Route::view('/forgot-password', 'teacher.auth.forgot-password')->name('password.request');
+        Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+        Route::post('/reset-password', [TeacherNewPasswordController::class, 'store'])->name('password.update');
+        Route::get('/reset-password/{token}', [TeacherNewPasswordController::class, 'create'])
+            ->name('password.reset');
+    });
+//     Routes for email verification
+    Route::middleware('auth:teacher')->group(function () {
+        Route::get('/email/verify', [EmailVerificationPromptController::class, '__invoke'])
+            ->name('verification.notice');
+
+        Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
+            ->middleware(['signed', 'throttle:6,1'])
+            ->name('verification.verify');
+
+        Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+            ->middleware('throttle:6,1')
+            ->name('verification.send');
+    });
 
     Route::middleware('guest')->group(function () {
         Route::view('/login', 'teacher.auth.login')->name('login');
@@ -39,9 +44,9 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
         Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('logout');
     });
 
-//    Route::middleware(['auth:teacher', 'teacher.verified'])->group(function () {
-//        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-//        Route::put('/update', [ProfileController::class, 'update'])->name('update');
+    Route::middleware(['auth:teacher', 'teacher.verified'])->group(function () {
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+        Route::put('/update', [ProfileController::class, 'update'])->name('update');
 //        // Message Controller
 //        Route::get('/feedbacks', [MessageController::class, 'index'])->name('feedbacks');
 //        // Dashboard Controller
@@ -70,7 +75,7 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
 //        Route::get('/restore_student/{id}', [SoftDeleteController::class, 'restore_student'])->name('restore_student');
 //        Route::delete('/force_delete/{id}', [SoftDeleteController::class, 'force_delete'])->name('force_delete');
 //        // Views Routes
-//        Route::view('/settings', 'teacher.settings')->name('settings');
+        Route::view('/settings', 'teacher.settings')->name('settings');
 //        // Update password from settings
 //        Route::post('/update-password', [TeacherAuthController::class, 'update_password'])->name('update-password');
 //
@@ -83,8 +88,8 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
 //        Route::resource('/classrooms', ClassroomController::class)->except('show');
 //        Route::resource('/subjects', SubjectController::class)->except('show');
 //        Route::resource('/attendances', AttendanceController::class)->except(['show', 'store']);
-//
-//        // Logout
-//        Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('logout');
-//    });
+
+        // Logout
+        Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('logout');
+    });
 });
