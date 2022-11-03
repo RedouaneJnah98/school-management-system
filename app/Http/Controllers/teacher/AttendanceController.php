@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classroom;
+use App\Models\Teacher;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -12,67 +15,36 @@ class AttendanceController extends Controller
         return view('teacher.sidebar.attendances.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $teacher_id = auth('teacher')->user()->id;
+        $teacher_class = Teacher::find($teacher_id);
+        $class_count = auth('teacher')->user()->loadCount('classrooms');
+
+//        dump($related_classes->classrooms);
+        return view('teacher.sidebar.attendances.create', compact('teacher_class', 'class_count'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

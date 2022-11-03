@@ -98,9 +98,12 @@
                                         @forelse($teachers as $teacher)
                                             <div class="form-check">
                                                 <input class="form-check-input" name="teacher" type="checkbox"
-                                                       id="teacher-{{ $teacher->id }}" data-id="{{ $teacher->id }}" value="{{ $teacher->fullName }}">
+                                                       id="teacher-{{ $teacher->id }}" data-id="{{ $teacher->id }}" value="{{ $teacher->fullName  }}">
                                                 <label class="form-check-label fw-light" for="teacher-{{ $teacher->id }}">
                                                     {{ $teacher->fullName }}
+                                                    @foreach($teacher->subjects as $subject)
+                                                        <p class="text-sm text-info">{{ $subject->name }}</p>
+                                                    @endforeach
                                                 </label>
                                             </div>
                                         @empty

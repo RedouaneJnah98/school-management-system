@@ -13,7 +13,7 @@ class ClassroomTeacherController extends Controller
 {
     public function create()
     {
-        $teachers = Teacher::doesntHave('classrooms')->get();
+        $teachers = Teacher::all();
         $classrooms = Classroom::doesntHave('teachers')->get();
 
         return view('admin.classrooms.teachers', compact(['teachers', 'classrooms']));

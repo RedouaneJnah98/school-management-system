@@ -6,6 +6,7 @@ use App\Http\Controllers\teacher\auth\EmailVerificationPromptController;
 use App\Http\Controllers\teacher\auth\PasswordResetLinkController;
 use App\Http\Controllers\teacher\auth\TeacherNewPasswordController;
 use App\Http\Controllers\teacher\auth\VerifyEmailController;
+use App\Http\Controllers\teacher\StudentsListController;
 use App\Http\Controllers\teacher\TeacherAuthController;
 
 Route::prefix('teacher')->name('teacher.')->group(function () {
@@ -46,6 +47,9 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
     });
 
     Route::middleware(['auth:teacher'])->group(function () {
+        // ajax request
+        Route::post('/student_list', [StudentsListController::class, 'index'])->name('student_list');
+
 //        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 //        Route::put('/update', [ProfileController::class, 'update'])->name('update');
 //        // Message Controller
